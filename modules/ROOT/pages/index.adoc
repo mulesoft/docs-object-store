@@ -1,0 +1,62 @@
+= Anypoint Object Store V2
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[]
+
+Object Store v2 lets applications store data and states across batch processes
+and Mule components, from within a single application. OSv2 acts as the
+backend for Mule 3 and Mule 4 object store access, which enables applications
+to write directly to object store, use its REST API, and write and read using
+the Object Store connector. See the xref:osv2-faq.adoc[FAQ] for
+Object Store information.
+
+image::osv2-architecture.png[width=300]
+
+Object Store v2 provides:
+
+* Object Store v2 keys persist for 30 days unless updated. If a key is updated, the expiry time resets to another 30 days. For more information, see xref:osv2-faq.adoc#how-long-can-data-persist-in-osv2[How long can data persist in OSv2?].
+* Supports unlimited keys.
+* Fully integrated with the Anypoint Platform.
+* OSv2 HA is available in all supported regions and availability zones within each region.
+* OSv2 is co-located in the same region as your workers, for example, your workers in Singapore would use OSv2 that is hosted in Singapore.
+* Mule connector for Mule applications and REST interface for external applications.
+* End-to-end secure transport and storage. Object Store v2 uses TLS for secure transport.
+* Data at rest is stored using FIPS 140-2 compliant encryption standards.
+* Stores values up to 10 MB in size.
+* Confirmable timeout to enable rollbacks.
+
+You can use the existing Object Store Connector to create applications that write data to the object store.
+
+Object Store v2 contains a user interface available in the Anypoint Platform > Runtime Manager.
+
+== Upgrading to Object Store v2
+
+* Back up all the data in your current object store.
++
+IMPORTANT: Data does not carry over from Object Store v1 to v2.  Any data you have in your v1 object store, including watermarks and other Mule component states, does not move to v2. If you revert back to OSv1, your OSv1 data will still be there.
++
+* To access Object Store v2, in Anypoint Platform, click Runtime Manager. Click the name of your application to view the application's dashboard, and click Manage Application. In the Settings screen, click Use Object Store v2. Accept the prompt. The Application Data section of the Runtime Manager's Dashboard changes to Object Store.
++
+image::os-use-object-store-v2.png[Click Use Object Store V2 in the Runtime Manager]
+
+== Object Store Notes
+
+* For Object Store v2 region availability see xref:osv2-faq.adoc#where-is-osv2-available[Where is OSv2 available?] in the FAQ.
+* The Object Store Connector works for both Object Store version 1 and 2.
+* OSv2 enforces a maximum data persistence of 30 days from time of creation.
+* Free accounts are rate limited to 10 transactions per second per application. To go beyond the base 10 TPS rate limit, contact your MuleSoft account team.
+* In Mule 4, OSv2 overrides the `_defaultPersistentObjectStore` object store. No further configuration is required.
+If the connector or component that you are using uses that object store, then you have access to OSv2.
++
+In Mule 3, OSv2 overrides the `_defaultUserObjectStore` object store. In the Mule 3 Object Store connector,
+you must set the Object Store Reference field to `_defaultUserObjectStore` for data to be stored in OSv2.
+
+== See Also
+
+* xref:osv2-faq.adoc[Object Store v2 FAQ]
+* xref:release-notes::object-store/anypoint-osv2-release-notes.adoc[Object Store v2 Release Notes]
+* xref:osv2-guide.adoc[To Use Object Store v2]
+* xref:osv2-tutorial.adoc[Tutorial: Object Store v2]
+* xref:osv2-apis.adoc[REST API: Object Store v2]
+* xref:3.9@mule-runtime::object-store-connector.adoc[Mule 3 Object Store Connector]
+* https://blogs.mulesoft.com/dev/anypoint-platform-dev/data-synchronizing-made-easy-with-mule-watermarks/[Object Store Watermarks]

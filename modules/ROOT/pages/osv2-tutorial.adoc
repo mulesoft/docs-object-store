@@ -1,0 +1,138 @@
+= Tutorial: Object Store v2
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[]
+
+This document helps you use Object Store v2 (OSv2) to store and view data.
+
+This tutorial works with Studio 6 using Mule 3.
+
+== Prerequisites
+
+This document assumes you are familiar with Anypoint Studio, using curl from a command line, and the use of Anypoint Platform and Runtime Manager. For more resources, view the See Also section of this document.
+
+== To Install the Object Store Connector
+
+. In Anypoint Studio, click the Exchange icon in the Studio task bar.
+. Click Login in Anypoint Exchange.
+. Search for the "objectstore" connector and click Install.
+. Follow the prompts to install the connector.
+
+== Create a Studio Project
+
+. Open Anypoint Studio and create a new project using File > New > Mule Project. In this tutorial, the project name is `objstoredemo`.
+. Create an application like this:
++
+image::osv2-studio-flow.png[]
++
+. Search for `http` and drag and drop the HTTP connector onto the Studio Canvas. The HTTP connector listens for the curl command we use to store a key and value in Object Store.
++
+Click the green plus to the right of Connector Configuration and in the Global Element Properties screen, take the default settings (Host: 0.0.0.0 and Port: 8081) and click OK:
++
+image::osv2-http-config.png[]
++
+. In the HTTP properties screen, set Path to `/store` and Allowed Methods to `POST`:
++
+image::osv2-http-properties.png[]
++
+When we submit our curl command, we use the `/store` option in our URL,
+for example, `objstoredemo.cloudhub.io/store`. The Allowed Methods setting ensures that those using our curl command can only POST information to the object store.
++
+. Locate and add the Object to String component to the Studio Canvas. No settings are necessary -- this component converts the content received from the HTTP connector into a string.
+. Locate and add the JSON to Object component. Set the Return Class to `java.util.Map`:
++
+image::osv2-json-to-object.png[]
++
+. Search for `objectstore` and add the ObjectStore connector. If there is no object store connector,
+install it as described in <<To Install the Object Store Connector>>.
+. Click the green plus sign to the right of Connector Configuration and in the Global Element Properties screen,
+assign a Partition name, such as mypartition.
+Set the Object Store Reference field to `_defaultUserObjectStore`.
++
+*Note:* The Object Store Reference field must be set to `_defaultUserObjectStore` for data to be stored in Object Store v2:
++
+image::os-studio-gep-settings.png[Studio Global Element Property settings]
++
+Leave the remaining settings blank, and click OK.
++
+. Set the Operation to Store and set these Store operation values:
++
+** Key to `#[payload.key]`
+** Value Reference to `#[payload.value]`
++
+image::osv2-connector.png[]
++
+. Locate and add Set Payload. Set the Value field to `KEY: #[payload.key] AND VALUE: #[payload.value] WERE SAVED OK` - this message displays on the command line to let you know the curl command values are received by the application.
++
+image::osv2-set-payload.png[]
++
+. Save the application and click Run > Run As > Mule Application. Running the application ensures your application works correctly. If you need to fix anything, do so now. After your application runs correctly, you can stop your application.
+
+=== To Deploy Your Application in Anypoint Platform
+
+. In Studio, right-click your application's name in Package Explorer and click
+Anypoint Platform > Deploy to Cloud.
+. At the User login window, specify your Anypoint Platform username and password, and click Sign in. If you don't have an Anypoint Platform login, click Sign up.
+. In Runtime Manager, specify an application name. Each name is unique and becomes the URL by which your application
+is available in Runtime Manager. The URL has the APPLICATION_NAME.cloudhub.io format where your application resides
+in the cloudhub.io name space. Ensure the application name gets a green check mark for proper naming and being unique.
++
+If you see this message: "You do not have permission to deploy new applications in this environment. Please select an existing application to redeploy", click the environment button in the upper left of the Runtime Manager display to change environments from a Design environment to a Production environment.
++
+. Set the Runtime Version to Mule 3.8.5 and later or to any 4.x version. Ensure that the Runtime exposes the *Use Object Store v2* checkbox.
+. Click the Use Object Store v2 checkbox.
++
+image::osv2-runtime-manager-deploy-app.png[osv2-runtime_manager_deploy_app]
++
+. After configuring your application, click Deploy Application.
+. In the Runtime Manager deploy window, wait until a message displays with a green dot and the message that your
+application successfully deployed to CloudHub.
+. Click Open in Browser and Close Window.
+. In Runtime Manager, click the right side of your application's entry to view its details.
+. Click Manage Application. In the application's settings screen, note that Object Store appears in the left
+side navigation area. The former label Application Data is now called Object Store for OSv2.
+
+== Sending Data to the Object Store
+
+From a command line prompt, use a utility to send JSON data to your Mule application. This can be a command such as
+curl, Postman, or a browser extension. Any serializable data can be sent to the
+object store. The object store connector sends data as key/value pairs.
+
+Example using curl:
+
+----
+curl -X POST -H "Content-Type: application/json" -d '{ "key": "TestKey01", "value": "This is an object store test" }' "http://APPLICATION_NAME.cloudhub.io/store"
+----
+
+Change APPLICATION_NAME to the name you chose when you deployed your application. Each time you submit this command, change the key's name so that each key is unique.
+
+== Viewing Data in the Object Store
+
+To view data in the Object Store:
+
+. Log into Anypoint Platform and click Runtime Manager.
+. Click the name of your application to view the application's dashboard.
+. Click Object Store from the left navigation bar:
++
+image::osv2-in-nav-bar.png[]
++
+The Object Store user interface appears as follows:
++
+image::osv2-ui.png[]
++
+* The default Object Store name is DEFAULT_USER_STORE.
+* The columns show the Object Store name, partition name, key, and key data. The  partition groups object store keys.
++
+. Click the Object Store name, partition name, and key to view its value.
+. To delete a key, hover over a key name, and click the trash can icon. Similarly,
+you can delete a partition or the store itself by hovering and clicking the trash
+can icon.
+
+*Note:* Object Store provides persistent storage of objects with a time to live (TTL) of up to 30 days. See xref:osv2-faq.adoc#how-long-can-data-persist-in-osv2[How long can data persist in OSv2?].
+
+== See Also
+
+* xref:index.adoc[Object Store documentation].
+* xref:3.9@mule-runtime::object-store-connector.adoc[Object Store Connector guide].
+* xref:release-notes::object-store/objectstore-release-notes.adoc[Release Notes].
+* https://mulesoft.github.io/objectstore-connector/[Object Store Technical Reference].
