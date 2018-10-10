@@ -41,7 +41,7 @@ https://www.anypoint.mulesoft.com/exchange/?search=objectstore[Anypoint Exchange
 
 == Do I need a different Object Store connector for Object Store v2 and Object Store v1?
 
-The Mule 3 Object Store connector works for both OSv1 and OSv2. The Mule 4 Object Store connector only works with OSv2.
+All versions of Mule's Object Store Connector work with both OSv1 and OSv2.
 
 == Are there rate limits on OSv2?
 
