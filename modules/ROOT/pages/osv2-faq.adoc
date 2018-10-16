@@ -25,7 +25,7 @@ IMPORTANT: If after the first deploy, you move the app to a different region, OS
 
 == How long can data persist in OSv2?
 
-Object Store v2 data persists 30 days. OSV2 does not honor any TTL (Entry Ttl) setting set in the ObjectStore Connector. There is no flexibility in setting TTL (Entry Ttl). The expiry time is 30 days. The expiry time is reset if an update to that key occurs. If there is no update, the key is deleted at the 30 day mark.
+Object Store v2 data persists 30 days. The expiry time is reset if an update to that key occurs. If there is no update, the key is deleted at the 30 day mark.
 
 == What's the maximum number of keys that can persist in OSv2?
 
