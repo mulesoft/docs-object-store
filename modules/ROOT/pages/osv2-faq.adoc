@@ -7,10 +7,28 @@ endif::[]
 
 OSv2 is available in every region where Runtime Manager applications can be deployed including:
 
-APAC: Tokyo (ap-northeast-1), Singapore (ap-southeast-1), and Sydney (ap-southeast-2). +
-EU: Frankfurt (eu-central-1) and Ireland (eu-west-1). +
-North America: Central Canada (ca-central-1), Northern Virginia (us-east-1), and Oregon (us-west-2). +
-South America: Sao Paulo (sa-east-1). +
+[%header%autowidth.spread,cols="a,a"]
+|===
+| Area | Region 
+
+| APAC 
+| * Tokyo (ap-northeast-1) +
+* Singapore (ap-southeast-1) +
+* Sydney (ap-southeast-2) 
+
+| EU  
+| * Frankfurt (eu-central-1) +
+* Ireland (eu-west-1) 
+
+| North America 
+| * Central Canada (ca-central-1) +
+* Northern Virginia (us-east-1) +
+* Oregon (us-west-2) 
+
+| South America
+| * Sao Paulo (sa-east-1). 
+|===
+
 Also London (eu-west-2) can be accessed from the US cloud, but not the EU cloud.
 
 == What Mule versions support OSv2?
