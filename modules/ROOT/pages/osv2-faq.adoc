@@ -1,4 +1,4 @@
-= Object Store v2 FAQ
+= FAQ: Object Store v2
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
@@ -37,7 +37,7 @@ This API is available in the https://anypoint.mulesoft.com/exchange/portals/anyp
 
 == Where is the Object Store connector?
 
-https://www.anypoint.mulesoft.com/exchange/?search=objectstore[Anypoint Exchange] provides assets for the Mule 3 Object Store connector used by Anypoint Studio 6 and the Mule 4 Object Store connector used by Studio 7.
+https://www.anypoint.mulesoft.com/exchange/?search=objectstore[Anypoint Exchange] provides assets for the Mule 3 Object Store connector used by Anypoint Studio 6, and for the Mule 4 Object Store connector used by Studio 7.
 
 == Do I need a different Object Store connector for Object Store v2 and Object Store v1?
 
@@ -49,7 +49,9 @@ Customers who have not purchased a separate Object Store SKU are rate limited to
 
 == Can OSv2 be shared between workers?
 
-An Object Store and its contents (keys, values) is accessible to all CloudHub workers of the one Mule application that defines and therefore owns that Object Store. However, other Mule applications and the CloudHub workers on which they execute cannot access this Object Store and its contents. If needed, you can use the REST API to read from one application and store to another.
+An Object Store and its contents (keys, values) is accessible to all CloudHub workers of the one Mule application that defines and therefore owns that Object Store. This means that as long as CloudHub workers are of the same application, they can share an Object Store.
+
+Other Mule applications and their CloudHub workers cannot access this Object Store and its contents. However, you can use the REST API to read from one application and store to another.
 
 ////
 == Does Object Store replicate cached data across CloudHub workers?
