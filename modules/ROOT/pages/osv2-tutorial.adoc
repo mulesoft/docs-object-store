@@ -237,13 +237,15 @@ you access your application in Anypoint Platform > Runtime Manager.
 image::os-as-deploy-to-cloudhub.png[]
 +
 . After your application appears in Anypoint Platform > Runtime Manager, start it so that
-the application is running. Note the `cloudhub.io` IP address.
+the application is running. Note the `cloudhub.io` URL.
 . From the command line, enter this curl command:
 +
 [source,console]
 ----
-$ curl -X POST -H "Content-Type: application/json" -d '{ "key": "MyKey", "value": "OSv2 Test" }' "http://osv2-example.us-w1.cloudhub.io/store"
+$ curl -X POST -H "Content-Type: application/json" -d '{ "key": "MyKey", "value": "OSv2 Test" }' "http://YOUR_CH_URL/store"
 ----
++
+Replace YOUR_CH_URL with the `cloudhub.io` URL for your application in Runtime Manager.
 +
 You can improve readability for this command if you append `;echo` to the end of the command.
 +
