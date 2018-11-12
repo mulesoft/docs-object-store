@@ -7,10 +7,10 @@ This document helps you use Object Store v2 (OSv2) to store and view data.
 
 == Prerequisites
 
-This document assumes you are familiar with Anypoint Studio, using curl from a command line, 
+This document assumes you are familiar with Anypoint Studio, using https://curl.haxx.se/[curl] from a command line, 
 and the use of Anypoint Platform and Runtime Manager. Ensure that curl is installed on 
 your computer. If you are using a Mac or Linux, the curl command is built in. For Windows, 
-download and install curl from the net.
+download and install curl from the net. Alternatively, you can use Postman or browser plugins instead of curl.
 
 You also need to have a Design environment configured in Anypoint Platform > Access Management > Environments. If you don't see Access Management in Anypoint Platform, contact your site 
 administrator.
@@ -159,8 +159,8 @@ The output from this command lists the value for the key:
 From this exercise, the Object Store user interface helps you
 see that the application you created in Design Center can be accessed using a curl command.
 
-For future use of Object Store, you don't need to go to the Object Store interface each
-time you update the Object Store. After you create your application in Design Center, you can
+For future use of Object Store in Design Center, you don't need to view the Runtime Manager interface each
+time you update the Object Store. After you create an application linked to the OSv2 connector, you can
 store a key and value in the Object Store with one curl command and view the results
 with another. Just change the key and/or the value as needed.
 
