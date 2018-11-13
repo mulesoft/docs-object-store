@@ -10,7 +10,7 @@ This document helps you use Object Store v2 (OSv2) to store and view data.
 This document assumes you are familiar with Anypoint Studio, using https://curl.haxx.se/[curl] from a command line, 
 and the use of Anypoint Platform and Runtime Manager. Ensure that curl is installed on 
 your computer. If you are using a Mac or Linux, the curl command is built in. For Windows, 
-download and install curl from the net. Alternatively, you can use Postman or browser plugins instead of curl.
+download and install https://curl.haxx.se/[curl]. Alternatively, you can use Postman or browser plugins instead of curl.
 
 You also need to have a Design environment configured in Anypoint Platform > Access Management > Environments. If you don't see Access Management in Anypoint Platform, contact your site 
 administrator.
