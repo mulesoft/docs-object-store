@@ -7,10 +7,10 @@ This document helps you use Object Store v2 (OSv2) to store and view data.
 
 == Prerequisites
 
-This document assumes you are familiar with Anypoint Studio, using curl from a command line, 
+This document assumes you are familiar with Anypoint Studio, using https://curl.haxx.se/[curl] from a command line, 
 and the use of Anypoint Platform and Runtime Manager. Ensure that curl is installed on 
 your computer. If you are using a Mac or Linux, the curl command is built in. For Windows, 
-download and install curl from the net.
+download and install https://curl.haxx.se/[curl]. Alternatively, you can use Postman or browser plugins instead of curl.
 
 You also need to have a Design environment configured in Anypoint Platform > Access Management > Environments. If you don't see Access Management in Anypoint Platform, contact your site 
 administrator.
@@ -77,7 +77,7 @@ screen and look for *Status   Running*.
 +
 [source,console]
 ----
-curl -X POST -H "Content-Type: application/json" -d '{ "key": "MyKey", "value": "OSv2 Test" }' "http://LINK_FROM_DC/store"
+curl -X POST -H "Content-Type: application/json" -d '{ "key": "MyKey", "value": "OSv2 Test" }' "http://LINK_FROM_DESIGN_CENTER/store"
 ----
 +
 . Substitute LINK_FROM_DC with the link you copied from Design Center, and then press Enter or Return on your keyboard to send the command to Design Center.
@@ -144,8 +144,10 @@ In the command prompt, submit this curl command to view the key's value:
 
 [source,console]
 ----
-curl http://osv2-qoav.us-w1.cloudhub.io/retrieve?key=MyKey;echo
+curl http://LINK_FROM_DESIGN_CENTER/retrieve?key=MyKey;echo
 ----
+
+Replace LINK_FROM_DESIGN_CENTER with the cloudhub.io link in Design Center.
 
 (The `;echo` statement at the end of the command makes the output more readable.)
 
@@ -156,11 +158,11 @@ The output from this command lists the value for the key:
 "OSv2 Test"
 ----
 
-From this exercise, the Object Store user interface helps you
-see that the application you created in Design Center can be accessed using a curl command.
+This exercise shows that the Object Store you create in Design Center can be accessed using a curl command, and
+the key becomes visible in Runtime Manager.
 
-For future use of Object Store, you don't need to go to the Object Store interface each
-time you update the Object Store. After you create your application in Design Center, you can
+For your future use of Object Store in Design Center, you don't need to view the Runtime Manager interface each
+time you update the Object Store. After you create an application linked to the OSv2 connector, you can
 store a key and value in the Object Store with one curl command and view the results
 with another. Just change the key and/or the value as needed.
 
@@ -168,15 +170,17 @@ Store:
 
 [source,console]
 ----
-curl -X POST -H "Content-Type: application/json" -d '{ "key": "MyKey", "value": "OSv2 Test" }' "http://osv2-example.us-w1.cloudhub.io/store"
+curl -X POST -H "Content-Type: application/json" -d '{ "key": "MyKey", "value": "OSv2 Test" }' "http://LINK_FROM_DESIGN_CENTER/store"
 ----
 
 Retrieve:
 
 [source,console]
 ----
-curl http://osv2-qoav.us-w1.cloudhub.io/retrieve?key=MyKey
+curl http://LINK_FROM_DESIGN_CENTER/retrieve?key=MyKey
 ----
+
+In each command, replace LINK_FROM_DESIGN_CENTER with the cloudhub.io link in Design Center.
 
 For more information on moving to programmatic access of Object Store, see
 https://www.mulesoft.org/docs/site/3.9.0/apidocs/org/mule/api/store/ObjectStore.html[ObjectStore API docs] -- one of the strengths of OSv2 is that programmatic conventions that worked with OSv1 also work 
@@ -237,13 +241,15 @@ you access your application in Anypoint Platform > Runtime Manager.
 image::os-as-deploy-to-cloudhub.png[]
 +
 . After your application appears in Anypoint Platform > Runtime Manager, start it so that
-the application is running. Note the `cloudhub.io` IP address.
+the application is running. Note the `cloudhub.io` URL.
 . From the command line, enter this curl command:
 +
 [source,console]
 ----
-$ curl -X POST -H "Content-Type: application/json" -d '{ "key": "MyKey", "value": "OSv2 Test" }' "http://osv2-example.us-w1.cloudhub.io/store"
+$ curl -X POST -H "Content-Type: application/json" -d '{ "key": "MyKey", "value": "OSv2 Test" }' "http://LINK_FROM_RUNTIME_MANAGER/store"
 ----
++
+Replace LINK_FROM_RUNTIME_MANAGER with the `cloudhub.io` URL for your application in Runtime Manager.
 +
 You can improve readability for this command if you append `;echo` to the end of the command.
 +
@@ -262,7 +268,7 @@ the Object Store.
 +
 [source,console]
 ----
-curl http://osv2-qoav.us-w1.cloudhub.io/retrieve?key=MyKey
+curl http://LINK_FROM_RUNTIME_MANAGER/retrieve?key=MyKey
 ----
 +
 The output from this command lists the value for the key:
