@@ -43,6 +43,34 @@ https://www.anypoint.mulesoft.com/exchange/?search=objectstore[Anypoint Exchange
 
 All versions of Mule's Object Store Connector work with both OSv1 and OSv2.
 
+== Why are Object Store values in binary format?
+
+When you view an Object Store key in Runtime Manager, the value for the key displays as `[binary value] BINARY`.
+Mule 4 wraps values into a Mule object that causes them to be only visible in binary through Anypoint Platform. Behind the scenes, Mule 4 executes binary serialization with the Mule internal serializer. The user interface cannot deserialize the object, hence it can only tell you that the value is now binary in the user interface.
+
+To view the key value, you need an Object Store retrieve flow in your application's connector, such as:
+
+[source,xml,linenums]
+----
+<flow name="Retrieve" >
+		<http:listener doc:name="Listener" config-ref="HTTP_Listener_config1"
+			path="/retrieve">
+			<ee:repeatable-file-store-stream />
+		</http:listener>
+		<os:retrieve doc:name="Retrieve"
+			key="#[attributes.queryParams.key]"
+			objectStore="Object_store1"/>
+	</flow>
+----
+
+You can then view the value for a key using this curl command:
+
+`+curl http://LINK_FROM_RUNTIME_MANAGER/retrieve?key=MyKey+`
+
+Replace LINK_FROM_RUNTIME_MANAGER with the cloudhub.io URL you obtained from Runtime Manager when you deployed your application to CloudHub. 
+
+For more information, see xref:osv2-tutorial.adoc#create-a-studio-7-project[Tutorial: Create a Studio 7 Project].
+
 == Are there rate limits on OSv2?
 
 Customers who have not purchased a separate Object Store SKU are rate limited to 10 transactions per second per application.  If an application for an account that has not purchased the OSv2 SKU exceeds the rate limit, further requests are not processed for a time and a 429 HTTP error status code results. To go beyond the base 10 TPS rate limit, contact your MuleSoft account team.
