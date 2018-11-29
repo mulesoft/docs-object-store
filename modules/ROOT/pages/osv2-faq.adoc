@@ -55,21 +55,15 @@ To view the key value, you need an Object Store retrieve flow in your applicatio
 [source,xml,linenums]
 ----
 <flow name="Retrieve" >
-		<http:listener doc:name="Listener" config-ref="HTTP_Listener_config1"
-			path="/retrieve">
-			<ee:repeatable-file-store-stream />
-		</http:listener>
-		<os:retrieve doc:name="Retrieve"
-			key="#[attributes.queryParams.key]"
-			objectStore="Object_store1"/>
-	</flow>
+	<http:listener doc:name="Listener" config-ref="HTTP_Listener_config1"
+		path="/retrieve">
+		<ee:repeatable-file-store-stream />
+	</http:listener>
+	<os:retrieve doc:name="Retrieve"
+		key="#[attributes.queryParams.key]"
+		objectStore="Object_store1"/>
+</flow>
 ----
-
-You can then view the value for a key using this curl command:
-
-`+curl http://LINK_FROM_RUNTIME_MANAGER/retrieve?key=MyKey+`
-
-Replace LINK_FROM_RUNTIME_MANAGER with the cloudhub.io URL you obtained from Runtime Manager when you deployed your application to CloudHub. 
 
 For more information, see xref:osv2-tutorial.adoc#create-a-studio-7-project[Tutorial: Create a Studio 7 Project].
 
