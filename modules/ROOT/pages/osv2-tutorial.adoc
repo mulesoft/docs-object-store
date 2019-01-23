@@ -7,19 +7,18 @@ This document helps you use Object Store v2 (OSv2) to store and view data.
 
 == Prerequisites
 
-This document assumes you are familiar with Anypoint Studio, using https://curl.haxx.se/[curl] from a command line, 
+This document assumes you are familiar with Anypoint Studio, using curl from a command line, 
 and the use of Anypoint Platform and Runtime Manager. Ensure that curl is installed on 
 your computer. If you are using a Mac or Linux, the curl command is built in. For Windows, 
-download and install https://curl.haxx.se/[curl]. Alternatively, you can use Postman or browser plugins instead of curl.
+download and install curl. Alternatively, you can use Postman or browser plugins instead of curl.
 
-You also need to have a Design environment configured in Anypoint Platform > Access Management > Environments. If you don't see Access Management in Anypoint Platform, contact your site 
-administrator.
+You also need to have a Design environment configured in Anypoint Platform *Access Management > Environments*. If you don't see *Access Management*, contact your site administrator.
 
 == Install the Object Store Connector
 
-. In Anypoint Studio, click the Exchange icon in the Studio task bar.
-. Click Login in Anypoint Exchange.
-. Search for the "objectstore" connector and click Install.
+. In Anypoint Studio, click the *Exchange* icon in the Studio task bar.
+. Click *Login* in Anypoint Exchange.
+. Search for the `objectstore` connector and click *Install*.
 . Follow the prompts to install the connector.
 
 == Create a Design Center Application
@@ -27,19 +26,19 @@ administrator.
 IMPORTANT: Disable password programs such as LastPass or Okta in your browser before using Design Center. Otherwise, these programs inserts passwords in the HTTP Listener’s TLS tab. The passwords in the TLS tab cause your application's deployment to fail.
 
 In the Design Center section of the tutorial, you can create an application consisting 
-of an HTTP Listener trigger and an ObjectStore Connector component. Then you can use
+of an HTTP Listener trigger and an Object Store Connector component. Then you can use
 the command line to send a key and value, and view the key in Runtime Manager.
 
 === Configure and Run an Application
 
-. In Anypoint Platform > Design Center, click Create > Mule Application.
-. Specify a Project Name such as "osv2".
-. In the Let's Get Started wizard, click *Go straight to canvas*.
-. For the Trigger, select HTTP Listener:
+. In Anypoint Platform, click *Design Center > Create > Mule Application*.
+. Specify a Project Name such as `osv2`.
+. In the *Let's Get Started* wizard, click *Go straight to canvas*.
+. For the Trigger, select *HTTP Listener*:
 +
 image::os-dc-http-trigger.png[]
 +
-. Specify the Path as /store.
+. Specify the *Path* as `/store`.
 . Click *Edit*:
 +
 image::os-dc-http-edit.png[]
@@ -52,35 +51,35 @@ image::os-dc-http-settings.png[]
 +
 image::os-dc-plus-sign.png[]
 +
-. In the "Select a component" window, search for "Obj", click the *ObjectStore Connector*, 
-and click the Store operation.
+. In the *Select a component* window, search for *Obj*, then click *ObjectStore Connector*, 
+and click the *Store* operation.
 +
 image::os-dc-os-store-op.png[]
 +
-. Specify the Key as `#[payload.key]` and the Value with the `payload.value` string.
+. Specify the *Key* as `#[payload.key]` and the *Value* with the `payload.value` string.
 +
 image::os-dc-store-setup.png[]
 +
-. Click the Run button at the top of the Design Center window. When successful, *Running* appears.
+. Click the *Run* button at the top of the Design Center window. When successful, *Running* appears.
 +
 image::os-dc-run-button.png[]
 +
-. To the right of the Run button are 3 vertical dots. Click this icon and click *Copy link*.
+. To the right of the *Run* button are three vertical dots. Click the dots, then click *Copy link*.
 
 This completes creating the first part of your application. Leave your Design Center application running for the next task where we test the application. Even if the Design Center window times
-out, the application stays running while you are logged on. Click the application in the Projects
-screen and look for *Status   Running*.
+out, the application stays running while you are logged on. Click the application in the *Projects*
+screen and look for *Status Running*.
 
 === Test the Design Center Application
 
-. Open a command line and key in this command:
+. Open a command line and enter this command:
 +
 [source,console]
 ----
 curl -X POST -H "Content-Type: application/json" -d '{ "key": "MyKey", "value": "OSv2 Test" }' "http://LINK_FROM_DESIGN_CENTER/store"
 ----
 +
-. Substitute LINK_FROM_DC with the link you copied from Design Center, and then press Enter or Return on your keyboard to send the command to Design Center.
+. Substitute `LINK_FROM_DESIGN_CENTER` with the link you copied from Design Center, and then press Enter to send the command to Design Center.
 +
 The output is an echo:
 +
@@ -89,65 +88,62 @@ The output is an echo:
 { "key": "MyKey", "value": "OSv2 Test" }
 ----
 +
-. In Anypoint Platform, click the hamburger icon in the upper left and click *Runtime Manager*.
+. In Anypoint Platform, click the menu icon in the upper left and click *Runtime Manager*.
 . Notice how an entry has been created for you in the list of applications. 
 . Click *CloudHub* in the Server column for your application to display details, and 
 click *Manage Application*.
 +
 image::os-rm-manage-app.png[]
 +
-. Click *Object Store* and click the Object Store, then the Partition, and the Key. You can
+. Click *Object Store* and click the object store, then the partition, and the key. You can
 see the value as `[binary value] BINARY`. 
 
-You can see that `MyKey` made it into the Object Store user interface, which confirms how to
-view that keys successfully can be sent through your Design Center application and stored in 
-the Object Store.
+`MyKey` is in the Object Store user interface, which confirms that the key can be sent through your Design Center application and stored in the Object Store.
 
-Why is the value binary? Mule 4 wraps values into a Mule object that causes 
+The value is binary because Mule 4 wraps values in a Mule object that causes 
 them to be only visible in binary through Anypoint Platform. Behind the scenes, Mule 4 
 executes binary serialization with the Mule internal serializer. The user interface cannot
 deserialize the object, hence it can only tell you that the value is now binary in the user
 interface. 
 
-But you probably want clarification that your value worked too. For this we need to return to 
-Design Center and add a new flow that retrieves a value.
+To verify that your value worked too, return to Design Center and add a new flow that retrieves a value.
 
 === Retrieve the Value
 
-. Click the hamburger icon and click *Design Center*.
+. Click the menu icon and click *Design Center*.
 . In Design Center, click your project, and click *Open*.
-. Open the rectangular box icon to the left of Project to expand the Flow menu.
+. Open the rectangular box icon to the left of Project to expand the *Flow* menu.
 . First rename your existing flow by clicking the vertical dot icon and clicking *Rename* from
-the menu. Change "New Flow" to "Store".
+the menu. Change `New Flow` to `Store`.
 +
 image::os-dc-flows.png[]
 +
-. Click the plus sign to the right of Flows.
+. Click the plus sign to the right of *Flows*.
 . Click *Go straight to canvas* to exit the wizard.
 . In the Trigger menu, choose *HTTP Listener*.
-. For Path, specify the `/retrieve` value.
+. For *Path*, specify the `/retrieve` value.
 +
 image:os-dc-http-retrieve.png[]
 +
 Because the default settings for the HTTP Listener are correct, there's no need to click Edit. 
 However you can if you want to verify that the host is 0.0.0.0 and the port is 8081. These 
-are the same as in the previous Store flow.
+are the same as in the previous `Store` flow.
 +
-. Now that we have started the flow, you can now rename it to Retrieve.
+. Now that we have started the flow, you can now rename it to `Retrieve`.
 . Click the plus sign next to the HTTP Listener to add a component.
-. In *Select a component*, search for "Obj", and click the *ObjectStore Connector*.
-. Click the *Retrieve* operation and in the Key field, specify the `#[attributes.queryParams.key]` value.
+. In *Select a component*, search for `Obj`, and click the *ObjectStore Connector*.
+. Click the *Retrieve* operation and in the *Key* field, specify the `#[attributes.queryParams.key]` value.
 
-This completes the Retrieve flow. Click Run again to restart your application.
+This completes the *Retrieve* flow. Click *Run* again to restart your application.
 
-In the command prompt, submit this curl command to view the key's value:
+In the command prompt, submit a curl command to view the key's value:
 
 [source,console]
 ----
 curl http://LINK_FROM_DESIGN_CENTER/retrieve?key=MyKey;echo
 ----
 
-Replace LINK_FROM_DESIGN_CENTER with the cloudhub.io link in Design Center.
+Replace `LINK_FROM_DESIGN_CENTER` with the cloudhub.io link in Design Center.
 
 (The `;echo` statement at the end of the command makes the output more readable.)
 
@@ -158,13 +154,11 @@ The output from this command lists the value for the key:
 "OSv2 Test"
 ----
 
-This exercise shows that the Object Store you create in Design Center can be accessed using a curl command, and
+This exercise shows that the object store you create in Design Center can be accessed using a curl command, and
 the key becomes visible in Runtime Manager.
 
-For your future use of Object Store in Design Center, you don't need to view the Runtime Manager interface each
-time you update the Object Store. After you create an application linked to the OSv2 connector, you can
-store a key and value in the Object Store with one curl command and view the results
-with another. Just change the key and/or the value as needed.
+You don't need to view the Runtime Manager interface each time you update an object store. After you create an application linked to the OSv2 connector, you can
+store a key and value in the Object Store with one curl command and view the results with another. Just change the key and/or the value as needed.
 
 Store:
 
@@ -180,7 +174,7 @@ Retrieve:
 curl http://LINK_FROM_DESIGN_CENTER/retrieve?key=MyKey
 ----
 
-In each command, replace LINK_FROM_DESIGN_CENTER with the cloudhub.io link in Design Center.
+In each command, replace `LINK_FROM_DESIGN_CENTER` with the cloudhub.io link in Design Center.
 
 For more information on moving to programmatic access of Object Store, see
 https://www.mulesoft.org/docs/site/3.9.0/apidocs/org/mule/api/store/ObjectStore.html[ObjectStore API docs] -- one of the strengths of OSv2 is that programmatic conventions that worked with OSv1 also work 
@@ -188,7 +182,7 @@ with OSv2.
 
 == Create a Studio 7 Project
 
-. In Anypoint Studio, click File > New > Mule Project and give the project a name such as `osv2`.
+. In Anypoint Studio, click *File > New > Mule Project* and give the project a name such as `osv2`.
 . Click the Exchange X icon in the upper left of the Studio task bar.
 . In the Exchange window, click *Login* and provide your Anypoint Platform user name and password.
 . Search for the ObjectStore Connector for Mule 4. You can enter a substring such as "obj" and 
@@ -207,7 +201,7 @@ image::os-as-http-listener-config.png[]
 +
 image::os-as-http-path.png[]
 +
-. Click ObjectStore in the Mule Palette and drag the *Store* operation to the canvas.
+. Click *ObjectStore* in the Mule Palette and drag the *Store* operation to the canvas.
 . Specify the Key as `#[payload.key]` and the Value with the `payload.value` string.
 . Click the green plus sign to the right of the Object Store field, and in the Global
 Element Properties screen, click OK to accept the defaults.
@@ -241,7 +235,7 @@ you access your application in Anypoint Platform > Runtime Manager.
 image::os-as-deploy-to-cloudhub.png[]
 +
 . After your application appears in Anypoint Platform > Runtime Manager, start it so that
-the application is running. Note the `cloudhub.io` URL.
+the application is running. Note the cloudhub.io URL.
 . From the command line, enter this curl command:
 +
 [source,console]
@@ -249,7 +243,7 @@ the application is running. Note the `cloudhub.io` URL.
 $ curl -X POST -H "Content-Type: application/json" -d '{ "key": "MyKey", "value": "OSv2 Test" }' "http://LINK_FROM_RUNTIME_MANAGER/store"
 ----
 +
-Replace LINK_FROM_RUNTIME_MANAGER with the `cloudhub.io` URL for your application in Runtime Manager.
+Replace `LINK_FROM_RUNTIME_MANAGER` with the cloudhub.io URL for your application in Runtime Manager.
 +
 You can improve readability for this command if you append `;echo` to the end of the command.
 +
@@ -393,30 +387,28 @@ image::osv2-set-payload.png[]
 
 === To Deploy Your Application in Anypoint Platform
 
-. In Studio, right-click your application's name in Package Explorer and click
-Anypoint Platform > Deploy to Cloud.
-. At the User login window, specify your Anypoint Platform username and password, and click Sign in. If you don't have an Anypoint Platform login, click Sign up.
-. In Runtime Manager, specify an application name. Each name is unique and becomes the URL by which your application is available in Runtime Manager. The URL has the APPLICATION_NAME.cloudhub.io format where your application resides in the cloudhub.io name space. Ensure the application name gets a green check mark for proper naming and being unique.
+. In Studio, right-click your application's name in Package Explorer and click *Anypoint Platform > Deploy to Cloud*.
+. In the user login window, specify your Anypoint Platform username and password, and click *Sign in*. If you don't have an Anypoint Platform login, click *Sign up*.
+. In Runtime Manager, specify an application name. Each name is unique and becomes the URL where your application is available in Runtime Manager. The URL has the format `APPLICATION_NAME.cloudhub.io` where your application resides in the cloudhub.io namespace. Ensure the application name has a green check mark for proper naming and being unique.
 +
-If you see this message: "You do not have permission to deploy new applications in this environment. Please select an existing application to redeploy", click the environment button in the upper left of the Runtime Manager display to change environments from a Design environment to a Production environment.
+If you see the message: *You do not have permission to deploy new applications in this environment. Please select an existing application to redeploy*, click the environment button in the upper left of the Runtime Manager display to change environments from a design environment to a production environment.
 +
-. Set the Runtime Version to Mule 3.8.5 and later or to any 4.x version. Ensure that the Runtime exposes the *Use Object Store v2* checkbox.
-. Click the Use Object Store v2 checkbox.
+. Set the Runtime Version to Mule 3.8.5 or later, or to any 4.x version. Ensure that the Runtime exposes the *Use Object Store v2* checkbox.
+. Click the *Use Object Store v2* checkbox.
 +
 image::osv2-runtime-manager-deploy-app.png[osv2-runtime_manager_deploy_app]
 +
-. After configuring your application, click Deploy Application.
-. In the Runtime Manager deploy window, wait until a message displays with a green dot and the message that your
-application successfully deployed to CloudHub.
-. Click Open in Browser and Close Window.
+. After configuring your application, click *Deploy Application*.
+. In the Runtime Manager deploy window, wait until a message displays that your application successfully deployed to CloudHub.
+. Click *Open in Browser and Close Window*.
 . In Runtime Manager, click the right side of your application's entry to view its details.
-. Click Manage Application. In the application's settings screen, note that Object Store appears in the left
-side navigation area. The former label Application Data is now called Object Store for OSv2.
+. Click *Manage Application*. In the application's settings screen, note that Object Store appears in the left
+side navigation area. The former label *Application Data* is now *Object Store for OSv2*.
 
-== Sending Data to the Object Store
+== Send Data to the Object Store
 
 From a command line prompt, use a utility to send JSON data to your Mule application. This can be a command such as curl, Postman, or a browser extension. Any serializable data can be sent to the
-object store. The object store connector sends data as key/value pairs.
+object store. The Object Store connector sends data as key/value pairs.
 
 Example using curl:
 
@@ -424,35 +416,36 @@ Example using curl:
 curl -X POST -H "Content-Type: application/json" -d '{ "key": "TestKey01", "value": "This is an object store test" }' "http://APPLICATION_NAME.cloudhub.io/store"
 ----
 
-Change APPLICATION_NAME to the name you chose when you deployed your application. Each time you submit this command, change the key's name so that each key is unique.
+Change `APPLICATION_NAME` to the name you chose when you deployed your application. Each time you submit this command, change the key's name so that each key is unique.
 
-== Viewing Data in the Object Store
+== View Data in the Object Store
 
 To view data in the Object Store:
 
 . Log into Anypoint Platform and click Runtime Manager.
 . Click the name of your application to view the application's dashboard.
-. Click Object Store from the left navigation bar:
+. Click *Object Store* from the left navigation bar:
 +
 image::osv2-in-nav-bar.png[]
 +
-The Object Store user interface appears as follows:
+The Object Store user interface:
 +
 image::osv2-ui.png[]
 +
-* The default Object Store name is DEFAULT_USER_STORE.
-* The columns show the Object Store name, partition name, key, and key data. The  partition groups object store keys.
+* The default Object Store name is `DEFAULT_USER_STORE`.
+* The columns show the Object Store name, partition name, key, and key data. The partition groups object store keys.
 +
-. Click the Object Store name, partition name, and key to view its value.
+. Click the Object Store name, partition name, and key to view each item's value.
 . To delete a key, hover over a key name, and click the trash can icon. Similarly,
 you can delete a partition or the store itself by hovering and clicking the trash
 can icon.
 
-*Note:* Object Store provides persistent storage of objects with a time to live (TTL) of up to 30 days. See xref:osv2-faq.adoc#how-long-can-data-persist-in-osv2[How long can data persist in OSv2?].
+*Note:* Object Store v2 provides persistent storage of objects with a time to live (TTL) of up to 30 days.
 
 == See Also
 
-* xref:index.adoc[Object Store documentation].
-* xref:3.9@mule-runtime::object-store-connector.adoc[Object Store Connector guide].
-* xref:release-notes::object-store/objectstore-release-notes.adoc[Release Notes].
-* https://mulesoft.github.io/objectstore-connector/[Object Store Technical Reference].
+* xref:index.adoc[Object Store documentation]
+* xref:osv2-faq.adoc#how-long-can-data-persist-in-osv2[How long can data persist in OSv2?]
+* xref:3.9@mule-runtime::object-store-connector.adoc[Object Store Connector guide]
+* xref:release-notes::object-store/objectstore-release-notes.adoc[Release Notes]
+* https://mulesoft.github.io/objectstore-connector/[Object Store Technical Reference]

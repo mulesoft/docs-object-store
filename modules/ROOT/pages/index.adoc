@@ -4,7 +4,7 @@ include::_attributes.adoc[]
 endif::[]
 
 Object Store v2 lets applications store data and states across batch processes
-and Mule components, from within a single application. OSv2 acts as the
+and Mule components, from within a single application. Object Store v2 acts as the
 backend for Mule 3 and Mule 4 object store access, which enables applications
 to write directly to object store, use its REST API, and write and read using
 the Object Store connector. See the xref:osv2-faq.adoc[FAQ] for
@@ -14,11 +14,11 @@ image::osv2-architecture.png[width=300]
 
 Object Store v2 provides:
 
-* Object Store v2 keys persist for 30 days unless updated. If a key is updated, the expiry time resets to another 30 days. For more information, see xref:osv2-faq.adoc#how-long-can-data-persist-in-osv2[How long can data persist in OSv2?].
+* Object Store v2 keys persist for 30 days unless updated. If a key is updated, the expiry time resets to another 30 days. For more information, see xref:osv2-faq.adoc#how-long-can-data-persist-in-osv2[How long can data persist in Object Store v2?].
 * Supports unlimited keys.
 * Fully integrated with the Anypoint Platform.
-* OSv2 HA is available in all supported regions and availability zones within each region.
-* OSv2 is co-located in the same region as your workers, for example, your workers in Singapore would use OSv2 that is hosted in Singapore.
+* Object Store v2 HA is available in all supported regions and availability zones within each region.
+* Object Store v2 is co-located in the same region as your workers, for example, your workers in Singapore would use Object Store v2 that is hosted in Singapore.
 * Mule connector for Mule applications and REST interface for external applications.
 * End-to-end secure transport and storage. Object Store v2 uses TLS for secure transport.
 * Data at rest is stored using FIPS 140-2 compliant encryption standards.
@@ -35,21 +35,21 @@ Object Store v2 contains a user interface available in the Anypoint Platform > R
 +
 IMPORTANT: Data does not carry over from Object Store v1 to v2.  Any data you have in your v1 object store, including watermarks and other Mule component states, does not move to v2. If you revert back to OSv1, your OSv1 data will still be there.
 +
-* To access Object Store v2, in Anypoint Platform, click Runtime Manager. Click the name of your application to view the application's dashboard, and click Manage Application. In the Settings screen, click Use Object Store v2. Accept the prompt. The Application Data section of the Runtime Manager's Dashboard changes to Object Store.
+* To access Object Store v2, in Anypoint Platform, click *Runtime Manager*. Click the name of your application to view the application's dashboard, and click *Manage Application*. In the *Settings* screen, click *Use Object Store v2*. Accept the prompt. The *Application Data* section of the Runtime Manager's dashboard changes to *Object Store*.
 +
 image::os-use-object-store-v2.png[Click Use Object Store V2 in the Runtime Manager]
 
 == Object Store Notes
 
-* For Object Store v2 region availability see xref:osv2-faq.adoc#where-is-osv2-available[Where is OSv2 available?] in the FAQ.
+* For Object Store v2 region availability see xref:osv2-faq.adoc#where-is-osv2-available[Where is Object Store v2 available?] in the FAQ.
 * The Object Store Connector works for both Object Store version 1 and 2.
-* OSv2 enforces a maximum data persistence of 30 days from time of creation.
-* Accounts that have not purchased the OSv2 premium SKU are rate limited to 10 transactions per second per application. To go beyond the base 10 TPS rate limit, contact your MuleSoft account team.
-* In Mule 4, OSv2 overrides the `_defaultPersistentObjectStore` object store. No further configuration is required.
-If the connector or component that you are using uses that object store, then you have access to OSv2.
+* Object Store v2 enforces a maximum data persistence of 30 days from time of creation.
+* Accounts that have not purchased the Object Store v2 premium SKU are rate limited to 10 transactions per second per application. To go beyond the base 10 TPS rate limit, contact your MuleSoft account team.
+* In Mule 4, Object Store v2 overrides the `_defaultPersistentObjectStore` object store. No further configuration is required.
+If the connector or component that you are using uses that object store, then you have access to Object Store v2.
 +
-In Mule 3, OSv2 overrides the `_defaultUserObjectStore` object store. In the Mule 3 Object Store connector,
-you must set the Object Store Reference field to `_defaultUserObjectStore` for data to be stored in OSv2.
+In Mule 3, Object Store v2 overrides the `_defaultUserObjectStore` object store. In the Mule 3 Object Store connector,
+you must set the Object Store Reference field to `_defaultUserObjectStore` for data to be stored in Object Store v2.
 
 == See Also
 
