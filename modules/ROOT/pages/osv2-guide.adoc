@@ -7,7 +7,7 @@ Anypoint Object Store v2 (Object Store v2) lets you share data and states across
 
 Object Store v2 is enabled by default in the Anypoint Platform EU Control Plane and in Mule 4.
 
-In Mule 3, enable Object Store v2 from Anypoint Platform > Runtime Manager for each application you want to access Object Store v2.
+In Mule 3, enable Object Store v2 from *Anypoint Platform > Runtime Manager* for each application you want to access Object Store v2.
 
 == Components
 
@@ -39,49 +39,49 @@ When you enable Object Store v2, the *Runtime Manager > Application Data* settin
 
 Object Store v2 uses TLS for secure transport. Data at rest is stored using FIPS 140-2 compliant encryption standards. If you require a higher level of security, we recommend that you encrypt sensitive data before writing it to the Object Store.
 
-== To Install the Object Store Connector
+== Install the Object Store Connector
 
 . In Anypoint Studio, click the Exchange icon in the Studio task bar.
 . Click Login in Anypoint Exchange.
 . Search for the "objectstore connector", choose the version of the connector for Mule 3 or Mule 4, and click Install.
 . Follow the prompts to install the connector.
 
-== To Use Object Store Connector in an Application
+== Use Object Store Connector in an Application
 
 *Note:* The information that follows applies only to Mule 3.
 
-. In Anypoint Studio, click File > New > Mule Project.
+. In Anypoint Studio, click *File > New > Mule Project*.
 . Create a simple flow such as the following:
 +
 [%headers,cols="25a,75a"]
 |===
 |Building Block |*Parameters*
-|HTTP connector |Click Green Plus sign +
-Host = `All interfaces [0.0.0.0] (Default)` +
-Port = `8081` +
-Click OK +
-Path = `/store` +
-Allowed Methods = `POST`
+|HTTP connector |Click the green plus sign +
+*Host* = `All interfaces [0.0.0.0] (Default)` +
+*Port* = `8081` +
+Click *OK* +
+*Path* = `/store` +
+*Allowed Methods* = `POST`
 |Object to String |No settings (use defaults)
 |JSON to Object | Return Class = `java.util.Map`
-|Object Store connector |Click Green Plus sign. +
-Set the Partition field. +
-Set the Object Store Reference field to `_defaultUserObjectStore`. This is mandatory for
+|Object Store connector |Click the green plus sign. +
+Set the *Partition* field. +
+Set the *Object Store Reference* field to `_defaultUserObjectStore`. This is mandatory for
 data to be stored in Object Store v2. +
-Click OK. +
-Set the Operation = Store +
-Key = `&#x0023;[payload.key]` +
-Value Reference = `&#x0023;[payload.value]`
-|Set Payload |Settings = `KEY: &#x0023;[payload.key] AND VALUE: &#x0023;[payload.value] WERE SAVED OK`
+Click *OK*. +
+Set *Operation* = *Store* +
+*Key* = `&#x0023;[payload.key]` +
+*Value Reference* = `&#x0023;[payload.value]`
+|Set Payload |*Settings* = `KEY: &#x0023;[payload.key] AND VALUE: &#x0023;[payload.value] WERE SAVED OK`
 |===
 +
-When done, the flow appears as:
+When complete, the flow appears:
 +
 image::osv2-studio-flow.png[]
 +
-. Save the application. Test run the application so you know it works. Right-click the canvas and click *Run project <name>*. If the application starts successfully, you can stop it. Right-click the canvas and click Stop project <name>.
-. Right-click your application’s name in Anypoint Studio’s Package Explorer and click Anypoint Platform > Deploy to Cloud.
-. At the User login window, specify your Anypoint Platform username and password, and click Sign In. If you don’t have an Anypoint Platform login, click Sign Up.
+. Save the application. Test run the application so you know it works. Right-click the canvas and click *Run project <name>*. If the application starts successfully, you can stop it. Right-click the canvas and click *Stop project <name>*.
+. Right-click your application’s name in Anypoint Studio’s Package Explorer and click *Anypoint Platform > Deploy to Cloud*.
+. At the User login window, specify your Anypoint Platform username and password, and click *Sign In*. If you don’t have an Anypoint Platform login, click *Sign Up*.
 . In Runtime Manager:
 +
 ** Give the application a name. Each name is unique and becomes the URL under which your application
@@ -109,7 +109,7 @@ curl -X POST -H "Content-Type: application/json" -d '{ "key": "TestKey01", "valu
 
 Change `application_name` to the name you chose when you deployed your application. Each time you submit this command, change the key's name so that each key is unique.
 
-== iew Data in an Object Store
+== View Data in an Object Store
 
 To view data in the Object Store:
 
@@ -135,6 +135,6 @@ can icon.
 
 == See Also
 
-* xref:osv2-faq.adoc#how-long-can-data-persist-in-osv2[How long can data persist in OSv2?]
+* xref:osv2-faq.adoc#how-long-can-data-persist-in-osv2[How long can data persist in Object Store v2?]
 * xref:osv2-apis.adoc[Object Store v2 REST API]
 * xref:release-notes::object-store/anypoint-osv2-release-notes.adoc[Object Store v2 Release Notes]

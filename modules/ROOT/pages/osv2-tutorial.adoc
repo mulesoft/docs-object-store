@@ -126,10 +126,10 @@ image::os-dc-flows.png[]
 image:os-dc-http-retrieve.png[]
 +
 Because the default settings for the HTTP Listener are correct, there's no need to click Edit. 
-However you can if you want to verify that the host is 0.0.0.0 and the port is 8081. These 
+However you can verify that *Host* is `0.0.0.0` and *Port* is `8081`. These values
 are the same as in the previous `Store` flow.
 +
-. Now that we have started the flow, you can now rename it to `Retrieve`.
+. Now that we have started the flow, rename it to `Retrieve`.
 . Click the plus sign next to the HTTP Listener to add a component.
 . In *Select a component*, search for `Obj`, and click the *ObjectStore Connector*.
 . Click the *Retrieve* operation and in the *Key* field, specify the `#[attributes.queryParams.key]` value.
@@ -197,7 +197,7 @@ the Host to 0.0.0.0 and the Port to 8081.
 +
 image::os-as-http-listener-config.png[]
 +
-. In the connector's main screen, set the Path to the `/store` value.
+. In the connector's main screen, set *Path* to `/store`.
 +
 image::os-as-http-path.png[]
 +
@@ -206,16 +206,15 @@ image::os-as-http-path.png[]
 . Click the green plus sign to the right of the Object Store field, and in the Global
 Element Properties screen, click OK to accept the defaults.
 . Click the HTTP Listener again and drag it to the canvas under the first flow to create a second
-flow. Use the same settings as in Step 7. In the main screen, set the Path to the
-`retrieve` value.
+flow. Use the same settings as in Step 7. In the main screen, set *Path* to `retrieve`.
 +
 image::os-as-2nd-flow-http.png[]
 +
 . Click ObjectStore in the Mule Palette and drag the *Retrieve* operation to the canvas.
-. In the Key field, specify the `#[attributes.queryParams.key]` value.
-. Click the green plus sign to the right of the Object Store field, and in the Global
-Element Properties screen, click OK to accept the defaults.
-. You can change the flow labels by double-clicking the flow labels. Change the first flow to
+. Set the *Key* field to `#[attributes.queryParams.key]`.
+. Click the green plus sign to the right of the *Object Store* field, and in the *Global
+Element Properties* screen, click *OK* to accept the defaults.
+. You can change a flow label by double-clicking it. Change the first flow to
 `Store` and the second flow to `Retrieve`.
 +
 When done, the flows should appear as:
@@ -223,18 +222,18 @@ When done, the flows should appear as:
 image::os-as-finished-flows.png[]
 
 You now have a completed Studio application. You can test that it runs correctly by 
-clicking Run As > Mule Application. This is just a test. Once you get your application
+clicking *Run As > Mule Application*. This is just a test. Once you get your application
 to run, you can stop it.
 
 === Test Your Studio 7 Application
 
 . In Studio, right click your project in the Package Explorer.
 . Click *Anypoint Platform* > *Deploy to CloudHub*. Note: CloudHub is name of the server, but
-you access your application in Anypoint Platform > Runtime Manager.
+you access your application in Anypoint Platform *Runtime Manager*.
 +
 image::os-as-deploy-to-cloudhub.png[]
 +
-. After your application appears in Anypoint Platform > Runtime Manager, start it so that
+. After your application appears in Anypoint Platform *Runtime Manager*, start it so that
 the application is running. Note the cloudhub.io URL.
 . From the command line, enter this curl command:
 +
@@ -247,16 +246,14 @@ Replace `LINK_FROM_RUNTIME_MANAGER` with the cloudhub.io URL for your applicatio
 +
 You can improve readability for this command if you append `;echo` to the end of the command.
 +
-. In Runtime Manager, click *CloudHub* in the Server column for your application to display details, and click *Manage Application*.
+. In Runtime Manager, click *CloudHub* in the *Server* column for your application to display details, and click *Manage Application*.
 +
 image::os-rm-manage-app.png[]
 +
-. Click *Object Store* and click the Object Store, then the Partition, and the Key. You can
+. Click *Object Store* and choose the object store, the partition, and key you wish to view. You can
 see the value as `[binary value] BINARY`. 
 +
-You can see that `MyKey` made it into the Object Store user interface, which confirms how to
-view that keys successfully can be sent through your Design Center application and stored in 
-the Object Store.
+You can see that `MyKey` made it into the Object Store v2 user interface, confirming that keys can be sent through your Design Center application and stored in the Object Store.
 +
 . To view the value for the key, use this curl command:
 +
@@ -335,55 +332,55 @@ http://www.mulesoft.org/schema/mule/os/current/mule-os.xsd">
 
 == Create a Studio 6 Project
 
-If you are only working in Anypoint Studio 7, you can skip this section.
+If you are only working in Anypoint Studio 7, skip this section.
 
-. Open Anypoint Studio and create a new project using File > New > Mule Project. In this tutorial, the project name is `objstoredemo`.
+. To create a new project, open Anypoint Studio and click *File > New > Mule Project*. In this tutorial, the project name is `objstoredemo`.
 . Create an application like this:
 +
 image::osv2-studio-flow.png[]
 +
 . Search for `http` and drag and drop the HTTP connector onto the Studio Canvas. The HTTP connector listens for the curl command we use to store a key and value in Object Store.
 +
-Click the green plus to the right of Connector Configuration and in the Global Element Properties screen, take the default settings (Host: 0.0.0.0 and Port: 8081) and click OK:
+Click the green plus to the right of *Connector Configuration* and in the *Global Element Properties* screen, accpet the default settings (*Host* `0.0.0.0` and *Port* `8081`), and click *OK*:
 +
 image::osv2-http-config.png[]
 +
-. In the HTTP properties screen, set Path to `/store` and Allowed Methods to `POST`:
+. In the HTTP properties screen, set *Path* to `/store` and *Allowed Methods* to `POST`:
 +
 image::osv2-http-properties.png[]
 +
-When we submit our curl command, we use the `/store` option in our URL,
-for example, `objstoredemo.cloudhub.io/store`. The Allowed Methods setting ensures that those using our curl command can only POST information to the object store.
+When you submit a curl command, use the `/store` option in the URL,
+for example, `objstoredemo.cloudhub.io/store`. The *Allowed Methods* setting ensures that those who use the curl command can POST information only to an object store.
 +
-. Locate and add the Object to String component to the Studio Canvas. No settings are necessary -- this component converts the content received from the HTTP connector into a string.
-. Locate and add the JSON to Object component. Set the Return Class to `java.util.Map`:
+. Locate and add the *Object to String* component to the Studio canvas. No settings are necessary -- this component converts the content received from the HTTP connector into a string.
+. Locate and add the *JSON to Object* component. Set the *Return Class* to `java.util.Map`:
 +
 image::osv2-json-to-object.png[]
 +
-. Search for `objectstore` and add the ObjectStore connector. If there is no object store connector,
+. Search for `objectstore` and add the Object Store connector. If there is no Object Store connector,
 install it as described in <<Install the Object Store Connector>>.
-. Click the green plus sign to the right of Connector Configuration and in the Global Element Properties screen,
-assign a Partition name, such as mypartition.
+. Click the green plus sign to the right of *Connector Configuration* and in the *Global Element Properties* screen,
+assign a *Partition* name such as `mypartition`.
 Set the Object Store Reference field to `_defaultUserObjectStore`.
 +
-*Note:* The Object Store Reference field must be set to `_defaultUserObjectStore` for data to be stored in Object Store v2:
+*Note:* The *Object Store Reference* field must be set to `_defaultUserObjectStore` for data to be stored in Object Store v2:
 +
 image::os-studio-gep-settings.png[Studio Global Element Property settings]
 +
-Leave the remaining settings blank, and click OK.
+Leave the remaining settings blank, and click *OK*.
 +
-. Set the Operation to Store and set these Store operation values:
+. Set the *Operation* to *Store* and set these *Store operation* values:
 +
-** Key to `#[payload.key]`
-** Value Reference to `#[payload.value]`
+	* Set *Key* to `#[payload.key]`
+	* Set *Value Reference* to `#[payload.value]`
 +
 image::osv2-connector.png[]
 +
-. Locate and add Set Payload. Set the Value field to `KEY: #[payload.key] AND VALUE: #[payload.value] WERE SAVED OK` - this message displays on the command line to let you know the curl command values are received by the application.
+. Locate and add *Set Payload*. Set the *Value* field to `KEY: #[payload.key] AND VALUE: #[payload.value] WERE SAVED OK` - this message displays on the command line to let you know the curl command values are received by the application.
 +
 image::osv2-set-payload.png[]
 +
-. Save the application and click Run > Run As > Mule Application. Running the application ensures your application works correctly. If you need to fix anything, do so now. After your application runs correctly, you can stop your application.
+. Save the application and click *Run > Run As > Mule Application*. Running the application ensures your application works correctly. If you need to fix anything, do so now. After your application runs correctly, you can stop your application.
 
 === To Deploy Your Application in Anypoint Platform
 
@@ -391,9 +388,9 @@ image::osv2-set-payload.png[]
 . In the user login window, specify your Anypoint Platform username and password, and click *Sign in*. If you don't have an Anypoint Platform login, click *Sign up*.
 . In Runtime Manager, specify an application name. Each name is unique and becomes the URL where your application is available in Runtime Manager. The URL has the format `APPLICATION_NAME.cloudhub.io` where your application resides in the cloudhub.io namespace. Ensure the application name has a green check mark for proper naming and being unique.
 +
-If you see the message: *You do not have permission to deploy new applications in this environment. Please select an existing application to redeploy*, click the environment button in the upper left of the Runtime Manager display to change environments from a design environment to a production environment.
+If you see the message: *You do not have permission to deploy new applications in this environment. Please select an existing application to redeploy*, click the environment button in the upper left of the Runtime Manager display to change environments from *Design* to *Production*.
 +
-. Set the Runtime Version to Mule 3.8.5 or later, or to any 4.x version. Ensure that the Runtime exposes the *Use Object Store v2* checkbox.
+. Set *Runtime Version* to Mule 3.8.5 or later, or to any 4.x version. Ensure that Runtime Manager shows the *Use Object Store v2* checkbox.
 . Click the *Use Object Store v2* checkbox.
 +
 image::osv2-runtime-manager-deploy-app.png[osv2-runtime_manager_deploy_app]
@@ -422,7 +419,7 @@ Change `APPLICATION_NAME` to the name you chose when you deployed your applicati
 
 To view data in the Object Store:
 
-. Log into Anypoint Platform and click Runtime Manager.
+. Log into Anypoint Platform and click *Runtime Manager*.
 . Click the name of your application to view the application's dashboard.
 . Click *Object Store* from the left navigation bar:
 +
@@ -432,10 +429,10 @@ The Object Store user interface:
 +
 image::osv2-ui.png[]
 +
-* The default Object Store name is `DEFAULT_USER_STORE`.
-* The columns show the Object Store name, partition name, key, and key data. The partition groups object store keys.
+* The default object store name is `DEFAULT_USER_STORE`.
+* The columns show the object store name, partition name, key, and key data. The partition groups object store keys.
 +
-. Click the Object Store name, partition name, and key to view each item's value.
+. Click the object store name, partition name, and key to view each item's value.
 . To delete a key, hover over a key name, and click the trash can icon. Similarly,
 you can delete a partition or the store itself by hovering and clicking the trash
 can icon.
