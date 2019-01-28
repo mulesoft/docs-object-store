@@ -65,7 +65,7 @@ To view the key value, you need an Object Store retrieve flow in your applicatio
 </flow>
 ----
 
-For more information, see xref:OSv2-tutorial.adoc#create-a-studio-7-project[Tutorial: Create a Studio 7 Project].
+For more information, see xref:osv2-tutorial.adoc#create-a-studio-7-project[Tutorial: Create a Studio 7 Project].
 
 == Are there rate limits on Object Store v2?
 
