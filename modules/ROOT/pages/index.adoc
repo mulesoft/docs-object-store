@@ -16,13 +16,14 @@ Object Store v2 provides:
 
 * Object Store v2 keys persist for 30 days unless updated. If a key is updated, the expiry time resets to another 30 days. For more information, see xref:osv2-faq.adoc#how-long-can-data-persist-in-osv2[How long can data persist in Object Store v2?].
 * Supports unlimited keys.
+* Stores values up to 10 MB in size.
+* There's no limit on the total size of an Object Store.
 * Fully integrated with the Anypoint Platform.
 * Object Store v2 HA is available in all supported regions and availability zones within each region.
 * Object Store v2 is co-located in the same region as your workers, for example, your workers in Singapore would use Object Store v2 that is hosted in Singapore.
 * Mule connector for Mule applications and REST interface for external applications.
 * End-to-end secure transport and storage. Object Store v2 uses TLS for secure transport.
 * Data at rest is stored using FIPS 140-2 compliant encryption standards.
-* Stores values up to 10 MB in size.
 * Confirmable timeout to enable rollbacks.
 
 You can use the existing Object Store Connector to create applications that write data to the object store.
