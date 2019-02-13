@@ -10,6 +10,8 @@ to write directly to object store, use its REST API, and write and read using
 the Object Store connector. See the xref:osv2-faq.adoc[FAQ] for
 Object Store information.
 
+NOTE: Mule 4 only supports Object Store v2.
+
 image::osv2-architecture.png[width=300]
 
 Object Store v2 provides:

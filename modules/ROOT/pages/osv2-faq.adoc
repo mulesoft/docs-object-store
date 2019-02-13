@@ -17,7 +17,13 @@ Also London (eu-west-2) can be accessed from the US cloud, but not the EU cloud.
 
 Mule 3.8.5 and above, and all 4.x versions. 
 
-NOTE: Only Mule Runtimes deployed to CloudHub can use Object Store v2.
+[IMPORTANT] 
+====
+
+* Mule 4 only supports Object Store v2.
+* Only Mule Runtimes deployed to CloudHub can use Object Store v2.
+
+====
 
 == Is Object Store v2 persistent in the same region as the worker?
 
