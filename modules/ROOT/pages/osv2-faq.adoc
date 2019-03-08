@@ -106,6 +106,8 @@ Mule 3 example XML flow:
 
 No, but applications running on-premises can use the Object Store v2 REST API to store data in Object Store v2 and retrieve it.
 
+NOTE: There must be an Object Store application running in the MuleSoft cloud for on-premises applications to access so that they can store data to and retrieve data from the object store. 
+
 == How is Object Store v2 data secured?
 
 Object Store v2 uses TLS for secure transport. Data at rest is stored using FIPS 140-2 compliant encryption standards.  If you require a higher level of security, we recommend that you encrypt sensitive data before writing it to the Object Store.
