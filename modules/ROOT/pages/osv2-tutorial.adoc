@@ -445,4 +445,4 @@ can icon.
 * xref:osv2-faq.adoc#how-long-can-data-persist-in-osv2[How long can data persist in OSv2?]
 * xref:3.9@mule-runtime::object-store-connector.adoc[Object Store Connector guide]
 * xref:release-notes::object-store/objectstore-release-notes.adoc[Release Notes]
-* https://mulesoft.github.io/objectstore-connector/[Object Store Technical Reference]
+
