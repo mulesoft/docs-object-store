@@ -31,6 +31,20 @@ Yes, Object Store v2 is in the same region as the worker where the application i
 
 IMPORTANT: If after the first deploy, you move the app to a different region, Object Store v2 remains in the original region to avoid data loss. Your use of Object Store v2 never moves from one region to another. When you need to deploy both an app and object store to a different region, delete the application and re-upload the app into the new region. This action loses all the data that may exist in the storage.
 
+== How are Object Store entries divided among workers?
+
+All entries that you put in `_defaultUserObjectStore` are available to all workers for the same app. For example, if you had 50 entries and 5 workers, all 50 entries would be available to all the workers in the app and the Object Store v2 service handles storing all the data without any impact on the workers.
+
+== Can Object Store v2 be shared between workers?
+
+An Object Store and its contents (keys, values) are accessible to all CloudHub workers of the one Mule application that defines and therefore owns that Object Store. This means that as long as CloudHub workers are of the same application, they can share an Object Store.
+
+Other Mule applications and their CloudHub workers cannot access this Object Store and its contents. However, you can use the REST API to read from one application and store to another.
+
+== What are the limits on an object store?
+
+There’s no limit of the total size of an object store, but each value is limited to 10 MB. The free version also limits usage to 10 transactions per second. Premium add-on users get up to 100 TPS.
+
 == How long can data persist in Object Store v2?
 
 Object Store v2 data persists 30 days. The expiry time is reset if an update to that key occurs. If there is no update, the key is deleted at the 30 day mark.
@@ -76,31 +90,6 @@ For more information, see xref:osv2-tutorial.adoc#create-a-studio-7-project[Tuto
 == Are there rate limits on Object Store v2?
 
 Customers who have not purchased a separate Object Store SKU are rate limited to 10 transactions per second per application.  If an application for an account that has not purchased the OSv2 SKU exceeds the rate limit, further requests are not processed for a time and a 429 HTTP error status code results. To go beyond the base 10 TPS rate limit, contact your MuleSoft account team.
-
-== Can Object Store v2 be shared between workers?
-
-An Object Store and its contents (keys, values) is accessible to all CloudHub workers of the one Mule application that defines and therefore owns that Object Store. This means that as long as CloudHub workers are of the same application, they can share an Object Store.
-
-Other Mule applications and their CloudHub workers cannot access this Object Store and its contents. However, you can use the REST API to read from one application and store to another.
-
-////
-== Does Object Store replicate cached data across CloudHub workers?
-
-Data stored in Object Store V1 or V2 is in a separate service that is accessible
-to any CloudHub worker in a single application, and is shared across workers. Data
-only goes to Object Store V2, if you set `objectStore-ref="_defaultUserObjectStore"`
-in your Mule XML flow. If not set, Object Store references stay in-memory in a
-single worker.
-
-Mule 3 example XML flow:
-
-[source,xml,linenums]
-----
-<objectstore:config name="ObjectStore__Connector" partition="mypartition"
- objectStore-ref="_defaultUserObjectStore" doc:name="ObjectStore: Connector"/>
-----
-
-////
 
 == Can Object Store v2 be used on premises?
 
