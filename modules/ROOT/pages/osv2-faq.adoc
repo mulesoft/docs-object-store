@@ -33,7 +33,7 @@ IMPORTANT: If after the first deploy, you move the app to a different region, Ob
 
 == How are Object Store entries divided among workers?
 
-All entries that you put in `_defaultUserObjectStore` are available to all workers for the same app. For example, if you had 50 entries and 5 workers, all 50 entries would be available to all the workers in the app and the Object Store v2 service handles storing all the data without any impact on the workers.
+Object Store v2 is a remote service that is separate from CloudHub workers. All entries that you put in `_defaultUserObjectStore` are available to all workers for the same app. When using `_defaultUserObjectStore`, data persists in Object Store v2 and is therefore available to all workers. If not using `_defaultUserObjectStore`, then the data is put into an in-memory object store on the worker and is lost if the worker restarts or a new app version is deployed.
 
 == Can Object Store v2 be shared between workers?
 
