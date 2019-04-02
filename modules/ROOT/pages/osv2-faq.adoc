@@ -5,7 +5,7 @@ endif::[]
 
 == Where is Object Store v2 available?
 
-Object Store v2 is available in every region where Runtime Manager applications can be deployed including:
+Object Store v2 is available in every region where Runtime Manager apps can be deployed including:
 
 APAC: Tokyo (ap-northeast-1), Singapore (ap-southeast-1), and Sydney (ap-southeast-2). +
 EU: Frankfurt (eu-central-1) and Ireland (eu-west-1). +
@@ -27,9 +27,23 @@ Mule 3.8.5 and above, and all 4.x versions.
 
 == Is Object Store v2 persistent in the same region as the worker?
 
-Yes, Object Store v2 is in the same region as the worker where the application is initially deployed. For example, if you deploy to the Singapore region, the object store persists in the Singapore region.
+Yes, Object Store v2 is in the same region as the worker where the app is initially deployed. For example, if you deploy to the Singapore region, the object store persists in the Singapore region.
 
-IMPORTANT: If after the first deploy, you move the app to a different region, Object Store v2 remains in the original region to avoid data loss. Your use of Object Store v2 never moves from one region to another. When you need to deploy both an app and object store to a different region, delete the application and re-upload the app into the new region. This action loses all the data that may exist in the storage.
+IMPORTANT: If after the first deploy, you move the app to a different region, Object Store v2 remains in the original region to avoid data loss. Your use of Object Store v2 never moves from one region to another. When you need to deploy both an app and object store to a different region, delete the app and re-upload the app into the new region. This action loses all the data that may exist in the storage.
+
+== How are Object Store entries divided among workers?
+
+Object Store v2 is a remote service that is separate from CloudHub workers. All entries that you put in `_defaultUserObjectStore` are available to all workers for the same app. If not using `_defaultUserObjectStore`, then the data is put into an in-memory object store on the worker and that data is lost if the worker restarts or a new app version is deployed.
+
+For an example of entry availability, if you had 50 entries and 5 workers, all 50 entries would be available to all the workers in the app and the Object Store v2 service handles storing all the data without any impact on the workers.
+
+== How can one Mule app access the object store of another app?
+
+When other Mule apps need access to your app's object stores, use the https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Object Store v2 REST API] to read from one app and store to another.
+
+== What are the limits on an object store?
+
+There’s no limit of the total size of an object store, but each value is limited to 10 MB. The free version also limits usage to 10 transactions per second. Premium add-on users get up to 100 TPS.
 
 == How long can data persist in Object Store v2?
 
@@ -37,7 +51,7 @@ Object Store v2 data persists 30 days. The expiry time is reset if an update to 
 
 == What's the maximum number of keys that can persist in Object Store v2?
 
-In Object Store v2 there is no limit on the number of keys per application. In Object Store v1, the limit was 100,000 keys and attempts to store more were rejected.
+In Object Store v2 there is no limit on the number of keys per app. In Object Store v1, the limit was 100,000 keys and attempts to store more were rejected.
 
 == Where is the Object Store v2 REST API portal?
 
@@ -56,7 +70,7 @@ All versions of Mule's Object Store Connector work with both OSv1 and Object Sto
 When you view an Object Store key in Runtime Manager, the value for the key displays as `[binary value] BINARY`.
 Mule 4 wraps values into a Mule object that causes them to be only visible in binary through Anypoint Platform. Behind the scenes, Mule 4 executes binary serialization with the Mule internal serializer. The user interface cannot deserialize the object, hence it can only tell you that the value is now binary in the user interface.
 
-To view the key value, you need an Object Store retrieve flow in your application's connector, such as:
+To view the key value, you need an Object Store retrieve flow in your app's connector, such as:
 
 [source,xml,linenums]
 ----
@@ -75,36 +89,11 @@ For more information, see xref:osv2-tutorial.adoc#create-a-studio-7-project[Tuto
 
 == Are there rate limits on Object Store v2?
 
-Customers who have not purchased a separate Object Store SKU are rate limited to 10 transactions per second per application.  If an application for an account that has not purchased the OSv2 SKU exceeds the rate limit, further requests are not processed for a time and a 429 HTTP error status code results. To go beyond the base 10 TPS rate limit, contact your MuleSoft account team.
-
-== Can Object Store v2 be shared between workers?
-
-An Object Store and its contents (keys, values) is accessible to all CloudHub workers of the one Mule application that defines and therefore owns that Object Store. This means that as long as CloudHub workers are of the same application, they can share an Object Store.
-
-Other Mule applications and their CloudHub workers cannot access this Object Store and its contents. However, you can use the REST API to read from one application and store to another.
-
-////
-== Does Object Store replicate cached data across CloudHub workers?
-
-Data stored in Object Store V1 or V2 is in a separate service that is accessible
-to any CloudHub worker in a single application, and is shared across workers. Data
-only goes to Object Store V2, if you set `objectStore-ref="_defaultUserObjectStore"`
-in your Mule XML flow. If not set, Object Store references stay in-memory in a
-single worker.
-
-Mule 3 example XML flow:
-
-[source,xml,linenums]
-----
-<objectstore:config name="ObjectStore__Connector" partition="mypartition"
- objectStore-ref="_defaultUserObjectStore" doc:name="ObjectStore: Connector"/>
-----
-
-////
+Customers who have not purchased a separate Object Store SKU are rate limited to 10 transactions per second per app.  If an app for an account that has not purchased the OSv2 SKU exceeds the rate limit, further requests are not processed for a time and a 429 HTTP error status code results. To go beyond the base 10 TPS rate limit, contact your MuleSoft account team.
 
 == Can Object Store v2 be used on premises?
 
-No, but applications running on-premises can use the Object Store v2 REST API to store data in Object Store v2 and retrieve it.
+No, but apps running on-premises can use the Object Store v2 REST API to store data in Object Store v2 and retrieve it.
 
 == How is Object Store v2 data secured?
 
@@ -113,7 +102,7 @@ Object Store v2 uses TLS for secure transport. Data at rest is stored using FIPS
 == Does Object Store cache data or do I/O for each read and write?
 
 Object Store V2 does I/O for each read and write. With Object Store V2, the API call is localized to the
-same data center as the Runtime Manager application.
+same data center as the Runtime Manager app.
 
 == See Also
 
@@ -121,5 +110,5 @@ same data center as the Runtime Manager application.
 * https://www.anypoint.mulesoft.com/exchange/org.mule.modules/mule-module-objectstore/[Mule 3 Object Store Connector]
 * https://www.anypoint.mulesoft.com/exchange/org.mule.connectors/mule-objectstore-connector/[Mule 4 Object Store Connector]
 * xref:index.adoc[Object Store Documentation]
-* https://forums.mulesoft.com[MuleSoft Forum]
-* https://support.mulesoft.com/s/knowledge[Knowledge Base Articles]
+* https://forums.mulesoft.com/search.html?q=object+store[Object Store MuleSoft Forum]
+* https://support.mulesoft.com/s/global-search/%40uri#q=object%20store&t=AllResults[Object Store Knowledge Base Articles]
