@@ -6,7 +6,7 @@ endif::[]
 
 Object Store v2 lets cloud applications store data and states across batch processes
 and Mule components, from within a single application. Object Store v2 acts as the
-backend for Mule 3 and Mule 4 object store access, which enables applications
+backend for Mule 3 and Mule 4 cloud object store access, which enables applications
 to write directly to object store, use its REST API, and write and read using
 the Object Store connector. See the xref:osv2-faq.adoc[FAQ] for
 Object Store information.
