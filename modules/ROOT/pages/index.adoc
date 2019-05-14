@@ -2,6 +2,7 @@
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
+:imagesdir: ../assets/images/
 
 Object Store v2 lets applications store data and states across batch processes
 and Mule components, from within a single application. Object Store v2 acts as the
