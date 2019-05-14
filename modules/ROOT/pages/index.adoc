@@ -11,7 +11,7 @@ to write directly to object store, use its REST API, and write and read using
 the Object Store connector. See the xref:osv2-faq.adoc[FAQ] for
 Object Store information.
 
-NOTE: Cloud applications using Mule 4 only support the use of Object Store v2. This does not affect on-premises use of Mule 4. Object Store v2 only stores data in the cloud. On-premises use of Mule stores data locally to a persistent data store.
+NOTE: CloudHub applications using Mule 4 enable use of Object Store v2 or in-memory Object Store. On-premises Mule 4 applications do not use Object Store v2, but instead store data locally to a persistent data store. Object Store v2 can only be used in CloudHub.
 
 image::osv2-architecture.png[width=300]
 
@@ -49,9 +49,9 @@ image::os-use-object-store-v2.png[Click Use Object Store V2 in the Runtime Manag
 * The Object Store Connector works for both Object Store version 1 and 2.
 * Object Store v2 enforces a maximum data persistence of 30 days from time of creation.
 * Accounts that have not purchased the Object Store v2 premium SKU are rate limited to 10 transactions per second per application. To go beyond the base 10 TPS rate limit, contact your MuleSoft account team.
-* For cloud applications using Mule 4, Object Store v2 overrides the `_defaultPersistentObjectStore` object store. No further configuration is required. If a cloud connector or component uses that object store, then you have access to Object Store v2.
+* For CloudHub applications using Mule 4, if you choose Object Store v2, Object Store v2 overrides the `_defaultPersistentObjectStore` object store.
 +
-For cloud applications using Mule 3, Object Store v2 overrides the `_defaultUserObjectStore` object store. To use Object Store v2 in cloud applications, set the Object Store Reference field to the `_defaultUserObjectStore` value.
+For CloudHub applications using Mule 3, Object Store v2 overrides the `_defaultUserObjectStore` object store. To use Object Store v2 in CloudHub applications, set the Object Store Reference field to the `_defaultUserObjectStore` value.
 
 == See Also
 
