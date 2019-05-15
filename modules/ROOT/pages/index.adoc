@@ -2,15 +2,16 @@
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
+:imagesdir: ../assets/images/
 
-Object Store v2 lets applications store data and states across batch processes
+Object Store v2 lets CloudHub applications store data and states across batch processes
 and Mule components, from within a single application. Object Store v2 acts as the
-backend for Mule 3 and Mule 4 object store access, which enables applications
+backend for Mule 3 and Mule 4 CloudHub object store access, which enables applications
 to write directly to object store, use its REST API, and write and read using
 the Object Store connector. See the xref:osv2-faq.adoc[FAQ] for
 Object Store information.
 
-NOTE: Mule 4 only supports Object Store v2.
+NOTE: Object Store v2 can only be used with CloudHub applications. CloudHub applications that use Mule 4 can enable use of Object Store v2 by setting the Runtime Manager or in-memory Object Store. On-premises Mule 4 applications do not use Object Store v2, but instead store data locally to a persistent data store. 
 
 image::osv2-architecture.png[width=300]
 
@@ -32,7 +33,7 @@ You can use the existing Object Store Connector to create applications that writ
 
 Object Store v2 contains a user interface available in the Anypoint Platform > Runtime Manager.
 
-== Upgrading to Object Store v2
+== Upgrade to Object Store v2
 
 * Back up all the data in your current object store.
 +
@@ -48,11 +49,9 @@ image::os-use-object-store-v2.png[Click Use Object Store V2 in the Runtime Manag
 * The Object Store Connector works for both Object Store version 1 and 2.
 * Object Store v2 enforces a maximum data persistence of 30 days from time of creation.
 * Accounts that have not purchased the Object Store v2 premium SKU are rate limited to 10 transactions per second per application. To go beyond the base 10 TPS rate limit, contact your MuleSoft account team.
-* In Mule 4, Object Store v2 overrides the `_defaultPersistentObjectStore` object store. No further configuration is required.
-If the connector or component that you are using uses that object store, then you have access to Object Store v2.
+* For CloudHub applications using Mule 4, if you choose Object Store v2, Object Store v2 overrides the `_defaultPersistentObjectStore` object store.
 +
-In Mule 3, Object Store v2 overrides the `_defaultUserObjectStore` object store. In the Mule 3 Object Store connector,
-you must set the Object Store Reference field to `_defaultUserObjectStore` for data to be stored in Object Store v2.
+For CloudHub applications using Mule 3, Object Store v2 overrides the `_defaultUserObjectStore` object store. To use Object Store v2 in Mule 3 CloudHub applications, set the Object Store reference field to the `_defaultUserObjectStore` value.
 
 == See Also
 
