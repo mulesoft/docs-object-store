@@ -11,7 +11,7 @@ to write directly to object store, use its REST API, and write and read using
 the Object Store connector. See the xref:osv2-faq.adoc[FAQ] for
 Object Store information.
 
-NOTE: CloudHub applications using Mule 4 enable use of Object Store v2 or in-memory Object Store. On-premises Mule 4 applications do not use Object Store v2, but instead store data locally to a persistent data store. Object Store v2 can only be used in CloudHub.
+NOTE: CloudHub applications that use Mule 4 can enable use of Object Store v2 or in-memory Object Store. On-premises Mule 4 applications do not use Object Store v2, but instead store data locally to a persistent data store. Object Store v2 can only be used in CloudHub.
 
 image::osv2-architecture.png[width=300]
 
