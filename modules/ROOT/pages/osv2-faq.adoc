@@ -25,6 +25,14 @@ Mule 3.8.5 and above, and all 4.x versions.
 
 ====
 
+== What happens when the transaction limit is reached?
+
+Object Store v2 allows up to 100 million transactions for Object Store v2 for an Anypoint Platform organization. This limit is applied to both Production and non-Production environments.
+You can use the https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[REST API to monitor usage].
+
+When the transaction limit is reached, Object Store v2 continues working and your organization is 
+contacted by MuleSoft Sales to increase your plan.
+
 == Is Object Store v2 persistent in the same region as the worker?
 
 Yes, Object Store v2 is in the same region as the worker where the app is initially deployed. For example, if you deploy to the Singapore region, the object store persists in the Singapore region.
