@@ -27,7 +27,7 @@ Mule 3.8.5 and above, and all 4.x versions.
 
 == What happens when the transaction limit for my subscription is reached?
 
-Object Store v2 allows up to 100 million transactions for Object Store v2 for an Anypoint Platform organization. This limit is applied to both Production and non-Production environments.
+An Object Store v2 subscription pack allows up to 100 million transactions per month for an Anypoint Platform organization. This limit is applied across all Production and non-Production environments.
 You can use the https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Object Store REST API] to monitor usage.
 
 When the transaction limit is reached, Object Store v2 continues working and your organization is 
