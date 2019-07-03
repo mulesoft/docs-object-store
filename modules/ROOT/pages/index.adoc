@@ -4,20 +4,16 @@ include::_attributes.adoc[]
 endif::[]
 :imagesdir: ../assets/images/
 
-Object Store v2 lets CloudHub applications store data and states across batch processes
-and Mule components, from within a single application.
+Object Store v2 lets CloudHub applications store data and states across batch processes and Mule components, from within a single application.
 
-Object Store v2 acts as the
-backend for Mule 3 and Mule 4 CloudHub object store access, which enables applications
-to write directly to object store, use its REST API, and write and read using
-the Object Store connector. See the xref:osv2-faq.adoc[FAQ] for
-Object Store information.
+Object Store v2 acts as the backend for Mule 3 and Mule 4 CloudHub object store access, which enables applications to write directly to object store, use its REST API, and write and read using
+the Object Store connector. See the xref:osv2-faq.adoc[FAQ] for Object Store information.
 
 image::osv2-architecture.png[width=300]
 
-Object Store v2 can only be used with CloudHub applications. CloudHub applications that use Mule 4 can enable the use of Object Store v2 by setting the Runtime Manager or in-memory Object Store.
+You can use Object Store v2 with CloudHub applications only. To configure Mule 3 and Mule 4 CloudHub applications to use Object Store v2, enable the *Use Object Store v2* option in the application's settings in Runtime Manager.
 
-On-premise Mule applications do not use Object Store v2 to store data. Instead, you can configure Object Store v2 to store data in memory, in a file system, or in another storage solution in your environment, such as an SQL database.
+On-premise Mule applications do not use Object Store v2 to store data. Instead, you can configure them to store data in memory, in a file system, or in another storage solution in your environment, such as an SQL database.
 
 Object Store v2 provides:
 
