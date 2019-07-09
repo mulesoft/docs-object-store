@@ -18,7 +18,9 @@ Object Store v2 provides:
 
 * Object Store v2 keys persist for 30 days unless updated. If a key is updated, the expiry time resets to another 30 days. For more information, see xref:osv2-faq.adoc#how-long-can-data-persist-in-osv2[How long can data persist in Object Store v2?].
 * Supports unlimited keys.
-* Stores values up to 10 MB in size (base64). base64 size =CEILING(base10size * 1024/3)*4. Example: A base10 payload size of 7.5mb converts to 10.24mb base64.
+* Stores values up to 10 MB in size (base64). base64 size =CEILING(base10size * 1024/3) * 4.
++ 
+Example: A base10 payload size of 7.5 MB converts to 10.24 MB base64.
 * There's no limit on the total size of an Object Store.
 * Fully integrated with the Anypoint Platform.
 * Object Store v2 HA is available in all supported regions and availability zones within each region.
