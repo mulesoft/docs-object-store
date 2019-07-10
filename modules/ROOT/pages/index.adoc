@@ -4,34 +4,29 @@ include::_attributes.adoc[]
 endif::[]
 :imagesdir: ../assets/images/
 
-Object Store v2 lets CloudHub applications store data and states across batch processes and Mule components, from within a single application.
+Object Store v2 lets CloudHub applications store data and states across batch processes, Mule components and applications, from within an application.
 
-Object Store v2 acts as the backend for Mule 3 and Mule 4 CloudHub object store access, which enables applications to write directly to object store, use its REST API, and write and read using
-the Object Store connector. See the xref:osv2-faq.adoc[FAQ] for Object Store information.
+Object Store v2 can be selected as the implementation for Mule 3 and Mule 4 in CloudHub by _checking the "Object Store V2" checkbox in Runtime Manager at deployment time_ (redacted content which implies v2 and v1 have different Mule-coding patterns/usages, which they don't). See the xref:osv2-faq.adoc[FAQ] for Object Store information.
 
 image::osv2-architecture.png[width=300]
 
-You can use Object Store v2 with CloudHub applications only. To configure Mule 3 and Mule 4 CloudHub applications to use Object Store v2, enable the *Use Object Store v2* option in the application's settings in Runtime Manager.
+On-premise Mule applications cannot not use Object Store v2 at all. 
 
-On-premise Mule applications do not use Object Store v2 to store data. Instead, you can configure them to store data in memory, in a file system, or in another storage solution in your environment, such as an SQL database.
+Object Store v2 features:
 
-Object Store v2 provides:
-
-* Object Store v2 keys persist for 30 days unless updated. If a key is updated, the expiry time resets to another 30 days. For more information, see xref:osv2-faq.adoc#how-long-can-data-persist-in-osv2[How long can data persist in Object Store v2?].
-* Supports unlimited keys.
-* Stores values up to 10 MB in size (base64). base64 size =CEILING(base10size * 1024/3) * 4.
+* keys persist for 30 days unless updated. If a key is updated, the TTL (time-to-live) is extended by another 30 days. For more information, see xref:osv2-faq.adoc#how-long-can-data-persist-in-osv2[How long can data persist in Object Store v2?].
+* Unlimited number of entries. There is no limit on the total size of v2 object-stores
+* Stores values up to 10 MB (when Base64 encoded) in size. You can estimate base64 size of a payload as follows: CEILING(base10size * 1024/3) * 4, where base10size is object size in bytes. 
++ Example: A base10 payload size of 7.5 MB converts to 10.24 MB base64.
 + 
-Example: A base10 payload size of 7.5 MB converts to 10.24 MB base64.
-* There's no limit on the total size of an Object Store.
-* Fully integrated with the Anypoint Platform.
-* Object Store v2 HA is available in all supported regions and availability zones within each region.
-* Object Store v2 is co-located in the same region as your workers, for example, your workers in Singapore would use Object Store v2 that is hosted in Singapore.
-* Mule connector for Mule applications and REST interface for external applications.
-* End-to-end secure transport and storage. Object Store v2 uses TLS for secure transport.
-* Data at rest is stored using FIPS 140-2 compliant encryption standards.
-* Confirmable timeout to enable rollbacks.
+* available in all supported regions and availability zones within each region.
+* is co-located in the same region as your workers. For example workers hosted in Singapore would use Object Store v2  hosted in Singapore.
+* it has a Mule connector and REST interface for access by external applications.
+* End-to-end secure TLS-transport.
+* Persistent storage is encrypted to FIPS 140-2 compliant standards
+* Confirmable timeout to enable rollbacks (what does this mean? It needs to be explained, otherwise developers don't know how to take advantage of this feature).
 
-You can use the existing Object Store Connector to create applications that write data to the object store.
+The existing Object Store Connector is used to write to the object store, regardless of whether v1 or v2 is being used
 
 Object Store v2 contains a user interface available in the Anypoint Platform > Runtime Manager.
 
@@ -39,7 +34,7 @@ Object Store v2 contains a user interface available in the Anypoint Platform > R
 
 * Back up all the data in your current object store.
 +
-IMPORTANT: Data does not carry over from Object Store v1 to v2.  Any data you have in your v1 object store, including watermarks and other Mule component states, does not move to v2. If you revert back to OSv1, your OSv1 data will still be there.
+IMPORTANT: Data does not carry over from Object Store v1 to v2.  Any data in a v1 object store, including watermarks and other Mule component states, does not move to v2. If you revert to OSv1, your OSv1 data will still be there.
 +
 * To access Object Store v2, in Anypoint Platform, click *Runtime Manager*. Click the name of your application to view the application's dashboard, and click *Manage Application*. In the *Settings* screen, click *Use Object Store v2*. Accept the prompt. The *Application Data* section of the Runtime Manager's dashboard changes to *Object Store*.
 +
