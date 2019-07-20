@@ -24,8 +24,7 @@ Object Store v2 features:
 * Provides a Mule connector and REST interface for access by external applications.
 * Provides end-to-end secure TLS-transport.
 * Encrypts persistent storage to FIPS 140-2 compliant standards.
-* Provides confirmable timeout to enable rollbacks.
-// (what does this mean? It needs to be explained, otherwise developers don't know how to take advantage of this feature).
+
 
 You can use the existing Object Store connector to write to the object store, regardless of whether you are using v1 or v2.
 
