@@ -443,6 +443,6 @@ can icon.
 
 * xref:osv2-faq.adoc#how-long-can-data-persist-in-object-store-v2[How long can data persist in Object Store v2?]
 * xref:connectors::object-store/object-store-connector.adoc[Object Store Connector - Mule 4]
-* xref:release-notes::connector:object-store-connector-release-notes-mule-4[Object Store Connector Release Notes for Mule 4]
+* xref:release-notes::connector/object-store-connector-release-notes-mule-4.adoc[Object Store Connector Release Notes for Mule 4]
 * xref:3.9@mule-runtime::object-store-connector.adoc[Object Store Connector - Mule 3]
 * xref:release-notes::object-store/objectstore-release-notes.adoc[Object Store Connector Release Notes - Mule 3]
