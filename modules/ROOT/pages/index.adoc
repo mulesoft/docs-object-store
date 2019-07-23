@@ -53,7 +53,7 @@ For CloudHub applications using Mule 3, Object Store v2 overrides the `_defaultU
 
 == See Also
 
-* xref:Object Store v2-faq.adoc[Object Store v2 FAQ]
+* xref:osv2-faq.adoc[Object Store v2 FAQ]
 * xref:release-notes::object-store/anypoint-osv2-release-notes.adoc[Object Store v2 Release Notes]
 * xref:osv2-guide.adoc[Use Object Store v2]
 * xref:osv2-tutorial.adoc[Tutorial: Object Store v2]
