@@ -14,7 +14,8 @@ On-premise Mule applications cannot use Object Store v2.
 
 Object Store v2 features:
 
-* Persists keys for 30 days unless updated. If a key is updated, the TTL (time-to-live) is extended by another 30 days. For more information, see xref:osv2-faq.adoc#how-long-can-data-persist-in-osv2[How long can data persist in Object Store v2?].
+* Persists keys for 30 days unless updated. If a key is updated, the TTL (time-to-live) is extended by another 30 days. For more information, see xref:osv2-faq.adoc#how-long-can-data-persist-in-object-store-v2[How long can data persist in Object Store v2?]
+
 * Allows for an unlimited number of entries. There is no limit on the total size of v2 object-stores.
 * Stores values up to 10 MB (when Base64 encoded) in size. You can estimate base64 size of a payload as follows: CEILING(base10size * 1024/3) * 4, where base10size is object size in bytes.
 + Example: A base10 payload size of 7.5 MB converts to 10.24 MB base64.
@@ -34,7 +35,7 @@ The Object Store v2 user interface is available in the Anypoint Platform > Runti
 
 * Back up all the data in your current object store.
 +
-IMPORTANT: Data does not carry over from Object Store v1 to v2.  Any data in a v1 object store, including watermarks and other Mule component states, does not move to v2. If you revert to OSv1, your OSv1 data is still there.
+IMPORTANT: Data does not carry over from Object Store v1 to v2.  Any data in a v1 object store, including watermarks and other Mule component states, does not move to v2. If you revert to Object Store v1, your Object Store v1 data is still there.
 +
 * To access Object Store v2, in Anypoint Platform, click *Runtime Manager*. Click the name of your application to view the application's dashboard, and click *Manage Application*. In the *Settings* screen, click *Use Object Store v2*. Accept the prompt. The *Application Data* section of the Runtime Manager's dashboard changes to *Object Store*.
 +
@@ -42,7 +43,7 @@ image::os-use-object-store-v2.png[Click Use Object Store V2 in the Runtime Manag
 
 == Object Store Notes
 
-* For Object Store v2 region availability see xref:osv2-faq.adoc#where-is-osv2-available[Where is Object Store v2 available?] in the FAQ.
+* For Object Store v2 region availability see xref:osv2-faq.adoc#where-is-object-store-v2-available[Where is Object Store v2 available?]
 * The Object Store Connector works for both Object Store version 1 and 2.
 * Object Store v2 enforces a maximum data persistence of 30 days from time of creation.
 * Accounts that have not purchased the Object Store v2 premium SKU are rate limited to 10 transactions per second per application. To go beyond the base 10 TPS rate limit, contact your MuleSoft account team.
@@ -54,7 +55,7 @@ For CloudHub applications using Mule 3, Object Store v2 overrides the `_defaultU
 
 * xref:osv2-faq.adoc[Object Store v2 FAQ]
 * xref:release-notes::object-store/anypoint-osv2-release-notes.adoc[Object Store v2 Release Notes]
-* xref:osv2-guide.adoc[To Use Object Store v2]
+* xref:osv2-guide.adoc[Use Object Store v2]
 * xref:osv2-tutorial.adoc[Tutorial: Object Store v2]
 * xref:osv2-apis.adoc[REST API: Object Store v2]
 * xref:3.9@mule-runtime::object-store-connector.adoc[Mule 3 Object Store Connector]

@@ -10,11 +10,9 @@ An object store works with a single application to temporarily store application
 To authenticate access, you need the client ID and client secret for the application, which Object Store
 displays in the Runtime Manager in Anypoint Platform.
 
-See xref:osv2-faq.adoc#how-long-can-data-persist-in-osv2[How long can data persist in Object Store v2?].
+See xref:osv2-faq.adoc#how-long-can-data-persist-in-object-store-v2[How long can data persist in Object Store v2?] The maximum number of keys you can obtain in each GET operation is 25.
 
-The maximum number of keys you can obtain in each GET operation is 25.
-
-See: <<To View the App Client ID and Secret>>
+See <<View the App Client ID and Secret>>.
 
 == About Object Store v2 Operations
 
@@ -30,12 +28,12 @@ The following table compares the Object Store REST API operations to Object Stor
 
 [%header,cols="20a,50a,30a"]
 |===
-|OSv2 API |OSv2 REST API Operations |ObjectStore Connector Operation
+|Object Store v2 API |Object Store v2 REST API Operations |ObjectStore Connector Operation
 
 |POST |
 
 * Object Store:
-** TTL in seconds for the object store - by default the TTL is 2,592,000 seconds (30 days). See xref:osv2-faq.adoc#how-long-can-data-persist-in-osv2[How long can data persist in OSv2?].
+** TTL in seconds for the object store - by default the TTL is 2,592,000 seconds (30 days). See xref:osv2-faq.adoc#how-long-can-data-persist-in-object-store-v2[How long can data persist in Object Store v2?]
 ** Persistence property.
 ** Usage limits for each application or environment, includes options for limiting based on keys or size and how to enforce them.
 * Key and list (item) value.
@@ -67,7 +65,7 @@ The following table compares the Object Store REST API operations to Object Stor
 |Remove
 |===
 
-*&#8224;* The Dual Store operation in the Object Store connector consists of two operations where the key and value are stored and then the values reversed. The Dual Store operation acts the same as two OSv2 "Put item as String" calls to accomplish these results:
+*&#8224;* The Dual Store operation in the Object Store connector consists of two operations where the key and value are stored and then the values reversed. The Dual Store operation acts the same as two Object Store v2 "Put item as String" calls to accomplish these results:
 
 . `objectStore.store(key, value);`
 . `objectStore.store(value, key);`
@@ -193,7 +191,7 @@ The output has values similar to:
 
 == See Also
 
-* xref:connectors::object-store/object-store-connector.adoc[Mule 4 Object Store Connector documentation]
+* xref:connectors::object-store/object-store-connector.adoc[Object Store Connector - Mule 4]
 * https://anypoint.mulesoft.com/apiplatform/repository/v2/organizations/68ef9520-24e9-4cf2-b2f5-620025690913/public/apis/16510/versions/17620/files/root[Object Store v2 - api.raml]
-* https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Object Store v2 in Anypoint Exchange].
-* xref:3.9@mule-runtime::object-store-connector.adoc[Object Store Connector].
+* https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Object Store v2 in Anypoint Exchange]
+* xref:3.9@mule-runtime::object-store-connector.adoc[Object Store Connector - Mule 3]

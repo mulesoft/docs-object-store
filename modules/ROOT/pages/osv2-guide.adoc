@@ -1,4 +1,4 @@
-= Use Object Store
+= Use Object Store v2
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
@@ -135,6 +135,6 @@ can icon.
 
 == See Also
 
-* xref:osv2-faq.adoc#how-long-can-data-persist-in-osv2[How long can data persist in Object Store v2?]
+* xref:osv2-faq.adoc#how-long-can-data-persist-in-object-store-v2[How long can data persist in Object Store v2?]
 * xref:osv2-apis.adoc[Object Store v2 REST API]
 * xref:release-notes::object-store/anypoint-osv2-release-notes.adoc[Object Store v2 Release Notes]

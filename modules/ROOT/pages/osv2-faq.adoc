@@ -22,7 +22,7 @@ Mule 3.8.5 and above, and all 4.x versions.
 == What happens when the transaction limit for my subscription is reached?
 
 An Object Store v2 subscription pack allows up to 100 million transactions per month for an Anypoint Platform organization. This limit is applied across all Production and non-Production environments.
-You can use the https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Object Store REST API] to monitor usage.
+You can use the https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Object Store v2 REST API] to monitor usage.
 
 When the transaction limit is reached, Object Store v2 continues working and your organization is
 contacted by MuleSoft Sales to increase your plan.
@@ -65,7 +65,7 @@ https://www.anypoint.mulesoft.com/exchange/?search=objectstore[Anypoint Exchange
 
 == Do I need a different Object Store connector for Object Store v2 and Object Store v1?
 
-All versions of Mule's Object Store Connector work with both OSv1 and Object Store v2.
+All versions of Mule's Object Store Connector work with both Object Store v1 and Object Store v2.
 
 == Why are Object Store values in binary format?
 
@@ -91,7 +91,7 @@ For more information, see xref:osv2-tutorial.adoc#create-a-studio-7-project[Tuto
 
 == Are there rate limits on Object Store v2?
 
-Customers who have not purchased a separate Object Store SKU are rate limited to 10 transactions per second per app.  If an app for an account that has not purchased the OSv2 SKU exceeds the rate limit, further requests are not processed for a time and a 429 HTTP error status code results. To go beyond the base 10 TPS rate limit, contact your MuleSoft account team.
+Customers who have not purchased a separate Object Store SKU are rate limited to 10 transactions per second per app.  If an app for an account that has not purchased the Object Store v2 SKU exceeds the rate limit, further requests are not processed for a time and a 429 HTTP error status code results. To go beyond the base 10 TPS rate limit, contact your MuleSoft account team.
 
 == How is Object Store v2 data secured?
 
@@ -105,8 +105,7 @@ same data center as the Runtime Manager app.
 == See Also
 
 * https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Anypoint Exchange Object Store v2]
-* https://www.anypoint.mulesoft.com/exchange/org.mule.modules/mule-module-objectstore/[Mule 3 Object Store Connector]
 * https://www.anypoint.mulesoft.com/exchange/org.mule.connectors/mule-objectstore-connector/[Mule 4 Object Store Connector]
-* xref:index.adoc[Object Store Documentation]
+* https://www.anypoint.mulesoft.com/exchange/org.mule.modules/mule-module-objectstore/[Object Store Connector - Mule 3]
 * https://forums.mulesoft.com/search.html?q=object+store[Object Store MuleSoft Forum]
 * https://support.mulesoft.com/s/global-search/%40uri#q=object%20store&t=AllResults[Object Store Knowledge Base Articles]
