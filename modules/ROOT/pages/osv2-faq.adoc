@@ -108,4 +108,4 @@ same data center as the Runtime Manager app.
 * https://www.anypoint.mulesoft.com/exchange/org.mule.connectors/mule-objectstore-connector/[Mule 4 Object Store Connector]
 * https://www.anypoint.mulesoft.com/exchange/org.mule.modules/mule-module-objectstore/[Object Store Connector - Mule 3]
 * https://forums.mulesoft.com/search.html?q=object+store[Object Store MuleSoft Forum]
-* https://support.mulesoft.com/s/global-search/%40uri#q=object%20store&t=AllResults[Object Store Knowledge Base Articles]
+* https://help.mulesoft.com/s/global-search/%40uri#q=object%20store&t=AllResults[Object Store Knowledge Base Articles]
