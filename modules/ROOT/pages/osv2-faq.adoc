@@ -45,7 +45,7 @@ When other Mule apps need access to your app's object stores, use the https://an
 
 == What are the limits on an object store?
 
-There’s no limit of the total size of an object store, but each value is limited to 10 MB. The free version also limits usage to 10 transactions per second (TPS). Premium add-on users get up to 100 TPS per app.
+The total size of an object store is not limited, but each value is limited to 10 MB. The free version also limits usage to 10 transactions per second (TPS). Premium add-on users are allowed up to 100 TPS per app.
 
 == How long can data persist in Object Store v2?
 
