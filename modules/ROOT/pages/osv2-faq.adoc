@@ -57,7 +57,11 @@ In Object Store v2 there is no limit on the number of keys per app. In Object St
 
 == Where is the Object Store v2 REST API portal?
 
-This API is available in the https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Anypoint Platform Developer's portal].
+The Object Store v2 APIs are available in the Anypoint Platform Developer's portal:
+
+* https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Anypoint Exchange Object Store v2]
+* https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Anypoint Exchange Object Store v2 Stats]
+
 
 == Where is the Object Store connector?
 
@@ -104,8 +108,7 @@ same data center as the Runtime Manager app.
 
 == See Also
 
-* https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Anypoint Exchange Object Store v2]
-* https://www.anypoint.mulesoft.com/exchange/org.mule.connectors/mule-objectstore-connector/[Mule 4 Object Store Connector]
-* https://www.anypoint.mulesoft.com/exchange/org.mule.modules/mule-module-objectstore/[Object Store Connector - Mule 3]
-* https://forums.mulesoft.com/search.html?q=object+store[Object Store MuleSoft Forum]
-* https://help.mulesoft.com/s/global-search/%40uri#q=object%20store&t=AllResults[Object Store Knowledge Base Articles]
+* https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Anypoint Exchange Object Store v2 API]
+* https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Anypoint Exchange Object Store v2 Stats API]
+* https://www.anypoint.mulesoft.com/exchange/org.mule.connectors/mule-objectstore-connector/[Object Store Connector for Mule 4]
+* https://www.anypoint.mulesoft.com/exchange/org.mule.modules/mule-module-objectstore/[Object Store Connector for Mule 3]
