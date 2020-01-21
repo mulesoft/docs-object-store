@@ -101,9 +101,9 @@ Customers who have not purchased a separate Object Store SKU are rate limited to
 
 Object Store v2 uses TLS for secure transport. Data at rest is stored using FIPS 140-2 compliant encryption standards.  If you require a higher level of security, we recommend that you encrypt sensitive data before writing it to the Object Store.
 
-== Does Object Store cache data or do I/O for each read and write?
+== Does Object Store cache data or perform I/O for each read and write?
 
-Object Store v2 does I/O for each read and write. With Object Store v2, the API call is localized to the
+Object Store v2 performs I/O for each read and write. With Object Store v2, the API call is localized to the
 same data center as the Runtime Manager app.
 
 == See Also
