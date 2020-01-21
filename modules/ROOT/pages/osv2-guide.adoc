@@ -23,8 +23,7 @@ Object Store version 1 and version 2. Use Studio to create an application
 that you deploy to Runtime Manager where the application runs and serves
 requests to read to and write from the object store.
 +
-The Object Store connector's Object Store Reference
-field (objectStore-ref element in XML) must
+The Object Store Reference field for Object Store connector (`objectStore-ref element` in XML) must
 be set to `_defaultUserObjectStore` for data to appear in Object Store v2.
 +
 * REST API
