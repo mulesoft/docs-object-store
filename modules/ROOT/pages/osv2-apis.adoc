@@ -123,7 +123,7 @@ The client ID and secret are required to authenticate an application for use wit
 
 . Log into *Anypoint Platform > Runtime Manager*.
 . Click an application that has Object Store access and click *Manage Application*. The app can be running or undeployed.
-. If the app is not yet associated with Object Store V2, click the checkbox and apply changes.
+. If the app is not yet associated with Object Store v2, click the checkbox and apply changes.
 . Click the *Object Store* menu in the left navigation area, then click *Show Client Credentials*.
 . Click the *Copy to Clipboard* icon, and paste the client ID or secret value into your curl application that you use to authenticate the REST API.
 
@@ -191,7 +191,8 @@ The output has values similar to:
 
 == See Also
 
+* https://anypoint.mulesoft.com/apiplatform/repository/v2/organizations/68ef9520-24e9-4cf2-b2f5-620025690913/public/apis/16510/versions/17620/files/root[Object Store v2 api.raml]
+* https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Object Store v2 API in Anypoint Exchange]
+* https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Object Store v2 Stats API in Anypoint Exchange]
 * xref:connectors::object-store/object-store-connector.adoc[Object Store Connector - Mule 4]
-* https://anypoint.mulesoft.com/apiplatform/repository/v2/organizations/68ef9520-24e9-4cf2-b2f5-620025690913/public/apis/16510/versions/17620/files/root[Object Store v2 - api.raml]
-* https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Object Store v2 in Anypoint Exchange]
 * xref:3.9@mule-runtime::object-store-connector.adoc[Object Store Connector - Mule 3]

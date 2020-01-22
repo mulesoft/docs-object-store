@@ -1,5 +1,5 @@
-.xref:index.adoc[Object Store V2]
-* xref:index.adoc[About Object Store V2]
+.xref:index.adoc[Object Store v2]
+* xref:index.adoc[About Object Store v2]
 * xref:osv2-guide.adoc[Use Object Store v2]
 * xref:osv2-tutorial.adoc[Tutorial: Object Store v2]
 * xref:osv2-apis.adoc[REST API: Object Store v2]
