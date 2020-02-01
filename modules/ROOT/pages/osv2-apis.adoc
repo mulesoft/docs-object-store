@@ -14,7 +14,7 @@ See xref:osv2-faq.adoc#how-long-can-data-persist-in-object-store-v2[How long can
 
 See <<View the App Client ID and Secret>>.
 
-== About Object Store v2 Operations
+== Object Store v2 Operations
 
 The Object Store connector reads and writes in the `key,value` format; whereas Object Store v2 API reads and writes `key,list` values.
 
@@ -70,7 +70,26 @@ The following table compares the Object Store REST API operations to Object Stor
 . `objectStore.store(key, value);`
 . `objectStore.store(value, key);`
 
-== About the Object Store v2 APIs Workflow
+== Object Store V2 Data Center Locations
+
+The following REST domains can be used for the application locations with Object Store:
+
+[source,xml,linenums]
+----
+object-store-us-east-2.anypoint.mulesoft.com
+object-store-us-west-1.anypoint.mulesoft.com
+object-store-us-west-2.anypoint.mulesoft.com
+object-store-ap-southeast-1.anypoint.mulesoft.com
+object-store-ap-southeast-2.anypoint.mulesoft.com
+object-store-ap-northeast-1.anypoint.mulesoft.com
+object-store-ca-central-1.anypoint.mulesoft.com
+object-store-eu-central-1.eu1.anypoint.mulesoft.com
+object-store-eu-west-1.eu1.anypoint.mulesoft.com
+object-store-eu-west-2.eu1.anypoint.mulesoft.com
+object-store-sa-east-1.anypoint.mulesoft.com
+----
+
+== Object Store v2 APIs Workflow
 
 Before deploying an object store application, log into Anypoint Platform and use Anypoint Runtime Manager (Runtime Manager) to reduce the number of allowed workers so that you can add a new application.
 
