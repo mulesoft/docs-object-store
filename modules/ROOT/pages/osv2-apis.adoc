@@ -4,7 +4,7 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: osv2, os2, object store, store, rest, apis
 
-Anypoint Object Store v2 (Object Store v2) provides a REST API that enables you to get and store `key,list` values.
+Anypoint Object Store v2 (Object Store v2) provides a REST API that enables you to get and store `key,value` pairs.
 
 An object store works with a single application to temporarily store application data.
 To authenticate access, you need the client ID and client secret for the application, which Object Store
