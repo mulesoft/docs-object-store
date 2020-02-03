@@ -4,7 +4,7 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: osv2, os2, object store, store, rest, apis
 
-Anypoint Object Store v2 (Object Store v2) provides a REST API that enables you to get and store `key,value` pairs.
+Anypoint Object Store v2 (Object Store v2) provides a REST API that enables you to get and store key-value pairs.
 
 An object store works with a single application to temporarily store application data.
 To authenticate access, you need the client ID and client secret for the application, which Object Store
@@ -34,7 +34,7 @@ The following table compares the Object Store REST API operations to Object Stor
 |POST |
 
 * Object Store:
-** TTL in seconds for the object store. The maximum TTL is 2,592,000 seconds (30 days). See xref:osv2-faq.adoc#how-long-can-data-persist-in-object-store-v2[How long can data persist in Object Store v2?]
+** TTL in seconds for the object store. The default and maximum TTL is 2,592,000 seconds (30 days). See xref:osv2-faq.adoc#how-long-can-data-persist-in-object-store-v2[How long can data persist in Object Store v2?]
 ** Persistence property.
 ** Usage limits for each application or environment, includes options for limiting based on keys or size and how to enforce them.
 * Key and list (item) value.
