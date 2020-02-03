@@ -74,20 +74,21 @@ The following table compares the Object Store REST API operations to Object Stor
 
 The following REST domains can be used for the application locations with Object Store:
 
-[source,xml,linenums]
-----
-object-store-us-east-2.anypoint.mulesoft.com
-object-store-us-west-1.anypoint.mulesoft.com
-object-store-us-west-2.anypoint.mulesoft.com
-object-store-ap-southeast-1.anypoint.mulesoft.com
-object-store-ap-southeast-2.anypoint.mulesoft.com
-object-store-ap-northeast-1.anypoint.mulesoft.com
-object-store-ca-central-1.anypoint.mulesoft.com
-object-store-eu-central-1.eu1.anypoint.mulesoft.com
-object-store-eu-west-1.eu1.anypoint.mulesoft.com
-object-store-eu-west-2.eu1.anypoint.mulesoft.com
-object-store-sa-east-1.anypoint.mulesoft.com
-----
+[%header,cols="20a,70a"]
+|===
+|Control Plane|Domain
+.9+|prod | object-store-us-east-2.anypoint.mulesoft.com
+| object-store-us-west-1.anypoint.mulesoft.com
+| object-store-us-west-2.anypoint.mulesoft.com
+| object-store-ap-southeast-1.anypoint.mulesoft.com
+| object-store-ap-southeast-2.anypoint.mulesoft.com
+| object-store-ap-northeast-1.anypoint.mulesoft.com
+| object-store-ca-central-1.anypoint.mulesoft.com
+| object-store-eu-west-2.eu1.anypoint.mulesoft.com
+| object-store-sa-east-1.anypoint.mulesoft.com
+.2+|prod-eu | object-store-eu-central-1.eu1.anypoint.mulesoft.com
+| object-store-eu-west-1.eu1.anypoint.mulesoft.com
+|===
 
 == Object Store v2 APIs Workflow
 
