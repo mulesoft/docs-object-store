@@ -3,7 +3,7 @@ ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 
-This document helps you use Object Store v2 to store and view data.
+This tutorial helps you start using Object Store v2 to store and view data.
 
 == Prerequisites
 
@@ -437,7 +437,6 @@ image::osv2-ui.png[]
 you can delete a partition or the store itself by hovering and clicking the trash
 can icon.
 
-*Note:* Object Store v2 provides persistent storage of objects with a time to live (TTL) of up to 30 days.
 
 == See Also
 
