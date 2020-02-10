@@ -113,6 +113,8 @@ Obtain the `access_token` value:
 . Configure the object store access URL to:
 +
 `_osBaseUrl_/api/v1/organizations/:ORGANIZATION_ID/environments/:environmentId/stores/myTestStoreId/objects`
++
+For values to use for `_osBaseUrl_`, see the following table.
 . Configure the application with HTTP headers and body for values to store to or read from
 the object store.
 . Send the operation to the object store API.
