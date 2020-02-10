@@ -70,25 +70,7 @@ The following table compares the Object Store REST API operations to Object Stor
 . `objectStore.store(key, value);`
 . `objectStore.store(value, key);`
 
-== Object Store V2 Data Center Locations
 
-The following REST domains can be used for the application locations with Object Store:
-
-[%header,cols="10a,80a"]
-|===
-|Control Plane|Domain
-.9+|prod | object-store-us-east-2.anypoint.mulesoft.com/api/v1/ping
-| object-store-us-west-1.anypoint.mulesoft.com/api/v1/ping
-| object-store-us-west-2.anypoint.mulesoft.com/api/v1/ping
-| object-store-ap-southeast-1.anypoint.mulesoft.com/api/v1/ping
-| object-store-ap-southeast-2.anypoint.mulesoft.com/api/v1/ping
-| object-store-ap-northeast-1.anypoint.mulesoft.com/api/v1/ping
-| object-store-ca-central-1.anypoint.mulesoft.com/api/v1/ping
-| object-store-eu-west-2.eu1.anypoint.mulesoft.com/api/v1/ping
-| object-store-sa-east-1.anypoint.mulesoft.com/api/v1/ping
-.2+|prod-eu | object-store-eu-central-1.eu1.anypoint.mulesoft.com/api/v1/ping
-| object-store-eu-west-1.eu1.anypoint.mulesoft.com/api/v1/ping
-|===
 
 == Object Store v2 APIs Workflow
 
@@ -128,11 +110,31 @@ fills in this information for you.
 Set up an application like Postman to access the object store.
 Obtain the `access_token` value:
 
-. Configure the object store access URL to: +
-`{{osBaseUrl}}/api/v1/organizations/:ORGANIZATION_ID/environments/:environmentId/stores/myTestStoreId/objects`
+. Configure the object store access URL to:
++
+`_osBaseUrl_/api/v1/organizations/:ORGANIZATION_ID/environments/:environmentId/stores/myTestStoreId/objects`
 . Configure the application with HTTP headers and body for values to store to or read from
 the object store.
 . Send the operation to the object store API.
+
+
+You can use the following domains for the value of `_osBaseUrl_` in the access URL:
+
+[%header,cols="10a,80a"]
+|===
+|Control Plane|Domain
+.9+|prod | object-store-us-east-2.anypoint.mulesoft.com
+| object-store-us-west-1.anypoint.mulesoft.com
+| object-store-us-west-2.anypoint.mulesoft.com
+| object-store-ap-southeast-1.anypoint.mulesoft.com
+| object-store-ap-southeast-2.anypoint.mulesoft.com
+| object-store-ap-northeast-1.anypoint.mulesoft.com
+| object-store-ca-central-1.anypoint.mulesoft.com
+| object-store-eu-west-2.eu1.anypoint.mulesoft.com
+| object-store-sa-east-1.anypoint.mulesoft.com
+.2+|prod-eu | object-store-eu-central-1.eu1.anypoint.mulesoft.com
+| object-store-eu-west-1.eu1.anypoint.mulesoft.com
+|===
 
 == View the App Client ID and Secret
 
