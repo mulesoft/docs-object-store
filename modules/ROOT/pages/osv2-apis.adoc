@@ -14,7 +14,7 @@ See <<View the App Client ID and Secret>>.
 The maximum number of keys you can obtain in each GET operation is 25.
 
 
-== About Object Store v2 Operations
+== Object Store v2 Operations
 
 The Object Store connector reads and writes in the `key,value` format; whereas Object Store v2 API reads and writes `key,list` values.
 
@@ -73,7 +73,9 @@ The default and maximum TTL is 2,592,000 seconds (30 days). See xref:osv2-faq.ad
 . `objectStore.store(key, value);`
 . `objectStore.store(value, key);`
 
-== About the Object Store v2 APIs Workflow
+
+
+== Object Store v2 APIs Workflow
 
 Before deploying an object store application, log into Anypoint Platform and use Anypoint Runtime Manager (Runtime Manager) to reduce the number of allowed workers so that you can add a new application.
 
@@ -111,11 +113,33 @@ fills in this information for you.
 Set up an application like Postman to access the object store.
 Obtain the `access_token` value:
 
-. Configure the object store access URL to: +
-`{{osBaseUrl}}/api/v1/organizations/:ORGANIZATION_ID/environments/:environmentId/stores/myTestStoreId/objects`
+. Configure the object store access URL to:
++
+`_osBaseUrl_/api/v1/organizations/:ORGANIZATION_ID/environments/:environmentId/stores/myTestStoreId/objects`
++
+For values to use for `_osBaseUrl_`, see the following table.
 . Configure the application with HTTP headers and body for values to store to or read from
 the object store.
 . Send the operation to the object store API.
+
+
+You can use the following domains for the value of `_osBaseUrl_` in the access URL:
+
+[%header,cols="10a,80a"]
+|===
+|Control Plane|Domain
+.9+|prod | object-store-us-east-2.anypoint.mulesoft.com
+| object-store-us-west-1.anypoint.mulesoft.com
+| object-store-us-west-2.anypoint.mulesoft.com
+| object-store-ap-southeast-1.anypoint.mulesoft.com
+| object-store-ap-southeast-2.anypoint.mulesoft.com
+| object-store-ap-northeast-1.anypoint.mulesoft.com
+| object-store-ca-central-1.anypoint.mulesoft.com
+| object-store-eu-west-2.eu1.anypoint.mulesoft.com
+| object-store-sa-east-1.anypoint.mulesoft.com
+.2+|prod-eu | object-store-eu-central-1.eu1.anypoint.mulesoft.com
+| object-store-eu-west-1.eu1.anypoint.mulesoft.com
+|===
 
 == View the App Client ID and Secret
 
