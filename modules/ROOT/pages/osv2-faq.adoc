@@ -52,7 +52,6 @@ Premium add-on users are allowed up to 100 TPS per app.
 == What is the maximum number of keys that can persist in Object Store v2?
 
 In Object Store v2, there is no limit on the number of keys per app.
-In Object Store v1, the limit was 100,000 keys and attempts to store more were rejected.
 
 == What are the advantages of using partitions?
 
