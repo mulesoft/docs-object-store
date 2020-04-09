@@ -177,7 +177,7 @@ curl http://LINK_FROM_DESIGN_CENTER/retrieve?key=MyKey
 In each command, replace `LINK_FROM_DESIGN_CENTER` with the cloudhub.io link in Design Center.
 
 For more information on moving to programmatic access of Object Store, see
-https://www.mulesoft.org/docs/site/3.9.0/apidocs/org/mule/api/store/ObjectStore.html[Object Store API docs].
+https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Object Store v2 API].
 Programmatic conventions that worked with Object Store v1 also work with Object Store v2.
 
 == Create a Studio 7 Project
@@ -253,7 +253,7 @@ image::os-rm-manage-app.png[]
 . Click *Object Store* and choose the object store, the partition, and key you wish to view. You can
 see the value as `[binary value] BINARY`.
 +
-You can see that `MyKey` made it into the Object Store v2 user interface, confirming that keys can be sent through your Design Center application and stored in the Object Store.
+You can see that `MyKey` made it into the Object Store v2 user interface, confirming that keys can be sent through your Studio 7 application and stored in the Object Store.
 +
 . To view the value for the key, use this curl command:
 +
