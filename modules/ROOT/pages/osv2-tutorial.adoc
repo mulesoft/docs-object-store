@@ -3,23 +3,164 @@ ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 
-This tutorial helps you start using Object Store v2 to store and view data.
+Use this tutorial to get started with using Object Store v2 to store and view data.
+
+In this tutorial, you:
+
+
+. Create an app in Design Center, configure Anypoint Object Store Connector, and test the connection.
+. Create an app in Anypoint Studio, configure Anypoint Object Store Connector, and test the connection.
++
+Depending on your Mule version, you create your app in Studio 7 (Mule 4) or Studio 6 (Mule 3).
+
+
 
 == Prerequisites
 
-This document assumes you are familiar with Anypoint Studio, using `curl` from a command line,
-and the use of Anypoint Platform and Runtime Manager. Ensure that curl is installed on
-your computer. If you are using a Mac or Linux, the curl command is built in. For Windows,
-download and install curl. Alternatively, you can use Postman or browser plugins instead of curl.
+* Familiarity with Anypoint Studio, Anypoint Platform, and Runtime Manager
+* An xref::anypoint.mulesoft.com[Anypoint Platform account]
+* A Design environment configured in Anypoint Platform *Access Management > Environments*.
++
+If you don't see *Access Management*, contact your site administrator.
+* An Enterprise license
++
+Contact the MuleSoft Sales team to get a free trial.
+* Anypoint Studio installed on your system
+* A https://curl.haxx.se[`curl`] command for testing 
++
+Alternatively, you can use Postman or browser plugins.
 
-You also need to have a Design environment configured in Anypoint Platform *Access Management > Environments*. If you don't see *Access Management*, contact your site administrator.
+This tutorial uses the HTTP Listener trigger to initiate Anypoint MQ Connector access and a `curl` command to submit REST API commands to the Anypoint MQ Broker API.
 
-== Install the Object Store Connector
 
-. In Anypoint Studio, click the *Exchange* icon in the Studio task bar.
-. Click *Login* in Anypoint Exchange.
-. Search for the `objectstore` connector and click *Install*.
-. Follow the prompts to install the connector.
+
+== Create and Configure Object Store in a Mule App in Design Center
+
+You use Design Center to configure an app that includes an HTTP Listener trigger and an Object Store Connector.
+Then, you can use a `curl` command to send a key and value, and view the key in Runtime Manager.
+
+
+=== Prerequisites
+
+Disable password programs such as LastPass or Okta in your browser before using Design Center.
+If enabled, the password program inserts passwords in fields in Design Center, which can cause the app to fail. 
+
+=== Configure an App with Object Store in Design Center
+
+To configure an app in Design Center:
+
+. In *Anypoint Platform*, click *Design Center* in the left navigation bar or the main Anypoint Platform screen.
+. Click the *Create new* button to create a new project.
++
+In the create window, select *Create new application*:
++
+.The arrow shows the *Create new application* option.
+image::os-tutorial-dc-create-app.png[Create new application option]
++
+. In the *New Mule Application* window, enter `osv2demo` for the project name and click *Create*.
+. In the wizard, click *Go straight to canvas*:
++
+.The arrow shows the *Go straight to canvas* option.
+image::os-tutorial-dc-goto-canvas.png[Go straight to canvas]
++
+. Click the *Trigger* box and enter `H` to search for the HTTP Listener:
++
+.The arrow shows the HTTP Listener.  
+image::os-tutorial-dc-http-search.png[Search for the HTTP Listener]
++
+. Click *HTTP Listener*.
+. In the HTTP Listener window, set the value of *Path* to `/store` and then click the *Close* button (X):
++
+.The screenshot shows (*1*) the *Path* value and (*2*) the *Close* button (X).
+image::os-tutorial-dc-http-path.png[Path value and Close button]
++
+. Click the plus icon (+) to the right of the HTTP Listener trigger:
++
+.The arrow shows the plus icon (+).
+image::os-tutorial-dc-plus-icon.png[Plus icon]
++
+. In the *Select a component* window, enter `obj` to search for the ObjectStore Connector:
++
+.The arrow shows the ObjectStore Connector.
+image::os-tutorial-dc-os-search.png[Search for the Object Store Connector]
++
+. Click the connector, then click the *Store* operation:
++
+.The arrow shows the *Store* operation.
+image::os-tutorial-dc-store-select.png[Store operation]
++
+// For the other operations:
+// +
+// * To construct your Mule app to receive a message sent from a queue, use the *Consume* operation. 
+// * If your app has tests to determine if message processing succeeded, use the *Ack* operation  
+//to acknowledge that a message was received and can be deleted.
+//* If message processing failed, use the *Nack* operation to negatively acknowledge the message and return the message //to the queue to be accessed again. 
+. In the *Configuration* tab, specify `#[payload.key]` in the *Key* field and `payload.value` in the *Value* field.
+. Click *Test* to run the app in a temporary location.
++
+The app starts running in a temporary environment.
++
+.The arrow shows a message indicating the `osv2demo` app is running in a temporary environment.
+image::os-tutorial-dc-running.png[The osv2demo app running in a temporary environment]
+
+You have successfully used Design Center to configure an app with an object store.
+
+Next, you test the connection by submitting REST API commands to the Object Store API and using Runtime Manager to view the results.
+
+=== Test Your Design Center App
+
+After you create your app in Design Center, you test your app using a `curl` command to submit a REST API command to the Object Store API and use Runtime Manager to view the results.
+
+To test your app:
+
+. In Design Center, click the copy link icon to copy the deployment URL:
++
+.The arrow shows the deployment URL in the details pane for your app in Design Center.
+image::os-tutorial-dc-deploy-url.png[Deployment URL in Design Center]
+. Run the following `curl` command from a command prompt to send the key-value pair. 
++
+Replace _DEPLOYMENT-URL_ with the deployment URL from Design Center. 
++
+[source,json,linenums]
+----
+
+curl -X POST \
+  "http://DEPLOYMENT-URL/store"
+  -H "Content-Type: application/json" 
+  -d '{ "key": "myKey", "value": "OSv2 Test" }' 
+
+----
++
+The output is an echo:
+
++
+[source,console]
+----
+{ "key": "myKey", "value": "OSv2 Test" }
+----
+
+Next, you verify that the message arrived in the queue.
+. In *Anypoint Platform* > *MQ* > *Destinations*, click the name of the `myDemoQueue` queue that you created earlier and specified in the *Destination* setting for your app in Design Center.
+. Click *Message Browser* in the left menu:
++
+.The screenshot shows (*1*) the *Message Browser* option and (*2*) the *Get Messages* button for getting messages from the `myDemoQueue` queue.
+image::mq-tutorial-get-messages.png[Message Browser option and Get Messages button]
+. Click *Get Messages*.
+. Click the message row to view the message payload that you sent in the `curl` command in the details pane:
++
+.The screenshot shows (*1*) the message row, (*2*) the message payload, (*3*) the *Return Messages* icon, (*4*) the *Delete* icon, (*5*) the *Full Screen* icon, and (*6*) the close details pane icon (*X*).
+image::mq-tutorial-msg-browser-payload-details-curl.png[Selected message row, payload, Return Messages icon, Delete icon, Full Screen icon, and close details pane (X) icons]
++
+* Click *Full Screen* to display the message payload in a separate window or *X* to close the details pane.
+* Click *Delete* to delete the selected message.
+* Click *Return Messages* to return the message to the queue (for example, to enable other applications to read the message). 
+
+. Try changing the body text in the `curl` command and repeat the steps to view the message.
+
+You have successfully tested your app using a `curl` command to submit a REST API command to the Anypoint MQ Broker API and using Anypoint MQ to view the results. Next, you create a Mule app in Anypoint Studio 7 and connect it to Anypoint MQ.
+
+
+
 
 == Create a Design Center Application
 
