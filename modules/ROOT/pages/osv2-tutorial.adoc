@@ -206,7 +206,7 @@ image::os-tutorial-dc-os-search.png[Search for the Object Store Connector]
 . In the *Configuration* tab, specify `#[attributes.queryParams.key]` in the *Key* field:
 +
 .The arrow shows the *Key* field in the *Retrieve* configuration.
-image::os-tutorial-studio7-retrieve-values.png[Key field for the Retrieve operation]
+image::os-tutorial-dc-retrieve-values.png[Key field for the Retrieve operation]
 
 . Click *Test* to run the app in a temporary location.
 . Click the copy icon to copy the deployment URL.
@@ -261,8 +261,8 @@ In Studio 7, you can deploy the app to CloudHub and submit a curl command to tes
 
 === Prerequisites
 
-* Install Studio 7. 
-+
+Install Studio 7. 
+
 See xref:studio::to-download-and-install-studio.adoc[Downloading and Installing Anypoint Studio].
 
 
@@ -300,6 +300,7 @@ image::os-tutorial-studio7-palette.png[HTTP Connector and Listener operations in
 image::os-tutorial-studio7-flow.png[Store operation in the Studio 7 canvas]
 . In the canvas, click *Listener*.
 . In the Listener properties window, set *General > Path* to `/store`.
+
 . Click the green plus icon (+) to the right of the *Connector configuration* field. 
 . In the HTTP Listener *Global Element Properties* window, verify that *Host* is set to `0.0.0.0` and *Port* is set to `8081`, and then click *OK*.
 +
@@ -312,24 +313,23 @@ image::os-tutorial-studio7-listener-props.png[Listener properties]
 +
 .The screenshot shows (*1*) the *Key* field and (*2*) the *Value* field.
 image::os-tutorial-studio7-store-props.png[Key and Value fields for the Store operation]
-. Click the green plus icon (+) to the right of the *Object store* field. 
-. In the Object store *Global Element Properties* window, click *OK* to accept the defaults.
++
+With Mule 4, to use Object Store v2, do not select an object store global element in the *Object store* dropdown.
+https://help.mulesoft.com/s/article/Object-Store-key-value-entries-not-showing-in-Runtime-Manager-Object-Store-Page
+
 . Select the flow and, in the properties window, change the name to `Store`.
 . In the *Mule Palette* view, click *HTTP*, and then drag another *Listener* to the canvas below the first flow.
 . Click *ObjectStore*, and then drag the *Retrieve* operation to the right of the Listener in the second flow.
 . In the canvas, click the *Listener*.
 . In the Listener properties window, set *General > Path* to `/retrieve`.
-. Click the green plus icon (+) to the right of the *Connector configuration* field. 
-. In the HTTP Listener *Global Element Properties* window, verify that *Host* is set to `0.0.0.0`, set the *Port* to something other than `8081`, and then click *OK*.
-+
-NOTE: 8081 works with Design Center - WHY NOT HERE?
+. In the *Connector configuration* field, select *HTTP_Listener_config* that you set up for the Store Listener.
 . In the canvas, click *Retrieve*.
 . In the Retrieve properties window, specify `#[attributes.queryParams.key]` in the *Key* field:
 +
 .The arrow shows the *Key* field.
 image::os-tutorial-studio7-retrieve-props.png[Key field for the Retrieve operation]
-. Click the green plus icon (+) to the right of the *Object store* field. 
-. In the Object store *Global Element Properties* window, click *OK* to accept the defaults.
++
+With Mule 4, to use Object Store v2, do not select an object store global element in the *Object store* dropdown.
 . Select the second flow and, in the properties window, change the name to `Retrieve`.
 +
 When done, the flows should look like this:
