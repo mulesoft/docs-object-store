@@ -320,7 +320,9 @@ image::os-tutorial-studio7-store-props.png[Key and Value fields for the Store op
 . In the canvas, click the *Listener*.
 . In the Listener properties window, set *General > Path* to `/retrieve`.
 . Click the green plus icon (+) to the right of the *Connector configuration* field. 
-. In the HTTP Listener *Global Element Properties* window, verify that *Host* is set to `0.0.0.0` and *Port* is set to `8081`, and then click *OK*.
+. In the HTTP Listener *Global Element Properties* window, verify that *Host* is set to `0.0.0.0`, set the *Port* to something other than `8081`, and then click *OK*.
++
+NOTE: 8081 works with Design Center - WHY NOT HERE?
 . In the canvas, click *Retrieve*.
 . In the Retrieve properties window, specify `#[attributes.queryParams.key]` in the *Key* field:
 +
@@ -335,45 +337,71 @@ When done, the flows should look like this:
 .The screenshot shows (*1*) the Store flow and (*2*) the Retrieve flow.
 image::os-tutorial-studio7-flows.png[Store and Retrieve flows in Studio]
 
-You now have a completed Studio application.
-You can test that it runs correctly by right-clicking the project and selecting *Run As > Mule Application*.
-This is just a test. Once you get your application to run, you can stop it.
+. In *Package Explorer* in Studio, right-click `osv2-demo` and select *Anypoint Platform* > *Deploy to CloudHub*.
+. At the prompt, select the environment to which to deploy the app.
+. In the Anypoint Platform *Deploying Application* window, click *Deploy Application*:
++
+.The arrow shows the *Deploy Application* button in the *Deploying Applications* page.
+image::os-tutorial-deploy-app.png[Deploy Application button in the Deploying Applications page]
+. Click *Open in Browser* to display the app in Runtime Manager.
+
+You have successfully used Studio 7 to configure an app with an object store.
+Next, you test the connection by submitting REST API commands to the Object Store API and using Runtime Manager to view the results.
+
 
 === Test Your Studio 7 Application
 
-. In Studio, right click your project in the Package Explorer.
-. Click *Anypoint Platform* > *Deploy to CloudHub*. Note: CloudHub is name of the server, but
-you access your application in Anypoint Platform *Runtime Manager*.
+
+After you create the app in Studio 7, you test your app using a `curl` command to submit a REST API command to the Object Store API and use Runtime Manager to view the results.
+
+To test your app:
+
+. In *Runtime Manager*, click *Applications* and ensure that the `osv2-demo` app is running.
+. Click the status for the `osv2-demo` app to display its details in the right pane.
+. Copy the *App url* value:
 +
-image::os-as-deploy-to-cloudhub.png[]
+.The arrow shows *App url* in the details pane in Runtime Manager.
+image::os-tutorial-rtm-deploy-url.png[App url in Runtime Manager]
+. Run the following `curl` command from a command prompt.
 +
-. After your application appears in Anypoint Platform *Runtime Manager*, start it so that
-the application is running. Note the cloudhub.io URL.
-. From the command line, enter this curl command:
-+
-[source,console]
-----
-$ curl -X POST -H "Content-Type: application/json" -d '{ "key": "MyKey", "value": "OSv2 Test" }' "http://LINK_FROM_RUNTIME_MANAGER/store"
-----
-+
-Replace `LINK_FROM_RUNTIME_MANAGER` with the cloudhub.io URL for your application in Runtime Manager.
-+
-You can improve readability for this command if you append `;echo` to the end of the command.
-+
-. In Runtime Manager, click *CloudHub* in the *Server* column for your application to display details, and click *Manage Application*.
-+
-image::os-rm-manage-app.png[]
-+
-. Click *Object Store* and choose the object store, the partition, and key you wish to view. You can
-see the value as `[binary value] BINARY`.
-+
-You can see that `MyKey` made it into the Object Store v2 user interface, confirming that keys can be sent through your Studio 7 application and stored in the Object Store.
-+
-. To view the value for the key, use this curl command:
+Replace _APP-URL_ with the *App url* value that you copied from Runtime Manager. 
 +
 [source,console]
 ----
-curl http://LINK_FROM_RUNTIME_MANAGER/retrieve?key=myKey
+$ curl -X POST -H "Content-Type: application/json" -d '{ "key": "myKey", "value": "OSv2 Test" }' "http://APP-URL/store";echo
+----
++
+The output is an echo:
++
+[source,console]
+----
+{ "key": "myKey", "value": "OSv2 Test" }
+----
++
+. In Runtime Manager, in the details pane, click *Manage application*.
++
++
+.The arrow shows *Manage application in the details pane in Runtime Manager.
+image::os-tutorial-rtm-deploy-url.png[Manage application in the details pane]
+. Click *Object Store* in the left navigation pane.
+. Click the object store, the partition, and then the key:
++
+.The screenshot shows (*1*) the *Object Store*, (*2*) the key, and (*3*) the value in the Object store.
++
+image::os-tutorial-rtm-key-in-os.png[Key and value in the Object Store in Runtime Manager]
++
+You see that the `myKey` key that you sent from `curl` appears in the Object Store with the value of `[binary value] BINARY`.
++
+The value is binary because Mule 4 wraps values in a Mule object that causes
+them to be only visible in binary through Anypoint Platform.
+Behind the scenes, Mule 4 executes binary serialization with the Mule internal serializer.
+The user interface cannot deserialize the object, so it shows that the value is now binary.
+
+. Run this `curl` command to view the value for the key:
++
+[source,console]
+----
+curl http://APP-URL/retrieve?key=myKey;echo
 ----
 +
 The output from this command lists the value for the key:
@@ -385,6 +413,10 @@ The output from this command lists the value for the key:
 
 This concludes the Studio 7 exercise. The gist of this lesson is that you can create Object
 Store flows in Studio, use the curl command to store key/value pairs in the Object Store, and view the results in Runtime Manager. An additional curl command lets you see the value for a key.
+
+
+You have successfully tested your app using a `curl` command to submit a REST API command to the Object Store API and using Runtime Manager to view the results. 
+
 
 === Studio 7 XML
 
