@@ -5,8 +5,10 @@ endif::[]
 
 Use this tutorial to get started with using Object Store v2 to store and view data.
 
-In this tutorial, you:
+Any serializable data can be sent to the object store.The Object Store connector sends data as key/value pairs.
 
+
+In this tutorial, you:
 
 . Create an app in Design Center, configure Anypoint Object Store Connector, and test the connection.
 . Create an app in Anypoint Studio, configure Anypoint Object Store Connector, and test the connection.
@@ -19,22 +21,29 @@ Depending on your Mule version, you create your app in Studio 7 (Mule 4) or Stud
 
 * Familiarity with Anypoint Studio, Anypoint Platform, and Runtime Manager
 * An xref::anypoint.mulesoft.com[Anypoint Platform account]
++
+If you don't have an Anypoint Platform login, click *Sign up* on the Anypoint Platform sign-in page.
 * A Design environment configured in Anypoint Platform *Access Management > Environments*.
 +
 If you don't see *Access Management*, contact your site administrator.
-* An Enterprise license
-+
-Contact the MuleSoft Sales team to get a free trial.
 * Anypoint Studio installed on your system
++
+--
+** Studio 7 
++
+See xref:studio::to-download-and-install-studio.adoc[Downloading and Installing Anypoint Studio].
+** Studio 6 
++
+See xref:6.5@studio::download-and-launch-anypoint-studio[Download and Install Anypoint Studio].
+--
 * A https://curl.haxx.se[`curl`] command for testing 
 +
-Alternatively, you can use Postman or browser plugins.
+This tutorial uses the HTTP Listener trigger to initiate Object Store Connector access and a `curl` command to send JSON data to your Mule app.
++
+Instead of `curl`, you can use Postman or browser plugins.
 
-This tutorial uses the HTTP Listener trigger to initiate Anypoint MQ Connector access and a `curl` command to submit REST API commands to the Anypoint MQ Broker API.
 
-
-
-== Create and Configure Object Store in a Mule App in Design Center
+== Create and Configure an Object Store in a Mule App in Design Center
 
 You use Design Center to configure an app that includes an HTTP Listener trigger and an Object Store Connector.
 Then, you can use a `curl` command to send a key and value, and view the key in Runtime Manager.
@@ -114,7 +123,7 @@ To test your app:
 image::os-tutorial-dc-copy-link.png[The copy deployment URL icon]
 . Run the following `curl` command from a command prompt to send the key-value pair. 
 +
-Replace _DEPLOYMENT-URL_ with the deployment URL you copied. 
+Replace _DEPLOYMENT-URL_ with the deployment URL you copied from Design Center.
 +
 [source,json,linenums]
 ----
@@ -139,7 +148,7 @@ image::os-tutorial-dc-view-rtm-option.png[View in Runtime Manager menu option]
 . In *Runtime Manager*, click *Object Store* in the left navigation pane.
 . Click the object store, the partition, and then the key:
 +
-.The screenshot shows (*1*) the *Object Store*, (*2*) the key, and (*3*) the value in the Object store.
+.The screenshot shows (*1*) the Object Store, (*2*) the key, and (*3*) the value in the Object store.
 +
 image::os-tutorial-rtm-key-in-os.png[Key and value in the Object Store in Runtime Manager]
 +
@@ -150,21 +159,13 @@ them to be only visible in binary through Anypoint Platform.
 Behind the scenes, Mule 4 executes binary serialization with the Mule internal serializer.
 The user interface cannot deserialize the object, so it shows that the value is now binary.
 
-To verify that your value worked too, return to Design Center and add a new flow that retrieves a value.
-
 You have successfully tested your app using a `curl` command to submit a REST API command to the Object Store API and using Runtime Manager to view the results. 
 
-
-
-Next, you create a Mule app in Anypoint Studio 7 and add an object store.
-
-
-This completes creating the first part of your application
-Leave your Design Center application running for the next task where we test the application.
-Even if the Design Center window times out, the application stays running while you are logged on. Click the application in the *Projects* screen and look for *Status Running*.
-
+To verify that your value worked, return to Design Center and add a new flow that retrieves a value.
 
 === Retrieve the Value
+
+To create a new flow to retrieve the value:
 
 . Return to your project in Design Center.
 . In the *Project* area on the left, expand the *Flows* menu.
@@ -215,7 +216,7 @@ image::os-tutorial-dc-retrieve-values.png[Key field for the Retrieve operation]
 image::os-tutorial-dc-copy-link.png[The copy deployment URL icon]
 . Run the following `curl` command from a command prompt to send the key-value pair. 
 +
-Replace _DEPLOYMENT-URL_ with the deployment URL you copied. 
+Replace _DEPLOYMENT-URL_ with the deployment URL you copied from Design Center. 
 +
 [source,console]
 ----
@@ -228,21 +229,20 @@ The output from this command lists the value for the `myKey`:
 ----
 "OSv2 Test"
 ----
-This exercise shows that the object store you create in Design Center can be accessed using a curl command, and
-the key becomes visible in Runtime Manager.
+
+This exercise shows that the object store you create in Design Center can be accessed using a curl command, and the key becomes visible in Runtime Manager.
 
 You don't need to view the Runtime Manager interface each time you update an object store. After you create an application linked to the Object Store v2 connector, you can
 store a key and value in the Object Store with one curl command and view the results with another. Just change the key and/or the value as needed.
 
-Store:
-
+* Store:
++
 [source,console]
 ----
 curl -X POST -H "Content-Type: application/json" -d '{ "key": "myKey", "value": "OSv2 Test" }' "http://DEPLOYMENT_URL/store"
 ----
-
-Retrieve:
-
+* Retrieve:
++
 [source,console]
 ----
 curl http://DEPLOYMENT_URL/retrieve?key=MyKey
@@ -250,27 +250,20 @@ curl http://DEPLOYMENT_URL/retrieve?key=MyKey
 
 In each command, replace `DEPLOYMENT_URL` with the cloudhub.io link in Design Center.
 
-For more information on moving to programmatic access of Object Store, see
-https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Object Store v2 API].
-Programmatic conventions that worked with Object Store v1 also work with Object Store v2.
+You have successfully tested your app using a `curl` command to submit a REST API command to the Object Store API and Runtime Manager to view the results. 
 
-== Create and Configure Object Store in a Mule 4 App in Anypoint Studio 7
+Next, you create a Mule app in Anypoint Studio 7 and add an object store.
+
+
+
+== Create and Configure a Mule 4 App with an Object Store in Anypoint Studio 7
 
 You can now use Anypoint Studio 7 to create a Mule 4 app similar to the app you created in Design Center.
 In Studio 7, you can deploy the app to CloudHub and submit a curl command to test the app.
 
-=== Prerequisites
-
-Install Studio 7. 
-
-See xref:studio::to-download-and-install-studio.adoc[Downloading and Installing Anypoint Studio].
-
-
-=== Configure an App with an Object Store in Anypoint Studio 7 
-
 First, you use Studio 7 to configure an app that connects with an object store.
 
-To configure an app in Studio:
+To configure a Mule 4 app in Studio 7:
 
 . Start Studio, click *File* > *New* > *Mule Project*, and then name the project `osv2-demo`.
 . Click the *Exchange* icon in the toolbar:
@@ -308,7 +301,7 @@ The Listener properties window now indicates that there are no errors:
 +
 .The screenshot shows (*1*) the *Path* property and (*2*) the *Connector configuration* icon for the Listener.
 image::os-tutorial-studio7-listener-props.png[Listener properties]
-. In the canvas, click *Store*.
+. In the canvas, click the *Store* operation.
 . In the Store properties window, specify `#[payload.key]` in the *Key* field and `payload.value` in the *Value* field:
 +
 .The screenshot shows (*1*) the *Key* field and (*2*) the *Value* field.
@@ -323,12 +316,13 @@ https://help.mulesoft.com/s/article/Object-Store-key-value-entries-not-showing-i
 . In the canvas, click the *Listener*.
 . In the Listener properties window, set *General > Path* to `/retrieve`.
 . In the *Connector configuration* field, select *HTTP_Listener_config* that you set up for the Store Listener.
-. In the canvas, click *Retrieve*.
+. In the canvas, click the *Retrieve* operation.
 . In the Retrieve properties window, specify `#[attributes.queryParams.key]` in the *Key* field:
 +
 .The arrow shows the *Key* field.
 image::os-tutorial-studio7-retrieve-props.png[Key field for the Retrieve operation]
 +
+[IMPORTANT]
 With Mule 4, to use Object Store v2, do not select an object store global element in the *Object store* dropdown.
 . Select the second flow and, in the properties window, change the name to `Retrieve`.
 +
@@ -348,9 +342,7 @@ image::os-tutorial-deploy-app.png[Deploy Application button in the Deploying App
 You have successfully used Studio 7 to configure an app with an object store.
 Next, you test the connection by submitting REST API commands to the Object Store API and using Runtime Manager to view the results.
 
-
 === Test Your Studio 7 Application
-
 
 After you create the app in Studio 7, you test your app using a `curl` command to submit a REST API command to the Object Store API and use Runtime Manager to view the results.
 
@@ -380,9 +372,8 @@ The output is an echo:
 +
 . In Runtime Manager, in the details pane, click *Manage application*.
 +
-+
 .The arrow shows *Manage application in the details pane in Runtime Manager.
-image::os-tutorial-rtm-deploy-url.png[Manage application in the details pane]
+image::os-tutorial-rtm-manage-app.png[Manage application in the details pane]
 . Click *Object Store* in the left navigation pane.
 . Click the object store, the partition, and then the key:
 +
@@ -390,10 +381,9 @@ image::os-tutorial-rtm-deploy-url.png[Manage application in the details pane]
 +
 image::os-tutorial-rtm-key-in-os.png[Key and value in the Object Store in Runtime Manager]
 +
-You see that the `myKey` key that you sent from `curl` appears in the Object Store with the value of `[binary value] BINARY`.
-+
-The value is binary because Mule 4 wraps values in a Mule object that causes
-them to be only visible in binary through Anypoint Platform.
+The `myKey` key that you sent from `curl` appears in the Object Store with the value of `[binary value] BINARY`.
+The value is binary because Mule 4 wraps values in a Mule object, which causes
+them to be visible only as binary in Anypoint Platform.
 Behind the scenes, Mule 4 executes binary serialization with the Mule internal serializer.
 The user interface cannot deserialize the object, so it shows that the value is now binary.
 
@@ -411,181 +401,214 @@ The output from this command lists the value for the key:
 "OSv2 Test"
 ----
 
-This concludes the Studio 7 exercise. The gist of this lesson is that you can create Object
-Store flows in Studio, use the curl command to store key/value pairs in the Object Store, and view the results in Runtime Manager. An additional curl command lets you see the value for a key.
-
-
-You have successfully tested your app using a `curl` command to submit a REST API command to the Object Store API and using Runtime Manager to view the results. 
+You can now create an app in Studio 7, test your app using a `curl` command to store key-value pairs in the object store, and view the results in Runtime Manager. 
 
 
 === Studio 7 XML
 
-The XML for the Studio application is as follows. This information lets you see how Studio
-identifies the HTTP Listener and Object Store connector in XML. You can also use this to
-check your flow if your Studio project doesn't work as expected. (Your project's XML file
-contains doc ID statements, which are not listed here to improve readability.)
+You can use this XML to create the `osv2-demo` app in Studio 7.
+
+Click *Configuration XML* tab in Studio and compare your XML to the following.
+Make corrections if needed.
+
 
 [source,console,linenums]
 ----
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:os="http://www.mulesoft.org/schema/mule/os"
-	xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
-	xmlns:http="http://www.mulesoft.org/schema/mule/http"
-	xmlns="http://www.mulesoft.org/schema/mule/core"
-	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core
-	http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-http://www.mulesoft.org/schema/mule/http
-http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
-http://www.mulesoft.org/schema/mule/ee/core
-http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
-http://www.mulesoft.org/schema/mule/os
-http://www.mulesoft.org/schema/mule/os/current/mule-os.xsd">
-	<http:listener-config name="HTTP_Listener_config"
-		doc:name="HTTP Listener config">
-		<http:listener-connection host="0.0.0.0" port="8081" />
-	</http:listener-config>
-	<os:object-store name="Object_store" doc:name="Object store" />
-	<http:listener-config name="HTTP_Listener_config1"
-		doc:name="HTTP Listener config">
-		<http:listener-connection host="0.0.0.0" port="8081" />
-	</http:listener-config>
-	<os:object-store name="Object_store1" doc:name="Object store" />
-	<flow name="Store" >
-		<http:listener doc:name="Listener" config-ref="HTTP_Listener_config"
-			path="/store">
-			<ee:repeatable-file-store-stream />
-		</http:listener>
-		<os:store doc:name="Store"
-			key="#[payload.key]"
-			objectStore="Object_store">
-			<os:value ><![CDATA[payload.value]]></os:value>
-		</os:store>
-	</flow>
-	<flow name="Retrieve" >
-		<http:listener doc:name="Listener" config-ref="HTTP_Listener_config1"
-			path="/retrieve">
-			<ee:repeatable-file-store-stream />
-		</http:listener>
-		<os:retrieve doc:name="Retrieve"
-			key="#[attributes.queryParams.key]"
-			objectStore="Object_store1"/>
-	</flow>
+<mule xmlns:os="http://www.mulesoft.org/schema/mule/os" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+  xmlns="http://www.mulesoft.org/schema/mule/core"
+  xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/os http://www.mulesoft.org/schema/mule/os/current/mule-os.xsd">
+  <http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="24b76402-e396-4228-a48e-fcd9ac651488" >
+    <http:listener-connection host="0.0.0.0" port="8081" />
+  </http:listener-config>
+  <os:object-store name="Object_store" doc:name="Object store" doc:id="acb3bf59-becf-4b86-901d-97f6903fcfc0" />
+  <os:object-store name="Object_store1" doc:name="Object store" doc:id="3b262a2e-ca98-4c68-bd21-d3d40a3812c7" />
+  <flow name="Store" doc:id="e7d253f9-534b-41df-a189-de815a42facb" >
+    <http:listener doc:name="Listener" doc:id="805c84ec-35d4-4753-846b-49b108044df7" config-ref="HTTP_Listener_config" path="/store"/>
+    <os:store doc:name="Store" doc:id="d4800501-0fa8-4472-a23e-5213f04155e8" key="#[payload.key]">
+      <os:value ><![CDATA[#[payload.value]]]></os:value>
+    </os:store>
+  </flow>
+  <flow name="Retrieve" doc:id="1db04ffc-76c1-48b4-ba33-57807a6404a8" >
+    <http:listener doc:name="Listener" doc:id="faed2a0f-3005-4244-a6c6-77407b34d53a" path="/retrieve" config-ref="HTTP_Listener_config"/>
+    <os:retrieve doc:name="Retrieve" doc:id="3f907cfc-59e5-49cd-879a-7b2675d488a5" key="#[attributes.queryParams.key]">
+      <os:default-value ><![CDATA[#["TEST"]]]></os:default-value>
+    </os:retrieve>
+  </flow>
 </mule>
 ----
 
-== Create a Studio 6 Project
 
-If you are only working in Anypoint Studio 7, skip this section.
+== Create and Configure a Mule 3 App with an Object Store in Anypoint Studio 6
 
-. To create a new project, open Anypoint Studio and click *File > New > Mule Project*. In this tutorial, the project name is `objstoredemo`.
-. Create an application like this:
-+
-image::osv2-studio-flow.png[]
-+
-. Search for `http` and drag and drop the HTTP connector onto the Studio Canvas. The HTTP connector listens for the curl command we use to store a key and value in Object Store.
-+
-Click the green plus to the right of *Connector Configuration* and in the *Global Element Properties* screen, accpet the default settings (*Host* `0.0.0.0` and *Port* `8081`), and click *OK*:
-+
-image::osv2-http-config.png[]
-+
-. In the HTTP properties screen, set *Path* to `/store` and *Allowed Methods* to `POST`:
-+
-image::osv2-http-properties.png[]
-+
-When you submit a curl command, use the `/store` option in the URL,
-for example, `objstoredemo.cloudhub.io/store`. The *Allowed Methods* setting ensures that those who use the curl command can POST information only to an object store.
-+
-. Locate and add the *Object to String* component to the Studio canvas. No settings are necessary -- this component converts the content received from the HTTP connector into a string.
-. Locate and add the *JSON to Object* component. Set the *Return Class* to `java.util.Map`:
-+
-image::osv2-json-to-object.png[]
-+
-. Search for `objectstore` and add the Object Store connector. If there is no Object Store connector,
-install it as described in <<Install the Object Store Connector>>.
-. Click the green plus sign to the right of *Connector Configuration* and in the *Global Element Properties* screen,
-assign a *Partition* name such as `mypartition`.
-Set the Object Store Reference field to `_defaultUserObjectStore`.
-+
-*Note:* The *Object Store Reference* field must be set to `_defaultUserObjectStore` for data to be stored in Object Store v2:
-+
-image::os-studio-gep-settings.png[Studio Global Element Property settings]
-+
-Leave the remaining settings blank, and click *OK*.
-+
-. Set the *Operation* to *Store* and set these *Store operation* values:
-+
-	* Set *Key* to `#[payload.key]`
-	* Set *Value Reference* to `#[payload.value]`
-+
-image::osv2-connector.png[]
-+
-. Locate and add *Set Payload*. Set the *Value* field to `KEY: #[payload.key] AND VALUE: #[payload.value] WERE SAVED OK` - this message displays on the command line to let you know the curl command values are received by the application.
-+
-image::osv2-set-payload.png[]
-+
-. Save the application and click *Run > Run As > Mule Application*. Running the application ensures your application works correctly. If you need to fix anything, do so now. After your application runs correctly, you can stop your application.
+If you use Mule 3, you can use Anypoint Studio 6 to create a Mule 3 app similar to the app you created in Design Center.
+In Studio 6, you can deploy the app to CloudHub and submit a `curl` command to test the connection. 
 
-=== To Deploy Your Application in Anypoint Platform
+This section applies only to Anypoint Studio 6.
+For Studio 7, see <<Create and Configure a Mule 4 App with an Object Store in Anypoint Studio 7>>.
 
-. In Studio, right-click your application's name in Package Explorer and click *Anypoint Platform > Deploy to Cloud*.
-. In the user login window, specify your Anypoint Platform username and password, and click *Sign in*. If you don't have an Anypoint Platform login, click *Sign up*.
-. In Runtime Manager, specify an application name. Each name is unique and becomes the URL where your application is available in Runtime Manager. The URL has the format `APPLICATION_NAME.cloudhub.io` where your application resides in the cloudhub.io namespace. Ensure the application name has a green check mark for proper naming and being unique.
+
+First, you use Studio 6 to configure an app that connects with an object store.
+
+To configure a Mule 3 app in Studio 6:
+
+. Start Studio, click *File* > *New* > *Mule Project*, name the project `osv2-demo-studio-6`, and then click *Finish*.
+
+. Install the Object Store Connector:
+.. Click the *Exchange* icon in the toolbar:
 +
-If you see the message: *You do not have permission to deploy new applications in this environment. Please select an existing application to redeploy*, click the environment button in the upper left of the Runtime Manager display to change environments from *Design* to *Production*.
+.The arrow shows the *Exchange* icon in the Studio 6 toolbar.
+image::os-tutorial-studio6-exchange.png[Exchange icon in the Studio 6 toolbar]
+.. Enter your Anypoint Platform username and password, if prompted.
+.. In Exchange, select *Provided by MuleSoft*, and then search for the ObjectStore Connector:
 +
+.The screenshot shows (*1*) the *Provided by MuleSoft* option and (*2*) the search field.
+image::os-tutorial-exchange.png[Provided by MuleSoft option and search field in Exchange]
+.. Select *Object Store Connector - Mule 3*.
++
+Studio 6 supports Mule 3.
+.. Click *Install*:
++
+.The arrow shows the *Install* icon in Exchange.
+image::os-tutorial-exchange-add-to-project-3.png[Install icon in Exchange]
+.. At the prompt, check the items to install and click *Next* twice. 
+.. Accept the license agreement and click *Finish*.
+.. At the prompt, click *Restart Now* to finish installing the connector.
+. In the *Mule Palette*, drag *HTTP* to the Studio canvas:
++
+.The arrow shows the *HTTP* Connector.
+image::os-tutorial-studio6-palette.png[HTTP Connector in Mule Palette]
+. In the *Mule Palette*, drag *HTTP* to the Studio canvas:
++
+.The arrow shows the *HTTP* Connector.
+image::os-tutorial-studio6-palette.png[HTTP Connector in Mule Palette]
++
+The HTTP Connector listens for the `curl` command that we use to store a key and value in Object Store.
+. In the *Mule Palette*:
+.. Search for `string`, and then drag the *Object to String* component to the *Process* area to the right of HTTP on the canvas.
+.. Search for `json`, and then drag the *JSON to Object* component to the canvas to the right of *Object to String*.
++
+No settings are necessary -- this component converts the content received from the HTTP connector into a string.
+.. Search for `objects`, and then drag the *ObjectStore* connector to the canvas to the right of *JSON to Object*.
+.. Search for `payload`, and then drag the *Set Payload* component to the canvas to the right of *ObjectStore*.
++
+.The arrow shows the flow in the canvas.
+image::os-tutorial-studio6-flow-complete.png[Flow in Studio 6 Canvas]
+. In the canvas, click *HTTP*.
+. In the HTTP properties window:
+.. Set *Path* to `/store` and *Allowed Methods* to `POST`.
++
+When you submit a curl command, you append the `/store` option to the URL.
+The *Allowed Methods* setting ensures the curl command can only POST information to the object store.
+.. Click the green plus icon (+) to the right of *Connector Configuration*.
+.. In the HTTP Connector *Global Element Properties* window, verify that Host is set to 0.0.0.0 and Port is set to 8081, and then click *OK*.
++
+The HTTP properties window now indicates that there are no errors.
+. In the canvas, click *JSON to Object*, and then set *Return Class* to `java.util.Map`:
++
+.The arrow shows the *Return Class* field in the JSON to Object properties window.
+image::os-tutorial-studio6-json-props.png[JSON to Object properties in Studio 6]
+. In the canvas, click *ObjectStore*.
+. In the ObjectStore properties window:
+.. Set the *Operation* to *Store* and set these store operation values:
++
+* Set *Key* to `#[payload.key]`.
+* Set *Value Reference* to `#[payload.value]`.
+.. Click the green plus icon (+) to the right of *Connector Configuration*.
+.. In the ObjectStore Connector *Global Element Properties* window, set *Partition* to `myPartition` and *Object Store Reference* to `_defaultUserObjectStore`, and then click *OK*.
++
+.The screenshot shows (*1) the *Partition* field and (*2*) the *Object Store Reference* field in the *Global Element Properties* window.
+image::os-tutorial-studio6-os-global-props.png[Partion and Object Store Reference fields in the Global Element Properties window]
++
+[NOTE]
+The *Object Store Reference* field must be set to `_defaultUserObjectStore` for data to be stored in Object Store v2.
++
+The ObjectStore properties window now indicates that there are no errors.
+. In the canvas, click *Set Payload*.
+. In the Set Payload properties windows, set the *Value* field to `KEY: #[payload.key] AND VALUE: #[payload.value] WERE SAVED OK`,
++
+This message appears on the command line to indicate that the `curl` command values are received by the application.
++
+.The arrow shows the *Value* field in the Set Payload properties window.
+image::os-tutorial-studio6-payload-props.png[Value field in the Set Payload properties window]
+. Save your project.
+. In *Package Explorer* in Studio, right-click `osv2-demo-studio-6` and select *Anypoint Platform* > *Deploy to Cloud*.
+. At the prompt, select the environment to deploy the app to.
+. In the Anypoint Platform *Deploying Application* window, click *Deploy Application*:
 . Set *Runtime Version* to Mule 3.8.5 or later, or to any 4.x version. Ensure that Runtime Manager shows the *Use Object Store v2* checkbox.
 . Click the *Use Object Store v2* checkbox.
+. Click *Deploy Application*:
 +
-image::osv2-runtime-manager-deploy-app.png[osv2-runtime_manager_deploy_app]
+.The arrow shows the *Deploy Application* button in the *Deploying Applications* page.
+image::os-tutorial-deploy-app.png[Deploy Application button in the Deploying Applications page]
+. Click *Open in Browser* to display the app in Runtime Manager.
+
+You have successfully used Studio 6 to configure a Mule 3 app with an object store.
+Next, you test the connection by submitting REST API commands to the Object Store API and using Runtime Manager to view the results.
+
+
+
+In Runtime Manager, specify an application name. Each name is unique and becomes the URL where your application is available in Runtime Manager. The URL has the format `APPLICATION_NAME.cloudhub.io` where your application resides in the cloudhub.io namespace. Ensure the application name has a green check mark for proper naming and being unique.
+
+
+If you see the message: *You do not have permission to deploy new applications in this environment. Please select an existing application to redeploy*, click the environment button in the upper left of the Runtime Manager display to change environments from *Design* to *Production*.
+
+
+=== Test Your Studio 6 Application
+
+
+After you create the app in Studio 6, you test your app using a `curl` command to submit a REST API command to the Object Store API and use Runtime Manager to view the results.
+
+To test your app:
+
+. In *Runtime Manager*, click *Applications* and ensure that the `osv2-demo-studio-6` app is running.
+. Click the status for the `osv2-demo-studio-6` app to display its details in the right pane.
+. Copy the *App url* value:
 +
-. After configuring your application, click *Deploy Application*.
-. In the Runtime Manager deploy window, wait until a message displays that your application successfully deployed to CloudHub.
-. Click *Open in Browser and Close Window*.
-. In Runtime Manager, click the right side of your application's entry to view its details.
-. Click *Manage Application*. In the application's settings screen, note that Object Store appears in the left
-side navigation area. The former label *Application Data* is now *Object Store for OSv2*.
-
-== Send Data to the Object Store
-
-From a command line prompt, use a utility to send JSON data to your Mule application. This can be a command such as curl, Postman, or a browser extension. Any serializable data can be sent to the
-object store. The Object Store connector sends data as key/value pairs.
-
-Example using curl:
-
+.The arrow shows *App url* in the details pane in Runtime Manager.
+image::os-tutorial-rtm-deploy-url-3.png[App url in Runtime Manager]
+. Run the following `curl` command from a command prompt.
++
+Replace _APP-URL_ with the *App url* value that you copied from Runtime Manager. 
++
+[source,console]
 ----
-curl -X POST -H "Content-Type: application/json" -d '{ "key": "TestKey01", "value": "This is an object store test" }' "http://APPLICATION_NAME.cloudhub.io/store"
+$ curl -X POST -H "Content-Type: application/json" -d '{ "key": "myStudio6Key", "value": "OSv2 Test from Studio 6" }' "http://APP-URL/store";echo
 ----
-
-Change `APPLICATION_NAME` to the name you chose when you deployed your application. Each time you submit this command, change the key's name so that each key is unique.
-
-== View Data in the Object Store
-
-To view data in the Object Store:
-
-. Log into Anypoint Platform and click *Runtime Manager*.
-. Click the name of your application to view the application's dashboard.
-. Click *Object Store* from the left navigation bar:
 +
-image::osv2-in-nav-bar.png[]
+Each time you submit this command, change the key name so that each key is unique.
 +
-The Object Store user interface:
+The output is an echo:
 +
-image::osv2-ui.png[]
+[source,console]
+----
+KEY: myStudio6Key AND VALUE: OSv2 Test from Studio 6 WERE SAVED OK
+----
 +
-* The default object store name is `DEFAULT_USER_STORE`.
-* The columns show the object store name, partition name, key, and key data. The partition groups object store keys.
+. In Runtime Manager, in the details pane, click *Manage application*.
 +
-. Click the object store name, partition name, and key to view each item's value.
-. To delete a key, hover over a key name, and click the trash can icon. Similarly,
-you can delete a partition or the store itself by hovering and clicking the trash
-can icon.
+.The arrow shows *Manage application* in the details pane in Runtime Manager.
+image::os-tutorial-rtm-manage-app-3.png[Manage application in the details pane]
+. Click *Object Store* in the left navigation pane.
+. Click the object store, the partition, and then the key:
++
+.The screenshot shows (*1*) the *Object Store* tab, (*2*) the key, and (*3*) the value in the Object store.
+image::os-tutorial-rtm-key-in-os-3.png[Object Store tab, key, and value in Runtime Manager]
+. Hover over the *...* icon to display actions for each object:
++
+.The screenshot shows (*1*) the *Metadata* and (*2*) the *Delete Value* actions in the Object store.
+image::os-tutorial-rtm-os-actions-3.png[]
++
+* To delete an object store, partition, key, or value, hover over the *...* icon and click the trash can icon.
+* To display the key value and any metadata associated with the value, hover over the *...* icon and click the metadata icon.
 
 
 == See Also
 
+* https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Object Store v2 API].
 * xref:osv2-faq.adoc#how-long-can-data-persist-in-object-store-v2[How long can data persist in Object Store v2?]
 * xref:connectors::object-store/object-store-connector.adoc[Object Store Connector - Mule 4]
 * xref:release-notes::connector/object-store-connector-release-notes-mule-4.adoc[Object Store Connector Release Notes - Mule 4]
