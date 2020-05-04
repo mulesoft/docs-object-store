@@ -84,7 +84,7 @@ image::os-tutorial-dc-http-search.png[Search for the HTTP Listener]
 image::os-tutorial-dc-http-path.png[Path value and Close button]
 +
 Because the default settings for HTTP Listener are correct, you don't need to click *Edit*.
-. Click the plus icon (+) to the right of the HTTP Listener trigger:
+. Click the plus icon (*+*) to the right of the HTTP Listener trigger:
 +
 .The arrow shows the plus icon (+).
 image::os-tutorial-dc-plus-icon.png[Plus icon]
