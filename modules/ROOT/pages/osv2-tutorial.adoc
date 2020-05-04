@@ -89,7 +89,7 @@ Because the default settings for HTTP Listener are correct, you don't need to cl
 .The arrow shows the plus icon (+).
 image::os-tutorial-dc-plus-icon.png[Plus icon]
 +
-. In the *Select a component* window, enter `ob` to search for the ObjectStore Connector:
+. In the *Select a component* window, enter `ob` to search for the Object Store Connector:
 +
 .The arrow shows the ObjectStore Connector.
 image::os-tutorial-dc-os-search.png[Search for the Object Store Connector]
