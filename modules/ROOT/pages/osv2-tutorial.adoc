@@ -153,7 +153,7 @@ image::os-tutorial-dc-view-rtm-option.png[View in Runtime Manager menu option]
 .The screenshot shows (*1*) the Object Store, (*2*) the key, and (*3*) the value in the Object store.
 image::os-tutorial-rtm-key-in-os.png[Key and value in the Object Store in Runtime Manager]
 +
-You see that the myKey key that you sent from curl appears in the Object Store with the value of [binary value] BINARY.
+You see that the `myKey` key that you sent from `curl` appears in the Object Store with the value of `[binary value] BINARY`.
 +
 *DO WE NEED THIS DETAIL?*
 +
