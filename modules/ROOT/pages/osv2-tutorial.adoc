@@ -72,7 +72,7 @@ image::os-tutorial-dc-create-app.png[Create new application option]
 .The arrow shows the *Go straight to canvas* option.
 image::os-tutorial-dc-goto-canvas.png[Go straight to canvas]
 +
-. Click the *Trigger* box and enter `H` to search for the HTTP Listener:
+. Select the *Trigger* box and enter `H` to search for the HTTP Listener:
 +
 .The arrow shows the HTTP Listener.  
 image::os-tutorial-dc-http-search.png[Search for the HTTP Listener]
