@@ -3,7 +3,7 @@ ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 
-Use this tutorial to get started with using Object Store v2 to store and view data.
+Use this tutorial to begin using Object Store v2 to store and view data.
 
 You can send any serializable data as key/value pairs to the object store.
 
