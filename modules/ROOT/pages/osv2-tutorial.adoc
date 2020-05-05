@@ -472,7 +472,7 @@ image::os-tutorial-studio6-palette.png[HTTP Connector in Mule Palette]
 .. Search for `objects`, and then drag the *ObjectStore* connector to the canvas to the right of *JSON to Object*.
 .. Search for `payload`, and then drag the *Set Payload* component to the canvas to the right of *ObjectStore*.
 +
-The flow should now look like this:
+The flow should look like this:
 +
 .The arrow shows the flow in the canvas.
 image::os-tutorial-studio6-flow-complete.png[Flow in Studio 6 Canvas]
