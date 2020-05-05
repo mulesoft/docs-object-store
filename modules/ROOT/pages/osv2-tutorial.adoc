@@ -8,11 +8,12 @@ Use this tutorial to begin using Object Store v2 to store and view data.
 You can send any serializable data as key-value pairs to the object store.
 
 
-In this tutorial, you:
+In this tutorial, you create two apps, one in Design Center and one in Anypoint Studio:
 
-. Create an app in Design Center, configure Anypoint Object Store Connector, and send data to the object store and view it in Runtime Manager.
-. Create an app in Anypoint Studio, configure Anypoint Object Store Connector, and send data to the object store and view it in Runtime Manager.
-+
+. Configure Anypoint Object Store Connector in the app.
+. Send data to the object store.
+. View data in Runtime Manager.
+
 Depending on your Mule version, you create your app in Studio 7 (Mule 4) or Studio 6 (Mule 3).
 
 
@@ -59,9 +60,7 @@ If enabled, the password program inserts passwords in fields in Design Center, w
 To configure an app in Design Center:
 
 . In *Anypoint Platform*, click *Design Center* in the left navigation bar or the main Anypoint Platform screen.
-. Click the *Create new* button to create a new project.
-+
-In the create window, select *Create new application*:
+. Click *Create new* > *Create new application*:
 +
 .The arrow shows the *Create new application* option.
 image::os-tutorial-dc-create-app.png[Create new application option]
@@ -78,7 +77,7 @@ image::os-tutorial-dc-goto-canvas.png[Go straight to canvas]
 image::os-tutorial-dc-http-search.png[Search for the HTTP Listener]
 +
 . Click *HTTP Listener*.
-. In the HTTP Listener window, set the value of *Path* to `/store` and then click the *Close* button (X):
+. In the *HTTP Listener* window, set the value of *Path* to `/store` and then click the close button (*X*):
 +
 .The screenshot shows (*1*) the *Path* value and (*2*) the *Close* button (X).
 image::os-tutorial-dc-http-path.png[Path value and Close button]
@@ -109,7 +108,7 @@ The app starts running in a temporary environment:
 .The arrow shows a message indicating the `osv2demo` app is running in a temporary environment.
 image::os-tutorial-dc-running.png[The osv2demo app running in a temporary environment]
 
-You have successfully used Design Center to configure and deploy an app with an object store.
+You have successfully used Design Center to configure and deploy an app with an object store to a temporary environment.
 
 Next, you test the connection by submitting REST API commands to the Object Store API and using Runtime Manager to view the results.
 
@@ -123,7 +122,7 @@ To test your app:
 +
 .The arrow shows the deployment URL copy icon.
 image::os-tutorial-dc-copy-link.png[The copy deployment URL icon]
-. Run the following `curl` command from a command prompt to send the key-value pair. 
+. From the command line, use `curl` command to send a key-value pair to the object store. 
 +
 Replace _DEPLOYMENT-URL_ with the deployment URL you copied from Design Center.
 +
@@ -155,13 +154,9 @@ image::os-tutorial-rtm-key-in-os.png[Key and value in the Object Store in Runtim
 +
 You see that the `myKey` key that you sent from `curl` appears in the Object Store with the value of `[binary value] BINARY`.
 +
-*DO WE NEED THIS DETAIL?*
-+
 The `myKey` key that you sent from `curl` appears in the Object Store with the value of `[binary value] BINARY`.
 The value is binary because Mule 4 wraps values in a Mule object, which causes
 them to be visible only as binary in Anypoint Platform.
-Behind the scenes, Mule 4 executes binary serialization with the Mule internal serializer.
-The user interface cannot deserialize the object, so it shows that the value is now binary.
 
 You have successfully tested your app using a `curl` command to store a key-value pair in the object store and viewed the results in Runtime Manager.
 
