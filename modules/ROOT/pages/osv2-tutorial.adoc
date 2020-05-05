@@ -325,7 +325,7 @@ Next, you test the connection by submitting REST API commands to the Object Stor
 
 === Test Your Studio 7 Application
 
-After you create the app in Studio 7, you test your app using a `curl` command to submit a REST API command to the Object Store API and use Runtime Manager to view the results.
+After you create your app in Studio 7, you can test it using a `curl` command to submit a REST API command to the Object Store API and use Runtime Manager to view the results.
 
 To test your app:
 
