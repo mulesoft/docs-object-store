@@ -489,7 +489,7 @@ The HTTP properties window now indicates that there are no errors:
 +
 .The arrow shows the HTTP properties window.
 image::os-tutorial-studio6-http-props.png[HTTP properties in Studio 6]
-. In the canvas, click *JSON to Object*, and then set *Return Class* to `java.util.Map`:
+. In the canvas, click *JSON to Object* and then set *Return Class* to `java.util.Map`:
 +
 .The arrow shows the *Return Class* field in the *JSON to Object* properties window.
 image::os-tutorial-studio6-json-props.png[JSON to Object properties in Studio 6]
