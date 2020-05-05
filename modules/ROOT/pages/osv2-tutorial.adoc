@@ -202,7 +202,7 @@ image::os-tutorial-dc-os-search.png[Search for the Object Store Connector]
 image::os-tutorial-dc-retrieve-values.png[Key field for the Retrieve operation]
 
 . Click *Test* to run the app in a temporary location.
-. Click the copy icon to copy the deployment URL.
+. Click the copy icon to copy the deployment URL:
 +
 .The arrow shows the deployment URL copy icon.
 image::os-tutorial-dc-copy-link.png[The copy deployment URL icon]
