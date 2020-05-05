@@ -462,7 +462,7 @@ image::os-tutorial-exchange-add-to-project-3.png[Install icon in Exchange]
 .. Accept the license agreement and click *Finish*.
 .. At the prompt, click *Restart Now* to finish installing the connector.
 
-. In the *Mule Palette*:
+. In the *Mule Palette* view:
 .. Drag *HTTP* to the Studio canvas:
 +
 .The arrow shows the *HTTP* Connector.
