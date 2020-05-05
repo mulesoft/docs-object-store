@@ -289,7 +289,7 @@ image::os-tutorial-studio7-store-flow-props.png[Name field in the Store flow pro
 . Click *ObjectStore*, and then drag the *Retrieve* operation to the right of the Listener in the second flow.
 . In the canvas, click the *Listener*.
 . In the Listener properties window, set *General > Path* to `/retrieve`.
-. In the *Connector configuration* dropdown, select the same *HTTP_Listener_config* option that you set up for the Store Listener:
+. In the *Connector configuration* menu, select the same *HTTP_Listener_config* option that you set up for the Store Listener:
 +
 .The arrow shows the *Connector configuration* dropdown in the Listener properties window.
 image::os-tutorial-studio7-retrieve-listener-props.png[Connector configuration dropdown in the Listener properties window]
