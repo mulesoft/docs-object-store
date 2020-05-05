@@ -182,7 +182,7 @@ image::os-tutorial-dc-goto-canvas.png[Go straight to canvas option]
 image::os-tutorial-dc-http-search.png[Search for the HTTP Listener]
 +
 . Click *HTTP Listener*.
-. In the HTTP Listener window, set the value of *Path* to `/retrieve` and then click the *Close* button (X):
+. In the HTTP Listener window, set the value of *Path* to `/retrieve` and then click the close button (*X*):
 +
 .The screenshot shows (*1*) the *Path* value and (*2*) the *Close* button (X).
 image::os-tutorial-dc-http-retrieve-path.png[Path value and Close button]
