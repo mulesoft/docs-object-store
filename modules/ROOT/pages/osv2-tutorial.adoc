@@ -43,19 +43,13 @@ This tutorial uses the HTTP Listener trigger to initiate Object Store Connector 
 +
 Instead of `curl`, you can use Postman or browser plugins.
 
-
-== Create and Configure an App with an Object Store in Design Center
-
-You use Design Center to configure an app that includes an HTTP Listener trigger and an Object Store Connector.
-Then, you can use a `curl` command to send a key and value, and view the key in Runtime Manager.
-
-
-=== Prerequisites
-
 Disable password programs such as LastPass or Okta in your browser before using Design Center.
 If enabled, the password program inserts passwords in fields in Design Center, which can cause the app to fail. 
 
-=== Configure an App with Object Store in Design Center
+== Create an App with an Object Store in Design Center
+
+You use Design Center to configure an app that includes an HTTP Listener trigger and an Object Store Connector.
+Then, you can use a `curl` command to send a key and value, and view the key in Runtime Manager.
 
 To configure an app in Design Center:
 
@@ -234,7 +228,7 @@ You have successfully tested your app using a `curl` command to submit a REST AP
 Next, you create a Mule app in Anypoint Studio 7 and add an object store.
 
 
-== Create and Configure a Mule 4 App with an Object Store in Anypoint Studio 7
+== Create a Mule 4 App with an Object Store in Anypoint Studio 7
 
 You can now use Anypoint Studio 7 to create a Mule 4 app similar to the app you created in Design Center.
 
@@ -432,13 +426,13 @@ http://www.mulesoft.org/schema/mule/os http://www.mulesoft.org/schema/mule/os/cu
 ----
 
 
-== Create and Configure a Mule 3 App with an Object Store in Anypoint Studio 6
+== Create a Mule 3 App with an Object Store in Anypoint Studio 6
 
 If you use Mule 3, you can use Anypoint Studio 6 to create a Mule 3 app similar to the app you created in Design Center.
 In Studio 6, you can deploy the app to CloudHub and submit a `curl` command to test the connection. 
 
 This section applies only to Anypoint Studio 6.
-For Studio 7, see <<Create and Configure a Mule 4 App with an Object Store in Anypoint Studio 7>>.
+For Studio 7, see <<Create a Mule 4 App with an Object Store in Anypoint Studio 7>>.
 
 
 First, you use Studio 6 to configure an app that connects with an object store.
