@@ -467,7 +467,7 @@ image::os-tutorial-exchange-add-to-project-3.png[Install icon in Exchange]
 +
 .The arrow shows the *HTTP* Connector.
 image::os-tutorial-studio6-palette.png[HTTP Connector in Mule Palette]
-.. Search for `string`, and then drag the *Object to String* component to the *Process* area to the right of HTTP on the canvas.
+.. Search for `string` and then drag the *Object to String* component to the *Process* area to the right of HTTP on the canvas.
 .. Search for `json`, and then drag the *JSON to Object* component to the canvas to the right of *Object to String*.
 .. Search for `objects`, and then drag the *ObjectStore* connector to the canvas to the right of *JSON to Object*.
 .. Search for `payload`, and then drag the *Set Payload* component to the canvas to the right of *ObjectStore*.
