@@ -522,7 +522,7 @@ image::os-tutorial-studio6-payload-props.png[Value field in the Set Payload prop
 . Save your project.
 . In *Package Explorer* in Studio, right-click `osv2-demo-studio-6` and select *Anypoint Platform* > *Deploy to Cloud*.
 . At the prompt, select the environment to deploy the app to.
-. In the Anypoint Platform *Deploying Application* window, ensure that *Use Object Store v2* is selected, and then click *Deploy Application*:
+. In the Anypoint Platform *Deploying Application* window, ensure that *Use Object Store v2* is selected and then click *Deploy Application*:
 +
 .The arrow shows the *Deploy Application* button in the *Deploying Applications* page.
 image::os-tutorial-deploy-app.png[Deploy Application button in the Deploying Applications page]
