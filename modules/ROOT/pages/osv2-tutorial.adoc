@@ -435,7 +435,7 @@ This section applies only to Anypoint Studio 6.
 For Studio 7, see <<Create a Mule 4 App with an Object Store in Anypoint Studio 7>>.
 
 
-First, you use Studio 6 to configure an app that connects with an object store.
+First, you use Studio 6 to configure a Mule 3 app that connects with an object store:
 
 To configure a Mule 3 app in Studio 6:
 
