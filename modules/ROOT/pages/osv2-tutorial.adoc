@@ -161,7 +161,7 @@ To verify that the value is correct, return to Design Center and add a new flow 
 
 === Create a Retrieve Flow to Retrieve the Value
 
-To create a new flow to retrieve the value:
+To create a new flow to retrieve the 'myKey` value:
 
 . In Design Center, in the *Project* area on the left, expand the *Flows* menu.
 . Select *Rename* from the vertical ellipsis menu and rename your existing flow from `New Flow` to `Store`:
