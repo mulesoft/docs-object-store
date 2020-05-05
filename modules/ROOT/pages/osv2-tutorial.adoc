@@ -159,7 +159,7 @@ To verify that the value is correct, return to Design Center and add a new flow 
 
 
 
-=== Create a Retrieve Flow to Retrieve the Value
+=== Create a Flow to Retrieve the Value
 
 To create a new flow to retrieve the 'myKey` value:
 
