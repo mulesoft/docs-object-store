@@ -300,7 +300,7 @@ image::os-tutorial-studio7-retrieve-listener-props.png[Connector configuration d
 image::os-tutorial-studio7-retrieve-props.png[Key field for the Retrieve operation]
 +
 [IMPORTANT]
-With Mule 4, to use Object Store v2, do not select an object store global element in the *Object store* dropdown.
+When using Object Store in Mule 4, do not select an object store global element in the *Object store* menu.
 . Select the second flow and, in the properties window, change the name to `Retrieve`.
 +
 When you are done, the flows should look like this:
