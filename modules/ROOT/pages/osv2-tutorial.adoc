@@ -269,7 +269,7 @@ image::os-tutorial-studio7-flow.png[Store operation in the Studio 7 canvas]
 . Click the green plus icon (+) to the right of the *Connector configuration* field. 
 . In the HTTP Listener *Global Element Properties* window, verify that *Host* is set to `0.0.0.0` and *Port* is set to `8081`, and then click *OK*.
 +
-The Listener properties window now indicates that there are no errors:
+The Listener properties window indicates that there are no errors:
 +
 .The screenshot shows (*1*) the *Path* property and (*2*) the *Connector configuration* icon for the Listener.
 image::os-tutorial-studio7-listener-props.png[Listener properties]
