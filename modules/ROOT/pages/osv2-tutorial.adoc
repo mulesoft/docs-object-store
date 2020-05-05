@@ -353,7 +353,7 @@ The output is an echo:
 +
 . In Runtime Manager, in the details pane, click *Manage application*.
 +
-.The arrow shows *Manage application in the details pane in Runtime Manager.
+.The arrow shows *Manage application* in the details pane in Runtime Manager.
 image::os-tutorial-rtm-manage-app.png[Manage application in the details pane]
 . Click *Object Store* in the left navigation pane.
 . Click the object store, the partition, and then the key:
