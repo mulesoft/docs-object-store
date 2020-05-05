@@ -495,7 +495,7 @@ image::os-tutorial-studio6-http-props.png[HTTP properties in Studio 6]
 image::os-tutorial-studio6-json-props.png[JSON to Object properties in Studio 6]
 . In the canvas, click *ObjectStore*.
 . In the ObjectStore properties window:
-.. Set the *Operation* to *Store* and set these store operation values:
+.. Set the *Operation* to `Store` and set these store operation values:
 +
 * Set *Key* to `#[payload.key]`.
 * Set *Value Reference* to `#[payload.value]`.
