@@ -287,7 +287,7 @@ If you select the object store global element, the app uses the Mule runtime obj
 image::os-tutorial-studio7-store-flow-props.png[Name field in the Store flow properties window]
 . In the *Mule Palette* view, click *HTTP*, and then drag another *Listener* to the canvas below the first flow.
 . Click *ObjectStore*, and then drag the *Retrieve* operation to the right of the Listener in the second flow.
-. In the canvas, click the *Listener*.
+. In the canvas, click *Listener*.
 . In the Listener properties window, set *General > Path* to `/retrieve`.
 . In the *Connector configuration* menu, select the same *HTTP_Listener_config* option that you set up for the Store Listener:
 +
