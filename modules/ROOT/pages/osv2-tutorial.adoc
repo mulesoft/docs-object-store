@@ -244,7 +244,7 @@ To configure a Mule 4 app in Studio 7:
 .The arrow shows the *Exchange* icon in the Studio 7 toolbar.
 image::os-tutorial-studio7-exchange.png[Exchange icon in the Studio 7 toolbar]
 .. Enter your Anypoint Platform username and password, if prompted.
-.. In Exchange, select *Provided by MuleSoft*, and then search for the ObjectStore Connector:
+.. In Exchange, select *Provided by MuleSoft* and then search for the ObjectStore Connector:
 +
 .The screenshot shows (*1*) the *Provided by MuleSoft* option and (*2*) the search field.
 image::os-tutorial-exchange.png[Provided by MuleSoft option and search field in Exchange]
