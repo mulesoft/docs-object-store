@@ -188,7 +188,7 @@ image::os-tutorial-dc-http-search.png[Search for the HTTP Listener]
 image::os-tutorial-dc-http-retrieve-path.png[Path value and Close button]
 +
 Because the default settings for HTTP Listener are correct, you don't need to click *Edit*.
-. Rename this new flow to Retrieve.
+. Rename this new flow to `Retrieve`.
 . Click the plus icon (+) to the right of the HTTP Listener trigger to add an Object Store Connector.
 . In the *Select a component* window, enter `ob` to search for the ObjectStore Connector:
 +
