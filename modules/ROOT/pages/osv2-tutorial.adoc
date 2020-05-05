@@ -237,7 +237,7 @@ Then, you deploy the app to CloudHub and use a `curl` command to send a key and 
 
 To configure a Mule 4 app in Studio 7:
 
-. Start Studio, click *File* > *New* > *Mule Project*, and then name the project `osv2-demo`, and then click *Finish*.
+. Start Studio, click *File* > *New* > *Mule Project*, name the project `osv2-demo`, and then click *Finish*.
 . Install Object Store Connector:
 .. Click the *Exchange* icon in the toolbar:
 +
