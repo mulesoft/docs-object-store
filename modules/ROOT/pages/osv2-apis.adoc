@@ -4,15 +4,15 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: osv2, os2, object store, store, rest, apis
 
-Anypoint Object Store v2 (Object Store v2) provides a REST API that lets you get and store `key,list` values.
+Anypoint Object Store v2 (Object Store v2) provides a REST API that enables you to get and store key-value pairs.
 
 An object store works with a single application to temporarily store application data.
 To authenticate access, you need the client ID and client secret for the application, which Object Store
 displays in the Runtime Manager in Anypoint Platform.
-
-See xref:osv2-faq.adoc#how-long-can-data-persist-in-object-store-v2[How long can data persist in Object Store v2?] The maximum number of keys you can obtain in each GET operation is 25.
-
 See <<View the App Client ID and Secret>>.
+
+The maximum number of keys you can obtain in each GET operation is 25.
+
 
 == Object Store v2 Operations
 
