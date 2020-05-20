@@ -41,9 +41,13 @@ For an example of entry availability, if you had 50 entries and 5 workers, all 5
 
 == How can one Mule app access the object store of another app?
 
-To share data between Mule 4 apps using Object Store v2, create a flow to retrieve the data using the Retrieve operation in the Object Store Connector for Mule 4.
+Using Object Store v2, a Mule 4 app can access another Mule 4 app using the Object Store Connector for Mule 4.
+However, the app can't retrieve the value of the key because it an internal Mule class that is stored as binary.
+To share data between two Mule 4 apps, use a queue in xref:mq::index.adoc[Anypoint MQ].
+For information about object store limitations, see xref:connectors::object-store/object-store-connector.adoc#object-store-limitations[Object Store Limitations].
 
-In Mule 3, use the https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Object Store v2 REST API] to read from one app and store to another.
+For Mule 3 apps, the key values are stored as type string,
+so you can use the https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Object Store v2 REST API] to read from one app and store to another.
 
 
 == What are the limits on an object store?
