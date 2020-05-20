@@ -133,6 +133,9 @@ image::osv2-ui.png[]
 you can delete a partition or the store itself by hovering and clicking the trash
 can icon.
 
+[NOTE]
+Object Store v2 provides persistent storage of objects with a time to live (TTL) of 30 days.
+
 == See Also
 
 * xref:osv2-faq.adoc#how-long-can-data-persist-in-object-store-v2[How long can data persist in Object Store v2?]
