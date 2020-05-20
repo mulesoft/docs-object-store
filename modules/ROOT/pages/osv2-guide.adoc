@@ -133,7 +133,7 @@ image::osv2-ui.png[]
 you can delete a partition or the store itself by hovering and clicking the trash
 can icon.
 
-[Note]
+[NOTE]
 Object Store provides persistent storage of objects with a time to live (TTL) of 30 days.
 
 == See Also
