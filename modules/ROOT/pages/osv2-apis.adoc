@@ -4,22 +4,21 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: osv2, os2, object store, store, rest, apis
 
-Anypoint Object Store v2 (Object Store v2) provides a REST API that enables you to get and store key-value pairs.
+Anypoint Object Store v2 (Object Store v2) provides a REST API that lets you get and store `key,list` values.
 
 An object store works with a single application to temporarily store application data.
 To authenticate access, you need the client ID and client secret for the application, which Object Store
 displays in the Runtime Manager in Anypoint Platform.
+
+See xref:osv2-faq.adoc#how-long-can-data-persist-in-object-store-v2[How long can data persist in Object Store v2?] The maximum number of keys you can obtain in each GET operation is 25.
+
 See <<View the App Client ID and Secret>>.
-
-The maximum number of keys you can obtain in each GET operation is 25.
-
 
 == Object Store v2 Operations
 
 The Object Store connector reads and writes in the `key,value` format; whereas Object Store v2 API reads and writes `key,list` values.
 
-[NOTE]
-If an application writes to an object store using the REST interface and reads with the
+*Note:* If an application writes to an object store using the REST interface and reads with the
 Mule 3 object store connector from the same key, the read can only retrieve the value at element 0 of
 the list. Therefore, when using the REST API, only use the API for writing and reading content
 from the Object Store. Alternatively, you can use the API to only write to index 0. This limitation does
@@ -34,9 +33,7 @@ The following table compares the Object Store REST API operations to Object Stor
 |POST |
 
 * Object Store:
-** TTL, in seconds, for the object store.
-+
-The default and maximum TTL is 2,592,000 seconds (30 days). See xref:osv2-faq.adoc#how-long-can-data-persist-in-object-store-v2[How long can data persist in Object Store v2?]
+** TTL in seconds for the object store - by default the TTL is 2,592,000 seconds (30 days). See xref:osv2-faq.adoc#how-long-can-data-persist-in-object-store-v2[How long can data persist in Object Store v2?]
 ** Persistence property.
 ** Usage limits for each application or environment, includes options for limiting based on keys or size and how to enforce them.
 * Key and list (item) value.
@@ -218,7 +215,6 @@ The output has values similar to:
 
 == See Also
 
-* xref:osv2-faq.adoc#how-long-can-data-persist-in-object-store-v2[How long can data persist in Object Store v2?] 
 * https://anypoint.mulesoft.com/apiplatform/repository/v2/organizations/68ef9520-24e9-4cf2-b2f5-620025690913/public/apis/16510/versions/17620/files/root[Object Store v2 api.raml]
 * https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Object Store v2 API in Anypoint Exchange]
 * https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Object Store v2 Stats API in Anypoint Exchange]
