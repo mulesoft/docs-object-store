@@ -18,7 +18,8 @@ See <<View the App Client ID and Secret>>.
 
 The Object Store connector reads and writes in the `key,value` format; whereas Object Store v2 API reads and writes `key,list` values.
 
-*Note:* If an application writes to an object store using the REST interface and reads with the
+[NOTE]
+If an application writes to an object store using the REST interface and reads with the
 Mule 3 object store connector from the same key, the read can only retrieve the value at element 0 of
 the list. Therefore, when using the REST API, only use the API for writing and reading content
 from the Object Store. Alternatively, you can use the API to only write to index 0. This limitation does
