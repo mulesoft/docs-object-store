@@ -46,7 +46,7 @@ image::os-use-object-store-v2.png[Click Use Object Store V2 in the Runtime Manag
 * For Object Store v2 region availability see xref:osv2-faq.adoc#where-is-object-store-v2-available[Where is Object Store v2 available?]
 * The Object Store Connector works for both Object Store version 1 and 2.
 * Object Store v2 enforces a maximum data persistence of 30 days from time of creation.
-* The free Object Store version 1 limits usage to 10 transactions per second (TPS) per application.
+* The free Object Store v2 limits usage to 10 transactions per second (TPS) per application.
 +
 Premium add-on users are allowed up to 100 TPS per app.
 +
