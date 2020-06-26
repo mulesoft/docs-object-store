@@ -1,0 +1,47 @@
+= View Usage Graphs
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[]
+:imagesdir: ../assets/images/
+:keywords: osv2, os2, object store, store, usage
+
+
+You can view a chart indicating how many API requests have been consumed.
+
+* Every API call (via the connector or API) to Object Store v2 counts as one API request.
++
+All requests to the broker API, such as creating and deleting objects, are counted against the quota.
+* Up to 100 KB of object-payload data can be transferred in a single API call,
+which bills as one request.
+* Each additional 100 KB of payload data is charged as an additional API request. 
+* Monthly billing usage information is delayed by 24 hours.
+
+//Shared Usage Overage 
+include::partial$osv2-faq.adoc[tag=faqUsageOverage]
+
+== Access Object Store Usage
+
+To view Object Store usage:
+
+. Log in to Anypoint Platform.
+. Click *Access Management* in the left navigation bar or the main Anypoint Platform page.
+. Click *Object Store* in the *SUBSCRIPTION* section:
++
+.The arrow shows the *Object Store* option on the *Access Management* page.
+image::os-access-mgmt-subscription.png[Object Store option on the Access Management page]
++
+. Click a chart duration value of *6m* (six months, default), *1y* (one year), or *2y* (two years):
++
+image::os-access-mgmt-usage-chart.png[Object Store Usage page, including API requests]
++
+* (*1*) The duration value
+* (*2*) The number of API requests per month
+* (*3*) The percentage and amount of your license that you have used
++
+The circle graph changes to red as your usage approaches your license limits:
++
+image::os-access-mgmt-requests-color.png[Object Store API license limits]
+
+== See Also
+
+* xref:osv2-faq.adoc[Object Store FAQ]

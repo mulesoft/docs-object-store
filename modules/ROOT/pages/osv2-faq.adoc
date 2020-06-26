@@ -19,13 +19,19 @@ Mule 3.8.5 and above, and all 4.x versions.
 
 ====
 
+== How can I see usage data?
+
+To view API request data, see xref:osv2-usage.adoc[View Usage Graphs].
+ 
 == What happens when the transaction limit for my subscription is reached?
 
 An Object Store v2 subscription pack allows up to 100 million transactions per month for an Anypoint Platform organization. This limit is applied across all Production and non-Production environments.
 You can use the https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Object Store v2 Stats API] to monitor usage.
 
-When the transaction limit is reached, Object Store v2 continues to work.
-MuleSoft contacts your organization to increase your plan.
+
+//Shared Usage Overage 
+include::partial$osv2-faq.adoc[tag=faqUsageOverage]
+
 
 == Is Object Store v2 persistent in the same region as the worker?
 
