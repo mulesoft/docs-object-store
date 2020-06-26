@@ -1,4 +1,4 @@
-= About Object Store V2
+= About Object Store v2
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
@@ -62,6 +62,7 @@ For CloudHub applications using Mule 3, Object Store v2 overrides the `_defaultU
 * xref:release-notes::object-store/anypoint-osv2-release-notes.adoc[Object Store v2 Release Notes]
 * xref:osv2-guide.adoc[Use Object Store v2]
 * xref:osv2-tutorial.adoc[Tutorial: Object Store v2]
+* xref:osv2-usage.adoc[View Usage Graphs]
 * xref:osv2-apis.adoc[REST API: Object Store v2]
 * xref:3.9@mule-runtime::object-store-connector.adoc[Mule 3 Object Store Connector]
 * https://blogs.mulesoft.com/dev/anypoint-platform-dev/data-synchronizing-made-easy-with-mule-watermarks/[Object Store Watermarks]

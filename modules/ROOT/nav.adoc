@@ -4,3 +4,4 @@
 * xref:osv2-tutorial.adoc[Tutorial: Object Store v2]
 * xref:osv2-apis.adoc[REST API: Object Store v2]
 * xref:osv2-faq.adoc[Object Store FAQ]
+* xref:osv2-usage.adoc[View Usage Graphs]
