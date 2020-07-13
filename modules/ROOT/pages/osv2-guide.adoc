@@ -100,7 +100,7 @@ image::os-rtm-key-in-os.png[Object Store option, key, and value in Runtime Manag
 The columns show the Object Store name, partition name, key, and key data.
 The partition groups the object store keys.
 +
-The `TestKey01` key that you sent from `curl` appears in the object store with the value of `[binary value] BINARY`.
+The `TestKey01` key that you sent from `curl` appears in the object store with the value `[binary value] BINARY`.
 The value is binary because Mule 4 wraps values in a Mule object, which causes
 them to be visible only as binary in Anypoint Platform.
 +
