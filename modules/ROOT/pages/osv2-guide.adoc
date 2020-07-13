@@ -3,141 +3,120 @@ ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 
-Anypoint Object Store v2 (Object Store v2) lets you share data and states across Mule runtime workers within a single application.
+Anypoint Object Store v2 (Object Store v2) enables you to share data and states across Mule runtime workers within a single application.
 
-Object Store v2 is enabled by default in the Anypoint Platform EU Control Plane and in Mule 4.
-
-In Mule 3, enable Object Store v2 from *Anypoint Platform > Runtime Manager* for each application you want to access Object Store v2.
+Object Store v2 is enabled by default in Mule 4 and in Anypoint Platform EU Control Plane.
+In Mule 3, enable Object Store v2 from *Anypoint Platform > Runtime Manager* for applications that you want to access Object Store v2.
 
 == Components
 
 Object Store v2 interacts with these components:
 
-* Object Store Connector
+* Anypoint Connector for Object Store (Object Store Connector)
 +
-Use with Anypoint Studio to construct flows to write to and read from the
-object store. You can install the Object Store connector using Anypoint
-Exchange from within Anypoint Studio. After installed, search Studio
-for `objectstore`. The Object Store connector works with both
-Object Store version 1 and version 2. Use Studio to create an application
-that you deploy to Runtime Manager where the application runs and serves
-requests to read to and write from the object store.
+Use Object Store Connector with Anypoint Studio to construct flows to write to and read from the object store.
 +
-The Object Store Reference field for Object Store Connector (`objectStore-ref` element in XML) must
-be set to `_defaultUserObjectStore` for data to appear in Object Store v2.
+Object Store Connector works with both Object Store version 1 and version 2.
++
+To use Object Store v2 with Mule 4 apps, do not select an object store global element from the *Object store* menu.
+If you select the object store global element, the app uses the Mule runtime object store, rather than Object Store v2.
 +
 * REST API
 +
-The https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Object Store v2 API] lets you create and delete objects, set TTL (time to live) for objects, and set usage limits.
+The Object Store v2 API enables you to create and delete objects, set TTL (time to live) for objects, and set usage limits.
 +
-The https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Object Store v2 Stats API] enables you to retrieve Object Store v2 usage statistics, such as how many API calls per month your organization makes to Object Store.
+The Object Store v2 Stats API enables you to retrieve Object Store v2 usage statistics,
+such as how many API calls per month your organization makes to Object Store.
 
-
-* Runtime Manager
+* Anypoint Runtime Manager
 +
-When you enable Object Store v2, the *Runtime Manager > Application Data* setting changes its label to *Object Store*. From the object store interface, you can administer objects and their values in the object store. The interface also lets you delete object store objects.
+When you enable Object Store v2, the *Runtime Manager > Application Data* option changes to *Object Store*.
+From the *Object Store* page, you can manage objects and their values in the object store.
 
-=== About Protecting Object Store Data
+=== Protect Object Store Data
 
-Object Store v2 uses TLS for secure transport. Data at rest is stored using FIPS 140-2 compliant encryption standards. If you require a higher level of security, we recommend that you encrypt sensitive data before writing it to the Object Store.
+Object Store v2 uses TLS for secure transport.
+Data at rest is stored using FIPS 140-2-compliant encryption standards.
+If you require a higher level of security, encrypt sensitive data before writing it to the object store.
 
-== Install the Object Store Connector
+== Add Object Store Connector to Your Mule 4 Project
 
-. In Anypoint Studio, click the Exchange icon in the Studio task bar.
-. Click Login in Anypoint Exchange.
-. Search for the "objectstore connector", choose the version of the connector for Mule 3 or Mule 4, and click Install.
-. Follow the prompts to install the connector.
+Install Object Store Connector to add it to a Mule project:
+
+. In Studio, create a Mule project.
+. In the *Mule Palette* view, click *(X) Search in Exchange*.
+. In *Add Dependencies to Project*, enter `Object Store` in the search field.
+. In *Available modules*, click *ObjectStore Connector - Mule 4* and click *Add*.
+. Click *Finish*.
 
 == Use Object Store Connector in an Application
 
-*Note:* The information that follows applies only to Mule 3.
-
-. In Anypoint Studio, click *File > New > Mule Project*.
-. Create a simple flow such as the following:
+. In Studio, create a simple flow such as the following:
 +
+--
+.The screenshot shows (*1*) the *Listener* operation and (*2*) the *Store* operation in the *os-Simple-Flow* flow.
+image::os-studio7-flow.png[Listener and Store operations in Studio]
+
 [%headers,cols="25a,75a"]
 |===
-|Building Block |*Parameters*
-|HTTP connector |Click the green plus sign +
-*Host* = `All interfaces [0.0.0.0] (Default)` +
-*Port* = `8081` +
-Click *OK* +
-*Path* = `/store` +
-*Allowed Methods* = `POST`
-|Object to String |No settings (use defaults)
-|JSON to Object | Return Class = `java.util.Map`
-|Object Store connector |Click the green plus sign. +
-Set the *Partition* field. +
-Set the *Object Store Reference* field to `_defaultUserObjectStore`. This is mandatory for
-data to be stored in Object Store v2. +
-Click *OK*. +
-Set *Operation* = *Store* +
-*Key* = `&#x0023;[payload.key]` +
-*Value Reference* = `&#x0023;[payload.value]`
-|Set Payload |*Settings* = `KEY: &#x0023;[payload.key] AND VALUE: &#x0023;[payload.value] WERE SAVED OK`
+|Connector |Parameters
+|HTTP Listener|
+*Connector configuration* = HTTP_Listener_config
+*Path* = `/store`
+|Object Store |
+*Key* = `#[payload.key]` +
+*Value* = `[payload.value]`
 |===
-+
-When complete, the flow appears:
-+
-image::osv2-studio-flow.png[]
-+
-. Save the application. Test run the application so you know it works. Right-click the canvas and click *Run project <name>*. If the application starts successfully, you can stop it. Right-click the canvas and click *Stop project <name>*.
-. Right-click your application’s name in Anypoint Studio’s Package Explorer and click *Anypoint Platform > Deploy to Cloud*.
-. At the User login window, specify your Anypoint Platform username and password, and click *Sign In*. If you don’t have an Anypoint Platform login, click *Sign Up*.
-. In Runtime Manager:
-+
-** Give the application a name. Each name is unique and becomes the URL under which your application
-is stored in Runtime Manager. The URL is in the form `<application_name>.cloudhub.io`. Ensure the application name gets a green checkmark for proper naming and being unique.
-** Set the Runtime version to Mule 3.8.5 and later, or to any Mule 4.x version.
-** Click the Use Object Store v2 checkbox.
-. After configuring your application, click Deploy Application.
-. Runtime Manager prompts you to ensure you want to make this choice.
-. Start your application.
-
-The *Application Data* label in the Runtime Manager navigation bar on the left side of the screen changes to *Object Store*.
-
+--
+. Save the application.
+. Right-click the application name in *Package Explorer* and select *Anypoint Platform > Deploy to CloudHub*.
+. If prompted, sign in to Anypoint Platform.
+. Click *Deploy Application* and click *Open in Browser*.
+. In Runtime Manager, click the *Status* column for your application.
+. In the details pane, copy the *App url* address.
 
 == Send Data to an Object Store
 
-From a command line prompt, send JSON data to your Mule application using a curl command or similar.
-If you prefer, you can use Postman, a browser extension or other tool instead of the command line.
-For Windows, you can use Postman, curl, or cygwin.
-
-For example:
+From a command line prompt, send JSON data to your Mule application using a `curl` command:
 
 ----
-curl -X POST -H "Content-Type: application/json" -d '{ "key": "TestKey01", "value": "This is an object store test" }' "http://application_name.cloudhub.io/store"
+curl -X POST -H "Content-Type: application/json" -d '{ "key": "TestKey01", "value": "Testing" }' "http://app-url/store"
 ----
 
-Change `application_name` to the name you chose when you deployed your application. Each time you submit this command, change the key's name so that each key is unique.
+Change `app-url` to the name you copied from *App url* in Runtime Manager. 
 
 == View Data in an Object Store
 
-To view data in the Object Store:
+To view data in an object store:
 
-. Log into Anypoint Platform and click *Runtime Manager*.
-. Click the name of your application to view the application's dashboard.
-. Click *Object Store* from the left navigation bar:
+. In Runtime Manager, click the name of your application to view the dashboard.
+. Click *Object Store* in the left navigation pane.
+. Click the object store, the partition, and then the key:
 +
-image::osv2-in-nav-bar.png[]
+.The screenshot shows (*1*) the object store, (*2*) the key, and (*3*) the value in the object store.
 +
-The Object Store user interface appears as follows:
+image::os-rtm-key-in-os.png[Object Store option, key, and value in Runtime Manager]
 +
-image::osv2-ui.png[]
+The columns show the object store name, partition name, key, and key data.
+The partition groups the object store keys.
 +
-* The default Object Store name is `DEFAULT_USER_STORE`.
-* The columns show the Object Store name, partition name, key, and key data. The partition groups object stores keys.
+The `TestKey01` key that you sent from `curl` appears in the object store with the value `[binary value] BINARY`.
+The value is binary because Mule 4 wraps values in a Mule object, which causes
+them to be visible only as binary in Anypoint Platform.
 +
-. Click the Object Store name, partition name, and key to view its value.
-. To delete a key, hover over a key name, and click the trash can icon. Similarly,
-you can delete a partition or the store itself by hovering and clicking the trash
-can icon.
+. To delete a key, hover over a key name and click the trash can icon.
++
+Similarly, you can delete a partition or the store itself by hovering over and clicking the trash can icon.
 
 [NOTE]
 Object Store v2 provides persistent storage of objects with a time to live (TTL) of 30 days.
 
+The tutorial provides more detailed information about creating object stores in Mule 3 and Mule 4 applications. 
+
 == See Also
 
+* xref:osv2-tutorial.adoc[Tutorial: Object Store v2]
 * xref:osv2-faq.adoc#how-long-can-data-persist-in-object-store-v2[How long can data persist in Object Store v2?]
-* xref:osv2-apis.adoc[Object Store v2 REST API]
+* https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Object Store v2 API]
+* https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Object Store v2 Stats API]
 * xref:release-notes::object-store/anypoint-osv2-release-notes.adoc[Object Store v2 Release Notes]

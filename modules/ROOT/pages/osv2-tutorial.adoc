@@ -273,7 +273,6 @@ image::os-tutorial-studio7-listener-props.png[Listener properties]
 .The screenshot shows (*1*) the *Key* field and (*2*) the *Value* field for the Store operation.
 image::os-tutorial-studio7-store-props.png[Key and Value fields for the Store operation]
 +
-+
 [IMPORTANT]
 --
 To use Object Store v2 with Mule 4 apps, do not select an object store global element from the *Object store* menu.
@@ -354,9 +353,9 @@ image::os-tutorial-rtm-manage-app.png[Manage application in the details pane]
 . Click *Object Store* in the left navigation pane.
 . Click the object store, the partition, and then the key:
 +
-.The screenshot shows (*1*) the object store, (*2*) the key, and (*3*) the value in the object store.
+.The screenshot shows (*1*) the *Object Store* option, (*2*) the key, and (*3*) the value in the object store.
 +
-image::os-tutorial-rtm-key-in-os.png[Key and value in the object store in Runtime Manager]
+image::os-tutorial-rtm-key-in-os.png[Object Store option, key, and value in Runtime Manager]
 +
 The `myKey` key that you sent from `curl` appears in the object store with the value of `[binary value] BINARY`.
 The value is binary because Mule 4 wraps values in a Mule object, which causes
