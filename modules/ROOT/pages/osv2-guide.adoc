@@ -106,7 +106,7 @@ them to be visible only as binary in Anypoint Platform.
 +
 . To delete a key, hover over a key name and click the trash can icon.
 +
-Similarly, you can delete a partition or the store itself by hovering and clicking the trash can icon.
+Similarly, you can delete a partition or the store itself by hovering over and clicking the trash can icon.
 
 [NOTE]
 Object Store v2 provides persistent storage of objects with a time to live (TTL) of 30 days.
