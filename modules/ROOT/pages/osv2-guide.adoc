@@ -104,7 +104,7 @@ The `TestKey01` key that you sent from `curl` appears in the object store with t
 The value is binary because Mule 4 wraps values in a Mule object, which causes
 them to be visible only as binary in Anypoint Platform.
 +
-. To delete a key, hover over a key name, and click the trash can icon.
+. To delete a key, hover over a key name and click the trash can icon.
 +
 Similarly, you can delete a partition or the store itself by hovering and clicking the trash can icon.
 
