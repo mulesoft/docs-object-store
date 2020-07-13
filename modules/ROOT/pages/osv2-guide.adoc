@@ -77,7 +77,7 @@ image::os-studio7-flow.png[Listener and Store operations in Studio]
 
 == Send Data to an Object Store
 
-From a command line prompt, send JSON data to your Mule application using a curl command:
+From a command line prompt, send JSON data to your Mule application using a `curl` command:
 
 ----
 curl -X POST -H "Content-Type: application/json" -d '{ "key": "TestKey01", "value": "Testing" }' "http://app-url/store"
