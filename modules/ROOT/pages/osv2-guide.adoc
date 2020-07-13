@@ -37,7 +37,7 @@ From the *Object Store* page, you can manage objects and their values in the obj
 
 Object Store v2 uses TLS for secure transport.
 Data at rest is stored using FIPS 140-2-compliant encryption standards.
-If you require a higher level of security, encrypt sensitive data before writing it to the Object Store.
+If you require a higher level of security, encrypt sensitive data before writing it to Object Store.
 
 == Add Object Store Connector to Your Mule 4 Project
 
