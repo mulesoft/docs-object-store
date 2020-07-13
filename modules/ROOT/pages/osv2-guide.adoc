@@ -37,7 +37,7 @@ From the *Object Store* page, you can manage objects and their values in the obj
 
 Object Store v2 uses TLS for secure transport.
 Data at rest is stored using FIPS 140-2-compliant encryption standards.
-If you require a higher level of security, encrypt sensitive data before writing it to Object Store.
+If you require a higher level of security, encrypt sensitive data before writing it to the object store.
 
 == Add Object Store Connector to Your Mule 4 Project
 
@@ -54,7 +54,7 @@ Install Object Store Connector to add it to a Mule project:
 . In Studio, create a simple flow such as the following:
 +
 --
-.The screenshot shows (*1*) the *Listener* and *Store* operations in the *os-Simple-Flow* flow.
+.The screenshot shows (*1*) the *Listener* operation and (*2*) the *Store* operation in the *os-Simple-Flow* flow.
 image::os-studio7-flow.png[Listener and Store operations in Studio]
 
 [%headers,cols="25a,75a"]
@@ -87,7 +87,7 @@ Change `app-url` to the name you copied from *App url* in Runtime Manager.
 
 == View Data in an Object Store
 
-To view data in the Object Store:
+To view data in an object store:
 
 . In Runtime Manager, click the name of your application to view the dashboard.
 . Click *Object Store* in the left navigation pane.
@@ -97,7 +97,7 @@ To view data in the Object Store:
 +
 image::os-rtm-key-in-os.png[Object Store option, key, and value in Runtime Manager]
 +
-The columns show the Object Store name, partition name, key, and key data.
+The columns show the object store name, partition name, key, and key data.
 The partition groups the object store keys.
 +
 The `TestKey01` key that you sent from `curl` appears in the object store with the value `[binary value] BINARY`.
