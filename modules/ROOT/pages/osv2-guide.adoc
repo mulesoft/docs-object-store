@@ -18,7 +18,7 @@ Use Object Store Connector with Anypoint Studio to construct flows to write to a
 +
 Object Store Connector works with both Object Store version 1 and version 2.
 +
-To use Object Store v2 with Mule 4 apps, do not select an object store global element from the Object store menu.
+To use Object Store v2 with Mule 4 apps, do not select an object store global element from the *Object store* menu.
 If you select the object store global element, the app uses the Mule runtime object store, rather than Object Store v2.
 +
 * REST API
