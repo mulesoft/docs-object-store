@@ -5,7 +5,7 @@ endif::[]
 
 Anypoint Object Store v2 (Object Store v2) enables you to share data and states across Mule runtime workers within a single application.
 
-Object Store v2 is enabled by default in Mule 4 and in the Anypoint Platform EU Control Plane.
+Object Store v2 is enabled by default in Mule 4 and in Anypoint Platform EU Control Plane.
 In Mule 3, enable Object Store v2 from *Anypoint Platform > Runtime Manager* for applications that you want to access Object Store v2.
 
 == Components
