@@ -44,7 +44,7 @@ If you require a higher level of security, encrypt sensitive data before writing
 Install Object Store Connector to add it to a Mule project:
 
 . In Studio, create a Mule project.
-. In the Mule Palette view, click *(X) Search in Exchange*.
+. In the *Mule Palette* view, click *(X) Search in Exchange*.
 . In *Add Dependencies to Project*, enter `Object Store` in the search field.
 . In *Available modules*, click *ObjectStore Connector - Mule 4* and click *Add*.
 . Click *Finish*.
