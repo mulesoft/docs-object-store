@@ -79,8 +79,17 @@ For this reason, data access time is the same, whether you store keys in one par
 
 == How long can data persist in Object Store v2?
 
-Object Store v2 data persists 30 days. The expiry time is reset if an update to that key occurs. If there is no update, the key is deleted at the 30 day mark.
+The maximum TTL (time to live) is 2,592,000 seconds (30 days).
 
+* If you set the TTL in the app, the data persists for the time specified. 
+* If you don't set the TTL in the app, the TTL depends on data access:
++
+** If the data is accessed at least once a week in the 30 days after key creation, the TTL is extended for an additional 30 days from the current expiration date.
++
+As long as the data continues to be accessed once a week, it is not evicted.
+** If the data is not accessed at least once a week, it is evicted in the next 7 to 30 days. 
+
+Specify the TTL in the global configuration parameters for the connector.
 
 == Where is the Object Store v2 REST API portal?
 
