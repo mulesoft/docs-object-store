@@ -108,8 +108,6 @@ them to be visible only as binary in Anypoint Platform.
 +
 Similarly, you can delete a partition or the store itself by hovering over and clicking the trash can icon.
 
-[NOTE]
-Object Store v2 provides persistent storage of objects with a time to live (TTL) of 30 days.
 
 The tutorial provides more detailed information about creating object stores in Mule 3 and Mule 4 applications. 
 
