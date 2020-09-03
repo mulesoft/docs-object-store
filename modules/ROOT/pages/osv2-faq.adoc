@@ -81,15 +81,21 @@ For this reason, data access time is the same, whether you store keys in one par
 
 The maximum TTL (time to live) is 2,592,000 seconds (30 days).
 
-* If you set the TTL in the app, the data persists for the time specified. 
-* If you don't set the TTL in the app, the TTL depends on data access:
-+
-** If the data is accessed at least once a week in the 30 days after key creation, the TTL is extended for an additional 30 days from the current expiration date.
-+
-As long as the data continues to be accessed once a week, it is not evicted.
-** If the data is not accessed at least once a week, it is evicted in the next 7 to 30 days. 
+The `entryTtl` value, specified in the global configuration parameters for the connector,
+determines when to evict key-value pairs from the store.
 
-Specify the TTL in the global configuration parameters for the connector.
+If the app doesn't specify a value for `entryTtl`, the default value depends on the Mule version.
+
+* Mule version 4.2.x, 4.3.0, and later:
++
+Object stores have a _rolling TTL_ by default.
+If the data is accessed at least once a week, the TTL is extended for 30 days.
+Otherwise, it is evicted in the next 7 to 30 days.
+[NOTE]
+Rolling TTL is available for both new and existing apps using Mule version 4.2.x, 4.3.0, and later.
+* Mule versions earlier than 4.2.1:
++
+Object stores have a TTL of 30 days by default.
 
 == Where is the Object Store v2 REST API portal?
 

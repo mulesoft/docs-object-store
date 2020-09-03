@@ -37,7 +37,8 @@ The following table compares the Object Store REST API operations to Object Stor
 +
 ** TTL, in seconds, for the object store
 +
-The default and maximum TTL is 2,592,000 seconds (30 days). See xref:osv2-faq.adoc#how-long-can-data-persist-in-object-store-v2[How long can data persist in Object Store v2?]
+The maximum TTL is 2,592,000 seconds (30 days).
+For more information about TTL, see xref:osv2-faq.adoc#how-long-can-data-persist-in-object-store-v2[How long can data persist in Object Store v2?]
 ** Persistence property
 ** Usage limits for each application or environment, includes options for limiting based on keys or size and how to enforce them
 * Key and list (item) value
