@@ -88,8 +88,14 @@ The TTL can be either _rolling_ or _static_:
 
 Rolling::
 Accessing the data extends the TTL for 30 days.
++
+The minimum rolling TTL is 1 second.
+The maximum rolling TTL is unlimited as long as the data continues to be accessed.
 Static::
 The value of `entryTtl` determines when the data is evicted.
++
+The minimum static TTL is 1 second.
+The maximum (and default) static TTL is 2592000 seconds (30 days).
 
 If the app doesn't specify a value for `entryTtl`, the default value depends on the Mule version.
 
