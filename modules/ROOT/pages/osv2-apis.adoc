@@ -5,12 +5,27 @@ endif::[]
 :keywords: osv2, os2, object store, store, rest, apis
 
 The Object Store v2 APIs enable you to use REST to temporarily store and retrieve key-value pairs in a single
-application, and to retrieve Object Store usage statistics for your organization.
+application and to retrieve Object Store usage statistics for your organization.
 
 Object Store provides these APIs:
 
 * https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Object Store API]
 * https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Object Store Stats API]
+
+
+== Authenticate with the Object Store APIs 
+
+* Object Store API
++
+To authenticate with the Object Store API, use the client ID and client secret for the app to get a bearer token.
++
+See <<Get the Bearer Token for the App>>.
+* Object Store Stats API
++
+To authenticate with the Object Store Stats API, use the Anypoint username and password to get the access token.
++
+See <<Get the Access Token for the User>>.
+
 
 
 == Prerequisites 
@@ -20,97 +35,105 @@ Object Store provides these APIs:
 See xref:runtime-manager::deploying-to-cloudhub.adoc[Deploy to CloudHub].
 * <<Get the Environment ID,Get the environment ID>>.
 * <<Get the Organization ID,Get the organization ID>>.
-* <<Get the Client ID and Client Secret for the App,Get the client ID and client secret for the app>>.
-* <<Get the Bearer Token,Get the bearer token>>.
+* <<Get the Bearer Token for the App,Get the bearer token>>.
 * <<Get the Access Token for the User,Get the access token for the user>>.
 
+
 === Get the Environment ID
+
+You need the environment ID (ENV_ID) to access the Object Store API and retrieve usage metrics by environment with the Object Store Stats API.
 
 . Log into *Anypoint Platform > Access Management*.
 . Select  *Environments* and click the environment in which the application resides, such as *Production*.
 . Right-click the environment name to copy the URL, for example:
 +
-`+https://anypoint.mulesoft.com/accounts-spa/cs/core/environments/edit/5aa4f449-e1e8-4886-93d0-df4d50e7df21+`
+`+https://anypoint.mulesoft.com/accounts-spa/cs/core/environments/edit/5bb4f449-e1e7-4886-93d0-df4d50e8ef23+`
 +
-The last part of the URL is the environment ID, in this example, `5aa4f449-e1e8-4886-93d0-df4d50e7df21`
+The last part of the URL is the ENV_ID, in this case, `5bb4f449-e1e7-4886-93d0-df4d50e8ef23`.
 
 === Get the Organization ID
+
+You need the organization ID (ORG_ID) to retrieve a list of object stores using the Object Store API and retrieve usage metrics by organization with the Object Store Stats API.
 
 . Log into *Anypoint Platform > Access Management*.
 . Select *Organization* and click the organization name. 
 . Copy the *Organization ID* from the *Organization info* window.
 
 
-=== Get the Client ID and Client Secret for the App 
+=== Get the Bearer Token for the App 
 
-If you are the organization administrator for your Anypoint Platform account,
-you can view the client ID and client secret for the app from the *Object Store* menu:
+To authenticate with the Object Store API, you need the bearer token (BEARER_TOKEN) for the app. 
+To get the bearer token, you need the client ID (CLIENT_ID) and client secret (CLIENT_SECRET) for the app.
 
-. Log into *Anypoint Platform > Runtime Manager*.
-. Click an application that uses Object Store and click *Manage Application*.
+IS THIS TRUE: The default time to live (TTL) for the bearer token is 60 minutes.
+
+. Get the client ID and client secret for the app from the *Object Store* menu:
 +
-If the app is not yet associated with Object Store, click *Use Object Store v2* and apply changes.
-. Click *Object Store* in the left navigation area, and then click *Show Client Credentials*.
-. Click *Copy to Clipboard* and paste the client ID or client secret value into the curl application 
-that you use to authenticate the REST API.
+--
+.. Log into *Anypoint Platform > Runtime Manager*.
+.. Click an application that uses Object Store and click *Manage Application*.
++
+If the app is not associated with Object Store, click *Use Object Store v2* and apply changes.
 
-
-=== Get the Bearer Token
-
-With the client ID and secret for your app, you can get the bearer token using a curl command:
+.. Click *Object Store* in the left navigation area, and then click *Show Client Credentials*.
+.. Click *Copy to Clipboard* for *Client ID* and save it to replace CLIENT_ID.
+.. Click *Copy to Clipboard* for *Client Secret* and save it to replace CLIENT_SECRET.
+--
+. Get the bearer token:
++
+--
+Use this `curl` command to get the bearer token, replacing CLIENT_ID with the client ID and CLIENT_SECRET with the client secret that you copied from the *Object Store* page:
 
 [source,console,linenums]
 ----
 curl -X POST \
   https://anypoint.mulesoft.com/accounts/oauth2/token \
   -H 'Content-Type: application/x-www-form-urlencoded' \
-  -d 'client_id=CLIENT_ID_VALUE&client_secret=CLIENT_SECRET_VALUE&grant_type=client_credentials'
+  -d 'client_id=CLIENT_ID&client_secret=CLIENT_SECRET&grant_type=client_credentials'
 ----
-
-Replace CLIENT_ID_VALUE and CLIENT_SECRET_VALUE with the client ID and client secret that you copied from the *Object Store* page.
-
-The output appears as:
-
-[source,json,linenums]
-----
-{
-    "access_token": "42424242-5454-4242-5454-425442544254",
-    "token_type": "bearer"
-}
-----
-
-=== Get the Access Token for the User 
-
-To access the Stats API, you must first authenticate using the https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/[Anypoint Access Management API].
-
-To use the Stats API, you can get the access token, also known as the Bearer,
-for the Anypoint Platform user.
-The default time to live (TTL) for the access token is 60 minutes.
-
-////
-You can get the organization ID and environment ID in the `payload.txt` file that Anypoint Platform creates for any auditable action in Object Store. 
-See xref:access-management::audit-logging.adoc#to-query-audit-logging-for-anypoint-mq[MQ Audit Logging]. 
-////
-
-
-Use this `curl` command to get the access token:
-
-[source,bash]
-----
-curl -X POST -H "Content-Type: application/json" -d '{"username":"USERNAME", "password":"PASSWORD"}' https://anypoint.mulesoft.com/accounts/login
-----
-Replace USERNAME and PASSWORD with the username and password of the Anypoint Platform user. 
 
 This command returns output like the following:
 
 [source,json,linenums]
 ----
 {
-  "access_token": "42424242-4242-4242-4242-424242424242",
+  "access_token": "BEARER_TOKEN",
+  "token_type": "bearer"
+}
+----
+--
+. Use the value of BEARER_TOKEN to authenticate with the Object Store API.
+
+=== Get the Access Token for the User 
+
+To access the Object Store Stats API, you must first authenticate with the Anypoint Access Management API by getting the access token (ACCESS_TOKEN) for the Anypoint Platform user.
+
+The default time to live (TTL) for the access token is 60 minutes.
+
+To get the access token:
+. Use this `curl` command, replacing USERNAME and PASSWORD with the username and password of the Anypoint Platform user:
++
+--
+[source,console,linenums]
+----
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d '{"username":"USERNAME", "password":"PASSWORD"}' \
+  https://anypoint.mulesoft.com/accounts/login
+----
+
+This command returns output like the following:
+
+[source,json,linenums]
+----
+{
+  "access_token": "ACCESS_TOKEN",
   "token_type": "bearer",
   "redirectUrl": "/home/"
 }
 ----
+--
+. Use the value of ACCESS_TOKEN to authenticate with the Object Store Stats API. 
 
 
 == Object Store API  
@@ -132,7 +155,7 @@ The following table compares the Object Store REST API operations to Object Stor
 +
 By default the TTL is 2,592,000 seconds (30 days). 
 ** Persistence property
-** Usage limits for each application or environment, includes options for limiting based on keys or size and how to enforce them
+** Usage limits for each application or environment, including options for limiting based on keys or size and how to enforce them
 * Key and list (item) value
 
 |Store
@@ -162,8 +185,7 @@ By default the TTL is 2,592,000 seconds (30 days).
 |Remove
 |===
 
-*&#8224;* The Dual Store operation in Object Store Connector consists of two operations in which 
-the key and value are stored and then the values reversed.
+*&#8224;* The Dual Store operation in Object Store Connector consists of two operations: store the key and value, and then reverse the values.  
 The Dual Store operation acts the same as two Object Store v2 "Put item as String" calls to accomplish these results:
 
 . `objectStore.store(key, value);`
@@ -174,9 +196,8 @@ You can retrieve a maximum of 25 keys with each GET operation.
 === Limitations 
 
 If an application writes to an object store using the REST interface and reads with 
-Object Store Connector for Mule 3 from the same key, the read can retrieve only the value at element 0 of
-the list. 
-Therefore, when using the REST API, use the API for writing and reading content
+Object Store Connector for Mule 3 from the same key, the read can retrieve only the value at element 0. 
+Therefore, when using the REST API, use the API to write and read content
 from the object store.
 Alternatively, you can use the API to write only to index 0.
 
@@ -186,17 +207,19 @@ Anypoint Studio Object Store Connector.
 
 === Access the Object Store API
 
-. Set up an application such as Postman to access the object store.
+. Set up an application, such as Postman, to access the object store.
 . <<Get the Environment ID,Get the environment ID>>.
 . <<Get the Organization ID,Get the organization ID>>.
-. Configure the object store access URL:
+. <<Get the Bearer Token for the App,Get the bearer token for the app>>.
+. Configure the object store access URL, replacing ORG_ID with your organization ID and 
+ENV_ID with your environment ID.
 +
 --
-`_osBaseUrl_/api/v1/organizations/ORG_ID/environments/ENV_ID/stores/myTestStoreId/objects`
+`BASE_URL/api/v1/organizations/ORG_ID/environments/ENV_ID/stores/myTestStoreId/objects`
 
-Use the following domains for the value of `_osBaseUrl_` in the access URL:
+Depending on the deployment region, use the following domains for the value of BASE_URL in the access URL:
 
-*SHOULDN'T THESE MAP TO CH REGIONS?
+// *SHOULDN'T THESE MAP TO CH REGIONS?
 
 [%header,cols="20a,70a,10a"]
 |===
@@ -208,7 +231,6 @@ Use the following domains for the value of `_osBaseUrl_` in the access URL:
 | `object-store-ap-southeast-2.anypoint.mulesoft.com` | Asia Pacific (Sydney)
 | `object-store-ap-northeast-1.anypoint.mulesoft.com` |
 | `object-store-ca-central-1.anypoint.mulesoft.com` | Canada (Central)
-
 | `object-store-eu-west-2.eu1.anypoint.mulesoft.com` |
 | `object-store-sa-east-1.anypoint.mulesoft.com` |
 .2+|`prod-eu` | `object-store-eu-central-1.eu1.anypoint.mulesoft.com` |
@@ -222,13 +244,15 @@ the object store.
 
 === Example: Retrieve a List of Object Stores
 
-To view the list of object stores, submit the following command, replacing BEARER_TOKEN with your bearer token, ORG_ID with your organization ID, and ENV_ID with your environment ID:
+To view the list of object stores, submit a `curl` command like the following, 
+replacing BASE_URL with the deployment domain, BEARER_TOKEN with your bearer token, ORG_ID with your organization ID, 
+and ENV_ID with your environment ID:
 
 [source,console,linenums]
 ----
 curl -X GET \
-> -H 'authorization: bearer BEARER_TOKEN' \
-> 'https://object-store-us-east-1.anypoint.mulesoft.com/api/v1/organizations/ORG_ID/environments/ENV_ID/stores'
+-H 'authorization: bearer BEARER_TOKEN' \
+'https://BASE_URL/api/v1/organizations/ORG_ID/environments/ENV_ID/stores'
 ----
 
 This command returns output like the following:
@@ -247,192 +271,78 @@ This command returns output like the following:
 
 The Object Store Stats API enables you to retrieve statistics on your Object Store usage.
 
+The usage statistics are not real-time and might include latency.
+
+
 Use the Stats API to view your entire organization’s usage of Object Store for billing purposes:
 
 * Usage per environment
 * Usage per organization
 
-For more information, see the https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/minor/1.0/pages/home/[Object Store v2 Stats API] on Exchange.
+The request URL format is:
+
+`\https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID/environments/ENV_ID?startDate=...&endDate=...&period=...`
 
 
+=== Example: Retrieve Usage Metrics by Organization
 
-=== Retrieve Usage Metrics by Environment 
+To view Object Store usage statistics across the master business organization
+between July 11, 2020 and September 11, 2020,
+submit a `curl` command like the following, 
+replacing ORG_ID with your organization ID and BEARER-TOKEN with your bearer token:
 
-You can use the Stats API to report the usage for Object Store across all environments 
-for a particular organization. 
-The usage statistics are not real-time and might include latency.
 
-`/organizations/ORG_ID/environments/ENVIRONMENT_ID?startDate=...&endDate=...&period=...`
-
-The following is a sample request:
-
-[source,example,linenums]
-----
-https://anypoint.mulesoft.com/object-store/stats/api/v1/organizations/ORG_ID/environments/ENV_ID
-?startDate=Thursday, 5 Nov 2020 04:49:37 GMT
-&endDate=Sun, 8 Nov 2020 04:60:44 GMT
-&period=1day
-
-----
-This request returns a response like the following:
-
-[source,example,linenums]
-----
-[
-    {
-        "timestamp": "2020-11-05T00:00Z",
-        "apiRequestCount": 0,
-        "messageReceiptCount": 0,
-        "billableUnitCount": 0,
-        "messageByteCount": 0
-    }
-]
-----
-
-=== Retrieve Usage Metrics by Organization
-
-You can use the Stats API report the usage for Object Store across the master business organization:
-
-`/organizations/ORG_ID?startDate=...&endDate=...&period=...`
-
-The following is a sample request:
-
-[source,example,linenums]
-----
-https://anypoint.mulesoft.com/object-store/stats/api/v1/organizations/ORG_ID?
-?startDate=Thursday, 5 Nov 2020 04:49:37 GMT
-&endDate=Sun, 8 Nov 2020 04:60:44 GMT
-&period=1day
-----
-
-This request returns a response like the following:
-
-[source,example,linenums]
-----
-[
-    {
-        "timestamp": "2020-11-08T00:00Z",
-        "apiRequestCount": 0,
-        "messageReceiptCount": 0,
-        "billableUnitCount": 0,
-        "messageByteCount": 0
-    }
-]
-----
-
-=== Example: Object Store Stats API
-
-To access the Object Store Stats API, you must first authenticate using the https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/[Anypoint Access Management API].
-
-The following is an example request to list statistics for July 26 to July 28, 2020:
-
-[source,json,linenums]
+[source,console,linenums]
 ----
 curl -X GET \
-'https://anypoint.mulesoft.com/mq/stats/api/v1/organizations/ORG_ID/environments/ENV_ID/?startDate=Thu%2C%2026%20Jul%202020%2000%3A00%3A00%20GMT&endDate=Sat%2C%2028%20Jul%202020%2020%3A00%3A00%20GMT&period=600' \
-  -H 'authorization: Bearer BEARER_TOKEN' \
-  -H 'cache-control: no-cache' \
-  -H 'postman-token: ACCESS_TOKEN'
+  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID?startDate=2020-07-11T17%3A51%3A54.000Z&endDate=2020-09-11T17%3A51%3A54.000Z&period=1month' \
+  -H 'authorization: Bearer BEARER-TOKEN'
 ----
 
 This request returns a response like the following:
 
 [source,json,linenums]
 ----
-{
-  "destination": "myDestination",
-  "messages": [
-    {
-      "date": "2020-07-26T00:00:00.000+0000",
-      "value": 2126
-    },
-    {
-      "date": "2020-07-27T00:00:00.000+0000",
-      "value": 2126
-    },
-    {
-      "date": "2020-07-28T00:00:00.000+0000",
-      "value": 587
-    }
-  ],
-  "inflightMessages": [
-    {
-      "date": "2020-07-26T00:00:00.000+0000",
-      "value": 0
-    },
-    {
-      "date": "2020-07-27T00:00:00.000+0000",
-      "value": 0
-    },
-    {
-      "date": "2020-07-28T00:00:00.000+0000",
-      "value": 0
-    }
-  ],
-  "messagesVisible": [
-    {
-      "date": "2020-07-26T00:00:00.000+0000",
-      "value": 2126
-    },
-    {
-      "date": "2020-07-27T00:00:00.000+0000",
-      "value": 2126
-    },
-    {
-      "date": "2020-07-28T00:00:00.000+0000",
-      "value": 587
-    }
-  ],
-  "messagesSent": [
-    {
-      "date": "2020-07-26T00:00:00.000+0000",
-      "value": 0
-    },
-    {
-      "date": "2020-07-27T00:00:00.000+0000",
-      "value": 0
-    },
-    {
-      "date": "2020-07-28T00:00:00.000+0000",
-      "value": 0
-    }
-  ],
-  "messagesReceived": [
-    {
-      "date": "2020-07-26T00:00:00.000+0000",
-      "value": 0
-    },
-    {
-      "date": "2020-07-27T00:00:00.000+0000",
-      "value": 0
-    },
-    {
-      "date": "2020-07-28T00:00:00.000+0000",
-      "value": 0
-    }
-  ],
-  "messagesAcked": [
-    {
-      "date": "2020-07-26T00:00:00.000+0000",
-      "value": 0
-    },
-    {
-      "date": "2020-07-27T00:00:00.000+0000",
-      "value": 0
-    },
-    {
-      "date": "2020-07-28T00:00:00.000+0000",
-      "value": 0
-    }
-  ]
-}
+[
+ {"timeStamp":"2020-07-01T00:00:00Z","objectStoreRequestCount":0},
+ {"timeStamp":"2020-08-01T00:00:00Z","objectStoreRequestCount":38},
+ {"timeStamp":"2020-09-01T00:00:00Z","objectStoreRequestCount":28}
+]
 ----
+
+=== Example: Retrieve Usage Metrics by Environment 
+
+To view Object Store usage statistics for an environment between June 13, 2020 and September 13, 2020,
+submit a `curl` command like the following, 
+replacing ORG_ID with your organization ID, ENV_ID with your environment ID,
+and BEARER-TOKEN with your bearer token:
+
+
+[source,console,linenums]
+----
+curl -X GET \
+  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID/environments/ENV_ID?startDate=2020-06-13T17%3A51%3A54.000Z&endDate=2020-09-13T17%3A51%3A54.000Z&period=1month' \
+  -H 'authorization: Bearer BEARER-TOKEN'
+----
+
+This request returns a response like the following:
+
+[source,json,linenums]
+----
+[
+ {"timeStamp":"2020-06-01T00:00:00Z","objectStoreRequestCount":3},
+ {"timeStamp":"2020-07-01T00:00:00Z","objectStoreRequestCount":30},
+ {"timeStamp":"2020-08-01T00:00:00Z","objectStoreRequestCount":1},
+ {"timeStamp":"2020-09-01T00:00:00Z","objectStoreRequestCount":25}
+]
+----
+
 
 == Download Object Store APIs from Exchange 
 
 To download the Object Store APIs from Exchange, click *Download* and select the format to download: RAML, OAS, or as a connector file for Mule 3 or Mule 4:
 
-.The arrow shows *Download* in Exchange.
+.The arrow shows the *Download* button in Exchange.
 image::os-exchange-download.png[Download Object Store API in Exchange]
 
 
@@ -440,6 +350,7 @@ image::os-exchange-download.png[Download Object Store API in Exchange]
 
 * https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Object Store v2 API in Anypoint Exchange]
 * https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Object Store v2 Stats API in Anypoint Exchange]
+* https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/[Anypoint Access Management API]
 * xref:connectors::object-store/object-store-connector.adoc[Object Store Connector for Mule 4]
 * xref:3.9@mule-runtime::object-store-connector.adoc[Object Store Connector for Mule 3]
 * xref:osv2-faq.adoc#how-long-can-data-persist-in-object-store-v2[How long can data persist in Object Store v2?]
