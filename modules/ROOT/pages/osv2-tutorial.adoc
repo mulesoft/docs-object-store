@@ -95,6 +95,8 @@ image::os-tutorial-dc-store-select.png[Store operation]
 +
 .The screenshot shows (*1*) the *Key* field and (*2*) the *Value* field.
 image::os-tutorial-dc-store-values.png[Key and Value fields for the Store operation]
++
+The maximum number of characters in a key is 256.
 . Click *Test* to run the app in a temporary location.
 +
 The app starts running in a temporary environment:
@@ -272,6 +274,8 @@ image::os-tutorial-studio7-listener-props.png[Listener properties]
 +
 .The screenshot shows (*1*) the *Key* field and (*2*) the *Value* field for the Store operation.
 image::os-tutorial-studio7-store-props.png[Key and Value fields for the Store operation]
++
+The maximum number of characters in a key is 256.
 +
 [IMPORTANT]
 --
@@ -479,6 +483,8 @@ image::os-tutorial-studio6-json-props.png[JSON to Object properties in Studio 6]
 .. Set the *Operation* to `Store` and set these store operation values:
 +
 * Set *Key* to `#[payload.key]`.
++
+The maximum number of characters in a key is 256.
 * Set *Value Reference* to `#[payload.value]`.
 .. Click the green plus icon (+) to the right of *Connector Configuration*.
 .. In the ObjectStore Connector *Global Element Properties* window, set *Partition* to `myPartition` and *Object Store Reference* to `_defaultUserObjectStore`, and then click *OK*.

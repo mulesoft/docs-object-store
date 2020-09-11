@@ -70,6 +70,10 @@ Premium add-on users are allowed up to 100 TPS per app.
 
 In Object Store v2, there is no limit on the number of keys per app.
 
+== How many characters can a key have?
+
+The maximum number of characters in a key is 256.
+
 == What are the advantages of using partitions?
 
 You can use partitions to divide the object store into separate areas for your stored and retrieved keys.
