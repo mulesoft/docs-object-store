@@ -33,39 +33,108 @@ See <<Get the Access Token for the User>>.
 * Create an app that uses Object Store v2 and deploy it to CloudHub.
 +
 See xref:runtime-manager::deploying-to-cloudhub.adoc[Deploy to CloudHub].
-* <<Get the Environment ID,Get the environment ID>>.
+* Store a key-value pair in the object store. 
++
+See xref:osv2-guide.adoc#send-data-to-an-object-store[Send Data to an Object Store].
+* <<Get the Access Token for the Anypoint Platform User,Get the access token for the Anypoint Platform user>>.
 * <<Get the Organization ID,Get the organization ID>>.
+* <<Get the Environment ID,Get the environment ID>>.
 * <<Get the Bearer Token for the App,Get the bearer token>>.
-* <<Get the Access Token for the User,Get the access token for the user>>.
+
+=== Get the Access Token for the Anypoint Platform User 
+
+To access the Object Store Stats API, you must first authenticate with the Anypoint Access Management API by getting the access token (ACCESS_TOKEN) for the Anypoint Platform user.
+You also need this token to access the Anypoint Platform API to retrieve your environment and organization IDs.
+
+The default time to live (TTL) for the access token is 60 minutes.
+
+To get the access token, use this `curl` command, replacing USERNAME and PASSWORD with the username and password of the Anypoint Platform user:
+
+[source,console,linenums]
+----
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d '{"username":"USERNAME", "password":"PASSWORD"}' \
+  https://anypoint.mulesoft.com/accounts/login
+----
+
+This command returns output like the following:
+
+[source,json,linenums]
+----
+{
+  "access_token": "ACCESS_TOKEN",
+  "token_type": "bearer",
+  "redirectUrl": "/home/"
+}
+----
+
+
+
+=== Get the Organization ID
+
+You need the organization ID (ORG_ID) to:
+
+* Get the environment ID.
+* Access the Object Store API.
+* Retrieve usage metrics by organization with the Object Store Stats API.
+
+To get the organization ID, use this `curl` command, replacing ACCESS_TOKEN with your access token:
+
+[source,console,linenums]
+----
+curl -v \
+  -H "Authorization: Bearer ACCESS_TOKEN" \
+  https://anypoint.mulesoft.com/accounts/api/me
+[source,console,linenums]
+----
+
+The organization ID appears in the output as in the following snippet:
+
+[source,json,linenums]
+----
+...
+"organization": {
+     "name": "MyCompany",
+     "id": "ORG_ID",
+...
+----
 
 
 === Get the Environment ID
 
 You need the environment ID (ENV_ID) to access the Object Store API and retrieve usage metrics by environment with the Object Store Stats API.
 
-. Log into *Anypoint Platform > Access Management*.
-. Select  *Environments* and click the environment in which the application resides, such as *Production*.
-. Right-click the environment name to copy the URL, for example:
-+
-`+https://anypoint.mulesoft.com/accounts-spa/cs/core/environments/edit/5bb4f449-e1e7-4886-93d0-df4d50e8ef23+`
-+
-The last part of the URL is the ENV_ID, in this case, `5bb4f449-e1e7-4886-93d0-df4d50e8ef23`.
+To get the environment ID, use this `curl` command, replacing ACCESS_TOKEN with your access token 
+and ORG_ID with your organization ID:
 
-=== Get the Organization ID
+[source,console,linenums]
+----
+curl -v \
+  -H "Authorization: Bearer ACCESS_TOKEN" \
+  https://anypoint.mulesoft.com/accounts/api/organizations/ORG_ID/environments
+----
 
-You need the organization ID (ORG_ID) to retrieve a list of object stores using the Object Store API and retrieve usage metrics by organization with the Object Store Stats API.
+The environment ID appears in the output as in the following snippet:
 
-. Log into *Anypoint Platform > Access Management*.
-. Select *Organization* and click the organization name. 
-. Copy the *Organization ID* from the *Organization info* window.
+[source,json,linenums]
+----
+...
+  {
+     "id": "ENV_ID",
+     "name": "Production",
+   },
+...
+----
 
 
 === Get the Bearer Token for the App 
 
 To authenticate with the Object Store API, you need the bearer token (BEARER_TOKEN) for the app. 
-To get the bearer token, you need the client ID (CLIENT_ID) and client secret (CLIENT_SECRET) for the app.
 
-IS THIS TRUE: The default time to live (TTL) for the bearer token is 60 minutes.
+*IS THIS TRUE:* The default time to live (TTL) for the bearer token is 60 minutes.
+
+To get the bearer token, you need the client ID (CLIENT_ID) and client secret (CLIENT_SECRET) for the app:
 
 . Get the client ID and client secret for the app from the *Object Store* menu:
 +
@@ -104,36 +173,6 @@ This command returns output like the following:
 --
 . Use the value of BEARER_TOKEN to authenticate with the Object Store API.
 
-=== Get the Access Token for the User 
-
-To access the Object Store Stats API, you must first authenticate with the Anypoint Access Management API by getting the access token (ACCESS_TOKEN) for the Anypoint Platform user.
-
-The default time to live (TTL) for the access token is 60 minutes.
-
-To get the access token:
-. Use this `curl` command, replacing USERNAME and PASSWORD with the username and password of the Anypoint Platform user:
-+
---
-[source,console,linenums]
-----
-curl -X POST \
-  -H "Content-Type: application/json" \
-  -d '{"username":"USERNAME", "password":"PASSWORD"}' \
-  https://anypoint.mulesoft.com/accounts/login
-----
-
-This command returns output like the following:
-
-[source,json,linenums]
-----
-{
-  "access_token": "ACCESS_TOKEN",
-  "token_type": "bearer",
-  "redirectUrl": "/home/"
-}
-----
---
-. Use the value of ACCESS_TOKEN to authenticate with the Object Store Stats API. 
 
 
 == Object Store API  
@@ -212,18 +251,18 @@ Anypoint Studio Object Store Connector.
 . <<Get the Organization ID,Get the organization ID>>.
 . <<Get the Bearer Token for the App,Get the bearer token for the app>>.
 . Configure the object store access URL, replacing ORG_ID with your organization ID and 
-ENV_ID with your environment ID.
+ENV_ID with your environment ID:
 +
 --
 `BASE_URL/api/v1/organizations/ORG_ID/environments/ENV_ID/stores/myTestStoreId/objects`
 
 Depending on the deployment region, use the following domains for the value of BASE_URL in the access URL:
 
-// *SHOULDN'T THESE MAP TO CH REGIONS?
+*SHOULDN'T THESE MAP TO CH REGIONS?*
 
-[%header,cols="20a,70a,10a"]
+[%header,cols="15,75a,10a"]
 |===
-|Control Plane|Domain | Region 
+|Control Plane|BASE_URL | Region 
 .9+|`prod` | `object-store-us-east-2.anypoint.mulesoft.com` | US East (Ohio)
 | `object-store-us-west-1.anypoint.mulesoft.com` | US West (North California)
 | `object-store-us-west-2.anypoint.mulesoft.com` | US West (Oregon)
@@ -241,11 +280,19 @@ Depending on the deployment region, use the following domains for the value of B
 the object store.
 . Send the operation to the object store API.
 
+=== Examples 
 
-=== Example: Retrieve a List of Object Stores
+* <<Example: Retrieve a List of Object Stores>>
+* <<Example: Retrieve a List of Keys in a Partition>>
+* <<Example: Retrieve the Value of a Key>>
+* <<Example: Store a Key-Value Pair>>
+* <<Example: Delete a Key and Value>>
+
+==== Example: Retrieve a List of Object Stores
 
 To view the list of object stores, submit a `curl` command like the following, 
-replacing BASE_URL with the deployment domain, BEARER_TOKEN with your bearer token, ORG_ID with your organization ID, 
+replacing BASE_URL with the regional domain, BEARER_TOKEN with your bearer token, 
+ORG_ID with your organization ID, 
 and ENV_ID with your environment ID:
 
 [source,console,linenums]
@@ -267,6 +314,149 @@ This command returns output like the following:
     "persistent":true,"defaultTtlSeconds":2592000,"defaultConfirmationTtlSeconds":600,"isFixedTtl":null}],"nextPageToken":null}
 ----
 
+Use the `storeID` in place of STORE_ID in the examples that follow. 
+
+==== Example: Retrieve a List of Partitions
+
+To view the list of partitions, submit a `curl` command like the following, 
+replacing BASE_URL with the regional domain, BEARER_TOKEN with your bearer token, 
+ORG_ID with your organization ID, 
+ENV_ID with your environment ID, and the STORE_ID with the `storeId` from the list of object stores:
+
+[source,console,linenums]
+----
+curl -X GET \
+  https://BASE_URL/api/v1/organizations/ORG_ID/environments/ENV_ID/stores/STORE_ID/partitions \
+  -H "Authorization: Bearer ACCESS_TOKEN" 
+----
+
+This command returns output like the following:
+
+[source,json,linenums]
+----
+  {"values":["PARTITION_ID"],"nextPageToken":null}
+----
+
+Use the name of the partition in place of PARTITION_ID in the examples that follow. 
+
+==== Example: Retrieve a List of Keys in a Partition 
+
+To view the keys in a partition, submit a `curl` command like the following, 
+replacing BASE_URL with the regional domain, BEARER_TOKEN with your bearer token, 
+ORG_ID with your organization ID, 
+ENV_ID with your environment ID, the STORE_ID with the name of the object store, and the PARTITION_ID with the name of the partition:
+
+[source,console,linenums]
+----
+curl -X GET \
+  https://BASE_URL/api/v1/organizations/ORG_ID/environments/ENV_ID/stores/STORE_ID/partitions/PARTITION_ID/keys \
+  -H "Authorization: Bearer ACCESS_TOKEN" 
+----
+
+This command returns output like the following:
+
+[source,json,linenums]
+----
+{"values":[{"keyId":"KeyTwo"},{"keyId":"KeyOne"}],"nextPageToken":null}
+----
+
+Use the value of `keyId` in place of KEY_ID in the examples that follow. 
+
+
+==== Example: Retrieve the Value of a Key 
+
+To view the value of a key, submit a `curl` command like the following, 
+replacing BASE_URL with the regional domain, BEARER_TOKEN with your bearer token, 
+ORG_ID with your organization ID, 
+ENV_ID with your environment ID, the STORE_ID with the name of the object store, and the PARTITION_ID with the name of the partition, and KEY_ID with the key ID:
+
+[source,console,linenums]
+----
+curl -X GET \
+  https://BASE_URL/api/v1/organizations/ORG_ID/environments/ENV_ID/stores/STORE_ID/partitions/PARTITION_ID/keys/KEY_ID \
+  -H "Authorization: Bearer ACCESS_TOKEN" 
+----
+
+This command returns output like the following:
+
+[source,json,linenums]
+----
+{"binaryValue":"++Kn0AIBAQBbwoABDiJLZXkgMiBWYWx1ZSL8rNmhAQEBAWphdmEuaW8uU2VyaWFsaXphYmzlgGFwcGxpY2F0aW9uL2pzb247IGNoYXJzZXQ9VVRGLbgAAAAAAAAADQ==","keyId":"KeyTwo","valueType":"BINARY"}
+----
+
+
+==== Example: Store a Key-Value Pair 
+
+To store a key-value pair, submit a `curl` command like the following, 
+replacing BASE_URL with the regional domain, BEARER_TOKEN with your bearer token, 
+ORG_ID with your organization ID, 
+ENV_ID with your environment ID, the STORE_ID with the name of the object store, and the PARTITION_ID with the name of the partition, and specify a value for KEY_ID:
+
+[source,console,linenums]
+----
+KEY_ID=myTestKey; \
+curl -X POST \
+  https://BASE_URL/api/v1/organizations/ORG_ID/environments/ENV_ID/stores/STORE_ID/partitions/PARTITION_ID/keys/myTestKey \
+  -H "Authorization: Bearer ACCESS_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{"stringValue":"Hello World","keyId":"myTestKey","valueType":"STRING"}'
+----
+
+In this command, the value is a JSON string. 
+
+
+To verify that the key-pair is in the object store, get a list of the keys in the partition:
+
+[source,console,linenums]
+----
+curl -X GET \
+  https://BASE_URL/api/v1/organizations/ORG_ID/environments/ENV_ID/stores/STORE_ID/partitions/PARTITION_ID/keys \
+  -H "Authorization: Bearer ACCESS_TOKEN" 
+----
+
+This command returns output like the following:
+
+[source,json,linenums]
+----
+{"values":[{"keyId":"KeyTwo"},{"keyId":"KeyOne"},{"keyId":"myTestKey"}],"nextPageToken":null}
+----
+
+
+==== Example: Delete a Key and Value 
+
+To delete a key-value pair, submit a `curl` command like the following, 
+replacing BASE_URL with the regional domain, BEARER_TOKEN with your bearer token, 
+ORG_ID with your organization ID, 
+ENV_ID with your environment ID, the STORE_ID with the name of the object store, and the PARTITION_ID with the name of the partition, and the KEY_ID with the key ID:
+
+[source,console,linenums]
+----
+curl -X DELETE \
+  https://BASE_URL/api/v1/organizations/ORG_ID/environments/ENV_ID/stores/STORE_ID/partitions/PARTITION_ID/keys/KEY_ID \
+  -H "Authorization: Bearer ACCESS_TOKEN"
+----
+
+In this command, the value is a JSON string. 
+
+
+To verify that the key-pair is no longer in the object store, get a list of the keys in the partition:
+
+[source,console,linenums]
+----
+curl -X GET \
+  https://BASE_URL/api/v1/organizations/ORG_ID/environments/ENV_ID/stores/STORE_ID/partitions/PARTITION_ID/keys \
+  -H "Authorization: Bearer ACCESS_TOKEN" 
+----
+
+This command returns output like the following:
+
+[source,json,linenums]
+----
+{"values":[{"keyId":"KeyTwo"},{"keyId":"KeyOne"}],"nextPageToken":null}
+----
+
+
+
 == Object Store Stats API 
 
 The Object Store Stats API enables you to retrieve statistics on your Object Store usage.
@@ -281,22 +471,27 @@ Use the Stats API to view your entire organization’s usage of Object Store for
 
 The request URL format is:
 
-`\https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID/environments/ENV_ID?startDate=...&endDate=...&period=...`
+`+https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID/environments/ENV_ID?startDate=...&endDate=...&period=...+`
+
+=== Examples 
+
+* <<Example: Retrieve Usage Metrics by Organization>>
+* <<Example: Retrieve Usage Metrics by Environment>>
 
 
-=== Example: Retrieve Usage Metrics by Organization
+==== Example: Retrieve Usage Metrics by Organization
 
 To view Object Store usage statistics across the master business organization
 between July 11, 2020 and September 11, 2020,
 submit a `curl` command like the following, 
-replacing ORG_ID with your organization ID and BEARER-TOKEN with your bearer token:
+replacing ORG_ID with your organization ID and BEARER_TOKEN with your bearer token:
 
 
 [source,console,linenums]
 ----
 curl -X GET \
   'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID?startDate=2020-07-11T17%3A51%3A54.000Z&endDate=2020-09-11T17%3A51%3A54.000Z&period=1month' \
-  -H 'authorization: Bearer BEARER-TOKEN'
+  -H 'authorization: Bearer BEARER_TOKEN'
 ----
 
 This request returns a response like the following:
@@ -310,19 +505,21 @@ This request returns a response like the following:
 ]
 ----
 
-=== Example: Retrieve Usage Metrics by Environment 
+
+
+==== Example: Retrieve Usage Metrics by Environment 
 
 To view Object Store usage statistics for an environment between June 13, 2020 and September 13, 2020,
 submit a `curl` command like the following, 
 replacing ORG_ID with your organization ID, ENV_ID with your environment ID,
-and BEARER-TOKEN with your bearer token:
+and BEARER_TOKEN with your bearer token:
 
 
 [source,console,linenums]
 ----
 curl -X GET \
   'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID/environments/ENV_ID?startDate=2020-06-13T17%3A51%3A54.000Z&endDate=2020-09-13T17%3A51%3A54.000Z&period=1month' \
-  -H 'authorization: Bearer BEARER-TOKEN'
+  -H 'authorization: Bearer BEARER_TOKEN'
 ----
 
 This request returns a response like the following:
