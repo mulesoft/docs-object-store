@@ -95,6 +95,8 @@ image::os-tutorial-dc-store-select.png[Store operation]
 +
 .The screenshot shows (*1*) the *Key* field and (*2*) the *Value* field.
 image::os-tutorial-dc-store-values.png[Key and Value fields for the Store operation]
++
+The maximum number of characters in a key is 256.
 . Click *Test* to run the app in a temporary location.
 +
 The app starts running in a temporary environment:
