@@ -94,7 +94,6 @@ To view data in an object store:
 . Click the object store, the partition, and then the key:
 +
 .The screenshot shows (*1*) the object store, (*2*) the key, and (*3*) the value in the object store.
-+
 image::os-rtm-key-in-os.png[Object Store option, key, and value in Runtime Manager]
 +
 The columns show the object store name, partition name, key, and key data.
@@ -113,6 +112,45 @@ Object Store v2 provides persistent storage of objects with a time to live (TTL)
 
 The tutorial provides more detailed information about creating object stores in Mule 3 and Mule 4 applications. 
 
+== Configure a Custom Time-to-Live
+
+To configure a custom time-to-live (TTL) period for keys stored in Object Store v2:
+
+. Create an app that uses Mule runtime engine version 4.2.1 or later.
+. Configure the object store in the app.
+. Select the *Store* operation in the flow and, in the properties window, click the green plus icon (+) to the right of the *Object store* field:
++
+.The arrow shows the green plus icon in the properties window.
+image::os-use-ttl-props.png[Green plus icon in the properties window]
+. Configure the TTL entries in the *Global Object Store Configuration* window:
++
+.The arrow indicates the *Entry ttl* field in the *Global Object Store Configuration* window.
+image::os-use-ttl-global-props.png[Global Object Store Configuration window]
++
+[NOTE]
+For Object Store v2, the *Max entries* field is not configurable.
++
+* *Entry ttl* 
++
+To use rolling TTL, leave this field empty.
+Otherwise, enter the custom TTL (between 0 and 2592000 seconds).
++
+For Mule versions earlier than 4.2.1, leave this field empty to set the TTL to the maximum (2592000 seconds).
+* *Entry ttl unit*
++
+Specify the time interval, such as MINUTES, for the TTL.
+* *Expiration interval*
++
+Specify how frequently to run the expiration thread.
++
+Set this parameter to a positive value that is less than the *Entry ttl* value.
+If this field is blank or the value is less than or equal to zero, Object Store v2 ignores *Entry ttl*. 
+* *Expiration interval unit*
++
+Specify the time unit, such as MINUTES, for the expiration interval.
+. Click *OK* to dismiss the *Global Object Store Configuration* window.
+ 
+
 == See Also
 
 * xref:osv2-tutorial.adoc[Tutorial: Object Store v2]
@@ -120,3 +158,4 @@ The tutorial provides more detailed information about creating object stores in 
 * https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Object Store v2 API]
 * https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Object Store v2 Stats API]
 * xref:release-notes::object-store/anypoint-osv2-release-notes.adoc[Object Store v2 Release Notes]
+* xref:connectors::object-store/object-store-connector.adoc[Object Store Connector - Mule 4]
