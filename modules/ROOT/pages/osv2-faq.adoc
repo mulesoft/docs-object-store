@@ -50,14 +50,19 @@ Object Store v2 is a remote service that is separate from CloudHub workers. All 
 
 For an example of entry availability, if you had 50 entries and 5 workers, all 50 entries would be available to all the workers in the app and the Object Store v2 service handles storing all the data without any impact on the workers.
 
-== Can one Mule app access the object store of another Mule app?
+== Can an app deployed to CloudHub access the object store of another CloudHub app?
 
-No. 
-You can use Object Store v2 only as a distributed memory store for an application or as a key-value cache. 
-It is not designed for app-to-app communication. 
+You can configure a Mule app to use the Object Store REST API to store and retrieve 
+values from an object store in another Mule app. 
 
+However, Object Store v2 is not designed for app-to-app communication.
 To share data between two Mule 4 apps, use a queue in xref:mq::index.adoc[Anypoint MQ].
+
 For information about object store limitations, see xref:connectors::object-store/object-store-connector.adoc#object-store-limitations[Object Store Limitations].
+
+For information about the Object Store REST API, see 
+https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Object Store v2 API] on Exchange. 
+
 
 
 == What are the limits on an object store?
