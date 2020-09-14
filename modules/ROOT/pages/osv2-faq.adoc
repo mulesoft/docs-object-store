@@ -99,7 +99,7 @@ The maximum (and default) static TTL is 2592000 seconds (30 days).
 
 If the app doesn't specify a value for `entryTtl`, the default value depends on the Mule version.
 
-* Mule version 4.2.x, 4.3.0, and later:
+* Mule versions 4.2.1 and later:
 +
 Object stores have a rolling TTL by default.
 +
