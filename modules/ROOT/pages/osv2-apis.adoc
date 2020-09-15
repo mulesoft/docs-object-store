@@ -24,7 +24,7 @@ See <<Get the Bearer Token for the App>>.
 +
 To authenticate with the Object Store Stats API, use the Anypoint username and password to get the access token.
 +
-See <<Get the Access Token for the User>>.
+See <<Get the Access Token for the Anypoint Platform User>>.
 
 
 
