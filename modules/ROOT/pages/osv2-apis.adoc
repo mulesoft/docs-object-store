@@ -20,6 +20,7 @@ Object Store provides these APIs:
 To authenticate with the Object Store API, use the client ID and client secret for the app to get a bearer token.
 +
 See <<Get the Bearer Token for the App>>.
+
 * Object Store Stats API
 +
 To authenticate with the Object Store Stats API, use the Anypoint username and password to get the access token.
@@ -48,26 +49,9 @@ You also need this token to access the Anypoint Platform API to retrieve your en
 
 The default time to live (TTL) for the access token is 60 minutes.
 
-To get the access token, use this `curl` command, replacing USERNAME and PASSWORD with the username and password of the Anypoint Platform user:
-
-[source,console,linenums]
-----
-curl -X POST \
-  -H "Content-Type: application/json" \
-  -d '{"username":"USERNAME", "password":"PASSWORD"}' \
-  https://anypoint.mulesoft.com/accounts/login
-----
-
-This command returns output like the following:
-
-[source,json,linenums]
-----
-{
-  "access_token": "ACCESS_TOKEN",
-  "token_type": "bearer",
-  "redirectUrl": "/home/"
-}
-----
+For information about how to get the access token, see 
+https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/Authentication/[Authentication] in the 
+https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/home/[Access Management API]. 
 
 
 
