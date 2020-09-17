@@ -96,7 +96,7 @@ The value of `entryTtl` determines when the data is evicted.
 +
 The minimum static TTL is 1 second.
 The maximum (and default) static TTL is 2592000 seconds (30 days).
-If the `entryTtl` value is greater than 30 days, TTL is set to the maximum value (2592000 seconds/30 days) without returning an error.
+If the `entryTtl` value is greater than 30 days, TTL is set to the maximum value of 2592000 seconds (30 days) without returning an error.
 
 If the app doesn't specify a value for `entryTtl`, the default value depends on the Mule version.
 
