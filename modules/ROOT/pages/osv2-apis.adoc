@@ -13,21 +13,6 @@ Object Store provides these APIs:
 * https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Object Store Stats API]
 
 
-== Authenticate with the Object Store APIs 
-
-* Object Store API
-+
-To authenticate with the Object Store API, use the client ID and client secret for the app to get a bearer token.
-+
-See <<Get the Bearer Token for the App>>.
-
-* Object Store Stats API
-+
-To authenticate with the Object Store Stats API, use the Anypoint username and password to get the access token.
-+
-See <<Get the Access Token for the Anypoint Platform User>>.
-
-
 
 == Prerequisites 
 
@@ -37,79 +22,20 @@ See xref:runtime-manager::deploying-to-cloudhub.adoc[Deploy to CloudHub].
 * Store a key-value pair in the object store. 
 +
 See xref:osv2-guide.adoc#send-data-to-an-object-store[Send Data to an Object Store].
-* <<Get the Access Token for the Anypoint Platform User,Get the access token for the Anypoint Platform user>>.
-* <<Get the Organization ID,Get the organization ID>>.
-* <<Get the Environment ID,Get the environment ID>>.
-* <<Get the Bearer Token for the App,Get the bearer token>>.
-
-=== Get the Access Token for the Anypoint Platform User 
-
-To access the Object Store Stats API, you must first authenticate with the Anypoint Access Management API by getting the access token (ACCESS_TOKEN) for the Anypoint Platform user.
-You also need this token to access the Anypoint Platform API to retrieve your environment and organization IDs.
-
-The default time to live (TTL) for the access token is 60 minutes.
-
-For information about how to get the access token, see 
+* Get the access token (ACCESS_TOKEN) for the Anypoint Platform user.
++
+See
 https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/Authentication/[Authentication] in the 
 https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/home/[Access Management API]. 
-
-
-
-=== Get the Organization ID
-
-You need the organization ID (ORG_ID) to:
-
-* Get the environment ID.
-* Access the Object Store API.
-* Retrieve usage metrics by organization with the Object Store Stats API.
-
-To get the organization ID, use this `curl` command, replacing ACCESS_TOKEN with your access token:
-
-[source,console,linenums]
-----
-curl -v \
-  -H "Authorization: Bearer ACCESS_TOKEN" \
-  https://anypoint.mulesoft.com/accounts/api/me
-[source,console,linenums]
-----
-
-The organization ID appears in the output as in the following snippet:
-
-[source,json,linenums]
-----
-...
-"organization": {
-     "name": "MyCompany",
-     "id": "ORG_ID",
-...
-----
-
-
-=== Get the Environment ID
-
-You need the environment ID (ENV_ID) to access the Object Store API and retrieve usage metrics by environment with the Object Store Stats API.
-
-To get the environment ID, use this `curl` command, replacing ACCESS_TOKEN with your access token 
-and ORG_ID with your organization ID:
-
-[source,console,linenums]
-----
-curl -v \
-  -H "Authorization: Bearer ACCESS_TOKEN" \
-  https://anypoint.mulesoft.com/accounts/api/organizations/ORG_ID/environments
-----
-
-The environment ID appears in the output as in the following snippet:
-
-[source,json,linenums]
-----
-...
-  {
-     "id": "ENV_ID",
-     "name": "Production",
-   },
-...
-----
+* Get the organization ID (ORG_ID).
++
+See the `/api/me` endpoint in the
+https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/home/[Access Management API].
+* Get the environment ID (ENV_ID).
++
+See the `/api/organizations/ORG_ID/environments` endpoint in the
+https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/home/[Access Management API]. 
+* <<Get the Bearer Token for the App,Get the bearer token for the app>>.
 
 
 === Get the Bearer Token for the App 
@@ -157,6 +83,16 @@ This command returns output like the following:
 --
 . Use the value of BEARER_TOKEN to authenticate with the Object Store API.
 
+
+== Authenticate with the Object Store APIs 
+
+* Object Store API
++
+To authenticate with the Object Store API, use the client ID and client secret for the app to get a bearer token.
+
+* Object Store Stats API
++
+To authenticate with the Object Store Stats API, use the Anypoint username and password to get the access token.
 
 
 == Object Store API  
@@ -231,9 +167,6 @@ Anypoint Studio Object Store Connector.
 === Access the Object Store API
 
 . Set up an application, such as Postman, to access the object store.
-. <<Get the Environment ID,Get the environment ID>>.
-. <<Get the Organization ID,Get the organization ID>>.
-. <<Get the Bearer Token for the App,Get the bearer token for the app>>.
 . Configure the object store access URL, replacing ORG_ID with your organization ID and 
 ENV_ID with your environment ID:
 +
@@ -242,29 +175,28 @@ ENV_ID with your environment ID:
 
 Depending on the deployment region, use the following domains for the value of BASE_URL in the access URL:
 
-*SHOULDN'T THESE MAP TO CH REGIONS?*
-
 [%header,cols="15,75a,10a"]
 |===
 |Control Plane|BASE_URL | Region 
-.9+|`prod` | `object-store-us-east-2.anypoint.mulesoft.com` | US East (Ohio)
-| `object-store-us-west-1.anypoint.mulesoft.com` | US West (North California)
+.10+|`prod` | `object-store-us-east-1.anypoint.mulesoft.com` | US East (N. Virginia)
+| `object-store-us-east-2.anypoint.mulesoft.com` | US East (Ohio)
+| `object-store-us-west-1.anypoint.mulesoft.com` | US West (N. California)
 | `object-store-us-west-2.anypoint.mulesoft.com` | US West (Oregon)
 | `object-store-ap-southeast-1.anypoint.mulesoft.com` | Asia Pacific (Singapore)
 | `object-store-ap-southeast-2.anypoint.mulesoft.com` | Asia Pacific (Sydney)
-| `object-store-ap-northeast-1.anypoint.mulesoft.com` |
+| `object-store-ap-northeast-1.anypoint.mulesoft.com` | Asia Pacific (Tokyo)
 | `object-store-ca-central-1.anypoint.mulesoft.com` | Canada (Central)
-| `object-store-eu-west-2.eu1.anypoint.mulesoft.com` |
-| `object-store-sa-east-1.anypoint.mulesoft.com` |
-.2+|`prod-eu` | `object-store-eu-central-1.eu1.anypoint.mulesoft.com` |
-| `object-store-eu-west-1.eu1.anypoint.mulesoft.com` |
+| `object-store-eu-west-2.eu1.anypoint.mulesoft.com` | Europe (London)
+| `object-store-sa-east-1.anypoint.mulesoft.com` | South America (São Paulo)
+.2+|`prod-eu` | `object-store-eu-central-1.eu1.anypoint.mulesoft.com` | Europe (Frankfurt)
+| `object-store-eu-west-1.eu1.anypoint.mulesoft.com` | Europe (Ireland)
 |===
 --
 . Configure the application with HTTP headers and body for values to store to or read from
 the object store.
-. Send the operation to the object store API.
+. Send the operation to the Object Store API.
 
-=== Examples 
+=== Examples: Object Store API
 
 * <<Example: Retrieve a List of Object Stores>>
 * <<Example: Retrieve a List of Keys in a Partition>>
@@ -453,15 +385,43 @@ Use the Stats API to view your entire organization’s usage of Object Store for
 * Usage per environment
 * Usage per organization
 
-The request URL format is:
+// The request URL format is:
+// `+https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID/environments/ENV_ID?startDate=...&endDate=...&period=...+`
 
-`+https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID/environments/ENV_ID?startDate=...&endDate=...&period=...+`
+=== Access the Object Store Stats API
 
-=== Examples 
+. Set up an application, such as Postman, to access the object store.
+. Configure the access URL, replacing ORG_ID with your organization ID and 
+ENV_ID with your environment ID:
++
+*IS THIS RIGHT??????*
++
+--
+`+https://BASE_URL/api/v1/organizations/ORG_ID/environments/ENV_ID?startDate=...&endDate=...&period=...+`
+
+// +
+// --
+// `BASE_URL/api/v1/organizations/ORG_ID/environments/ENV_ID/stores/myTestStoreId/objects`
+
+Depending on the deployment region, use the following domains for the value of BASE_URL in the access URL:
+
+[%header,cols="15,75a,10a"]
+|===
+|Control Plane|BASE_URL | Region 
+|`prod` | `object-store-us-east-1.anypoint.mulesoft.com` | US East (N. Virginia)
+|`prod-eu` | `object-store-eu-central-1.eu1.anypoint.mulesoft.com` | Europe (Frankfurt)
+|===
+--
+. Configure the application with HTTP headers and body for values to store to or read from
+the object store.
+. Send the operation to the Object Store Stats API.
+
+
+
+=== Examples: Object Store Stats API
 
 * <<Example: Retrieve Usage Metrics by Organization>>
 * <<Example: Retrieve Usage Metrics by Environment>>
-
 
 ==== Example: Retrieve Usage Metrics by Organization
 
