@@ -105,7 +105,7 @@ If the app doesn't specify a value for `entryTtl`, the default value depends on 
 Object stores have a rolling TTL by default.
 +
 If the data is accessed at least once a week, the TTL is extended for 30 days.
-Otherwise, it is evicted in the next 7 to 30 days from the last expiration date.
+Otherwise, it is evicted in the next 7 to 30 days from the most recent expiration date.
 [NOTE]
 Rolling TTL is available for all apps using Mule version 4.2.x, 4.3.0, and later.
 * Mule versions earlier than 4.2.1:
