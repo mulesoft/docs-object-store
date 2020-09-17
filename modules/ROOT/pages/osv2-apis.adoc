@@ -41,7 +41,7 @@ The maximum TTL is 2,592,000 seconds (30 days).
 If the `entryTtl` value specified is greater than 30 days, the value defaults to 2592000 seconds (30 days), without returning an error.
 For more information about TTL, see xref:osv2-faq.adoc#how-long-can-data-persist-in-object-store-v2[How long can data persist in Object Store v2?]
 ** Persistence property
-** Usage limits for each application or environment, includes options for limiting based on keys or size and how to enforce them
+** Usage limits for each application or environment, including options for limits based on keys or size, and how to enforce them
 * Key and list (item) value
 
 |Store
