@@ -35,53 +35,29 @@ https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4
 +
 See the `/api/organizations/ORG_ID/environments` endpoint in the
 https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/home/[Access Management API]. 
-* <<Get the Bearer Token for the App,Get the bearer token for the app>>.
-
-
-=== Get the Bearer Token for the App 
-
-To authenticate with the Object Store API, you need the bearer token (BEARER_TOKEN) for the app. 
-
-*IS THIS TRUE:* The default time to live (TTL) for the bearer token is 60 minutes.
-
-To get the bearer token, you need the client ID (CLIENT_ID) and client secret (CLIENT_SECRET) for the app:
-
-. Get the client ID and client secret for the app from the *Object Store* menu:
+* Get the client ID (CLIENT_ID) and client secret (CLIENT_SECRET) for the app.
 +
---
-.. Log into *Anypoint Platform > Runtime Manager*.
-.. Click an application that uses Object Store and click *Manage Application*.
+See <<Get the Client ID and Client Secret for the App>>.
+* Get the bearer token (BEARER_TOKEN) for the app.
++
+See the `/accounts/oauth2/token` endpoint in the
+https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/home/[Access Management API]. 
++
+To get the bearer token, you need the client ID and client secret for the app.
+
+
+=== Get the Client ID and Client Secret for the App 
+
+To get client ID and client secret for the app:
+
+. Log into *Anypoint Platform > Runtime Manager*.
+. Click an application that uses Object Store and click *Manage Application*.
 +
 If the app is not associated with Object Store, click *Use Object Store v2* and apply changes.
 
-.. Click *Object Store* in the left navigation area, and then click *Show Client Credentials*.
-.. Click *Copy to Clipboard* for *Client ID* and save it to replace CLIENT_ID.
-.. Click *Copy to Clipboard* for *Client Secret* and save it to replace CLIENT_SECRET.
---
-. Get the bearer token:
-+
---
-Use this `curl` command to get the bearer token, replacing CLIENT_ID with the client ID and CLIENT_SECRET with the client secret that you copied from the *Object Store* page:
-
-[source,console,linenums]
-----
-curl -X POST \
-  https://anypoint.mulesoft.com/accounts/oauth2/token \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
-  -d 'client_id=CLIENT_ID&client_secret=CLIENT_SECRET&grant_type=client_credentials'
-----
-
-This command returns output like the following:
-
-[source,json,linenums]
-----
-{
-  "access_token": "BEARER_TOKEN",
-  "token_type": "bearer"
-}
-----
---
-. Use the value of BEARER_TOKEN to authenticate with the Object Store API.
+. Click *Object Store* in the left navigation area, and then click *Show Client Credentials*.
+. Click *Copy to Clipboard* for *Client ID* and save it to replace CLIENT_ID.
+. Click *Copy to Clipboard* for *Client Secret* and save it to replace CLIENT_SECRET.
 
 
 == Authenticate with the Object Store APIs 
@@ -107,16 +83,21 @@ The following table compares the Object Store REST API operations to Object Stor
 |===
 |Object Store v2 API |Object Store v2 REST API Operations |Object Store Connector Operation
 
-|POST |
+|POST a|
 
 * Object Store:
-** TTL in seconds for the object store
-+
-By default the TTL is 2,592,000 seconds (30 days). 
-** Persistence property
-** Usage limits for each application or environment, including options for limiting based on keys or size and how to enforce them
-* Key and list (item) value
 
++
+** Object store TTL, in seconds
++
+The maximum TTL is 2592000 seconds (30 days).
++
+If the `entryTtl` value specified is greater than 30 days, the value defaults to 2592000 seconds (30 days), without returning an error.
++
+For more information about TTL options and behavior, see xref:osv2-faq.adoc#how-long-can-data-persist-in-object-store-v2[How long can data persist in Object Store v2?]
+** Persistence property
+** Usage limits for each application or environment, including options for limits based on keys or size, and how to enforce them
+* Key and list (item) value
 |Store
 |GET |
 
@@ -379,14 +360,10 @@ The Object Store Stats API enables you to retrieve statistics on your Object Sto
 
 The usage statistics are not real-time and might include latency.
 
-
 Use the Stats API to view your entire organization’s usage of Object Store for billing purposes:
 
 * Usage per environment
 * Usage per organization
-
-// The request URL format is:
-// `+https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID/environments/ENV_ID?startDate=...&endDate=...&period=...+`
 
 === Access the Object Store Stats API
 
@@ -394,28 +371,10 @@ Use the Stats API to view your entire organization’s usage of Object Store for
 . Configure the access URL, replacing ORG_ID with your organization ID and 
 ENV_ID with your environment ID:
 +
-*IS THIS RIGHT??????*
-+
---
-`+https://BASE_URL/api/v1/organizations/ORG_ID/environments/ENV_ID?startDate=...&endDate=...&period=...+`
-
-// +
-// --
-// `BASE_URL/api/v1/organizations/ORG_ID/environments/ENV_ID/stores/myTestStoreId/objects`
-
-Depending on the deployment region, use the following domains for the value of BASE_URL in the access URL:
-
-[%header,cols="15,75a,10a"]
-|===
-|Control Plane|BASE_URL | Region 
-|`prod` | `object-store-us-east-1.anypoint.mulesoft.com` | US East (N. Virginia)
-|`prod-eu` | `object-store-eu-central-1.eu1.anypoint.mulesoft.com` | Europe (Frankfurt)
-|===
---
+`+https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID/environments/ENV_ID?startDate=...&endDate=...&period=...+`
 . Configure the application with HTTP headers and body for values to store to or read from
 the object store.
 . Send the operation to the Object Store Stats API.
-
 
 
 === Examples: Object Store Stats API
@@ -489,9 +448,9 @@ image::os-exchange-download.png[Download Object Store API in Exchange]
 
 == See Also
 
+* xref:osv2-faq.adoc#how-long-can-data-persist-in-object-store-v2[How long can data persist in Object Store v2?]
 * https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Object Store v2 API in Anypoint Exchange]
 * https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Object Store v2 Stats API in Anypoint Exchange]
-* https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/[Anypoint Access Management API]
+* https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/[Access Management API]
 * xref:connectors::object-store/object-store-connector.adoc[Object Store Connector for Mule 4]
 * xref:3.9@mule-runtime::object-store-connector.adoc[Object Store Connector for Mule 3]
-* xref:osv2-faq.adoc#how-long-can-data-persist-in-object-store-v2[How long can data persist in Object Store v2?]
