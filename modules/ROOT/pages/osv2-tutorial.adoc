@@ -570,9 +570,6 @@ image::os-tutorial-rtm-os-actions-3.png[]
 * To delete an object store, partition, key, or value, hover over the *...* icon and click the trash can icon.
 * To display the key value and any metadata associated with the value, hover over the *...* icon and click the metadata icon.
 
-[NOTE]
-Object Store v2 provides persistent storage of objects with a time to live (TTL) of up to 30 days.
-
 == See Also
 
 * xref:runtime-manager::deploying-to-cloudhub.adoc[Deploying to CloudHub]

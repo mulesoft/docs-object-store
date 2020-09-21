@@ -21,8 +21,9 @@ values from an object store in another Mule app.
 
 Object Store v2 features:
 
-* Persists keys for 30 days unless updated. If a key is updated, the TTL (time-to-live) is extended by another 30 days. For more information, see xref:osv2-faq.adoc#how-long-can-data-persist-in-object-store-v2[How long can data persist in Object Store v2?]
-
+* Supports both static and rolling TTL (time to live) for data persistence.
++
+For information, see xref:osv2-faq.adoc#how-long-can-data-persist-in-object-store-v2[How long can data persist in Object Store v2?]
 * Allows for an unlimited number of entries. There is no limit on the total size of v2 object-stores.
 * Stores values up to 10 MB (when Base64 encoded) in size. You can estimate base64 size of a payload as follows: CEILING(base10size * 1024/3) * 4, where base10size is object size in bytes.
 + Example: A base10 payload size of 7.5 MB converts to 10.24 MB base64.
