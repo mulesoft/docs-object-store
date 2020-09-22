@@ -48,7 +48,7 @@ To get the bearer token, you need the client ID and client secret for the app.
 
 === Get the Client ID and Client Secret for the App 
 
-To get client ID and client secret for the app:
+To get the client ID and the client secret for the app:
 
 . Log into *Anypoint Platform > Runtime Manager*.
 . Click an application that uses Object Store and click *Manage Application*.
