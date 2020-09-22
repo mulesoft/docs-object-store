@@ -85,7 +85,7 @@ The following table compares the Object Store REST API operations to Object Stor
 
 |POST a|
 
-* Object Store:
+* Object Store
 
 +
 ** Object store TTL, in seconds
