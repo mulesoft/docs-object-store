@@ -93,8 +93,6 @@ The following table compares the Object Store REST API operations to Object Stor
 The maximum TTL is 2592000 seconds (30 days).
 +
 If the `entryTtl` value specified is greater than 30 days, the value defaults to 2592000 seconds (30 days), without returning an error.
-+
-For more information about TTL options and behavior, see xref:osv2-faq.adoc#how-long-can-data-persist-in-object-store-v2[How long can data persist in Object Store v2?]
 ** Persistence property
 ** Usage limits for each application or environment, including options for limits based on keys or size, and how to enforce them
 * Key and list (item) value
@@ -154,7 +152,7 @@ ENV_ID with your environment ID:
 --
 `BASE_URL/api/v1/organizations/ORG_ID/environments/ENV_ID/stores/myTestStoreId/objects`
 
-Depending on the deployment region, use the following domains for the value of BASE_URL in the access URL:
+Depending on the deployment region, use one of the following domains for the value of BASE_URL in the access URL:
 
 [%header,cols="15,75a,10a"]
 |===
@@ -187,7 +185,7 @@ the object store.
 
 ==== Example: Retrieve a List of Object Stores
 
-To view the list of object stores, submit a `curl` command like the following, 
+To view the list of object stores, submit a `curl` command similar to the following, 
 replacing BASE_URL with the regional domain, BEARER_TOKEN with your bearer token, 
 ORG_ID with your organization ID, 
 and ENV_ID with your environment ID:
@@ -199,7 +197,7 @@ curl -X GET \
 'https://BASE_URL/api/v1/organizations/ORG_ID/environments/ENV_ID/stores'
 ----
 
-This command returns output like the following:
+This command returns output similar to the following:
 
 [source,json,linenums]
 ----
@@ -215,10 +213,10 @@ Use the `storeID` in place of STORE_ID in the examples that follow.
 
 ==== Example: Retrieve a List of Partitions
 
-To view the list of partitions, submit a `curl` command like the following, 
+To view the list of partitions, submit a `curl` command similar to the following, 
 replacing BASE_URL with the regional domain, BEARER_TOKEN with your bearer token, 
 ORG_ID with your organization ID, 
-ENV_ID with your environment ID, and the STORE_ID with the `storeId` from the list of object stores:
+ENV_ID with your environment ID, and STORE_ID with the `storeId` from the list of object stores:
 
 [source,console,linenums]
 ----
@@ -227,7 +225,7 @@ curl -X GET \
   -H "Authorization: Bearer ACCESS_TOKEN" 
 ----
 
-This command returns output like the following:
+This command returns output similar to the following:
 
 [source,json,linenums]
 ----
@@ -238,10 +236,10 @@ Use the name of the partition in place of PARTITION_ID in the examples that foll
 
 ==== Example: Retrieve a List of Keys in a Partition 
 
-To view the keys in a partition, submit a `curl` command like the following, 
+To view the keys in a partition, submit a `curl` command similar to the following, 
 replacing BASE_URL with the regional domain, BEARER_TOKEN with your bearer token, 
 ORG_ID with your organization ID, 
-ENV_ID with your environment ID, the STORE_ID with the name of the object store, and the PARTITION_ID with the name of the partition:
+ENV_ID with your environment ID, STORE_ID with the name of the object store, and PARTITION with the name of the partition:
 
 [source,console,linenums]
 ----
@@ -250,7 +248,7 @@ curl -X GET \
   -H "Authorization: Bearer ACCESS_TOKEN" 
 ----
 
-This command returns output like the following:
+This command returns output similar to the following:
 
 [source,json,linenums]
 ----
@@ -262,10 +260,10 @@ Use the value of `keyId` in place of KEY_ID in the examples that follow.
 
 ==== Example: Retrieve the Value of a Key 
 
-To view the value of a key, submit a `curl` command like the following, 
+To view the value of a key, submit a `curl` command similar to the following, 
 replacing BASE_URL with the regional domain, BEARER_TOKEN with your bearer token, 
 ORG_ID with your organization ID, 
-ENV_ID with your environment ID, the STORE_ID with the name of the object store, and the PARTITION_ID with the name of the partition, and KEY_ID with the key ID:
+ENV_ID with your environment ID, STORE_ID with the name of the object store, and PARTITION with the name of the partition, and KEY_ID with the key ID:
 
 [source,console,linenums]
 ----
@@ -274,7 +272,7 @@ curl -X GET \
   -H "Authorization: Bearer ACCESS_TOKEN" 
 ----
 
-This command returns output like the following:
+This command returns output similar to the following:
 
 [source,json,linenums]
 ----
@@ -284,10 +282,10 @@ This command returns output like the following:
 
 ==== Example: Store a Key-Value Pair 
 
-To store a key-value pair, submit a `curl` command like the following, 
+To store a key-value pair, submit a `curl` command similar to the following, 
 replacing BASE_URL with the regional domain, BEARER_TOKEN with your bearer token, 
 ORG_ID with your organization ID, 
-ENV_ID with your environment ID, the STORE_ID with the name of the object store, and the PARTITION_ID with the name of the partition, and specify a value for KEY_ID:
+ENV_ID with your environment ID, STORE_ID with the name of the object store, and PARTITION with the name of the partition, and specify a value for KEY_ID:
 
 [source,console,linenums]
 ----
@@ -311,7 +309,7 @@ curl -X GET \
   -H "Authorization: Bearer ACCESS_TOKEN" 
 ----
 
-This command returns output like the following:
+This command returns output similar to the following:
 
 [source,json,linenums]
 ----
@@ -321,10 +319,10 @@ This command returns output like the following:
 
 ==== Example: Delete a Key and Value 
 
-To delete a key-value pair, submit a `curl` command like the following, 
+To delete a key-value pair, submit a `curl` command similar to the following, 
 replacing BASE_URL with the regional domain, BEARER_TOKEN with your bearer token, 
 ORG_ID with your organization ID, 
-ENV_ID with your environment ID, the STORE_ID with the name of the object store, and the PARTITION_ID with the name of the partition, and the KEY_ID with the key ID:
+ENV_ID with your environment ID, STORE_ID with the name of the object store, and PARTITION with the name of the partition, and KEY_ID with the key ID:
 
 [source,console,linenums]
 ----
@@ -345,7 +343,7 @@ curl -X GET \
   -H "Authorization: Bearer ACCESS_TOKEN" 
 ----
 
-This command returns output like the following:
+This command returns output similar to the following:
 
 [source,json,linenums]
 ----
@@ -386,7 +384,7 @@ the object store.
 
 To view Object Store usage statistics across the master business organization
 between July 11, 2020 and September 11, 2020,
-submit a `curl` command like the following, 
+submit a `curl` command similar to the following, 
 replacing ORG_ID with your organization ID and BEARER_TOKEN with your bearer token:
 
 
@@ -397,7 +395,7 @@ curl -X GET \
   -H 'authorization: Bearer BEARER_TOKEN'
 ----
 
-This request returns a response like the following:
+This request returns a response similar to the following:
 
 [source,json,linenums]
 ----
@@ -413,7 +411,7 @@ This request returns a response like the following:
 ==== Example: Retrieve Usage Metrics by Environment 
 
 To view Object Store usage statistics for an environment between June 13, 2020 and September 13, 2020,
-submit a `curl` command like the following, 
+submit a `curl` command similar to the following, 
 replacing ORG_ID with your organization ID, ENV_ID with your environment ID,
 and BEARER_TOKEN with your bearer token:
 
@@ -425,7 +423,7 @@ curl -X GET \
   -H 'authorization: Bearer BEARER_TOKEN'
 ----
 
-This request returns a response like the following:
+This request returns a response similar to the following:
 
 [source,json,linenums]
 ----
