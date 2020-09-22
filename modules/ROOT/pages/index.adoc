@@ -4,18 +4,26 @@ include::_attributes.adoc[]
 endif::[]
 :imagesdir: ../assets/images/
 
-Object Store v2 lets CloudHub applications store data and states across batch processes, Mule components and applications, from within an application.
+Object Store v2 lets CloudHub applications store data and states across batch processes, Mule components and applications, from within an application or by using the Object Store REST API.
 
-You can select Object Store v2 as the implementation for Mule 3 and Mule 4 in CloudHub by checking the *Object Store V2* checkbox in Runtime Manager at deployment time. See the xref:osv2-faq.adoc[FAQ] for Object Store information.
+You can select Object Store v2 as the implementation for Mule 3 and Mule 4 in CloudHub by checking the *Object Store V2* checkbox in Runtime Manager at deployment time.
+
+See the xref:osv2-faq.adoc[FAQ] for Object Store information.
 
 image::osv2-architecture.png[width=300]
 
-On-premise Mule applications cannot use Object Store v2.
+The only way on-premises Mule applications can access Object Store v2 is via the Object Store REST API.
+
+
+You can configure a Mule app to use the Object Store REST API to store and retrieve 
+values from an object store in another Mule app.
+
 
 Object Store v2 features:
 
-* Persists keys for 30 days unless updated. If a key is updated, the TTL (time-to-live) is extended by another 30 days. For more information, see xref:osv2-faq.adoc#how-long-can-data-persist-in-object-store-v2[How long can data persist in Object Store v2?]
-
+* Supports both static and rolling TTL (time to live) for data persistence.
++
+For information, see xref:osv2-faq.adoc#how-long-can-data-persist-in-object-store-v2[How long can data persist in Object Store v2?]
 * Allows for an unlimited number of entries. There is no limit on the total size of v2 object-stores.
 * Stores values up to 10 MB (when Base64 encoded) in size. You can estimate base64 size of a payload as follows: CEILING(base10size * 1024/3) * 4, where base10size is object size in bytes.
 + Example: A base10 payload size of 7.5 MB converts to 10.24 MB base64.
