@@ -383,7 +383,7 @@ the object store.
 ==== Example: Retrieve Usage Metrics by Organization
 
 To view Object Store usage statistics across the master business organization
-between July 11, 2020 and September 11, 2020,
+(for example, between July 11, 2020 and September 11, 2020),
 submit a `curl` command similar to the following, 
 replacing ORG_ID with your organization ID and BEARER_TOKEN with your bearer token:
 
