@@ -209,7 +209,7 @@ This command returns output similar to the following:
     "persistent":true,"defaultTtlSeconds":2592000,"defaultConfirmationTtlSeconds":600,"isFixedTtl":null}],"nextPageToken":null}
 ----
 
-Use the `storeID` in place of STORE_ID in the examples that follow. 
+Use `storeID` in place of STORE_ID in the examples that follow. 
 
 ==== Example: Retrieve a List of Partitions
 
