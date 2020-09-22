@@ -410,7 +410,7 @@ This request returns a response similar to the following:
 
 ==== Example: Retrieve Usage Metrics by Environment 
 
-To view Object Store usage statistics for an environment between June 13, 2020 and September 13, 2020,
+To view Object Store usage statistics for an environment (for example, between June 13, 2020 and September 13, 2020),
 submit a `curl` command similar to the following, 
 replacing ORG_ID with your organization ID, ENV_ID with your environment ID,
 and BEARER_TOKEN with your bearer token:
