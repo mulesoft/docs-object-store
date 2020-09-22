@@ -4,14 +4,29 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: osv2, os2, object store, store, rest, apis
 
-The Object Store v2 APIs enable you to use REST to temporarily store and retrieve key-value pairs in a single
-application and to retrieve Object Store usage statistics for your organization.
+The Object Store v2 APIs enable you to use REST to perform the following:
+
+* Retrieve a list of object stores and keys associated with an application.
+* Store and retrieve key-value pairs in an object store.
+* Delete key-value pairs from an object store.
+* Retrieve Object Store usage statistics for your organization.
 
 Object Store provides these APIs:
 
 * https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Object Store API]
 * https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Object Store Stats API]
 
+== Authenticate with the Object Store APIs 
+
+* <<Object Store API>>
++
+You need a bearer token to authenticate with the Object Store API.
+To get the bearer token, you need the client ID and client secret for the app.
+
+* <<Object Store Stats API>>
++
+You need an access token to authenticate with the Object Store Stats API.
+To get the access token, you need the Anypoint username and password.
 
 
 == Prerequisites 
@@ -24,21 +39,31 @@ See xref:runtime-manager::deploying-to-cloudhub.adoc[Deploy to CloudHub].
 See xref:osv2-guide.adoc#send-data-to-an-object-store[Send Data to an Object Store].
 * Get the access token (ACCESS_TOKEN) for the Anypoint Platform user.
 +
+You need the access token to authenticate with the Object Store Stats API.
++
 See
 https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/Authentication/[Authentication] in the 
 https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/home/[Access Management API]. 
 * Get the organization ID (ORG_ID).
 +
+You need the organization ID for operations with the Object Store API and Object Store Stats API.
++
 See the `/api/me` endpoint in the
 https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/home/[Access Management API].
 * Get the environment ID (ENV_ID).
++
+You need the organization ID for operations with the Object Store API and Object Store Stats API.
 +
 See the `/api/organizations/ORG_ID/environments` endpoint in the
 https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/home/[Access Management API]. 
 * Get the client ID (CLIENT_ID) and client secret (CLIENT_SECRET) for the app.
 +
+You need the client ID and client secret to get the bearer token.
++
 See <<Get the Client ID and Client Secret for the App>>.
 * Get the bearer token (BEARER_TOKEN) for the app.
++
+You need the bearer token to authenticate with the Object Store API.
 +
 See the `/accounts/oauth2/token` endpoint in the
 https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/home/[Access Management API]. 
@@ -51,31 +76,18 @@ To get the bearer token, you need the client ID and client secret for the app.
 To get the client ID and the client secret for the app:
 
 . Log in to *Anypoint Platform > Runtime Manager*.
-. Click an application that uses Object Store and click *Manage Application*.
-+
-If the app is not associated with Object Store, click *Use Object Store v2* and apply changes.
-
+. Click an application and click *Manage Application*.
+. If the app is not associated with Object Store, click *Use Object Store v2* and apply changes.
 . Click *Object Store* in the left navigation area, and then click *Show Client Credentials*.
-. Click *Copy to Clipboard* for *Client ID* and save it to replace CLIENT_ID.
-. Click *Copy to Clipboard* for *Client Secret* and save it to replace CLIENT_SECRET.
-
-
-== Authenticate with the Object Store APIs 
-
-* Object Store API
-+
-To authenticate with the Object Store API, use the client ID and client secret for the app to get a bearer token.
-
-* Object Store Stats API
-+
-To authenticate with the Object Store Stats API, use the Anypoint username and password to get the access token.
+. Click *Copy to Clipboard* for *Client ID* and save it as the value of CLIENT_ID.
+. Click *Copy to Clipboard* for *Client Secret* and save it as the value of CLIENT_SECRET.
 
 
 == Object Store API  
 
-The Object Store API reads and writes `key,list` values. 
-By contrast, Anypoint Connector for Object Store (Object Store Connector) reads and writes in the `key,value` format.
-
+The Object Store API reads and writes `key,list` values, 
+which is different from Anypoint Connector for Object Store (Object Store Connector),
+which reads and writes in the `key,value` format.
 
 The following table compares the Object Store REST API operations to Object Store Connector operations:
 
@@ -108,9 +120,9 @@ If the `entryTtl` value specified is greater than 30 days, the value defaults to
 |Contains + Retrieve + Retrieve all keys + Retrieve and store (Retrieve part)
 |PUT |
 
-* Put item as String
-* Put item as Number
-* Put item as confirmable String
+* Put item as string
+* Put item as number
+* Put item as confirmable string
 * Put store
 
 |Dual Store *&#8224;* + Store
@@ -209,8 +221,6 @@ This command returns output similar to the following:
     "persistent":true,"defaultTtlSeconds":2592000,"defaultConfirmationTtlSeconds":600,"isFixedTtl":null}],"nextPageToken":null}
 ----
 
-Use the `storeID` in place of STORE_ID in the examples that follow. 
-
 ==== Example: Retrieve a List of Partitions
 
 To view the list of partitions, submit a `curl` command similar to the following, 
@@ -232,8 +242,6 @@ This command returns output similar to the following:
   {"values":["PARTITION_ID"],"nextPageToken":null}
 ----
 
-Use the name of the partition in place of PARTITION_ID in the examples that follow. 
-
 ==== Example: Retrieve a List of Keys in a Partition 
 
 To view the keys in a partition, submit a `curl` command similar to the following, 
@@ -254,8 +262,6 @@ This command returns output similar to the following:
 ----
 {"values":[{"keyId":"KeyTwo"},{"keyId":"KeyOne"}],"nextPageToken":null}
 ----
-
-Use the value of `keyId` in place of KEY_ID in the examples that follow. 
 
 
 ==== Example: Retrieve the Value of a Key 
