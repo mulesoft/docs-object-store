@@ -25,7 +25,7 @@ See xref:osv2-guide.adoc#send-data-to-an-object-store[Send Data to an Object Sto
 * Get the access token (ACCESS_TOKEN) for the Anypoint Platform user.
 +
 See
-https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/Authentication/[Authentication] in the 
+https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/Authentication/[Authentication] in 
 https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/home/[Access Management API]. 
 * Get the organization ID (ORG_ID).
 +
