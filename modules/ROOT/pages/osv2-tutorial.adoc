@@ -276,12 +276,16 @@ image::os-tutorial-studio7-listener-props.png[Listener properties]
 image::os-tutorial-studio7-store-props.png[Key and Value fields for the Store operation]
 +
 The maximum number of characters in a key is 256.
+. Configure separate partitions, if required:
 +
-[IMPORTANT]
---
-To use Object Store v2 with Mule 4 apps, do not select an object store global element from the *Object store* menu.
-If you select the object store global element, the app uses the Mule runtime object store, rather than Object Store v2.
---
+.. Click the green plus icon (+) to the right of *Object store*.
+.. In the *Global Element Properties* window, click the green plus icon (+) to the right of *Configuration Reference* 
+to create a global object store configuration.
++
+.The arrow shows the *Configuration Reference* field in the *Global Element Properties* window.
+image::os-tutorial-studio7-os-global-props.png[Configuration Reference field in the Global Element Properties window]
+.. Name the object store configuration and click *OK*.
+.. Ensure that the correct configuration reference is selected and click *OK*.
 . Select the flow and, in the properties window, change the name to `Store`:
 +
 .The arrow shows the *Name* field in the *Store* flow properties window.
@@ -299,9 +303,7 @@ image::os-tutorial-studio7-retrieve-listener-props.png[Connector configuration m
 +
 .The arrow shows the *Key* field in the *Retrieve* properties window.
 image::os-tutorial-studio7-retrieve-props.png[Key field for the Retrieve operation]
-+
-[IMPORTANT]
-Do not select an object store global element from the *Object store* menu.
+. From the *Object store* menu, select the object store configuration for the partition to associate with the object store.
 . Select the second flow and, in the properties window, change the name to `Retrieve`.
 +
 When you are done, the flows should look like this:
@@ -580,3 +582,4 @@ image::os-tutorial-rtm-os-actions-3.png[]
 * xref:release-notes::connector/object-store-connector-release-notes-mule-4.adoc[Object Store Connector Release Notes - Mule 4]
 * xref:3.9@mule-runtime::object-store-connector.adoc[Object Store Connector - Mule 3]
 * xref:release-notes::object-store/objectstore-release-notes.adoc[Object Store Connector Release Notes - Mule 3]
+* xref:osv2-faq.adoc#what-are-the-advantages-of-using-partitions[What are the advantages of using partitions?]
