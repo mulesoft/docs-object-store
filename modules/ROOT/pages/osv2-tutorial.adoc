@@ -276,7 +276,7 @@ image::os-tutorial-studio7-listener-props.png[Listener properties]
 image::os-tutorial-studio7-store-props.png[Key and Value fields for the Store operation]
 +
 The maximum number of characters in a key is 256.
-. Configure separate partitions, if required:
+. Configure partitions, if required:
 +
 .. Click the green plus icon (+) to the right of *Object store*.
 .. In the *Global Element Properties* window, click the green plus icon (+) to the right of *Configuration Reference* 
@@ -303,7 +303,7 @@ image::os-tutorial-studio7-retrieve-listener-props.png[Connector configuration m
 +
 .The arrow shows the *Key* field in the *Retrieve* properties window.
 image::os-tutorial-studio7-retrieve-props.png[Key field for the Retrieve operation]
-. From the *Object store* menu, select the object store configuration for the partition to associate with the object store.
+. If you configured partitions in Step 11, select the global object store configuration that you created from the *Object store* list.
 . Select the second flow and, in the properties window, change the name to `Retrieve`.
 +
 When you are done, the flows should look like this:
@@ -389,31 +389,35 @@ You can use XML to create the `osv2-demo` app in Studio 7 by clicking *Configura
 comparing your XML to the following, and making corrections as needed:
 
 
-[source,console,linenums]
+[source,xml,linenums]
 ----
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:os="http://www.mulesoft.org/schema/mule/os" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+<mule xmlns:os="http://www.mulesoft.org/schema/mule/os" 
+  xmlns:http="http://www.mulesoft.org/schema/mule/http"
   xmlns="http://www.mulesoft.org/schema/mule/core"
-  xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+  xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.mulesoft.org/schema/mule/os http://www.mulesoft.org/schema/mule/os/current/mule-os.xsd">
   <http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="24b76402-e396-4228-a48e-fcd9ac651488" >
     <http:listener-connection host="0.0.0.0" port="8081" />
   </http:listener-config>
-  <os:object-store name="Object_store" doc:name="Object store" doc:id="acb3bf59-becf-4b86-901d-97f6903fcfc0" />
-  <os:object-store name="Object_store1" doc:name="Object store" doc:id="3b262a2e-ca98-4c68-bd21-d3d40a3812c7" />
+  <os:object-store name="Object_store" doc:name="Object store" doc:id="acb3bf59-becf-4b86-901d-97f6903fcfc0" config-ref="ObjectStore_Config"/>
+  <os:object-store name="Object_store1" doc:name="Object store" doc:id="3b262a2e-ca98-4c68-bd21-d3d40a3812c7" config-ref="ObjectStore_Config1"/>
+  <os:config name="ObjectStore_Config" doc:name="ObjectStore Config" doc:id="ad6c4d72-9e48-4ee0-bd0a-e2e4cf6b6349" />
+  <os:config name="ObjectStore_Config1" doc:name="ObjectStore Config" doc:id="5c343520-5142-44e0-a57d-86fbaccc41cb" />
   <flow name="Store" doc:id="e7d253f9-534b-41df-a189-de815a42facb" >
     <http:listener doc:name="Listener" doc:id="805c84ec-35d4-4753-846b-49b108044df7" config-ref="HTTP_Listener_config" path="/store"/>
-    <os:store doc:name="Store" doc:id="d4800501-0fa8-4472-a23e-5213f04155e8" key="#[payload.key]">
+    <os:store doc:name="Store" doc:id="d4800501-0fa8-4472-a23e-5213f04155e8" key="#[payload.key]" objectStore="Object_store">
       <os:value ><![CDATA[#[payload.value]]]></os:value>
     </os:store>
   </flow>
   <flow name="Retrieve" doc:id="1db04ffc-76c1-48b4-ba33-57807a6404a8" >
     <http:listener doc:name="Listener" doc:id="faed2a0f-3005-4244-a6c6-77407b34d53a" path="/retrieve" config-ref="HTTP_Listener_config"/>
-    <os:retrieve doc:name="Retrieve" doc:id="3f907cfc-59e5-49cd-879a-7b2675d488a5" key="#[attributes.queryParams.key]">
-      <os:default-value ><![CDATA[#["TEST"]]]></os:default-value>
-    </os:retrieve>
+    <os:retrieve doc:name="Retrieve" doc:id="3f907cfc-59e5-49cd-879a-7b2675d488a5" key="#[attributes.queryParams.key]" objectStore="Object_store">
+     </os:retrieve>
   </flow>
 </mule>
 ----
