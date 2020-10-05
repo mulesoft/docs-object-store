@@ -121,6 +121,9 @@ Rolling TTL is available for all apps using Mule version 4.2.1 and later.
 +
 Object stores have a static TTL of 30 days by default.
 
+For information about configuring TTL, see 
+xref:osv2-guide.adoc#configure-a-custom-time-to-live-period[Configure a Custom Time to Live Period].
+
 == Where is the Object Store v2 REST API portal?
 
 The Object Store v2 APIs are available in the Anypoint Platform Developer's portal:
@@ -176,8 +179,8 @@ same data center as the Runtime Manager app.
 
 * https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Anypoint Exchange Object Store v2 API]
 * https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Anypoint Exchange Object Store v2 Stats API]
-* https://www.anypoint.mulesoft.com/exchange/org.mule.connectors/mule-objectstore-connector/[Object Store Connector for Mule 4]
-* https://www.anypoint.mulesoft.com/exchange/org.mule.modules/mule-module-objectstore/[Object Store Connector for Mule 3]
 * xref:osv2-guide.adoc#configure-a-custom-time-to-live-period[Configure a Custom Time to Live Period]
 * xref:osv2-guide.adoc#create-object-store-partitions[Create Object Store Partitions]
+* xref:connectors::object-store/object-store-connector.adoc[Object Store Connector - Mule 4]
+* xref:3.9@mule-runtime::object-store-connector.adoc[Object Store Connector - Mule 3]
 * https://help.mulesoft.com/s/article/The-Different-Types-of-Object-Stores-Explained[The Different Types of Object Stores Explained]
