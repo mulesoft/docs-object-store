@@ -147,12 +147,45 @@ If this field is blank or the value is less than or equal to zero, Object Store 
 +
 Specify the expiration interval time unit, such as MINUTES.
 . Click *OK* to dismiss the window.
- 
+
+== Create Object Store Partitions
+
+You can use _partitions_ to associate multiple object stores with an app. 
+
+To create partitions in Object Store v2:
+
+. Create an app and add a *Store* operation to the flow.
+. Configure the *Store* operation.
+. Configure the partitions:
++
+.. In the properties window, click the green plus icon (+) to the right of the *Object store* field:
++
+.The arrow shows the green plus icon in the properties window.
+image::os-use-ttl-props.png[Green plus icon in the properties window]
+.. In the *Global Element Properties* window, click the green plus icon (+) to the right of *Configuration Reference* 
+to create a global object store configuration.
++
+.The arrow shows the green plus icon for the *Configuration Reference* field in the *Global Element Properties* window.
+image::os-use-partition-studio7-os-global-props.png[Green plus icon for the Configuration Reference field in the Global Element Properties window]
+.. Name the object store configuration and click *OK*.
+.. Ensure that the correct configuration reference is selected and click *OK*.
+.. Ensure that the correct object store is selected and click *OK*.
+. Repeat Step 3 for each partition that you want to create.
+. Deploy the app to CloudHub and send a key-value pair to the object store.
+. In Runtime Manager, click *Applications*, select the app, and click *Object Store* in the left navigation pane.
+. Select the object store.
++
+The partitions associated with the object store appear in the *Object Store* page:
++
+.The arrow shows the partitions in the *Object Store* page.
+image::os-use-partitions-rtm.png[Partitions in the Object Store page]
+
 
 == See Also
 
 * xref:osv2-tutorial.adoc[Tutorial: Object Store v2]
 * xref:osv2-faq.adoc#how-long-can-data-persist-in-object-store-v2[How long can data persist in Object Store v2?]
+* xref:osv2-faq.adoc#what-are-the-advantages-of-using-partitions[What are the advantages of using partitions?]
 * https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Object Store v2 API]
 * https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Object Store v2 Stats API]
 * xref:release-notes::object-store/anypoint-osv2-release-notes.adoc[Object Store v2 Release Notes]
