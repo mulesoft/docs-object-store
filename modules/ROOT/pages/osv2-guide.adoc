@@ -154,8 +154,8 @@ You can use _partitions_ to associate multiple object stores with an app.
 
 To create partitions in Object Store v2:
 
-. Create an app and add a *Store* operation to the flow.
-. Configure the *Store* operation.
+. Create an app and add a Store operation to the flow.
+. Configure the Store operation.
 . Configure the partitions:
 +
 .. In the properties window, click the green plus icon (+) to the right of the *Object store* field:
