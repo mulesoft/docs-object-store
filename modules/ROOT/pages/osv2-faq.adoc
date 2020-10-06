@@ -179,7 +179,7 @@ same data center as the Runtime Manager app.
 
 * https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Anypoint Exchange Object Store v2 API]
 * https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Anypoint Exchange Object Store v2 Stats API]
-* xref:osv2-guide.adoc#configure-a-custom-time-to-live-period[Configure a Custom Time to Live Period]
+* xref:osv2-guide.adoc#configure-a-custom-time-to-live-period[Configure a Custom Time-to-Live Period]
 * xref:osv2-guide.adoc#create-object-store-partitions[Create Object Store Partitions]
 * xref:connectors::object-store/object-store-connector.adoc[Object Store Connector - Mule 4]
 * xref:3.9@mule-runtime::object-store-connector.adoc[Object Store Connector - Mule 3]
