@@ -163,7 +163,7 @@ To create partitions in Object Store v2:
 .The arrow shows the green plus icon in the properties window.
 image::os-use-ttl-props.png[Green plus icon in the properties window]
 .. In the *Global Element Properties* window, click the green plus icon (+) to the right of *Configuration Reference* 
-to create a global object store configuration.
+to create a global object store configuration:
 +
 .The arrow shows the green plus icon for the *Configuration Reference* field in the *Global Element Properties* window.
 image::os-use-partition-studio7-os-global-props.png[Green plus icon for the Configuration Reference field in the Global Element Properties window]
