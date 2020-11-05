@@ -181,6 +181,25 @@ The partitions associated with the object store appear in the *Object Store* pag
 image::os-use-partitions-rtm.png[Partitions in the Object Store page]
 
 
+
+== Deploy App with Object Store v2 Using the Mule Maven Plugin
+
+If you are using the Mule Maven plugin version 3.4.0 or earlier
+to deploy your app to CloudHub, do the following:
+
+. Add the `<objectStoreV2>` element to your `pom.xml` project file:
++
+[source,xml]
+----
+<cloudHubDeployment>
+  ...
+    <objectStoreV2>true</objectStoreV2>
+  ...
+</cloudHubDeployment>
+----
+. Select *Use Object Store v2* in the *Deploy Application* page in Runtime Manager.
+
+
 == See Also
 
 * xref:osv2-tutorial.adoc[Tutorial: Object Store v2]
@@ -191,3 +210,4 @@ image::os-use-partitions-rtm.png[Partitions in the Object Store page]
 * xref:release-notes::object-store/anypoint-osv2-release-notes.adoc[Object Store v2 Release Notes]
 * xref:connectors::object-store/object-store-connector.adoc[Object Store Connector - Mule 4]
 * xref:3.9@mule-runtime::object-store-connector.adoc[Object Store Connector - Mule 3]
+* xref:mule-runtime::deploy-to-cloudhub.adoc[Deploy Applications to CloudHub]
