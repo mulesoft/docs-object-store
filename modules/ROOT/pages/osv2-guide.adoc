@@ -60,12 +60,20 @@ image::os-studio7-flow.png[Listener and Store operations in Studio]
 |===
 |Connector |Parameters
 |HTTP Listener|
-*Connector configuration* = HTTP_Listener_config
+*Connector configuration* = `HTTP_Listener_config`
+
 *Path* = `/store`
 |Object Store |
-*Key* = `#[payload.key]` +
+*Key* = `#[payload.key]`
+
 *Value* = `[payload.value]`
+|Object Store configuration reference |
+*Persistent* />
 |===
+
+[IMPORTANT]
+To use Object Store v2, ensure that the *Pertistent* option is selected for the object store configuration reference in the *Global Elements* page.
+If the XML includes `persistent="false"`, the app does not use Object Store v2. 
 --
 . Save the application.
 . Right-click the application name in *Package Explorer* and select *Anypoint Platform > Deploy to CloudHub*.
