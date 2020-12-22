@@ -67,8 +67,6 @@ image::os-studio7-flow.png[Listener and Store operations in Studio]
 *Key* = `#[payload.key]`
 
 *Value* = `[payload.value]`
-|Object Store configuration reference |
-*Persistent* />
 |===
 
 [IMPORTANT]
