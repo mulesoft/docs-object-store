@@ -26,7 +26,7 @@ To get the bearer token, you need the client ID and client secret for the app.
 * <<Object Store Stats API>>
 +
 You need an access token to authenticate with the Object Store Stats API.
-To get the access token, you need the Anypoint username and password.
+To get the access token, you need the Anypoint username and password of a user assigned the *Organization Administrators* role.
 
 
 == Prerequisites 
@@ -37,7 +37,9 @@ See xref:runtime-manager::deploying-to-cloudhub.adoc[Deploy to CloudHub].
 * Store a key-value pair in the object store. 
 +
 See xref:osv2-guide.adoc#send-data-to-an-object-store[Send Data to an Object Store].
-* Get the access token (ACCESS_TOKEN) for the Anypoint Platform user.
+* Get the access token (ACCESS_TOKEN) for the Anypoint Platform user. 
++
+The user must be assigned the *Organization Administrators* role to access the Object Store Stats API.
 +
 You need the access token to authenticate with the Object Store Stats API.
 +
