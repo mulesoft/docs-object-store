@@ -72,7 +72,7 @@ The total size of an object store is not limited, but each value is limited to 1
 Every API call (via the connector or API) to Object Store v2 counts toward the transactions per second (TPS) limit:
 
 * Free version: 10 TPS per app
-* Premium add-on users:  100 TPS per app
+* Premium add-on users: 100 TPS per app
 
 == What is the maximum number of keys that can persist in Object Store v2?
 
