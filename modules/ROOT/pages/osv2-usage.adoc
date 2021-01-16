@@ -8,12 +8,12 @@ endif::[]
 
 You can view a chart indicating how many API requests have been consumed.
 
-* Every API call (via the connector or API) to Object Store v2 counts as one API request.
+* Only events count towards your monthly quota.
 +
-All requests to the broker API, such as creating and deleting objects, are counted against the quota.
-* Up to 100 KB of object-payload data can be transferred in a single API call,
-which bills as one request.
-* Each additional 100 KB of payload data is charged as an additional API request. 
+Each event (such as create, modify, or delete) on an item or a store counts as one billable unit against the quota.
+* For each billable unit, up to 100 KB of object-payload data counts as one request against the quota.
++
+Each additional 100 KB of payload data is charged as an additional request. 
 * Monthly billing usage information is delayed by 24 hours.
 
 //Shared Usage Overage 
