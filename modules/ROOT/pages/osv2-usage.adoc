@@ -10,14 +10,37 @@ You can view a chart indicating how many API requests have been consumed.
 
 * Only events count towards your monthly quota.
 +
-Each event (such as create, modify, or delete) on an item or a store counts as one billable unit against the quota.
+Each event (such as create, modify, or delete) on a store or an item counts as one billable unit against the quota.
++
+See <<billevents>>.
 * For each billable unit, up to 100 KB of object-payload data counts as one request against the quota.
 +
 Each additional 100 KB of payload data is charged as an additional request. 
-* Monthly billing usage information is delayed by 24 hours.
 
+Monthly billing usage information is delayed by 24 hours.
 //Shared Usage Overage 
 include::partial$osv2-faq.adoc[tag=faqUsageOverage]
+
+[[billevents]]
+.Billable Unit Events
+[%header,cols="15,15,60a"]
+|===
+|Type|Event|Description  
+.6+|Store|`CREATE_STORE` | Create an object store.
+| `DELETE_STORE` | Delete an object store.
+| `DELETE_ALL_STORES` | Delete all object stores.
+| `MODIFY_STORE` | Modify an object store.
+| `CLEAR_STORE` | Removes the contents of an object store.
+| `RETRIEVE_STORE` | Retrieve the contents of an object store.
+.8+|Item| `CLEAR_ITEM` | Clear a key.
+| `DELETE_ITEM` | Delete a key or value.
+|`CREATE_ITEM` | Create a key or value.
+|`MODIFY_ITEM` | Modify a key or value.
+|`NACK_ITEM` | Provide negative acknowledgment of a key or value?
+|`ACK_ITEM` | Acknowledge...?
+|`DELETE_ITEM_AT_INDEX` | Delete the specified key or value?
+|`QUERY_ITEM` | Retrieve the contents of a key or value?
+|===
 
 == Access Object Store Usage
 
