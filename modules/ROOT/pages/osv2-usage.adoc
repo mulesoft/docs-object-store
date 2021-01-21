@@ -8,7 +8,7 @@ endif::[]
 
 You can view a chart indicating how many API requests have been consumed.
 
-* Only events count towards your monthly quota.
+* Only events count towards your monthly billing usage and quota.
 +
 Each event (such as create, modify, or delete) on a store or an item counts as one billable unit against the quota.
 +
@@ -16,6 +16,8 @@ See <<billevents>>.
 * For each billable unit, up to 100 KB of object-payload data (if applicable) counts as one request against the quota.
 +
 Each additional 100 KB of payload data is charged as an additional request. 
+
+For example, if an app runs a `retrieveAll` operation on an object store with 6000 keys, it generates 6000 `QUERY_ITEM` events, which counts as 6000 billable units against the quota.
 
 Monthly billing usage information is delayed by 24 hours.
 //Shared Usage Overage 
