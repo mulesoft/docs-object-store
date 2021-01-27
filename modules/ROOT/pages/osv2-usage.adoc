@@ -7,7 +7,7 @@ endif::[]
 
 Object Store v2 uses the number of:
 
-* *Events* to calculate billing
+* *HTTP transactions* to calculate billing
 +
 See <<How Billing is Calculated>>.
 * *API requests* to calculate transactions per section (TPS) for rate limiting
@@ -16,38 +16,14 @@ See <<Access Object Store API Request Usage Charts>>.
 
 == How Billing is Calculated
 
-* Only events count towards your monthly billing usage and quota.
+* Only HTTP transactions count towards your monthly billing usage and quota.
 +
-Each event (such as create, modify, or delete) on a store or an item counts as one billable unit against the quota.
-+
-See <<billevents>>.
+Each transaction (such as create, modify, or delete) on a store or an item counts as one billable unit against the quota.
 * For each billable unit, up to 100 KB of object-payload data (if applicable) counts as one request against the quota.
 +
 Each additional 100 KB of payload data is charged as an additional request.
 
-[[billevents]]
-.Billable Unit Events
-[%header,cols="15,15,60a"]
-|===
-|Type|Event|Description  
-.6+|Store|`CREATE_STORE` | Object store created.
-|`DELETE_STORE` |Object store deleted.
-|`DELETE_ALL_STORES` | All object stores deleted.
-|`MODIFY_STORE` | Object store modified.
-|`CLEAR_STORE` | Contents of an object store removed.
-|`RETRIEVE_STORE` | Contents of an object store retrieved.
-.8+|Item| `CLEAR_ITEM` | Item with a given key cleared.
-|`DELETE_ITEM` | Item with a given key deleted.
-|`CREATE_ITEM` | Item with a given key created.
-|`MODIFY_ITEM` | Item with a given key modified.
-|`NACK_ITEM` | Item with a given key negatively acknowledged within the specified confirmation time to live (TTL).
-|`ACK_ITEM` | Item with a given key acknowledged within the specified confirmation TTL.
-|`DELETE_ITEM_AT_INDEX` | Item with a given key deleted.
-|`QUERY_ITEM` | Item with a given key retrieved.
-|===
-
-
-For example, if an app runs a `retrieveAll` operation on an object store with 6000 keys, it generates 6000 `QUERY_ITEM` events, which counts as 6000 billable units against the quota.
+For example, if an app runs a `retrieveAll` operation on an object store with 6000 keys, it generates 6000 transactions, which counts as 6000 billable units against the quota.
 
 Monthly billing usage information is delayed by 24 hours.
 //Shared Usage Overage 
