@@ -1,12 +1,20 @@
-= View Usage Graphs
+= Billing and Rate Limiting
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 :imagesdir: ../assets/images/
 :keywords: osv2, os2, object store, store, usage
 
+Object Store v2 uses the number of:
 
-You can view a chart indicating how many API requests have been consumed.
+* *Events* to calculate billing
++
+See <<How Billing is Calculated>>.
+* *API requests* to calculate transactions per section (TPS) for rate limiting
++
+See <<Access Object Store API Request Usage Charts>>.
+
+== How Billing is Calculated
 
 * Only events count towards your monthly billing usage and quota.
 +
@@ -15,13 +23,7 @@ Each event (such as create, modify, or delete) on a store or an item counts as o
 See <<billevents>>.
 * For each billable unit, up to 100 KB of object-payload data (if applicable) counts as one request against the quota.
 +
-Each additional 100 KB of payload data is charged as an additional request. 
-
-For example, if an app runs a `retrieveAll` operation on an object store with 6000 keys, it generates 6000 `QUERY_ITEM` events, which counts as 6000 billable units against the quota.
-
-Monthly billing usage information is delayed by 24 hours.
-//Shared Usage Overage 
-include::partial$osv2-faq.adoc[tag=faqUsageOverage]
+Each additional 100 KB of payload data is charged as an additional request.
 
 [[billevents]]
 .Billable Unit Events
@@ -29,13 +31,13 @@ include::partial$osv2-faq.adoc[tag=faqUsageOverage]
 |===
 |Type|Event|Description  
 .6+|Store|`CREATE_STORE` | Object store created.
-| `DELETE_STORE` |Object store deleted.
-| `DELETE_ALL_STORES` | All object stores deleted.
-| `MODIFY_STORE` | Object store modified.
-| `CLEAR_STORE` | Contents of an object store removed.
-| `RETRIEVE_STORE` | Contents of an object store retrieved.
+|`DELETE_STORE` |Object store deleted.
+|`DELETE_ALL_STORES` | All object stores deleted.
+|`MODIFY_STORE` | Object store modified.
+|`CLEAR_STORE` | Contents of an object store removed.
+|`RETRIEVE_STORE` | Contents of an object store retrieved.
 .8+|Item| `CLEAR_ITEM` | Item with a given key cleared.
-| `DELETE_ITEM` | Item with a given key deleted.
+|`DELETE_ITEM` | Item with a given key deleted.
 |`CREATE_ITEM` | Item with a given key created.
 |`MODIFY_ITEM` | Item with a given key modified.
 |`NACK_ITEM` | Item with a given key negatively acknowledged within the specified confirmation time to live (TTL).
@@ -44,9 +46,29 @@ include::partial$osv2-faq.adoc[tag=faqUsageOverage]
 |`QUERY_ITEM` | Item with a given key retrieved.
 |===
 
-== Access Object Store Usage
 
-To view Object Store usage:
+For example, if an app runs a `retrieveAll` operation on an object store with 6000 keys, it generates 6000 `QUERY_ITEM` events, which counts as 6000 billable units against the quota.
+
+Monthly billing usage information is delayed by 24 hours.
+//Shared Usage Overage 
+include::partial$osv2-faq.adoc[tag=faqUsageOverage]
+
+
+== Access Object Store API Request Usage Charts
+
+API requests count toward transactions per section (TPS).
+
+Every API call (via the connector or API) to Object Store v2 counts toward the transactions per second (TPS) limit:
+
+* Base subscription: 10 TPS per app
+* Premium add-on subscription: 100 TPS per app
+
+If the app exceeds the number of TPS allotted based on the subscription type,
+Object Store v2 returns a `429 HTTP Error` response, indicating the app reached the rate limit, and rejects the request.
+
+If the app reaches TPS limit, you can either upgrade to a premium subscription or redesign the app to send API request more slowly.
+
+To view a chart that shows how many API requests have been consumed and the number of API requests that your subscription allows:
 
 . Log in to Anypoint Platform.
 . Click *Access Management* in the left navigation bar or the main Anypoint Platform page.
@@ -57,15 +79,21 @@ image::os-access-mgmt-subscription.png[Object Store option on the Access Managem
 +
 . Click a chart duration value of *6m* (six months, default), *1y* (one year), or *2y* (two years):
 +
-image::os-access-mgmt-usage-chart.png[Object Store Usage page, including API requests]
+image::os-access-mgmt-usage-chart.png[Object Store Usage page for API requests]
 +
 * (*1*) The duration value
 * (*2*) The number of API requests per month
 * (*3*) The percentage and amount of your license that you have used
+* (*4*) The subscription type
 +
-The circle graph changes to red as your usage approaches your license limits:
+--
+** `Base 0.0` indicates the Base subscription.
+** Base values greater than `0.0` indicate Premium subscription add-ons.
+--
 +
-image::os-access-mgmt-requests-color.png[Object Store API license limits]
+The circle graph changes to red as your TPS usage approaches your subscripton limits:
++
+image::os-access-mgmt-requests-color.png[Object Store API TPS limits]
 
 == See Also
 

@@ -4,4 +4,4 @@
 * xref:osv2-guide.adoc[Use Object Store v2]
 * xref:osv2-tutorial.adoc[Tutorial: Object Store v2]
 * xref:osv2-apis.adoc[Object Store v2 REST APIs]
-* xref:osv2-usage.adoc[View Usage Graphs]
+* xref:osv2-usage.adoc[Billing and Rate Limiting]
