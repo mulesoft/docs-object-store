@@ -18,7 +18,8 @@ See <<Access Object Store API Request Usage Charts>>.
 
 * Only HTTP transactions count towards your monthly billing usage and quota.
 +
-Each transaction (such as create, modify, or delete) on a store or an item counts as one billable unit against the quota.
+Each transaction (such as create, modify, or delete) on a store or an item counts as one or more billable units against the quota, 
+based on the size of the payload and the number of keys.
 * For each billable unit, up to 100 KB of object-payload data (if applicable) counts as one request against the quota.
 +
 Each additional 100 KB of payload data is charged as an additional request.

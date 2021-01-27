@@ -69,7 +69,7 @@ https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4
 
 The total size of an object store is not limited, but each value is limited to 10 MB.
 
-Every API call (via the connector or API) to Object Store v2 counts toward the transactions per second (TPS) limit:
+Every API call (via the connector or API) to Object Store v2 counts toward the API rate limiting (transactions per second (TPS)):
 
 * Base subscription: 10 TPS per app
 * Premium add-on subscription: 100 TPS per app
