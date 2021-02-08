@@ -1,27 +1,83 @@
-= View Usage Graphs
+= Rate Limiting and Billing
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 :imagesdir: ../assets/images/
 :keywords: osv2, os2, object store, store, usage
 
+Object Store v2 uses two metrics to determine billing and rate-limiting:
 
-You can view a chart indicating how many API requests have been consumed.
-
-* Every API call (via the connector or API) to Object Store v2 counts as one API request.
+API Requests::
+API requests are HTTP transactions, such as GET, PUT, and POST.
 +
-All requests to the broker API, such as creating and deleting objects, are counted against the quota.
-* Up to 100 KB of object-payload data can be transferred in a single API call,
-which bills as one request.
-* Each additional 100 KB of payload data is charged as an additional API request. 
-* Monthly billing usage information is delayed by 24 hours.
+Object Store uses API requests to calculate transactions per second (TPS) for rate limiting.
++
+See <<Rate Limiting>>.
+
+Effective API Requests::
+Effective API requests are the units that Object Store uses to calculate billing.
++
+One API request could generate many effective API requests.
++
+See <<How Billing is Calculated>>.
+
+
+== Rate Limiting
+
+Every API request (via the connector or API) to Object Store v2 counts toward the TPS limit, based on your subscription type:
+
+[%headers,cols="50,50"]
+|===
+|Subscription Type|TPS Limit
+|Base subscription|10 TPS per app
+|Premium add-on subscription|100 TPS per app
+|===
+
+For example, if your app retrieves 1500 keys from an object store with a page size of 25:
+
+* With the base subscription, the response is throttled over 6 seconds.
+* With the premium subscription, the response is not throttled.
+
+If the app exceeds the number of TPS allotted based on the subscription type,
+Object Store v2 returns a `429 HTTP Error` response, indicating that it reached the rate limit.
+
+If the app reaches the TPS limit, you can either upgrade to a premium subscription or redesign the app to send API requests more slowly.
+
+
+== How Billing is Calculated
+
+Effective API requests count towards your monthly billing usage and quota.
+
+An effective API request counts as *one or more units* against the quota,
+depending on the size of the payload and the number of keys returned.
+
+* For each API request, up to 100 KB of object-payload data (if applicable) counts as one unit against the quota.
++
+For example, if an app retrieves one key from an object store with a total payload size of 500KB, the request counts as five units against the quota.
+* Each 100 KB of payload data above 100KB counts as an additional unit.
++
+For example, if an app retrieves one key from an object store with a total payload size of 101KB, the operation counts as two units against the quota.
+* Every object-store key returned using the `retrieveAll` or `retrieveAllKeys` operation counts as an additional unit.
++
+For example, if an app runs a `retrieveAll` operation on an object store with 6000 keys, it generates 6000 transactions, which counts as 6000 units against the quota.
+
+The following table lists the maximum number of API requests per month,
+based on your subscription type:
+
+[%headers,cols="50,50"]
+|===
+|Subscription Type|Maximum API Requests Per Month
+|Base subscription|26 million
+|Premium add-on subscription|100 million per add-on subscription
+|===
 
 //Shared Usage Overage 
 include::partial$osv2-faq.adoc[tag=faqUsageOverage]
 
-== Access Object Store Usage
 
-To view Object Store usage:
+== Access Object Store Effective API Request Usage Charts
+
+To view a chart that shows how many effective API requests your apps have consumed and the number of effective API requests that your subscription allows:
 
 . Log in to Anypoint Platform.
 . Click *Access Management* in the left navigation bar or the main Anypoint Platform page.
@@ -32,15 +88,23 @@ image::os-access-mgmt-subscription.png[Object Store option on the Access Managem
 +
 . Click a chart duration value of *6m* (six months, default), *1y* (one year), or *2y* (two years):
 +
-image::os-access-mgmt-usage-chart.png[Object Store Usage page, including API requests]
+image::os-access-mgmt-usage-chart.png[Object Store Usage page for API requests]
 +
-* (*1*) The duration value
-* (*2*) The number of API requests per month
-* (*3*) The percentage and amount of your license that you have used
+* (*1*) Duration value
+* (*2*) Number of effective API requests per month
+* (*3*) Percentage and amount of your quota that you have used
+* (*4*) Subscription type
 +
-The circle graph changes to red as your usage approaches your license limits:
+--
+** `Base 0.0` indicates the Base subscription.
+** Base values greater than `0.0` indicate Premium add-on subscriptions.
+--
 +
-image::os-access-mgmt-requests-color.png[Object Store API license limits]
+Monthly billing usage information is delayed by 24 hours.
++
+The circle graph changes to red as your effective API request usage approaches your quota:
++
+image::os-access-mgmt-requests-color.png[Object Store effective API request limits]
 
 == See Also
 

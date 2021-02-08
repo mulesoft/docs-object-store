@@ -1,5 +1,5 @@
 //OS FAQ SHARED
 //tag::faqUsageOverage[]
 If your usage exceeds your license limit, Object Store v2 continues to work.
-MuleSoft notifies your account administrator and team with any billing-related information.
+MuleSoft notifies your account administrator and team of any billing-related information.
 //end::faqUsageOverage[]
