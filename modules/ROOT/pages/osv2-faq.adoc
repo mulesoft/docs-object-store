@@ -109,6 +109,9 @@ The value of `entryTtl` determines when the data is evicted.
 The minimum static TTL is 1 second.
 The maximum (and default) static TTL is 2592000 seconds (30 days).
 If the `entryTtl` value is greater than 30 days, TTL is set to the maximum value of 2592000 seconds (30 days) without returning an error.
++
+//Shared Static TTL 
+include::partial$osv2-faq.adoc[tag=faqStaticTTL]
 
 If the app doesn't specify a value for `entryTtl`, the default value depends on the Mule version.
 
@@ -123,6 +126,9 @@ Rolling TTL is available for all apps using Mule version 4.2.1 and later.
 * Mule versions earlier than 4.2.1:
 +
 Object stores have a static TTL of 30 days by default.
++
+//Shared Static TTL 
+include::partial$osv2-faq.adoc[tag=faqStaticTTL]
 
 For information about configuring TTL, see 
 xref:osv2-guide.adoc#configure-a-custom-time-to-live-period[Configure a Custom Time to Live Period].
