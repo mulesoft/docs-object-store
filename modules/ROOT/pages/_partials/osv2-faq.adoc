@@ -5,5 +5,5 @@ MuleSoft notifies your account administrator and team of any billing-related inf
 //end::faqUsageOverage[]
 
 //tag::faqStaticTTL[]
-Updating the data, for example by overwriting the key, resets the static TTL.
+Updating the data (for example, by overwriting the key) resets the TTL.
 //end::faqStaticTTL[]
