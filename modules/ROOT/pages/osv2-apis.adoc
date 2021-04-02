@@ -367,8 +367,9 @@ The usage statistics are not real-time and might include latency.
 
 Use the Stats API to view your entire organization’s usage of Object Store for billing purposes:
 
-* Usage per environment
+* Usage per master organization and all sub-organizations
 * Usage per organization
+* Usage per environment
 
 === Access the Object Store Stats API
 
@@ -384,21 +385,24 @@ the object store.
 
 === Examples: Object Store Stats API
 
-* <<Example: Retrieve Usage Metrics by Organization>>
+* <<Example: Retrieve Usage Metrics per Organization>>
 * <<Example: Retrieve Usage Metrics by Environment>>
 
-==== Example: Retrieve Usage Metrics by Organization
+==== Example: Retrieve Usage Metrics per Organization
 
-To view Object Store usage statistics across the master business organization
+By default, the Object Store Stats API endpoint retrieves statistics only for the specified ORG_ID.
+To get the usage data for the master organization and all sub-organizations, set `isMaster` to `true` when ORG_ID is the master organization. 
+If you use `isMaster=true` to query a sub-organization, the endpoint returns no results.
+
+To view Object Store usage statistics for the master organization and all sub-organizations,
 between July 11, 2020 and September 11, 2020,
 submit a `curl` command similar to the following, 
-replacing ORG_ID with your organization ID and BEARER_TOKEN with your bearer token:
-
+replacing ORG_ID with the organization ID for your master organization and BEARER_TOKEN with your bearer token:
 
 [source,console,linenums]
 ----
 curl -X GET \
-  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID?startDate=2020-07-11T17%3A51%3A54.000Z&endDate=2020-09-11T17%3A51%3A54.000Z&period=1month' \
+  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID?startDate=2020-07-11T17%3A51%3A54.000Z&endDate=2020-09-11T17%3A51%3A54.000Z&period=1month&isMaster=true' \
   -H 'authorization: Bearer BEARER_TOKEN'
 ----
 
@@ -413,6 +417,28 @@ This request returns a response similar to the following:
 ]
 ----
 
+To view Object Store usage statistics for a sub-organization,
+between February 10, 2021 and April 10, 2021,
+submit a `curl` command similar to the following, 
+replacing ORG_ID with the organization ID for the sub-organization and BEARER_TOKEN with your bearer token:
+
+[source,console,linenums]
+----
+curl -X GET \
+  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID?startDate=2021-02-10T17%3A51%3A54.000Z&endDate=2021-04-10T17%3A51%3A54.000Z&period=1month' \
+  -H 'authorization: Bearer BEARER_TOKEN'
+----
+
+This request returns a response similar to the following:
+
+[source,json,linenums]
+----
+[
+ {"timeStamp":"2021-02-10T00:00:00Z","objectStoreRequestCount":1},
+ {"timeStamp":"2021-03-10T00:00:00Z","objectStoreRequestCount":15},
+ {"timeStamp":"2021-04-10T00:00:00Z","objectStoreRequestCount":2}
+]
+----
 
 
 ==== Example: Retrieve Usage Metrics by Environment 
