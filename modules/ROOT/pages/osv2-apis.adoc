@@ -26,7 +26,7 @@ To get the bearer token, you need the client ID and client secret for the app.
 * <<Object Store Stats API>>
 +
 You need an access token to authenticate with the Object Store Stats API.
-To get the access token, you need the Anypoint username and password of a user assigned the *Organization Administrators* role.
+To get the access token, you need the Anypoint Platform username and password of a user assigned the *Organization Administrators* role.
 
 
 == Prerequisites 
@@ -54,7 +54,7 @@ See the `/api/me` endpoint in the
 https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/home/[Access Management API].
 * Get the environment ID (ENV_ID).
 +
-You need the organization ID for operations with the Object Store API and Object Store Stats API.
+You need the environment ID for operations with the Object Store API and Object Store Stats API.
 +
 See the `/api/organizations/ORG_ID/environments` endpoint in the
 https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/home/[Access Management API]. 
