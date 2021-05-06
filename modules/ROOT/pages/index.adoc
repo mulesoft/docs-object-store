@@ -56,7 +56,7 @@ image::os-use-object-store-v2.png[Click Use Object Store V2 in the Runtime Manag
 * Object Store v2 enforces a maximum data persistence of 30 days from time of creation.
 * The free Object Store v2 limits usage to 10 transactions per second (TPS) per application.
 +
-Premium add-on users are allowed up to 100 TPS per app.
+Premium add-on customers are allowed up to 100 TPS per app.
 +
 To increase your TPS limit, contact the MuleSoft account team.
 
