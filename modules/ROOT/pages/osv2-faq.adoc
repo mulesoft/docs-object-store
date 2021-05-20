@@ -17,7 +17,9 @@ Mule 4 supports only Object Store v2.
 
 == Can I use Object Store v2 for apps deployed to on-premises servers?
 
-No, only apps deployed to CloudHub can use Object Store v2 or Object Store v1.
+// Shared onPrem 
+include::partial$osv2-faq.adoc[tag=faqOnPrem]
+
 
 For on-premises deployments, you can use the object store included in Mule.
 For information about the Mule object store, see xref:mule-runtime::mule-object-stores.adoc[Store Application Data Using Object Stores].

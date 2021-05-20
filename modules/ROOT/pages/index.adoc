@@ -12,8 +12,8 @@ See the xref:osv2-faq.adoc[FAQ] for Object Store information.
 
 image::osv2-architecture.png[width=300]
 
-The only way on-premises Mule applications can access Object Store v2 is via the Object Store REST API.
-
+// Shared onPrem 
+include::partial$osv2-faq.adoc[tag=faqOnPrem]
 
 You can configure a Mule app to use the Object Store REST API to store and retrieve 
 values from an object store in another Mule app.

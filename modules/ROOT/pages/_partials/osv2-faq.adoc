@@ -7,3 +7,7 @@ MuleSoft notifies your account administrator and team of any billing-related inf
 //tag::faqStaticTTL[]
 Updating the data (for example, by overwriting the key) resets the TTL.
 //end::faqStaticTTL[]
+
+//tag::faqOnPrem[]
+On-premises Mule applications can access Object Store v2 only via the Object Store REST API.
+//end::faqOnPrem[]
