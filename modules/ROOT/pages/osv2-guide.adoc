@@ -111,7 +111,10 @@ them to be visible only as binary in Anypoint Platform.
 . To delete a key, hover over a key name and click the trash can icon.
 +
 Similarly, you can delete a partition or the store itself by hovering over and clicking the trash can icon.
-
++
+[IMPORTANT]
+Do not delete object stores that are associated with a running app.
+To prevent errors, stop the app before deleting an object store. 
 
 The tutorial provides more detailed information about creating object stores in Mule 3 and Mule 4 applications. 
 
