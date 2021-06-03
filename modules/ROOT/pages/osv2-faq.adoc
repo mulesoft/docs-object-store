@@ -12,7 +12,7 @@ Object Store v2 is available in xref:runtime-manager::cloudhub-architecture.adoc
 * Mule runtime engine 3.8.5 and later
 * All Mule runtime engine 4.x versions
 +
-Mule 4 supports only Object Store v2.
+Mule 4 supports Object Store v2, but does not support Object Store v1.
 
 
 == Can I use Object Store v2 for apps deployed to on-premises servers?
