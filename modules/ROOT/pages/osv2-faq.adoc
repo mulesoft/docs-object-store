@@ -48,9 +48,8 @@ IMPORTANT: If after the first deploy, you move the app to a different region, Ob
 
 == Does Object Store v2 support distributed locking for key updates?
 
-No. Object Store v2 does not coordinate key updates.
-If multiple Mule components attempt to update a key simultaneously,
-errors or data discrepancies can occur.
+Because CloudHub doesn't support distributed locking, errors or data discrepancies can occur if any components that use Object Store v2 attempt to update a key simultaneously.
+You can use other synchronization mechanisms to synchronize access to Object Store v2.
 
 == Can an app deployed to CloudHub access the object store of another CloudHub app?
 
