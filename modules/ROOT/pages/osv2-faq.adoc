@@ -46,11 +46,6 @@ Yes, Object Store v2 is in the same region as the worker where the app is initia
 
 IMPORTANT: If after the first deploy, you move the app to a different region, Object Store v2 remains in the original region to avoid data loss. Your use of Object Store v2 never moves from one region to another. When you need to deploy both an app and object store to a different region, delete the app and re-upload the app into the new region. This action loses all the data that may exist in the storage.
 
-== Does Object Store v2 support distributed locking for key updates?
-
-Because CloudHub doesn't support distributed locking, errors or data discrepancies can occur if any components that use Object Store v2 attempt to update a key simultaneously.
-You can use other synchronization mechanisms to synchronize access to Object Store v2.
-
 == Can an app deployed to CloudHub access the object store of another CloudHub app?
 
 You can configure a Mule app to use the Object Store REST API to store and retrieve 
