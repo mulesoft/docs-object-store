@@ -84,6 +84,9 @@ In Object Store v2, there is no limit on the number of keys per app.
 
 The maximum number of characters in a key is 256.
 
+// Shared keyChars 
+include::partial$osv2-faq.adoc[tag=faqKeyChars]
+
 == What are the advantages of using partitions?
 
 You can use partitions to divide the object store into separate areas for your stored and retrieved keys.
