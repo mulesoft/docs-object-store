@@ -69,6 +69,9 @@ image::os-studio7-flow.png[Listener and Store operations in Studio]
 *Value* = `[payload.value]`
 |===
 
+// Shared keyChars 
+include::partial$osv2-faq.adoc[tag=faqKeyChars]
+
 [IMPORTANT]
 To use Object Store v2, ensure that the *Persistent* option is selected for the object store configuration reference in the *Global Elements* page.
 If the XML includes `persistent="false"`, the app does not use Object Store v2. 

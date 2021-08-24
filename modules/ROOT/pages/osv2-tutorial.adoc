@@ -97,6 +97,9 @@ image::os-tutorial-dc-store-select.png[Store operation]
 image::os-tutorial-dc-store-values.png[Key and Value fields for the Store operation]
 +
 The maximum number of characters in a key is 256.
++
+// Shared keyChars 
+include::partial$osv2-faq.adoc[tag=faqKeyChars]
 . Click *Test* to run the app in a temporary location.
 +
 The app starts running in a temporary environment:
@@ -276,6 +279,9 @@ image::os-tutorial-studio7-listener-props.png[Listener properties]
 image::os-tutorial-studio7-store-props.png[Key and Value fields for the Store operation]
 +
 The maximum number of characters in a key is 256.
++
+// Shared keyChars 
+include::partial$osv2-faq.adoc[tag=faqKeyChars]
 . Select the flow and, in the properties window, change the name to `Store`:
 +
 .The arrow shows the *Name* field in the *Store* flow properties window.
@@ -473,6 +479,9 @@ image::os-tutorial-studio6-json-props.png[JSON to Object properties in Studio 6]
 * Set *Key* to `#[payload.key]`.
 +
 The maximum number of characters in a key is 256.
++
+// Shared keyChars 
+include::partial$osv2-faq.adoc[tag=faqKeyChars]
 * Set *Value Reference* to `#[payload.value]`.
 .. Click the green plus icon (+) to the right of *Connector Configuration*.
 .. In the ObjectStore Connector *Global Element Properties* window, set *Partition* to `myPartition` and *Object Store Reference* to `_defaultUserObjectStore`, and then click *OK*.
