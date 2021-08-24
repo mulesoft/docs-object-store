@@ -40,8 +40,11 @@ If you require a higher level of security, encrypt sensitive data before writing
 
 === Synchronize Access to Object Store v2
 
-Because CloudHub doesn't support distributed locking, errors or data discrepancies can occur if any components that use Object Store v2 attempt to update a key simultaneously.
-You can use other synchronization mechanisms to synchronize access to Object Store v2.
+Using Object Store v2 with multi-worker CloudHub applications might result in data discrepencies or key clashes.
+
+To avoid these issues, use a distributed key-value store as a lock to synchronize access to Object Store v2.
+For information about distributed locking in Mule runtime engine, see xref:mule-runtime::distributed-locking.adoc[Distributed Locking].
+
 
 == Add Object Store Connector to Your Mule 4 Project
 
