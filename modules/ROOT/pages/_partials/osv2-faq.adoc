@@ -11,3 +11,7 @@ Updating the data (for example, by overwriting the key) resets the TTL.
 //tag::faqOnPrem[]
 On-premises Mule applications can access Object Store v2 only via the Object Store REST API.
 //end::faqOnPrem[]
+
+//tag::faqKeyChars[]
+Object Store v2 doesn't support using pipe (`|`) characters in keys.
+//end::faqKeyChars[]
