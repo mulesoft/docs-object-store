@@ -58,10 +58,14 @@ image::os-use-object-store-v2.png[Click Use Object Store V2 in the Runtime Manag
 +
 The free Object Store v2 limits usage to 10 transactions per second (TPS) per application.
 To upgrade to premium and increase your TPS limit, contact the MuleSoft account team.
-
 * For CloudHub applications using Mule 4, if you choose Object Store v2, Object Store v2 overrides the `_defaultPersistentObjectStore` object store.
 +
 For CloudHub applications using Mule 3, Object Store v2 overrides the `_defaultUserObjectStore` object store. To use Object Store v2 in Mule 3 CloudHub applications, set the Object Store reference field to the `_defaultUserObjectStore` value.
+* Using Object Store v2 with multi-worker CloudHub applications might result in data discrepencies or key clashes.
++
+To avoid these issues, use a distributed key-value store as a lock to synchronize access to Object Store v2.
+For information about distributed locking in Mule runtime engine, see xref:mule-runtime::distributed-locking.adoc[Distributed Locking].
+
 
 == See Also
 

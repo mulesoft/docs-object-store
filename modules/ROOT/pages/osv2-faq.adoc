@@ -46,12 +46,6 @@ Yes, Object Store v2 is in the same region as the worker where the app is initia
 
 IMPORTANT: If after the first deploy, you move the app to a different region, Object Store v2 remains in the original region to avoid data loss. Your use of Object Store v2 never moves from one region to another. When you need to deploy both an app and object store to a different region, delete the app and re-upload the app into the new region. This action loses all the data that may exist in the storage.
 
-== How are Object Store entries divided among workers?
-
-Object Store v2 is a remote service that is separate from CloudHub workers. All entries that you put in `_defaultUserObjectStore` are available to all workers for the same app. If not using `_defaultUserObjectStore`, then the data is put into an in-memory object store on the worker and that data is lost if the worker restarts or a new app version is deployed.
-
-For an example of entry availability, if you had 50 entries and 5 workers, all 50 entries would be available to all the workers in the app and the Object Store v2 service handles storing all the data without any impact on the workers.
-
 == Can an app deployed to CloudHub access the object store of another CloudHub app?
 
 You can configure a Mule app to use the Object Store REST API to store and retrieve 

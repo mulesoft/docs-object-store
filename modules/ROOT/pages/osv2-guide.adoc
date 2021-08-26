@@ -38,6 +38,14 @@ Object Store v2 uses TLS for secure transport.
 Data at rest is stored using FIPS 140-2-compliant encryption standards.
 If you require a higher level of security, encrypt sensitive data before writing it to the object store.
 
+=== Synchronize Access to Object Store v2
+
+Using Object Store v2 with multi-worker CloudHub applications might result in data discrepencies or key clashes.
+
+To avoid these issues, use a distributed key-value store as a lock to synchronize access to Object Store v2.
+For information about distributed locking in Mule runtime engine, see xref:mule-runtime::distributed-locking.adoc[Distributed Locking].
+
+
 == Add Object Store Connector to Your Mule 4 Project
 
 Install Object Store Connector to add it to a Mule project:
