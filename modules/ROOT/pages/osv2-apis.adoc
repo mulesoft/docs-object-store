@@ -181,6 +181,7 @@ Depending on the deployment region, use one of the following domains for the val
 | `object-store-eu-west-2.eu1.anypoint.mulesoft.com` | Europe (London)
 | `object-store-sa-east-1.anypoint.mulesoft.com` | South America (São Paulo)
 | `object-store-us-gov-west-1.gov.anypoint.mulesoft.com` | US Gov West
+| `object-store-eu-central-1.anypoint.mulesoft.com` | Europe (Frankfurt)
 .2+|`prod-eu` | `object-store-eu-central-1.eu1.anypoint.mulesoft.com` | Europe (Frankfurt)
 | `object-store-eu-west-1.eu1.anypoint.mulesoft.com` | Europe (Ireland)
 |===
