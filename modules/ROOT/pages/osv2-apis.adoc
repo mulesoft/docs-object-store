@@ -170,7 +170,7 @@ Depending on the deployment region, use one of the following domains for the val
 [%header,cols="15,75a,10a"]
 |===
 |Control Plane|BASE_URL | Region 
-.11+|`prod` | `object-store-us-east-1.anypoint.mulesoft.com` | US East (N. Virginia)
+.13+|U.S.| `object-store-us-east-1.anypoint.mulesoft.com` | US East (N. Virginia)
 | `object-store-us-east-2.anypoint.mulesoft.com` | US East (Ohio)
 | `object-store-us-west-1.anypoint.mulesoft.com` | US West (N. California)
 | `object-store-us-west-2.anypoint.mulesoft.com` | US West (Oregon)
@@ -178,12 +178,15 @@ Depending on the deployment region, use one of the following domains for the val
 | `object-store-ap-southeast-2.anypoint.mulesoft.com` | Asia Pacific (Sydney)
 | `object-store-ap-northeast-1.anypoint.mulesoft.com` | Asia Pacific (Tokyo)
 | `object-store-ca-central-1.anypoint.mulesoft.com` | Canada (Central)
-| `object-store-eu-west-2.eu1.anypoint.mulesoft.com` | Europe (London)
-| `object-store-sa-east-1.anypoint.mulesoft.com` | South America (São Paulo)
-| `object-store-us-gov-west-1.gov.anypoint.mulesoft.com` | US Gov West
 | `object-store-eu-central-1.anypoint.mulesoft.com` | Europe (Frankfurt)
-.2+|`prod-eu` | `object-store-eu-central-1.eu1.anypoint.mulesoft.com` | Europe (Frankfurt)
+| `object-store-eu-west-1.anypoint.mulesoft.com` | Europe (London)
+| `object-store-eu-west-2.anypoint.mulesoft.com` | Europe (Ireland)
+| `object-store-sa-east-1.anypoint.mulesoft.com` | South America (São Paulo)
+| `object-store-eu-central-1.anypoint.mulesoft.com` | Europe (Frankfurt)
+| MuleSoft Government Cloud| `object-store-us-gov-west-1.gov.anypoint.mulesoft.com` | US Gov West
+.2+|EU | `object-store-eu-central-1.eu1.anypoint.mulesoft.com` | Europe (Frankfurt)
 | `object-store-eu-west-1.eu1.anypoint.mulesoft.com` | Europe (Ireland)
+
 |===
 --
 . Configure the application with HTTP headers and body for values to store to or read from
