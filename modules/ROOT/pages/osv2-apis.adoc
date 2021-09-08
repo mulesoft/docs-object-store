@@ -183,7 +183,9 @@ Depending on the deployment region, use one of the following domains for the val
 | `object-store-eu-west-2.anypoint.mulesoft.com` | Europe (Ireland)
 | `object-store-sa-east-1.anypoint.mulesoft.com` | South America (São Paulo)
 | `object-store-eu-central-1.anypoint.mulesoft.com` | Europe (Frankfurt)
-| MuleSoft Government Cloud| `object-store-us-gov-west-1.gov.anypoint.mulesoft.com` | US Gov West
+| U.S.
+
+MuleSoft Government Cloud| `object-store-us-gov-west-1.gov.anypoint.mulesoft.com` | US Gov West
 .2+|EU | `object-store-eu-central-1.eu1.anypoint.mulesoft.com` | Europe (Frankfurt)
 | `object-store-eu-west-1.eu1.anypoint.mulesoft.com` | Europe (Ireland)
 
