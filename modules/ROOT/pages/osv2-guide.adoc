@@ -40,7 +40,7 @@ If you require a higher level of security, encrypt sensitive data before writing
 
 === Synchronize Access to Object Store v2
 
-Using Object Store v2 with multi-worker CloudHub applications might result in data discrepencies or key clashes.
+Using Object Store v2 with multi-worker CloudHub applications might result in data discrepancies or key clashes.
 
 To avoid these issues, use a distributed key-value store as a lock to synchronize access to Object Store v2.
 For information about distributed locking in Mule runtime engine, see xref:mule-runtime::distributed-locking.adoc[Distributed Locking].
