@@ -15,3 +15,7 @@ On-premises Mule applications can access Object Store v2 only via the Object Sto
 //tag::faqKeyChars[]
 Object Store v2 doesn't support using pipe (`|`) characters in keys.
 //end::faqKeyChars[]
+
+//tag::faqKeySize[]
+The maximum number of characters in a key is 256 (1024 bytes).
+//end::faqKeySize[]

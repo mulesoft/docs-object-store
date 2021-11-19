@@ -76,7 +76,8 @@ In Object Store v2, there is no limit on the number of keys per app.
 
 == How many characters can a key have?
 
-The maximum number of characters in a key is 256.
+// Shared keySize 
+include::partial$osv2-faq.adoc[tag=faqKeySize]
 
 // Shared keyChars 
 include::partial$osv2-faq.adoc[tag=faqKeyChars]
