@@ -362,6 +362,10 @@ image::os-tutorial-rtm-key-in-os.png[Object Store option, key, and value in Runt
 The `myKey` key that you sent from `curl` appears in the object store with the value of `[binary value] BINARY`.
 The value is binary because Mule 4 wraps values in a Mule object, which causes
 them to be visible only as binary in Anypoint Platform.
++
+[NOTE]
+// customTTLnote
+include::partial$osv2-faq.adoc[tag=customTTLnote]
 . From the command line, run the following `curl` command to view the value for the key, replacing _APP-URL_ with the *App url* value that you copied from Runtime Manager:
 +
 [source,console]

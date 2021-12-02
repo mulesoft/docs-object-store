@@ -131,7 +131,13 @@ The tutorial provides more detailed information about creating object stores in 
 
 == Configure a Custom Time to Live Period
 
-To configure a custom time to live (TTL) period for keys stored in Object Store v2:
+The custom time to live (TTL) period applies to all object stores in all partitions in the app.
+
+[NOTE]
+// customTTLnote
+include::partial$osv2-faq.adoc[tag=customTTLnote]
+
+To configure a custom TTL period for keys stored in the object store:
 
 . Create an app that uses Mule runtime engine version 4.2.1 or later.
 . Configure the object store in the app.
@@ -153,7 +159,7 @@ For Mule 4.2.1 and later, enter a custom TTL value of 0 through 2592000 seconds 
 +
 If you leave this field empty, you enable rolling TTL; if you exceed 2592000 seconds, the TTL defaults to 2592000 seconds.
 +
-For Mule versions earlier than 4.2.1, leaving this field empty to set the TTL to 2592000 seconds.
+For Mule versions earlier than 4.2.1, leave this field empty to set the TTL to 2592000 seconds.
 * *Entry ttl unit*
 +
 Specify the TTL time interval, such as MINUTES.

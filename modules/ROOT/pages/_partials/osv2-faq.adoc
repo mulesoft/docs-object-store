@@ -19,3 +19,8 @@ Object Store v2 doesn't support using pipe (`|`) characters in keys.
 //tag::faqKeySize[]
 The maximum number of characters in a key is 256 (1024 bytes).
 //end::faqKeySize[]
+
+//tag::customTTLnote[]
+The TTL value for `defaultPersistentObjectStore` that appears in the *Object Store* page in Runtime Manager is a default value (2592000 seconds), not the custom TTL configured for all object stores in the app.  
+//end::customTTLnote[]
+
