@@ -131,11 +131,8 @@ The tutorial provides more detailed information about creating object stores in 
 
 == Configure a Custom Time to Live Period
 
-The custom time to live (TTL) period applies to all object stores in all partitions in the app.
-
-[NOTE]
-// customTTLnote
-include::partial$osv2-faq.adoc[tag=customTTLnote]
+A custom time to live (TTL) period applies to the key-value pair defined in the object store configuration.
+You can set different TTL value for key-value pairs in different partitions.
 
 To configure a custom TTL period for keys stored in the object store:
 
