@@ -186,7 +186,7 @@ same data center as the Runtime Manager app.
 
 == What happens when you reenable the *Use Object Store v2* option after disabling it?
 
-By default, the *Use Object Store v2* option is enabled when deploying the CloudHub application. If you disable and then reenable this option in Runtime Manager, the original key-value pairs persist as long as the key-value pair TTL is not expired. 
+By default, the *Use Object Store v2* option is enabled during CloudHub application deployment. If you disable and then reenable this option in Runtime Manager, the original key-value pairs persist as long as the key-value pair TTL is not expired. 
 
 == See Also
 
