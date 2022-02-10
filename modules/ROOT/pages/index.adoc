@@ -87,7 +87,7 @@ The Object Store Connector operations that extend TTL are:
 [[static-ttl]]
 === Static TTL
 
-When you configure static TTL, the value of `entryTtl` determines when to evict the data.
+When you configure static TTL, the value of `entryTtl` determines when to evict the data:
 
 * The minimum static TTL is 1 second.
 * The maximum (and default) static TTL is 2592000 seconds (30 days).
