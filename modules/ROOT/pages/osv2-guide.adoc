@@ -133,6 +133,8 @@ The tutorial provides more detailed information about creating object stores in 
 
 A custom time to live (TTL) period applies to the partition defined in the object store configuration.
 
+For information how rolling TTL behaves, see xref:index.adoc#rolling-ttl[Rolling TTL].
+
 To configure a custom TTL period for keys stored in the object store:
 
 . Create an app that uses Mule runtime engine version 4.2.1 or later.
@@ -225,7 +227,7 @@ to deploy your app to CloudHub, do the following:
 == See Also
 
 * xref:osv2-tutorial.adoc[Tutorial: Object Store v2]
-* xref:osv2-faq.adoc#how-long-can-data-persist-in-object-store-v2[How long can data persist in Object Store v2?]
+* xref:index.adoc#rolling-ttl[Rolling TTL]
 * xref:osv2-faq.adoc#what-are-the-advantages-of-using-partitions[What are the advantages of using partitions?]
 * https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Object Store v2 API]
 * https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Object Store v2 Stats API]
