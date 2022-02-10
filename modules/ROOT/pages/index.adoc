@@ -67,7 +67,7 @@ xref:osv2-guide.adoc#configure-a-custom-time-to-live-period[Configure a Custom T
 === Rolling TTL
 
 When you configure rolling TTL, accessing the data at least once a week extends the TTL for 30 days.
-Otherwise, the object store evicts the date in the next 7 to 30 days from the most recent expiration date.
+Otherwise, the object store evicts the data in the next 7 to 30 days from the most recent expiration date.
 
 The Object Store Connector operations that extend TTL are:
 
@@ -92,7 +92,7 @@ When you configure static TTL, the value of `entryTtl` determines when to evict 
 * The minimum static TTL is 1 second.
 * The maximum (and default) static TTL is 2592000 seconds (30 days).
 
-If the `entryTtl` value exceeds 30 days, TTL is the maximum value of 2592000 seconds (30 days) without returning an error.
+If the `entryTtl` value exceeds 30 days, TTL is set to the maximum value of 2592000 seconds (30 days) without returning an error.
 
 //Shared Static TTL 
 include::partial$osv2-faq.adoc[tag=faqStaticTTL]
