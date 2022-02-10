@@ -21,9 +21,7 @@ values from an object store in another Mule app.
 
 Object Store v2 features:
 
-* Supports both static and rolling TTL (time to live) for data persistence.
-+
-For information, see xref:osv2-faq.adoc#how-long-can-data-persist-in-object-store-v2[How long can data persist in Object Store v2?]
+* Supports both static and rolling <<time-to-live,TTL>> (time to live) for data persistence.
 * Allows for an unlimited number of entries. There is no limit on the total size of v2 object-stores.
 * Stores values up to 10 MB (when Base64 encoded) in size. You can estimate base64 size of a payload as follows: CEILING(base10size * 1024/3) * 4, where base10size is object size in bytes.
 + Example: A base10 payload size of 7.5 MB converts to 10.24 MB base64.
@@ -38,6 +36,67 @@ For information, see xref:osv2-faq.adoc#how-long-can-data-persist-in-object-stor
 You can use the existing Object Store connector to write to the object store, regardless of whether you are using v1 or v2.
 
 The Object Store v2 user interface is available in the Anypoint Platform > Runtime Manager.
+
+[[time-to-live]]
+== Time to Live (TTL)
+
+The TTL can be either <<rolling-ttl,_rolling_>> or <<static-ttl,_static_>>.
+
+The `entryTtl` value, specified in the global configuration parameters for the connector,
+determines when to evict key-value pairs from the store.
+
+If the app doesn't specify a value for `entryTtl`, the default value depends on the Mule version for the app:
+
+* Mule versions 4.2.1 and later:
++
+Object stores have a rolling TTL by default.
++
+Accessing the data at least once a week extends the TTL for 30 days.
+
+* Mule versions earlier than 4.2.1:
++
+Object stores have a static TTL of 30 days by default.
++
+//Shared Static TTL 
+include::partial$osv2-faq.adoc[tag=faqStaticTTL]
+
+To configure TTL, see 
+xref:osv2-guide.adoc#configure-a-custom-time-to-live-period[Configure a Custom Time to Live Period].
+
+[[rolling-ttl]]
+=== Rolling TTL
+
+When you configure a rolling TTL, accessing the data at least once a week extends the TTL for 30 days.
+Otherwise, the object store evicts the data in the next 7 to 30 days from the most recent expiration date.
+
+The Object Store Connector operations that extend TTL are:
+
+[%header,cols="50,50"]
+|===
+| Extends TTL | Doesn't Extend TTL
+| Retrieve | Contains
+| Retrieve All | Clear
+| Retrieve All Keys | Remove
+| Store | 
+|===
+
+
+* The minimum rolling TTL is 1 second.
+* The maximum rolling TTL is unlimited as long as the data continues to be accessed.
+
+[[static-ttl]]
+=== Static TTL
+
+When you configure static TTL, the value of `entryTtl` determines when to evict the data:
+
+* The minimum static TTL is 1 second.
+* The maximum (and default) static TTL is 2592000 seconds (30 days).
+
+If the `entryTtl` value exceeds 30 days, TTL is set to the maximum value of 2592000 seconds (30 days) without returning an error.
+
+//Shared Static TTL 
+include::partial$osv2-faq.adoc[tag=faqStaticTTL]
+
 
 == Upgrade to Object Store v2
 

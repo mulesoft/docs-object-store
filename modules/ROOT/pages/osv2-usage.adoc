@@ -26,7 +26,7 @@ See <<How Billing is Calculated>>.
 
 Every API request (via the connector or API) to Object Store v2 counts toward the TPS limit, based on your subscription type:
 
-[%headers,cols="50,50"]
+[%header,cols="50,50"]
 |===
 |Subscription Type|TPS Limit
 |Base subscription|10 TPS per app
