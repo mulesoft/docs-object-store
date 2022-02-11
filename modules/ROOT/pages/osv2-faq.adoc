@@ -93,7 +93,7 @@ For this reason, data access time is the same, whether you store keys in one par
 
 The maximum TTL (time to live) is 2592000 seconds (30 days).
 
-For information about rolling and static TTL, see xref:index.adoc#rolling-ttl[Rolling TTL].
+For information about rolling and static TTL, see xref:index.adoc#time-to-live[Time to Live (TTL)].
 
 To configure TTL, see 
 xref:osv2-guide.adoc#configure-a-custom-time-to-live-period[Configure a Custom Time to Live Period].
