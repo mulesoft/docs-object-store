@@ -371,11 +371,13 @@ The Object Store Stats API enables you to retrieve statistics on your Object Sto
 
 The usage statistics are not real-time and might include latency.
 
-Use the Stats API to view your entire organization’s usage of Object Store for billing purposes:
+Use the Stats API to view your entire organization's usage of Object Store for billing purposes:
 
 * Usage per master organization and all sub-organizations
 * Usage per organization
 * Usage per environment
+* Usage per region
+* Usage per store
 
 === Access the Object Store Stats API
 
@@ -393,6 +395,9 @@ the object store.
 
 * <<Example: Retrieve Usage Metrics per Organization>>
 * <<Example: Retrieve Usage Metrics by Environment>>
+* <<Example: Retrieve Usage Metrics by Region>>
+* <<Example: Retrieve Usage Metrics by Store>>
+
 
 ==== Example: Retrieve Usage Metrics per Organization
 
@@ -474,6 +479,21 @@ This request returns a response similar to the following:
 ]
 ----
 
+==== Example: Retrieve Usage Metrics by Region
+
+To view Object Store usage statistics for a region,
+submit a `curl` command similar to the following, 
+replacing ORG_ID with your organization ID, ENV_ID with your environment ID,
+and BEARER_TOKEN with your bearer token:
+
+For the list of CloudHub deployment regions, see xref:runtime-manager::cloudhub-networking-guide.adoc#regional-services[Regional Services].
+
+==== Example: Retrieve Usage Metrics by Store
+
+To view Object Store usage statistics for a store,
+submit a `curl` command similar to the following, 
+replacing ORG_ID with your organization ID, ENV_ID with your environment ID,
+and BEARER_TOKEN with your bearer token:
 
 == Download Object Store APIs from Exchange 
 
