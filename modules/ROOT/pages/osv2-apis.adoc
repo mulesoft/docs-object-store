@@ -486,6 +486,23 @@ submit a `curl` command similar to the following,
 replacing ORG_ID with your organization ID, ENV_ID with your environment ID,
 and BEARER_TOKEN with your bearer token:
 
+[source,console,linenums]
+----
+curl -X GET \
+ 
+----
+
+This request returns a response similar to the following:
+
+[source,json,linenums]
+----
+[
+
+]
+----
+
+
+
 For the list of CloudHub deployment regions, see xref:runtime-manager::cloudhub-networking-guide.adoc#regional-services[Regional Services].
 
 ==== Example: Retrieve Usage Metrics by Store
@@ -494,6 +511,21 @@ To view Object Store usage statistics for a store,
 submit a `curl` command similar to the following, 
 replacing ORG_ID with your organization ID, ENV_ID with your environment ID,
 and BEARER_TOKEN with your bearer token:
+
+[source,console,linenums]
+----
+curl -X GET \
+ 
+----
+
+This request returns a response similar to the following:
+
+[source,json,linenums]
+----
+[
+
+]
+----
 
 == Download Object Store APIs from Exchange 
 
