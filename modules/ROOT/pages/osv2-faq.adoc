@@ -5,7 +5,7 @@ endif::[]
 
 == Where is Object Store v2 available?
 
-Object Store v2 is available in every xref:runtime-manager::cloudhub-networking-guide.adoc#regional-services[region] where Runtime Manager (CloudHub) apps can be deployed.
+Object Store v2 is available in every xref:runtime-manager::cloudhub-networking-guide.adoc#regional-services[region] where CloudHub apps can be deployed.
 
 == What Mule versions support Object Store v2?
 

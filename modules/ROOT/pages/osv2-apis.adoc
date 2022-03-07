@@ -13,19 +13,19 @@ The Object Store v2 APIs enable you to use REST to perform the following:
 
 Object Store provides these APIs:
 
-* https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Object Store API]
-* https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Object Store Stats API]
+* https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Object Store v2 API]
+* https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Object Store v2 Stats API]
 
 == Authenticate with the Object Store APIs 
 
-* <<Object Store API>>
+* <<Object Store v2 API>>
 +
 You need a bearer token to authenticate with the Object Store API.
 To get the bearer token, you need the client ID and client secret for the app.
 
-* <<Object Store Stats API>>
+* <<Object Store v2 Stats API>>
 +
-You need an access token to authenticate with the Object Store Stats API.
+You need an access token to authenticate with the Object Store v2 Stats API.
 To get the access token, you need the Anypoint Platform username and password of a user assigned the *Organization Administrators* role.
 
 
@@ -39,25 +39,39 @@ See xref:runtime-manager::deploying-to-cloudhub.adoc[Deploy to CloudHub].
 See xref:osv2-guide.adoc#send-data-to-an-object-store[Send Data to an Object Store].
 * Get the access token (ACCESS_TOKEN) for the Anypoint Platform user. 
 +
-The user must be assigned the *Organization Administrators* role to access the Object Store Stats API.
+The user must be assigned the *Organization Administrators* role to access the Object Store v2 Stats API.
 +
-You need the access token to authenticate with the Object Store Stats API.
+You need the access token to authenticate with the Object Store v2 Stats API.
 +
 See
 https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/Authentication/[Authentication] in the 
 https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/home/[Access Management API]. 
 * Get the organization ID (ORG_ID).
 +
-You need the organization ID for operations with the Object Store API and Object Store Stats API.
+You need the organization ID for operations with the Object Store v2 API and Object Store v2 Stats API.
 +
 See the `/api/me` endpoint in the
 https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/home/[Access Management API].
 * Get the environment ID (ENV_ID).
 +
-You need the environment ID for operations with the Object Store API and Object Store Stats API.
+You need the environment ID for operations with the Object Store v2 API and Object Store v2 Stats API.
 +
 See the `/api/organizations/ORG_ID/environments` endpoint in the
-https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/home/[Access Management API]. 
+https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/home/[Access Management API].
+* Get the region ID (REGION_ID).
++
+You need the region ID for operations with the Object Store v2 Stats API.
++
+See the `/api/v1/organizations/ORG_ID/regions` endpoint in the
+https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/minor/1.0/pages/home/[Object Store v2 API] and 
+<<Example: Retrieve a List of Regions>>.
+* Get the store ID (STORE_ID).
++
+You need the store ID for operations with the Object Store v2 Stats API.
++
+See the `/api/v1/organizations/ORG_ID/environments/ENV_ID/stores/STORE_ID` endpoint in the
+https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/minor/1.0/pages/home/[Object Store v2 API] and
+<<Example: Retrieve a List of Object Stores>>.
 * Get the client ID (CLIENT_ID) and client secret (CLIENT_SECRET) for the app.
 +
 You need the client ID and client secret to get the bearer token.
@@ -65,7 +79,7 @@ You need the client ID and client secret to get the bearer token.
 See <<Get the Client ID and Client Secret for the App>>.
 * Get the bearer token (BEARER_TOKEN) for the app.
 +
-You need the bearer token to authenticate with the Object Store API.
+You need the bearer token to authenticate with the Object Store v2 API.
 +
 See the `/accounts/oauth2/token` endpoint in the
 https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/home/[Access Management API]. 
@@ -85,9 +99,9 @@ To get the client ID and the client secret for the app:
 . Click *Copy to Clipboard* for *Client Secret* and save it as the value of CLIENT_SECRET.
 
 
-== Object Store API  
+== Object Store v2 API  
 
-The Object Store API reads and writes `key,list` values, 
+The Object Store v2 API reads and writes `key,list` values, 
 which is different from Anypoint Connector for Object Store (Object Store Connector),
 which reads and writes in the `key,value` format.
 
@@ -156,7 +170,7 @@ This limitation doesn't apply to Object Store Connector for Mule 4 or
 Anypoint Studio Object Store Connector.
 
 
-=== Access the Object Store API
+=== Access the Object Store v2 API
 
 . Set up an application, such as Postman, to access the object store.
 . Configure the object store access URL, replacing ORG_ID with your organization ID and 
@@ -192,11 +206,12 @@ MuleSoft Government Cloud| `object-store-us-gov-west-1.gov.anypoint.mulesoft.com
 --
 . Configure the application with HTTP headers and body for values to store to or read from
 the object store.
-. Send the operation to the Object Store API.
+. Send the operation to the Object Store v2 API.
 
-=== Examples: Object Store API
+=== Examples: Object Store v2 API
 
 * <<Example: Retrieve a List of Object Stores>>
+* <<Example: Retrieve a List of Regions>>
 * <<Example: Retrieve a List of Keys in a Partition>>
 * <<Example: Retrieve the Value of a Key>>
 * <<Example: Store a Key-Value Pair>>
@@ -204,16 +219,17 @@ the object store.
 
 ==== Example: Retrieve a List of Object Stores
 
-To view the list of object stores, submit a `curl` command similar to the following, 
-replacing BASE_URL with the regional domain, BEARER_TOKEN with your bearer token, 
+To view the list of object stores, submit a `curl` command similar to the following, replacing 
+BASE_URL with the regional domain, 
 ORG_ID with your organization ID, 
-and ENV_ID with your environment ID:
+ENV_ID with your environment ID, and
+ACCESS_TOKEN with your access token:
 
 [source,console,linenums]
 ----
 curl -X GET \
--H 'authorization: bearer BEARER_TOKEN' \
-'https://BASE_URL/api/v1/organizations/ORG_ID/environments/ENV_ID/stores'
+ 'https://BASE_URL/api/v1/organizations/ORG_ID/environments/ENV_ID/stores' \
+ -H 'authorization: bearer ACCESS_TOKEN'
 ----
 
 This command returns output similar to the following:
@@ -228,12 +244,51 @@ This command returns output similar to the following:
     "persistent":true,"defaultTtlSeconds":2592000,"defaultConfirmationTtlSeconds":600,"isFixedTtl":null}],"nextPageToken":null}
 ----
 
+==== Example: Retrieve a List of Regions
+
+To view the list of regions, submit a `curl` command similar to the following, 
+replacing 
+BASE_URL with the regional domain,
+ORG_ID with your organization ID,
+ENV_ID with your environment ID, and
+ACCESS_TOKEN with your access token:
+
+[source,console,linenums]
+----
+curl -X GET \
+ 'https://BASE_URL/api/v1/organizations/ORG_ID/environments/ENV_ID/regions' \
+ -H 'authorization: Bearer ACCESS_TOKEN'
+
+----
+
+This command returns output similar to the following:
+
+[source,json,linenums]
+----
+[
+  {
+    "id": "us-east-1",
+    "name": "US East (N. Virginia)",
+    "url": "http://object-store.us-east-1.anypoint.mulesoft.com"
+  },
+  {
+    "id": "us-west-1",
+    "name": "US West (N. California)",
+    "url": "http://object-store.us-west-1.anypoint.mulesoft.com"
+  }
+]
+
+----
+
 ==== Example: Retrieve a List of Partitions
 
 To view the list of partitions, submit a `curl` command similar to the following, 
-replacing BASE_URL with the regional domain, BEARER_TOKEN with your bearer token, 
+replacing 
+BASE_URL with the regional domain, 
 ORG_ID with your organization ID, 
-ENV_ID with your environment ID, and STORE_ID with the `storeId` from the list of object stores:
+ENV_ID with your environment ID, and
+STORE_ID with the `storeId` from the list of object stores, and
+ACCESS_TOKEN with your access token:
 
 [source,console,linenums]
 ----
@@ -252,9 +307,13 @@ This command returns output similar to the following:
 ==== Example: Retrieve a List of Keys in a Partition 
 
 To view the keys in a partition, submit a `curl` command similar to the following, 
-replacing BASE_URL with the regional domain, BEARER_TOKEN with your bearer token, 
+replacing 
+BASE_URL with the regional domain,
 ORG_ID with your organization ID, 
-ENV_ID with your environment ID, STORE_ID with the name of the object store, and PARTITION with the name of the partition:
+ENV_ID with your environment ID,
+STORE_ID with the name of the object store,
+PARTITION_ID with the name of the partition, and
+ACCESS_TOKEN with your access token:
 
 [source,console,linenums]
 ----
@@ -274,9 +333,13 @@ This command returns output similar to the following:
 ==== Example: Retrieve the Value of a Key 
 
 To view the value of a key, submit a `curl` command similar to the following, 
-replacing BASE_URL with the regional domain, BEARER_TOKEN with your bearer token, 
+replacing BASE_URL with the regional domain,
 ORG_ID with your organization ID, 
-ENV_ID with your environment ID, STORE_ID with the name of the object store, and PARTITION with the name of the partition, and KEY_ID with the key ID:
+ENV_ID with your environment ID,
+STORE_ID with the name of the object store,
+PARTITION_ID with the name of the partition,
+KEY_ID with the key ID, and
+ACCESS_TOKEN with your access token:
 
 [source,console,linenums]
 ----
@@ -296,9 +359,14 @@ This command returns output similar to the following:
 ==== Example: Store a Key-Value Pair 
 
 To store a key-value pair, submit a `curl` command similar to the following, 
-replacing BASE_URL with the regional domain, BEARER_TOKEN with your bearer token, 
+replacing
+BASE_URL with the regional domain,
 ORG_ID with your organization ID, 
-ENV_ID with your environment ID, STORE_ID with the name of the object store, and PARTITION with the name of the partition, and specify a value for KEY_ID:
+ENV_ID with your environment ID,
+STORE_ID with the name of the object store,
+PARTITION_ID with the name of the partition,
+ACCESS_TOKEN with your access token, and
+specify a value (`myTestKey`) for KEY_ID:
 
 [source,console,linenums]
 ----
@@ -333,9 +401,14 @@ This command returns output similar to the following:
 ==== Example: Delete a Key and Value 
 
 To delete a key-value pair, submit a `curl` command similar to the following, 
-replacing BASE_URL with the regional domain, BEARER_TOKEN with your bearer token, 
+replacing
+BASE_URL with the regional domain,
 ORG_ID with your organization ID, 
-ENV_ID with your environment ID, STORE_ID with the name of the object store, and PARTITION with the name of the partition, and KEY_ID with the key ID:
+ENV_ID with your environment ID,
+STORE_ID with the name of the object store,
+PARTITION_ID with the name of the partition,
+KEY_ID with the key ID, and
+ACCESS_TOKEN with your access token:
 
 [source,console,linenums]
 ----
@@ -365,19 +438,21 @@ This command returns output similar to the following:
 
 
 
-== Object Store Stats API 
+== Object Store v2 Stats API 
 
-The Object Store Stats API enables you to retrieve statistics on your Object Store usage.
+The Object Store v2 Stats API enables you to retrieve statistics on your Object Store usage.
 
 The usage statistics are not real-time and might include latency.
 
-Use the Stats API to view your entire organization’s usage of Object Store for billing purposes:
+Use the Stats API to view your entire organization's usage of Object Store for billing purposes:
 
 * Usage per master organization and all sub-organizations
 * Usage per organization
 * Usage per environment
+* Usage per region
+* Usage per store
 
-=== Access the Object Store Stats API
+=== Access the Object Store v2 Stats API
 
 . Set up an application, such as Postman, to access the object store.
 . Configure the access URL, replacing ORG_ID with your organization ID and 
@@ -386,29 +461,32 @@ ENV_ID with your environment ID:
 `+https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID/environments/ENV_ID?startDate=...&endDate=...&period=...+`
 . Configure the application with HTTP headers and body for values to store to or read from
 the object store.
-. Send the operation to the Object Store Stats API.
+. Send the operation to the Object Store v2 Stats API.
 
 
-=== Examples: Object Store Stats API
+=== Examples: Object Store v2 Stats API
 
 * <<Example: Retrieve Usage Metrics per Organization>>
 * <<Example: Retrieve Usage Metrics by Environment>>
+* <<Example: Retrieve Usage Metrics by Region>>
+* <<Example: Retrieve Usage Metrics by Store>>
+
 
 ==== Example: Retrieve Usage Metrics per Organization
 
-By default, the Object Store Stats API endpoint retrieves statistics only for the specified ORG_ID.
+By default, the Object Store v2 Stats API endpoint retrieves statistics only for the specified ORG_ID.
 To get the usage data for the master organization and all sub-organizations, set `isMaster` to `true` when ORG_ID is the master organization. 
 If you use `isMaster=true` to query a sub-organization, the endpoint returns no results.
 
 To view Object Store usage statistics for the master organization and all sub-organizations,
-between July 11, 2020 and September 11, 2020,
+between July 11, 2021 and September 11, 2021,
 submit a `curl` command similar to the following, 
 replacing ORG_ID with the organization ID for your master organization and BEARER_TOKEN with your bearer token:
 
 [source,console,linenums]
 ----
 curl -X GET \
-  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID?startDate=2020-07-11T17%3A51%3A54.000Z&endDate=2020-09-11T17%3A51%3A54.000Z&period=1month&isMaster=true' \
+  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID?startDate=2021-07-11T17%3A51%3A54.000Z&endDate=2021-09-11T17%3A51%3A54.000Z&period=1month&isMaster=true' \
   -H 'authorization: Bearer BEARER_TOKEN'
 ----
 
@@ -417,16 +495,17 @@ This request returns a response similar to the following:
 [source,json,linenums]
 ----
 [
- {"timeStamp":"2020-07-01T00:00:00Z","objectStoreRequestCount":0},
- {"timeStamp":"2020-08-01T00:00:00Z","objectStoreRequestCount":38},
- {"timeStamp":"2020-09-01T00:00:00Z","objectStoreRequestCount":28}
+ {"timeStamp":"2021-07-01T00:00:00Z","objectStoreRequestCount":0},
+ {"timeStamp":"2021-08-01T00:00:00Z","objectStoreRequestCount":38},
+ {"timeStamp":"2021-09-01T00:00:00Z","objectStoreRequestCount":28}
 ]
 ----
 
 To view Object Store usage statistics for a sub-organization,
 between February 10, 2021 and April 10, 2021,
-submit a `curl` command similar to the following, 
-replacing ORG_ID with the organization ID for the sub-organization and BEARER_TOKEN with your bearer token:
+submit a `curl` command similar to the following, replacing
+ORG_ID with the organization ID for the sub-organization and
+BEARER_TOKEN with your bearer token:
 
 [source,console,linenums]
 ----
@@ -449,16 +528,17 @@ This request returns a response similar to the following:
 
 ==== Example: Retrieve Usage Metrics by Environment 
 
-To view Object Store usage statistics for an environment between June 13, 2020 and September 13, 2020,
-submit a `curl` command similar to the following, 
-replacing ORG_ID with your organization ID, ENV_ID with your environment ID,
+To view Object Store usage statistics for an environment between June 13, 2021 and September 13, 2021,
+submit a `curl` command similar to the following, replacing
+ORG_ID with your organization ID,
+ENV_ID with your environment ID,
 and BEARER_TOKEN with your bearer token:
 
 
 [source,console,linenums]
 ----
 curl -X GET \
-  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID/environments/ENV_ID?startDate=2020-06-13T17%3A51%3A54.000Z&endDate=2020-09-13T17%3A51%3A54.000Z&period=1month' \
+  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID/environments/ENV_ID?startDate=2021-06-13T17%3A51%3A54.000Z&endDate=2021-09-13T17%3A51%3A54.000Z&period=1month' \
   -H 'authorization: Bearer BEARER_TOKEN'
 ----
 
@@ -467,20 +547,81 @@ This request returns a response similar to the following:
 [source,json,linenums]
 ----
 [
- {"timeStamp":"2020-06-01T00:00:00Z","objectStoreRequestCount":3},
- {"timeStamp":"2020-07-01T00:00:00Z","objectStoreRequestCount":30},
- {"timeStamp":"2020-08-01T00:00:00Z","objectStoreRequestCount":1},
- {"timeStamp":"2020-09-01T00:00:00Z","objectStoreRequestCount":25}
+ {"timeStamp":"2021-06-01T00:00:00Z","objectStoreRequestCount":3},
+ {"timeStamp":"2021-07-01T00:00:00Z","objectStoreRequestCount":30},
+ {"timeStamp":"2021-08-01T00:00:00Z","objectStoreRequestCount":1},
+ {"timeStamp":"2021-09-01T00:00:00Z","objectStoreRequestCount":25}
 ]
 ----
 
+==== Example: Retrieve Usage Metrics by Region
+
+To view Object Store usage statistics for a region,
+submit a `curl` command similar to the following, replacing
+ORG_ID with your organization ID,
+ENV_ID with your environment ID,
+REGION_ID with the region from which to retrieve metrics, and
+BEARER_TOKEN with your bearer token:
+
+[source,console,linenums]
+----
+ curl -X GET \
+  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID/environments/ENV_ID/regions/REGION_ID?startDate=2021-06-13T17%3A51%3A54.000Z&endDate=2021-09-13T17%3A51%3A54.000Z&period=1month' \
+  -H 'authorization: Bearer BEARER_TOKEN'
+----
+
+To retrieve the REGION_ID, see <<Example: Retrieve a List of Regions>>.
+
+This request returns a response similar to the following:
+
+[source,json,linenums]
+----
+[
+ {"timeStamp":"2021-06-01T00:00:00Z","objectStoreRequestCount":3},
+ {"timeStamp":"2021-07-01T00:00:00Z","objectStoreRequestCount":30},
+ {"timeStamp":"2021-08-01T00:00:00Z","objectStoreRequestCount":1},
+ {"timeStamp":"2021-09-01T00:00:00Z","objectStoreRequestCount":25}
+]
+----
+
+
+==== Example: Retrieve Usage Metrics by Store
+
+To view Object Store usage statistics for a store,
+submit a `curl` command similar to the following, replacing 
+ORG_ID with your organization ID,
+ENV_ID with your environment ID,
+REGION_ID with the region to retrieve metrics from,
+STORE_ID with the store ID to retrieve metrics for, 
+and BEARER_TOKEN with your bearer token:
+
+[source,console,linenums]
+----
+ curl -X GET \
+  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID/environments/ENV_ID/regions/REGION_ID/stores/STORE_ID?startDate=2021-06-13T17%3A51%3A54.000Z&endDate=2021-09-13T17%3A51%3A54.000Z&period=1month' \
+  -H 'authorization: Bearer BEARER_TOKEN' 
+----
+
+To retrieve the STORE_ID, see <<Example: Retrieve a List of Object Stores>>.
+
+This request returns a response similar to the following:
+
+[source,json,linenums]
+----
+[
+ {"timeStamp":"2021-06-01T00:00:00Z","objectStoreRequestCount":3},
+ {"timeStamp":"2021-07-01T00:00:00Z","objectStoreRequestCount":30},
+ {"timeStamp":"2021-08-01T00:00:00Z","objectStoreRequestCount":1},
+ {"timeStamp":"2021-09-01T00:00:00Z","objectStoreRequestCount":25}
+]
+----
 
 == Download Object Store APIs from Exchange 
 
 To download the Object Store APIs from Exchange, click *Download* and select the format to download: RAML, OAS, or as a connector file for Mule 3 or Mule 4:
 
 .The arrow shows the *Download* button in Exchange.
-image::os-exchange-download.png[Download Object Store API in Exchange]
+image::os-exchange-download.png[Download Object Store v2 API in Exchange]
 
 
 == See Also
