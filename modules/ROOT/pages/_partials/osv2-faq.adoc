@@ -17,5 +17,5 @@ Object Store v2 doesn't support using pipe (`|`) characters in keys.
 //end::faqKeyChars[]
 
 //tag::faqKeySize[]
-The maximum number of characters in a key is 256 (1024 bytes).
+The maximum size for a key is 1024 bytes (UTF-8 encoding).
 //end::faqKeySize[]
