@@ -74,7 +74,7 @@ Every API call (via the connector or API) to Object Store v2 counts toward the A
 
 In Object Store v2, there is no limit on the number of keys per app.
 
-== How many characters can a key have?
+== What is the maximum key size?
 
 // Shared keySize 
 include::partial$osv2-faq.adoc[tag=faqKeySize]
