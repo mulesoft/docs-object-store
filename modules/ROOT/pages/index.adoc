@@ -67,7 +67,7 @@ xref:osv2-guide.adoc#configure-a-custom-time-to-live-period[Configure a Custom T
 === Rolling TTL
 
 When you configure rolling TTL, accessing the data during the last seven days 
-of a 30-day window extends the TTL for another 30 days.
+of the period defined by the configured TTL extends the TTL for another 30 days.
 
 If you don't access the data during that time, the object store evicts the data in the next seven to 30 days from the most recent expiration date.
 
