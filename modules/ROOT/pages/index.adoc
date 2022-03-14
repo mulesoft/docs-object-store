@@ -51,7 +51,7 @@ If the app doesn't specify a value for `entryTtl`, the default value depends on 
 +
 Object stores have a rolling TTL by default.
 +
-Accessing the data during the last seven days of a 30-day window extends the TTL for another 30 days.
+Accessing the data during the last seven days of the period defined by the configured TTL extends the TTL for another 30 days.
 
 * Mule versions earlier than 4.2.1:
 +
@@ -83,8 +83,8 @@ The Object Store Connector operations that extend TTL are:
 |===
 
 
-* The minimum rolling TTL is 30 days (2592000 seconds).
-* The maximum rolling TTL is unlimited if you continue to access the data in the last seven days of the 30-day window.
+* The minimum rolling TTL is 1 second.
+* The maximum rolling TTL is unlimited as long as the data continues to be accessed.
 
 [[static-ttl]]
 === Static TTL
