@@ -193,8 +193,8 @@ Depending on the deployment region, use one of the following domains for the val
 | `object-store-ap-northeast-1.anypoint.mulesoft.com` | Asia Pacific (Tokyo)
 | `object-store-ca-central-1.anypoint.mulesoft.com` | Canada (Central)
 | `object-store-eu-central-1.anypoint.mulesoft.com` | Europe (Frankfurt)
-| `object-store-eu-west-1.anypoint.mulesoft.com` | Europe (London)
-| `object-store-eu-west-2.anypoint.mulesoft.com` | Europe (Ireland)
+| `object-store-eu-west-1.anypoint.mulesoft.com` | Europe (Ireland)
+| `object-store-eu-west-2.anypoint.mulesoft.com` | Europe (London)
 | `object-store-sa-east-1.anypoint.mulesoft.com` | South America (São Paulo)
 | U.S.
 
