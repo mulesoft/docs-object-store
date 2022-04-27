@@ -249,14 +249,13 @@ This command returns output similar to the following:
 To view the list of regions, submit a `curl` command similar to the following, 
 replacing 
 BASE_URL with the regional domain,
-ORG_ID with your organization ID,
-ENV_ID with your environment ID, and
+ORG_ID with your organization ID, and
 ACCESS_TOKEN with your access token:
 
 [source,console,linenums]
 ----
 curl -X GET \
- 'https://BASE_URL/api/v1/organizations/ORG_ID/environments/ENV_ID/regions' \
+ 'https://BASE_URL/api/v1/organizations/ORG_ID/regions' \
  -H 'authorization: Bearer ACCESS_TOKEN'
 
 ----
