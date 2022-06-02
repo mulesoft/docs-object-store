@@ -21,7 +21,7 @@ Depending on your Mule version, you create your app in Studio 7 (Mule 4) or Stud
 == Prerequisites
 
 * Familiarity with Anypoint Studio, Anypoint Platform, and Runtime Manager
-* An xref::anypoint.mulesoft.com[Anypoint Platform account]
+* An https://anypoint.mulesoft.com[Anypoint Platform account]
 +
 If you don't have an Anypoint Platform login, click *Sign up* on the Anypoint Platform sign-in page.
 * A Design environment configured in Anypoint Platform *Access Management > Environments*.

@@ -108,7 +108,7 @@ The Object Store v2 APIs are available in the Anypoint Platform Developer's port
 
 == Where is the Object Store connector?
 
-https://www.anypoint.mulesoft.com/exchange/?search=objectstore[Anypoint Exchange] provides assets for the Mule 3 Object Store connector used by Anypoint Studio 6, and for the Mule 4 Object Store connector used by Studio 7.
+https://anypoint.mulesoft.com/exchange/?search=objectstore[Anypoint Exchange] provides assets for the Mule 3 Object Store connector used by Anypoint Studio 6, and for the Mule 4 Object Store connector used by Studio 7.
 
 == Do I need a different Object Store connector for Object Store v2 and Object Store v1?
 
