@@ -4,6 +4,10 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: osv2, os2, object store, store, rest, apis
 
+[NOTE]
+Where possible, we changed noninclusive terms to align with our company value of Equality.
+We maintained certain terms to avoid any effect on customer implementations.
+
 The Object Store v2 APIs enable you to use REST to perform the following:
 
 * Retrieve a list of object stores and keys associated with an application.
@@ -445,7 +449,7 @@ The usage statistics are not real-time and might include latency.
 
 Use the Stats API to view your entire organization's usage of Object Store for billing purposes:
 
-* Usage per master organization and all sub-organizations
+* Usage per root organization and all sub-organizations
 * Usage per organization
 * Usage per environment
 * Usage per region
@@ -474,13 +478,13 @@ the object store.
 ==== Example: Retrieve Usage Metrics per Organization
 
 By default, the Object Store v2 Stats API endpoint retrieves statistics only for the specified ORG_ID.
-To get the usage data for the master organization and all sub-organizations, set `isMaster` to `true` when ORG_ID is the master organization. 
+To get the usage data for the root organization and all sub-organizations, set `isMaster` to `true` when ORG_ID is the root organization. 
 If you use `isMaster=true` to query a sub-organization, the endpoint returns no results.
 
-To view Object Store usage statistics for the master organization and all sub-organizations,
+To view Object Store usage statistics for the root organization and all sub-organizations,
 between July 11, 2021 and September 11, 2021,
 submit a `curl` command similar to the following, 
-replacing ORG_ID with the organization ID for your master organization and BEARER_TOKEN with your bearer token:
+replacing ORG_ID with the organization ID for your root organization and BEARER_TOKEN with your bearer token:
 
 [source,console,linenums]
 ----
