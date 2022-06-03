@@ -4,6 +4,10 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: osv2, os2, object store, store, rest, apis
 
+[NOTE]
+Where possible, we changed noninclusive terms to align with our company value of Equality.
+We maintained certain terms to avoid any effect on customer implementations.
+
 The Object Store v2 APIs enable you to use REST to perform the following:
 
 * Retrieve a list of object stores and keys associated with an application.
