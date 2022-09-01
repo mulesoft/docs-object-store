@@ -91,6 +91,57 @@ If the XML includes `persistent="false"`, the app does not use Object Store v2.
 . In Runtime Manager, click the *Status* column for your application.
 . In the details pane, copy the *App url* address.
 
+
+[[configure-os-conn-app]]
+== Configure a Connected App
+
+The Connected Apps feature enables you to integrate external applications with Anypoint Platform by providing access to external applications without sharing your user credentials.
+
+For information about Connected Apps, see 
+xref:access-management::connected-apps-overview.adoc[] and
+xref:access-management::connected-apps-developers.adoc[].
+
+To create a Connected App with object store scopes:
+
+. Log into Anypoint Platform and select *Access Management*.
+. In the Access Management navigation menu, click *Connected Apps*.
+. Click *Create App*.
+.. Specify a name for the app.
+.. Select *App acts on its own behalf (client credentials)*.
+.. Click *Add Scopes* and filter by "store".
+.. Toggle the object store scopes:
++
+image::os-conn-apps-scopes.png[Scopes for Object Store connected apps]
+.. Click *Next* and select the business groups and environments to apply the scopes to.
+.. Click *Review*.
+.. Click *Add scopes* or *Cancel* to cancel your changes.
+. Click *Save* or *Cancel* to cancel your changes.
+. From the *Connected Apps* page, click *Copy Id* and *Copy Secret* for the app you just created.
++
+Use this client ID and client secret to get the bearer token required to authenticate with the Object Store v2 API.
+For information, see
+xref:osv2-apis.adoc#authenticate-os-apis[Authenticate with the Object Store APIs].
+
+
+=== Object Store Scopes
+
+Object store scopes apply to all stores in the given environment.
+Unless otherwise noted, these scopes apply to both object stores and Object Store v2 object stores.
+
+Manage stores::
+Allows create, read, update, and delete operations on stores.
+Manage stores data:
+Enables all store operations including data, partition, and confirmation APIs. 
+View stores::
+Reads store details.
+Manage store clients::
+(Object Store only) Manages all clients of a cloud store.
+View store clients::
+(Object Store only) Views all clients of a cloud store.
+Store Metrics Viewer::
+Retrieves OSv2 metrics using the Object Store v2 Stats API.
+
+
 == Send Data to an Object Store
 
 From a command line prompt, send JSON data to your Mule application using a `curl` command:
