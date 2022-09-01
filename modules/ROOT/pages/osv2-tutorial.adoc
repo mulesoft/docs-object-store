@@ -35,7 +35,7 @@ If you don't see *Access Management*, contact your site administrator.
 See xref:studio::to-download-and-install-studio.adoc[Downloading and Installing Anypoint Studio].
 ** Studio 6 
 +
-See xref:6@studio::to-download-and-install-studio.adoc[Downloading and Installing Anypoint Studio].
+See xref:6.x@studio::to-download-and-install-studio.adoc[Downloading and Installing Anypoint Studio].
 --
 * A https://curl.haxx.se[`curl`] command for testing 
 +
