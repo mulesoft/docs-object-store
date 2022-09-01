@@ -125,7 +125,7 @@ xref:osv2-apis.adoc#authenticate-os-apis[Authenticate with the Object Store APIs
 
 === Object Store Scopes
 
-Object store scopes apply to all stores in the given environment.
+Object store scopes apply to all stores in the given organization and environment.
 Unless otherwise noted, these scopes apply to both object stores and Object Store v2 object stores.
 
 Manage stores::
