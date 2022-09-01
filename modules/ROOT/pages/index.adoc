@@ -1,4 +1,4 @@
-= About Object Store v2
+= Object Store v2 Overview
 
 Object Store v2 lets CloudHub applications store data and states across batch processes, Mule components and applications, from within an application or by using the Object Store REST API.
 

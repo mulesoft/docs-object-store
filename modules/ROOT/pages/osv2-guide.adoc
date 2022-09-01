@@ -95,7 +95,7 @@ If the XML includes `persistent="false"`, the app does not use Object Store v2.
 [[configure-os-conn-app]]
 == Configure a Connected App
 
-The Connected Apps feature enables you to integrate external applications with Anypoint Platform by providing access to external applications without sharing your user credentials.
+The Connected Apps feature enables you to integrate external applications with Anypoint Platform by providing access to those applications without sharing your user credentials.
 
 For information about Connected Apps, see 
 xref:access-management::connected-apps-overview.adoc[] and
@@ -109,7 +109,7 @@ To create a Connected App with object store scopes:
 .. Specify a name for the app.
 .. Select *App acts on its own behalf (client credentials)*.
 .. Click *Add Scopes* and filter by "store".
-.. Toggle the object store scopes:
+.. Select the object store scopes to apply:
 +
 image::os-conn-apps-scopes.png[Scopes for Object Store connected apps]
 .. Click *Next* and select the business groups and environments to apply the scopes to.
@@ -134,12 +134,16 @@ Manage stores data:
 Enables all store operations including data, partition, and confirmation APIs. 
 View stores::
 Reads store details.
-Manage store clients::
-(Object Store only) Manages all clients of a cloud store.
-View store clients::
-(Object Store only) Views all clients of a cloud store.
+Manage store clients  (object store only)::
+Manages all clients of a cloud store.
++
+This scope doesn't apply to Object Store v2.
+View store clients (object store only)::
+Views all clients of a cloud store.
++
+This scope doesn't apply to Object Store v2.
 Store Metrics Viewer::
-Retrieves OSv2 metrics using the Object Store v2 Stats API.
+Retrieves Object Store v2 metrics using the Object Store v2 Stats API.
 
 
 == Send Data to an Object Store
