@@ -6,7 +6,7 @@ You can select Object Store v2 as the implementation for Mule 3 and Mule 4 in Cl
 
 See the xref:osv2-faq.adoc[FAQ] for Object Store information.
 
-image::osv2-architecture.png[width=300]
+image::osv2-architecture.png[Object Store v2 architecture]
 
 // Shared onPrem 
 include::partial$osv2-faq.adoc[tag=faqOnPrem]
