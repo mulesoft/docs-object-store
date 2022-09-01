@@ -1,5 +1,5 @@
 name: object-store
 title: Object Store
-version: master
+version: ~
 nav:
 - modules/ROOT/nav.adoc
