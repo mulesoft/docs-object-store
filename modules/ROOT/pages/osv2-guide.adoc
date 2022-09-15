@@ -103,7 +103,7 @@ xref:access-management::connected-apps-developers.adoc[].
 
 To create a Connected App with object store scopes:
 
-. Log into Anypoint Platform and select *Access Management*.
+. Log in to Anypoint Platform and select *Access Management*.
 . In the Access Management navigation menu, click *Connected Apps*.
 . Click *Create App*.
 .. Specify a name for the app.
