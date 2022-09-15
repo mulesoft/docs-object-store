@@ -1,8 +1,4 @@
-= About Object Store v2
-ifndef::env-site,env-github[]
-include::_attributes.adoc[]
-endif::[]
-:imagesdir: ../assets/images/
+= Object Store v2 Overview
 
 Object Store v2 lets CloudHub applications store data and states across batch processes, Mule components and applications, from within an application or by using the Object Store REST API.
 
@@ -10,7 +6,7 @@ You can select Object Store v2 as the implementation for Mule 3 and Mule 4 in Cl
 
 See the xref:osv2-faq.adoc[FAQ] for Object Store information.
 
-image::osv2-architecture.png[width=300]
+image::osv2-architecture.png[Object Store v2 architecture]
 
 // Shared onPrem 
 include::partial$osv2-faq.adoc[tag=faqOnPrem]
@@ -18,14 +14,15 @@ include::partial$osv2-faq.adoc[tag=faqOnPrem]
 You can configure a Mule app to use the Object Store REST API to store and retrieve 
 values from an object store in another Mule app.
 
-
-Object Store v2 features:
+== Object Store v2 Features
 
 * Supports both static and rolling <<time-to-live,TTL>> (time to live) for data persistence.
+* Supports using the Connected Apps feature to authenticate with Anypoint Platform using APIs.
++
+See xref:osv2-guide.adoc#configure-os-conn-app[Configure a Connected App].
 * Allows for an unlimited number of entries. There is no limit on the total size of v2 object-stores.
 * Stores values up to 10 MB (when Base64 encoded) in size. You can estimate base64 size of a payload as follows: CEILING(base10size * 1024/3) * 4, where base10size is object size in bytes.
 + Example: A base10 payload size of 7.5 MB converts to 10.24 MB base64.
-+
 * Is available in all supported regions and availability zones within each region.
 * Is co-located in the same region as your workers. For example, workers hosted in Singapore would use Object Store v2  hosted in Singapore.
 * Provides a Mule connector and REST interface for access by external applications.
@@ -97,6 +94,8 @@ If the `entryTtl` value exceeds 30 days, TTL is set to the maximum value of 2592
 
 //Shared Static TTL 
 include::partial$osv2-faq.adoc[tag=faqStaticTTL]
+
+== 
 
 
 == Upgrade to Object Store v2
