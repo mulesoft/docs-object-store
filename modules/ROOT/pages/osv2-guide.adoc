@@ -118,10 +118,10 @@ image::os-conn-apps-scopes.png[Scopes for Object Store connected apps]
 . Click *Save* or *Cancel* to cancel your changes.
 . From the *Connected Apps* page, click *Copy Id* and *Copy Secret* for the app you just created.
 +
-Use this client ID and client secret to get the bearer token required to authenticate with the Object Store v2 API.
-For information, see
-xref:osv2-apis.adoc#authenticate-os-apis[Authenticate with the Object Store APIs].
-
+Use this client ID and client secret to get the access token required to authenticate with the Object Store v2 API.
++
+For information on getting the access token for Connected Apps, see
+xref:access-management/connected-apps-developers.adoc#oidc-endpoints-and-tokens[OIDC Endpoints and Tokens].
 
 === Object Store Scopes
 
