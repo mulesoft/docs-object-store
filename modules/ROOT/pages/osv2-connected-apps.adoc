@@ -17,7 +17,7 @@ To create a Connected App with object store scopes:
 . Click *Create App*.
 .. Specify a name for the app.
 .. Select *App acts on its own behalf (client credentials)*.
-.. Click *Add Scopes* and filter by "store".
+.. Click *Add Scopes*.
 .. Select the object store scopes to apply:
 +
 image::os-conn-apps-scopes.png[Scopes for Object Store connected apps]
