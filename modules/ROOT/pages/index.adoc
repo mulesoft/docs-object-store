@@ -91,11 +91,11 @@ When you configure static TTL, the value of `entryTtl` determines when to evict 
 * The maximum (and default) static TTL is 2592000 seconds (30 days).
 
 If the `entryTtl` value exceeds 30 days, TTL is set to the maximum value of 2592000 seconds (30 days) without returning an error.
-
+If the `entryTtl` value is below 1 second, TTL is set to the minimum value of 1 second without returning an error.
 //Shared Static TTL 
 include::partial$osv2-faq.adoc[tag=faqStaticTTL]
 
-== 
+=== 
 
 
 == Upgrade to Object Store v2
