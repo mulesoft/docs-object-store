@@ -4,5 +4,5 @@
 * xref:osv2-guide.adoc[]
 ** xref:osv2-tutorial.adoc[Tutorial: Store and Retrieve Data]
 ** xref:osv2-connected-apps.adoc[]
-* xref:osv2-usage.adoc[Rate Limiting and Billing]
-* xref:osv2-apis.adoc[Object Store v2 REST APIs]
+* xref:osv2-usage.adoc[]
+* xref:osv2-apis.adoc[]
