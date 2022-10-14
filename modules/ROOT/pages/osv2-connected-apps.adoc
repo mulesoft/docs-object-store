@@ -57,16 +57,16 @@ Unless otherwise noted, these scopes apply to both object stores and Object Stor
 |`read:store`
 |Read store details.
 |*Manage store clients* (object store only)
-|
+|N/A
 |Manage all clients of a cloud store.
-+
+
 This scope doesn't apply to Object Store v2.
 |*View store clients* (object store only)
-|
+|N/A
 |View all clients of a cloud store.
-+
+
 This scope doesn't apply to Object Store v2.
-|Store Metrics Viewer::
+|Store Metrics Viewer
 |`read:store_metrics`
 |Retrieve Object Store v2 metrics using the Object Store v2 Stats API.
 |===
