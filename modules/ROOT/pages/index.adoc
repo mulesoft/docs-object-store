@@ -95,8 +95,6 @@ If the `entryTtl` value exceeds 30 days, TTL is set to the maximum value of 2592
 //Shared Static TTL 
 include::partial$osv2-faq.adoc[tag=faqStaticTTL]
 
-== 
-
 
 == Upgrade to Object Store v2
 

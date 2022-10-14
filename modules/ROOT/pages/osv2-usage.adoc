@@ -1,9 +1,4 @@
 = Rate Limiting and Billing
-ifndef::env-site,env-github[]
-include::_attributes.adoc[]
-endif::[]
-:imagesdir: ../assets/images/
-:keywords: osv2, os2, object store, store, usage
 
 Object Store v2 uses two metrics to determine billing and rate-limiting:
 
