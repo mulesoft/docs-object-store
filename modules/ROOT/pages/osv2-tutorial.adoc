@@ -1,7 +1,4 @@
-= Tutorial: Object Store v2
-ifndef::env-site,env-github[]
-include::_attributes.adoc[]
-endif::[]
+= Tutorial: Store and Retrieve Data from Object Store v2
 
 Use this tutorial to begin using Object Store v2 to store and view data.
 
