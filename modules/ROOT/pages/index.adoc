@@ -87,10 +87,10 @@ The Object Store Connector operations that extend TTL are:
 
 When you configure static TTL, the value of `entryTtl` determines when to evict the data:
 
-* The minimum static TTL is 1 second.
+* The minimum static TTL is one second.
 * The maximum (and default) static TTL is 2592000 seconds (30 days).
 
-If the `entryTtl` value exceeds 30 days, TTL is set to the maximum value of 2592000 seconds (30 days) without returning an error.
+If the `entryTtl` value is less than one second or greater than 30 days, TTL is set to the maximum value of 2592000 seconds (30 days) without returning an error.
 
 //Shared Static TTL 
 include::partial$osv2-faq.adoc[tag=faqStaticTTL]
