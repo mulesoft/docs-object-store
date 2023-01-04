@@ -156,7 +156,7 @@ For Object Store v2, the *Max entries* field is not configurable.
 +
 For Mule 4.2.1 and later, enter a custom TTL value of 0 through 2592000 seconds (30 days).
 +
-If *Entry ttl* is not empty, TTL is static.
+If *Entry ttl* is not empty, the TTL is static.
 +
 If you leave this field empty, you enable rolling TTL; if you exceed 2592000 seconds, the TTL defaults to 2592000 seconds.
 +
