@@ -52,9 +52,9 @@ For example, if an app retrieves one key from an object store with a total paylo
 * Each 100 KB of payload data above 100KB counts as an additional unit.
 +
 For example, if an app retrieves one key from an object store with a total payload size of 101KB, the operation counts as two units against the quota.
-* Every object-store key returned using the `retrieveAll` or `retrieveAllKeys` operation counts as an additional unit.
+* For both the `retrieveAll` and `retrieveAllKeys` operations, the size of all key-value pairs in the object store partition counts towards billable units.
 +
-For example, if an app runs a `retrieveAll` operation on an object store with 6000 keys, it generates 6000 transactions, which counts as 6000 units against the quota.
+If an app runs a `retrieveAllKeys` operation to retrieve only the keys in the object store, the billable unit is based on the size of the key-value pairs, not just the keys.
 
 The following table lists the maximum number of API requests per month,
 based on your subscription type:
