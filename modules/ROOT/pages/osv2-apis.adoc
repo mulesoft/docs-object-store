@@ -500,6 +500,25 @@ This request returns a response similar to the following:
 ]
 ----
 
+To view Object Store usage statistics for the root organization and all sub-organizations for one day, submit a `curl` command similar to the following, 
+replacing ORG_ID with the organization ID for your root organization and BEARER_TOKEN with your bearer token:
+
+[source,console,linenums]
+----
+curl -X GET \
+  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID?startDate=2023-11-11T17%3A51%3A54.000Z&endDate=2023-11-11T17%3A51%3A54.000Z&period=1month&isMaster=true' \
+  -H 'authorization: Bearer BEARER_TOKEN'
+----
+
+This request returns a response similar to the following:
+
+[source,json,linenums]
+----
+[
+ {"timeStamp":"2023-11-11T00:00:00Z","objectStoreRequestCount":36}
+]
+----
+
 To view Object Store usage statistics for a sub-organization,
 between February 10, 2023 and April 10, 2023,
 submit a `curl` command similar to the following, replacing
@@ -521,6 +540,27 @@ This request returns a response similar to the following:
  {"timeStamp":"2023-02-10T00:00:00Z","objectStoreRequestCount":1},
  {"timeStamp":"2023-03-10T00:00:00Z","objectStoreRequestCount":15},
  {"timeStamp":"2023-04-10T00:00:00Z","objectStoreRequestCount":2}
+]
+----
+
+To view Object Store usage statistics for one day for a sub-organization,
+submit a `curl` command similar to the following, replacing
+ORG_ID with the organization ID for the sub-organization and
+BEARER_TOKEN with your bearer token:
+
+[source,console,linenums]
+----
+curl -X GET \
+  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID?startDate=2023-12-01T17%3A51%3A54.000Z&endDate=2023-12-01T17%3A51%3A54.000Z&period=1month' \
+  -H 'authorization: Bearer BEARER_TOKEN'
+----
+
+This request returns a response similar to the following:
+
+[source,json,linenums]
+----
+[
+ {"timeStamp":"2023-12-01T00:00:00Z","objectStoreRequestCount":2}
 ]
 ----
 
