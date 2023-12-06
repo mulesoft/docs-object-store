@@ -88,6 +88,8 @@ image::os-access-mgmt-usage-chart.png[Object Store Usage page for API requests]
 * (*1*) Duration value
 * (*2*) Number of effective API requests per month
 * (*3*) Percentage and amount of your quota that you have used
++
+NOTE: If the usage is 0, the chart displays `<1%`.
 * (*4*) Subscription type
 +
 --
@@ -100,6 +102,22 @@ Monthly billing usage information is delayed by 24 hours.
 The circle graph changes to red as your effective API request usage approaches your quota:
 +
 image::os-access-mgmt-requests-color.png[Object Store effective API request limits]
+
+
+In some cases, the stats for the current month might not load when the backend process updates the records.
+If this happens, use the Object Store v2 Stats API
+xref:osv2-apis.adoc#usage-by-org[Usage Metrics by Organization]
+to query the daily usage in the current month and then add the daily usage together.
+
+== Retrieve Usage Metrics with Anypoint MQ Stats API
+
+To use the Object Store v2 Stats API to retrieve usage metrics, see:
+
+* xref:osv2-apis.adoc#usage-by-org[Get Usage Metrics by Organization]
+* xref:osv2-apis.adoc#usage-by-env[Get Usage Metrics by Environment]
+* xref:osv2-apis.adoc#usage-by-region[Get Usage Metrics by Region]
+* xref:osv2-apis.adoc#usage-by-store[Get Usage Metrics by Store]
+
 
 == See Also
 
