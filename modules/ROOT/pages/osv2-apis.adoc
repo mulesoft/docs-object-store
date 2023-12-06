@@ -506,7 +506,7 @@ replacing ORG_ID with the organization ID for your root organization and BEARER_
 [source,console,linenums]
 ----
 curl -X GET \
-  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID?startDate=2023-11-11T17%3A51%3A54.000Z&endDate=2023-11-11T17%3A51%3A54.000Z&period=1month&isMaster=true' \
+  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID?startDate=2023-11-11T17%3A51%3A54.000Z&endDate=2023-11-131T17%3A51%3A54.000Z&period=1day&isMaster=true' \
   -H 'authorization: Bearer BEARER_TOKEN'
 ----
 
@@ -516,6 +516,9 @@ This request returns a response similar to the following:
 ----
 [
  {"timeStamp":"2023-11-11T00:00:00Z","objectStoreRequestCount":36}
+ {"timeStamp":"2023-11-12T00:00:00Z","objectStoreRequestCount":22}
+ {"timeStamp":"2023-11-13T00:00:00Z","objectStoreRequestCount":43}
+
 ]
 ----
 
@@ -551,7 +554,7 @@ BEARER_TOKEN with your bearer token:
 [source,console,linenums]
 ----
 curl -X GET \
-  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID?startDate=2023-12-01T17%3A51%3A54.000Z&endDate=2023-12-01T17%3A51%3A54.000Z&period=1month' \
+  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID?startDate=2023-12-01T17%3A51%3A54.000Z&endDate=2023-12-03T17%3A51%3A54.000Z&period=1day' \
   -H 'authorization: Bearer BEARER_TOKEN'
 ----
 
@@ -560,7 +563,10 @@ This request returns a response similar to the following:
 [source,json,linenums]
 ----
 [
- {"timeStamp":"2023-12-01T00:00:00Z","objectStoreRequestCount":2}
+ {"timeStamp":"2023-12-01T00:00:00Z","objectStoreRequestCount":4}
+ {"timeStamp":"2023-12-02T00:00:00Z","objectStoreRequestCount":2}
+ {"timeStamp":"2023-12-03T00:00:00Z","objectStoreRequestCount":8}
+
 ]
 ----
 
