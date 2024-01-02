@@ -139,7 +139,7 @@ If the `entryTtl` value specified is greater than 30 days, the value defaults to
 * Put item as confirmable string
 * Put store
 
-|Dual Store *&#8224;* + Store
+|Store
 |DELETE |
 
 * Remove object store
@@ -149,11 +149,6 @@ If the `entryTtl` value specified is greater than 30 days, the value defaults to
 |Remove
 |===
 
-*&#8224;* The Dual Store operation in Object Store Connector consists of two operations: store the key and value, and then reverse the values.  
-The Dual Store operation acts the same as two Object Store v2 "Put item as String" calls to accomplish these results:
-
-. `objectStore.store(key, value);`
-. `objectStore.store(value, key);`
 
 You can retrieve a maximum of 25 keys with each GET operation.
 
