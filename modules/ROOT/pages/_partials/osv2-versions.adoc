@@ -1,0 +1,17 @@
+//Mule Version shared
+//tag::osMuleVersion[]
+Because Mule 3.9 and Studio 6.x are in Extended Support, we recommend that you use the latest versions of Mule and Studio.
+//end::osMuleVersion[]
+
+//Connector 4.x Version shared
+//tag::mqConnectorVersion[]
+To use connected apps with Anypoint MQ, you must use Anypoint MQ Connector 4.x for Mule 4.
+//end::mqConnectorVersion[]
+
+//Connector 3.x Version shared
+//tag::mqConnectorVersion3x[]
+If you are using Anypoint MQ Connector version 3.x or earlier,
+configure a client app instead.
+For information, see
+xref:mq-client-apps.adoc[].
+//end::mqConnectorVersion3x[]
