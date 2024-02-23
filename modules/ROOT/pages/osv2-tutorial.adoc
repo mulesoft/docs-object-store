@@ -254,7 +254,6 @@ The *HTTP* properties window now indicates that there are no errors:
 image::os-tutorial-studio6-http-props.png[HTTP properties in Studio 6.x]
 . In the canvas, click *JSON to Object* and then set *Return Class* to `java.util.Map`:
 +
-.The arrow shows the *Return Class* field in the *JSON to Object* properties window.
 image::os-tutorial-studio6-json-props.png[JSON to Object properties in Studio 6]
 . In the canvas, click *ObjectStore*.
 . In the *ObjectStore* properties window:
@@ -347,8 +346,8 @@ image::os-tutorial-rtm-os-actions-3.png[Metadata and Delete Value actions in the
 
 == See Also
 
-* xref:studio::index.adoc[]
-* xref:6.x@studio::index.adoc[]
+* xref:studio::index.adoc[Anypoint Studio 7.x]
+* xref:6.x@studio::index.adoc[Anypoint Studio 6.x]
 * xref:connectors::object-store/object-store-connector.adoc[Object Store Connector - Mule 4]
 * xref:3.9@mule-runtime::object-store-connector.adoc[Object Store Connector - Mule 3]
 * xref:runtime-manager::deploying-to-cloudhub.adoc[]
