@@ -58,7 +58,7 @@ image::os-tutorial-exchange-add-to-project.png[Add to project icon in Exchange]
 . In the *Mule Palette* view, click *HTTP*, and then drag *Listener* to the Studio canvas:
 +
 image::os-tutorial-studio7-palette.png[HTTP Connector and Listener operations in the Mule Palette view]
-. Click *ObjectStore* and then drag the *Store* operation to *Listener* on the canvas.
+. Click *ObjectStore* and then drag the *Store* operation to *Listener* on the canvas:
 +
 image::os-tutorial-studio7-flow.png[Store operation in the Studio 7 canvas]
 . In the canvas, click *Listener*.
@@ -341,8 +341,9 @@ image::os-tutorial-rtm-key-in-os-3.png[Object Store tab, key, and value in Runti
 +
 image::os-tutorial-rtm-os-actions-3.png[Metadata and Delete Value actions in the object store]
 +
-* To delete an object store, partition, key, or value, hover over the *...* icon and click the trash can icon.
-* To display the key value and any metadata associated with the value, hover over the *...* icon and click the metadata icon.
+[calloutlist]
+.. To display the key value and any metadata associated with the value, hover over the *...* icon and click the metadata icon.
+.. To delete an object store, partition, key, or value, hover over the *...* icon and click the trash can icon.
 
 == See Also
 
