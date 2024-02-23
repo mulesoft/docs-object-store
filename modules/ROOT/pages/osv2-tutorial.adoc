@@ -351,4 +351,4 @@ image::os-tutorial-rtm-os-actions-3.png[Metadata and Delete Value actions in the
 * xref:6.x@studio::index.adoc[]
 * xref:connectors::object-store/object-store-connector.adoc[Object Store Connector - Mule 4]
 * xref:3.9@mule-runtime::object-store-connector.adoc[Object Store Connector - Mule 3]
-* xref:runtime-manager::deploying-to-cloudhub.adoc[Deploying to CloudHub]
+* xref:runtime-manager::deploying-to-cloudhub.adoc[]
