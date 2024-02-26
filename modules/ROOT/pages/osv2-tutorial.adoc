@@ -27,7 +27,7 @@ If you don't have an Anypoint Platform login, click *Sign up* on the Anypoint Pl
 +
 ** xref:studio::to-download-and-install-studio.adoc[Studio 7.x]
 ** xref:6.x@studio::to-download-and-install-studio.adoc[Studio 6.x]
-* A https://curl.haxx.se[`curl` command line tool^] for testing 
+* An https://curl.haxx.se[`curl` command line tool^] for testing 
 +
 This tutorial uses the HTTP Listener trigger to initiate Object Store Connector access and a `curl` command to send JSON data to your Mule app.
 +
