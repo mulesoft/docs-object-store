@@ -29,15 +29,15 @@ If you don't have an Anypoint Platform login, click *Sign up* on the Anypoint Pl
 ** xref:6.x@studio::to-download-and-install-studio.adoc[Studio 6.x]
 * An https://curl.haxx.se[`curl` command line tool^] for testing 
 +
-This tutorial uses the HTTP Listener trigger to initiate Object Store Connector access and a `curl` command to send JSON data to your Mule app.
+This tutorial uses the HTTP Listener source to initiate Object Store Connector access and a `curl` command to send JSON data to your Mule app.
 +
 Instead of `curl`, you can use Postman or browser plugins.
 
 [[create-app-studio7]]
 == Create a Mule 4.x App with an Object Store in Anypoint Studio 7.x
 
-First, use Studio 7.x to configure an app that includes an HTTP Listener trigger and Object Store Connector.
-Then, you deploy the app to CloudHub and use a `curl` command to send a key and value, and view the key in Runtime Manager.
+First, use Studio 7.x to configure an app that includes an HTTP Listener source and Object Store Connector.
+Then, deploy the app to CloudHub and use a `curl` command to send a key and value, and view the key in Runtime Manager.
 
 To configure a Mule 4.x app in Studio 7.x:
 
@@ -63,7 +63,7 @@ image::os-tutorial-studio7-palette.png[HTTP Connector and Listener operations in
 image::os-tutorial-studio7-flow.png[Store operation in the Studio 7 canvas]
 . In the canvas, click *Listener*.
 . In the *Listener* properties window, set *General > Path* to `/store`.
-. Click the green plus icon (+) for the *Connector configuration* field. 
+. Click the plus icon (+) for the *Connector configuration* field. 
 . In the HTTP Listener *Global Element Properties* window, verify that the value of *Host* is `0.0.0.0` and *Port* is `8081`, and then click *OK*.
 +
 The *Listener* properties window indicates that there are no errors:
@@ -78,7 +78,8 @@ The maximum number of characters in a key is 256.
 +
 // Shared keyChars 
 include::partial$osv2-faq.adoc[tag=faqKeyChars]
-. In the canvas, select the flow and, in the *Flow Configuration* properties window, change the name to `Store`:
+. In the canvas, select the flow.
+. In the *Flow Configuration* properties window, change the name to `Store`:
 +
 image::os-tutorial-studio7-store-flow-props.png[Name field in the Store flow properties window]
 . In the *Mule Palette* view, click *HTTP* and then drag another *Listener* to the canvas after the first flow.
@@ -246,7 +247,7 @@ image::os-tutorial-studio6-flow-complete.png[Flow in Studio 6.x canvas]
 +
 When you submit a curl command, you append the `/store` option to the URL.
 The *Allowed Methods* setting ensures that the `curl` command can only POST information to the object store.
-.. Click the green plus icon (+) for the *Connector Configuration* option.
+.. Click the plus icon (+) for the *Connector Configuration* option.
 .. In the HTTP Connector *Global Element Properties* window, verify that the value of *Host* is `0.0.0.0` and *Port* is `8081`, and then click *OK*.
 +
 The *HTTP* properties window now indicates that there are no errors:
@@ -266,7 +267,7 @@ The maximum number of characters in a key is 256.
 // Shared keyChars 
 include::partial$osv2-faq.adoc[tag=faqKeyChars]
 * Set *Value Reference* to `#[payload.value]`.
-.. Click the green plus icon (+) for the *Connector Configuration* option.
+.. Click the plus icon (+) for the *Connector Configuration* option.
 .. In the ObjectStore Connector *Global Element Properties* window, set *Partition* to `myPartition` and *Object Store Reference* to `_defaultUserObjectStore`, and then click *OK*.
 +
 image::os-tutorial-studio6-os-global-props.png[Partition and Object Store Reference fields in the Global Element Properties window]
@@ -289,7 +290,7 @@ image::os-tutorial-studio6-payload-props.png[Value field in the Set Payload prop
 . In *Package Explorer* in Studio, right-click `osv2-demo-studio-6` and select *Anypoint Platform* > *Deploy to Cloud*.
 . In the Anypoint Platform *Deploying Application* window:
 +
-.. Select CloudHub from *Deployment Target*.
+.. Select *CloudHub* from *Deployment Target*.
 .. Ensure that *Use Object Store v2* is selected.
 .. Click *Deploy Application*:
 +
