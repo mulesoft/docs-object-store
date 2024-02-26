@@ -247,7 +247,7 @@ image::os-tutorial-studio6-flow-complete.png[Flow in Studio 6.x canvas]
 When you submit a curl command, you append the `/store` option to the URL.
 The *Allowed Methods* setting ensures that the `curl` command can only POST information to the object store.
 .. Click the green plus icon (+) for the *Connector Configuration* option.
-.. In the HTTP Connector *Global Element Properties* window, verify the value of *Host* is `0.0.0.0` and *Port* is `8081`, and then click *OK*.
+.. In the HTTP Connector *Global Element Properties* window, verify that the value of *Host* is `0.0.0.0` and *Port* is `8081`, and then click *OK*.
 +
 The *HTTP* properties window now indicates that there are no errors:
 +
