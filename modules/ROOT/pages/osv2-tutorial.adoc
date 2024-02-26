@@ -94,7 +94,7 @@ image::os-tutorial-studio7-retrieve-listener-props.png[Connector configuration m
 image::os-tutorial-studio7-retrieve-props.png[Key field for the Retrieve operation]
 . In the canvas, select the second flow and, in the *Flow Configuration* properties window, change the name to `Retrieve`.
 +
-The flows look similar to this:
+The flows look like this:
 +
 image::os-tutorial-studio7-flows.png[Store and Retrieve flows in Studio]
 
