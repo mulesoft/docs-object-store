@@ -1,0 +1,5 @@
+//Mule Version shared
+//tag::osMuleVersion[]
+Because Mule 3.9 and Studio 6.x are in Extended Support, we recommend that you use the latest versions of Mule and Studio.
+//end::osMuleVersion[]
+
