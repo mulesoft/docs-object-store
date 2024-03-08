@@ -13,7 +13,7 @@ On-premises Mule applications can access Object Store v2 only via the Object Sto
 //end::faqOnPrem[]
 
 //tag::faqKeyChars[]
-Object Store v2 doesn't support using spaces or pipe (`|`) characters in keys.
+Object Store v2 doesn't support using pipe (`|`) characters in keys and converts any spaces to plus (`+`) characters.
 //end::faqKeyChars[]
 
 //tag::faqKeySize[]
