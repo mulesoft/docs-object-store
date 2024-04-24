@@ -211,7 +211,7 @@ image::os-use-partitions-rtm.png[Partitions in the Object Store page]
 
 == Deploy App with Object Store v2 Using the Mule Maven Plugin
 
-If you are using the Mule Maven plugin version 3.4.0 or earlier
+If you are using a Mule Maven plugin version between 3.3.3 and 3.4.0
 to deploy your app to CloudHub, do the following:
 
 . Add the `<objectStoreV2>` element to your `pom.xml` project file:
