@@ -24,8 +24,8 @@ Every API request (via the connector or API) to Object Store v2 counts toward th
 [%header,cols="50,50"]
 |===
 |Subscription Type|TPS Limit
-|Base subscription|10 TPS per app
-|Premium add-on subscription|100 TPS per app
+|Base subscription|10 TPS per store
+|Premium add-on subscription|100 TPS per store
 |===
 
 For example, if your app retrieves 1500 keys from an object store with a page size of 25:
@@ -33,10 +33,10 @@ For example, if your app retrieves 1500 keys from an object store with a page si
 * With the base subscription, the response is throttled over 6 seconds.
 * With the premium subscription, the response is not throttled.
 
-If the app exceeds the number of TPS allotted based on the subscription type,
+If the store exceeds the number of TPS allotted based on the subscription type,
 Object Store v2 returns a `429 HTTP Error` response, indicating that it reached the rate limit.
 
-If the app reaches the TPS limit, you can either upgrade to a premium subscription or redesign the app to send API requests more slowly.
+If the store reaches the TPS limit, you can either upgrade to a premium subscription or redesign the app to send API requests more slowly.
 
 
 == How Billing is Calculated
