@@ -221,7 +221,7 @@ image::os-tutorial-studio6-exchange.png["Exchange icon in the Studio 6.x toolbar
 .. Enter your Anypoint Platform username and password, if prompted.
 .. In Exchange, select *Provided by MuleSoft* and *Connectors*, and then search for Object Store Connector:
 +
-image::os-tutorial-exchange.png["Provided by MuleSoft option and search field in Exchang"]
+image::os-tutorial-exchange.png["Provided by MuleSoft option and search field in Exchange"]
 .. Select *Object Store Connector - Mule 3*.
 .. Click *Install*:
 +
