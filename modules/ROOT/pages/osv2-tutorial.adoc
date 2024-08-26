@@ -45,22 +45,22 @@ To configure a Mule 4.x app in Studio 7.x:
 . Install Object Store Connector for Mule 4:
 .. Click the *Exchange* icon in the toolbar:
 +
-image::os-tutorial-studio7-exchange.png[Exchange icon in the Studio 7 toolbar]
+image::os-tutorial-studio7-exchange.png["Exchange icon in the Studio 7 toolbar"]
 .. Enter your Anypoint Platform username and password, if prompted.
 .. In Exchange, select *Provided by MuleSoft* and *Connectors*, and then search for Object Store Connector:
 +
-image::os-tutorial-exchange.png[Provided by MuleSoft option and search field in Exchange]
+image::os-tutorial-exchange.png["Provided by MuleSoft option and search field in Exchange"]
 .. Select *ObjectStore Connector - Mule 4*.
 .. Click *Add to project*:
 +
-image::os-tutorial-exchange-add-to-project.png[Add to project icon in Exchange]
+image::os-tutorial-exchange-add-to-project.png["Add to project icon in Exchange"]
 .. At the confirmation prompt, click *Proceed* and then click *OK*.
 . In the *Mule Palette* view, click *HTTP*, and then drag *Listener* to the Studio canvas:
 +
-image::os-tutorial-studio7-palette.png[HTTP Connector and Listener operations in the Mule Palette view]
+image::os-tutorial-studio7-palette.png["HTTP Connector and Listener operations in the Mule Palette view"]
 . Click *ObjectStore* and then drag the *Store* operation to *Listener* on the canvas:
 +
-image::os-tutorial-studio7-flow.png[Store operation in the Studio 7 canvas]
+image::os-tutorial-studio7-flow.png["Store operation in the Studio 7 canvas"]
 . In the canvas, click *Listener*.
 . In the *Listener* properties window, set *General > Path* to `/store`.
 . Click the plus icon (+) for the *Connector configuration* field. 
@@ -68,11 +68,11 @@ image::os-tutorial-studio7-flow.png[Store operation in the Studio 7 canvas]
 +
 The *Listener* properties window indicates that there are no errors:
 +
-image::os-tutorial-studio7-listener-props.png[Path property and Connector configuration icon for the Listener operation]
+image::os-tutorial-studio7-listener-props.png["Path property and Connector configuration icon for the Listener operation"]
 . In the canvas, click the *Store* operation.
 . In the *Store* properties window, specify `#[payload.key]` in the *Key* field and `payload.value` in the *Value* field:
 +
-image::os-tutorial-studio7-store-props.png[Key and Value fields for the Store operation]
+image::os-tutorial-studio7-store-props.png["Key and Value fields for the Store operation"]
 +
 The maximum number of characters in a key is 256.
 +
@@ -81,23 +81,23 @@ include::partial$osv2-faq.adoc[tag=faqKeyChars]
 . In the canvas, select the flow.
 . In the *Flow Configuration* properties window, change the name to `Store`:
 +
-image::os-tutorial-studio7-store-flow-props.png[Name field in the Store flow properties window]
+image::os-tutorial-studio7-store-flow-props.png["Name field in the Store flow properties window"]
 . In the *Mule Palette* view, click *HTTP* and then drag another *Listener* to the canvas after the first flow.
 . Click *ObjectStore* and then drag the *Retrieve* operation after to the *Listener* in the second flow.
 . In the canvas, click *Listener*.
 . In the *Listener* properties window, set *General > Path* to `/retrieve`.
 . In the *Connector configuration* menu, select the same *HTTP_Listener_config* option that you set up for the Listener operation in the Store flow:
 +
-image::os-tutorial-studio7-retrieve-listener-props.png[Connector configuration menu in the Listener properties window]
+image::os-tutorial-studio7-retrieve-listener-props.png["Connector configuration menu in the Listener properties window"]
 . In the canvas, click the *Retrieve* operation.
 . In the *Retrieve* properties window, specify `#[attributes.queryParams.key]` in the *Key* field:
 +
-image::os-tutorial-studio7-retrieve-props.png[Key field for the Retrieve operation]
+image::os-tutorial-studio7-retrieve-props.png["Key field for the Retrieve operation"]
 . In the canvas, select the second flow and, in the *Flow Configuration* properties window, change the name to `Retrieve`.
 +
 The flows look like this:
 +
-image::os-tutorial-studio7-flows.png[Store and Retrieve flows in Studio]
+image::os-tutorial-studio7-flows.png["Store and Retrieve flows in Studio"]
 
 . In *Package Explorer* in Studio, right-click `osv2-demo` and select *Anypoint Platform* > *Deploy to CloudHub*.
 . In the Anypoint Platform *Deploying Application* window:
@@ -105,7 +105,7 @@ image::os-tutorial-studio7-flows.png[Store and Retrieve flows in Studio]
 .. Select CloudHub from *Deployment Target*.
 .. Click *Deploy Application*:
 +
-image::os-tutorial-deploy-app.png[Deploy Application button in the Deploying Application page]
+image::os-tutorial-deploy-app.png["Deploy Application button in the Deploying Application page"]
 . Click *Open in Browser* to display the app in Runtime Manager.
 +
 If CloudHub displays a permissions error, select a different environment to deploy to.
@@ -125,7 +125,7 @@ To test your app:
 . Click the *Status* column for the `osv2-demo` app to display its details.
 . Copy the *App url* value:
 +
-image::os-tutorial-rtm-deploy-url.png[App url in Runtime Manager]
+image::os-tutorial-rtm-deploy-url.png["App url in Runtime Manager"]
 . From the command line, run the following `curl` command, replacing _APP-URL_ with the *App url* value that you copied from Runtime Manager: 
 +
 [source,console]
@@ -142,11 +142,11 @@ The output from this command displays the key-value pair that you sent to the ob
 +
 . In Runtime Manager, click *Manage application* in the details pane for the application:
 +
-image::os-tutorial-rtm-manage-app.png[Manage application in the details pane]
+image::os-tutorial-rtm-manage-app.png["Manage application in the details pane"]
 . Select *Object Store* from the sidebar.
 . Click the object store, the partition, and then the key:
 +
-image::os-tutorial-rtm-key-in-os.png[Object Store option, key, and value in Runtime Manager]
+image::os-tutorial-rtm-key-in-os.png["Object Store option, key, and value in Runtime Manager"]
 +
 The `myKey` key that you sent from `curl` appears in the object store with the value of `[binary value] BINARY`.
 The value is binary because Mule 4 wraps values in a Mule object, which causes
@@ -217,22 +217,22 @@ To configure a Mule 3.9 app in Studio 6.x:
 . Install Object Store Connector:
 .. Click the *Exchange* icon in the toolbar:
 +
-image::os-tutorial-studio6-exchange.png[Exchange icon in the Studio 6.x toolbar]
+image::os-tutorial-studio6-exchange.png["Exchange icon in the Studio 6.x toolbar"]
 .. Enter your Anypoint Platform username and password, if prompted.
 .. In Exchange, select *Provided by MuleSoft* and *Connectors*, and then search for Object Store Connector:
 +
-image::os-tutorial-exchange.png[Provided by MuleSoft option and search field in Exchange]
+image::os-tutorial-exchange.png["Provided by MuleSoft option and search field in Exchang"]
 .. Select *Object Store Connector - Mule 3*.
 .. Click *Install*:
 +
-image::os-tutorial-exchange-add-to-project-3.png[Install icon in Exchange]
+image::os-tutorial-exchange-add-to-project-3.png["Install icon in Exchange"]
 .. At the prompt, check the items to install and click *Next* twice. 
 .. Accept the license agreement and click *Finish*.
 .. At the prompt, click *Restart Now* to finish installing the connector.
 . In the *Mule Palette* view:
 .. Drag *HTTP* to the Studio canvas:
 +
-image::os-tutorial-studio6-palette.png[HTTP Connector in the Mule Palette view]
+image::os-tutorial-studio6-palette.png["HTTP Connector in the Mule Palette view"]
 .. Search for `string` and then drag *Object to String* to the *Process* area for *HTTP* on the canvas.
 .. Search for `json` and then drag *JSON to Object* to the canvas after *Object to String*.
 .. Search for `objects` and then drag *ObjectStore* to the canvas after *JSON to Object*.
@@ -240,7 +240,7 @@ image::os-tutorial-studio6-palette.png[HTTP Connector in the Mule Palette view]
 +
 The flow looks like this:
 +
-image::os-tutorial-studio6-flow-complete.png[Flow in Studio 6.x canvas]
+image::os-tutorial-studio6-flow-complete.png["Flow in Studio 6.x canvas"]
 . In the canvas, click *HTTP*.
 . In the *HTTP* properties window:
 .. Set *Path* to `/store` and *Allowed Methods* to `POST`.
@@ -252,10 +252,10 @@ The *Allowed Methods* setting ensures that the `curl` command can only POST info
 +
 The *HTTP* properties window now indicates that there are no errors:
 +
-image::os-tutorial-studio6-http-props.png[HTTP properties in Studio 6.x]
+image::os-tutorial-studio6-http-props.png["HTTP properties in Studio 6.x"]
 . In the canvas, click *JSON to Object* and then set *Return Class* to `java.util.Map`:
 +
-image::os-tutorial-studio6-json-props.png[JSON to Object properties in Studio 6]
+image::os-tutorial-studio6-json-props.png["JSON to Object properties in Studio 6"]
 . In the canvas, click *ObjectStore*.
 . In the *ObjectStore* properties window:
 .. Set the *Operation* to `Store` and set these store operation values:
@@ -270,14 +270,14 @@ include::partial$osv2-faq.adoc[tag=faqKeyChars]
 .. Click the plus icon (+) for the *Connector Configuration* option.
 .. In the ObjectStore Connector *Global Element Properties* window, set *Partition* to `myPartition` and *Object Store Reference* to `_defaultUserObjectStore`, and then click *OK*.
 +
-image::os-tutorial-studio6-os-global-props.png[Partition and Object Store Reference fields in the Global Element Properties window]
+image::os-tutorial-studio6-os-global-props.png["Partition and Object Store Reference fields in the Global Element Properties window"]
 +
 [NOTE]
 The value of the *Object Store Reference* field must be `_defaultUserObjectStore` for Object Store v2 to store data.
 +
 The *ObjectStore* properties window now indicates that there are no errors:
 +
-image::os-tutorial-studio6-os-props.png[ObjectStore properties in Studio 6]
+image::os-tutorial-studio6-os-props.png["ObjectStore properties in Studio 6"]
 . In the canvas, click *Set Payload*.
 . In the *Set Payload* properties window, set the *Value* field to:
 +
@@ -285,7 +285,7 @@ image::os-tutorial-studio6-os-props.png[ObjectStore properties in Studio 6]
 +
 This message appears on the command line to indicate that the application received the `curl` command values:
 +
-image::os-tutorial-studio6-payload-props.png[Value field in the Set Payload properties window]
+image::os-tutorial-studio6-payload-props.png["Value field in the Set Payload properties window"]
 . Save your project.
 . In *Package Explorer* in Studio, right-click `osv2-demo-studio-6` and select *Anypoint Platform* > *Deploy to Cloud*.
 . In the Anypoint Platform *Deploying Application* window:
@@ -294,7 +294,7 @@ image::os-tutorial-studio6-payload-props.png[Value field in the Set Payload prop
 .. Ensure that *Use Object Store v2* is selected.
 .. Click *Deploy Application*:
 +
-image::os-tutorial-deploy-app.png[Deploy Application button in the Deploying Applications page]
+image::os-tutorial-deploy-app.png["Deploy Application button in the Deploying Applications page"]
 . Click *Open in Browser* to display the app in Runtime Manager.
 +
 If CloudHub displays a permissions error, select a different environment to deploy to.
@@ -315,7 +315,7 @@ To test your app:
 . Click the *Status* column for the `osv2-demo-studio-6` app to display its details.
 . Copy the *App url* value:
 +
-image::os-tutorial-rtm-deploy-url-3.png[App url in Runtime Manager]
+image::os-tutorial-rtm-deploy-url-3.png["App url in Runtime Manager"]
 . From the command line, run the following `curl` command, replacing _APP-URL_ with the *App url* value that you copied from Runtime Manager:
 +
 [source,console]
@@ -333,14 +333,14 @@ KEY: myStudio6Key AND VALUE: OSv2 Test from Studio 6 WERE SAVED
 Each time you submit this command, change the key name so that each key is unique.
 . In Runtime Manager, click *Manage application* in the details pane for the application:
 +
-image::os-tutorial-rtm-manage-app-3.png[Manage application in the details pane]
+image::os-tutorial-rtm-manage-app-3.png["Manage application in the details pane"]
 . Select *Object Store* from the sidebar.
 . Click the object store, the partition, and then the key:
 +
-image::os-tutorial-rtm-key-in-os-3.png[Object Store tab, key, and value in Runtime Manager]
+image::os-tutorial-rtm-key-in-os-3.png["Object Store tab, key, and value in Runtime Manager"]
 . Hover over the *...* icon to display actions for each object:
 +
-image::os-tutorial-rtm-os-actions-3.png[Metadata and Delete Value actions in the object store]
+image::os-tutorial-rtm-os-actions-3.png["Metadata and Delete Value actions in the object store"]
 +
 [calloutlist]
 .. To display the key value and any metadata associated with the value, hover over the *...* icon and click the metadata icon.
@@ -350,6 +350,6 @@ image::os-tutorial-rtm-os-actions-3.png[Metadata and Delete Value actions in the
 
 * xref:studio::index.adoc[Anypoint Studio 7.x]
 * xref:6.x@studio::index.adoc[Anypoint Studio 6.x]
-* xref:connectors::object-store/object-store-connector.adoc[Object Store Connector - Mule 4]
-* xref:3.9@mule-runtime::object-store-connector.adoc[Object Store Connector - Mule 3]
+* xref:connectors::object-store/object-store-connector.adoc[Object Store Connector for Mule 4]
+* xref:3.9@mule-runtime::object-store-connector.adoc[Object Store Connector for Mule 3]
 * xref:runtime-manager::deploying-to-cloudhub.adoc[]

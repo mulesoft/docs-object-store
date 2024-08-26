@@ -661,8 +661,7 @@ This request returns a response similar to the following:
 
 To download the Object Store APIs from Exchange, click *Download* and select the format to download: RAML, OAS, or as a connector file for Mule 3 or Mule 4:
 
-.The arrow shows the *Download* button in Exchange.
-image::os-exchange-download.png[Download Object Store v2 API in Exchange]
+image::os-exchange-download.png["Download button for the Object Store v2 API in Exchange"]
 
 
 == See Also

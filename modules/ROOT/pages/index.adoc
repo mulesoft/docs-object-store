@@ -6,7 +6,7 @@ You can select Object Store v2 as the implementation for Mule 3 and Mule 4 in Cl
 
 See the xref:osv2-faq.adoc[FAQ] for Object Store information.
 
-image::osv2-architecture.png[Object Store v2 architecture]
+image::osv2-architecture.png["Object Store v2 architecture"]
 
 // Shared onPrem 
 include::partial$osv2-faq.adoc[tag=faqOnPrem]
@@ -104,7 +104,7 @@ IMPORTANT: Data does not carry over from Object Store v1 to v2.  Any data in a v
 +
 * To access Object Store v2, in Anypoint Platform, click *Runtime Manager*. Click the name of your application to view the application's dashboard, and click *Manage Application*. In the *Settings* screen, click *Use Object Store v2*. Accept the prompt. The *Application Data* section of the Runtime Manager's dashboard changes to *Object Store*.
 +
-image::os-use-object-store-v2.png[Click Use Object Store V2 in the Runtime Manager]
+image::os-use-object-store-v2.png["Use Object Store V2 option in Runtime Manager"]
 
 == Object Store Notes
 
@@ -132,5 +132,6 @@ For information about distributed locking in Mule runtime engine, see xref:mule-
 * xref:osv2-tutorial.adoc[Tutorial: Object Store v2]
 * xref:osv2-usage.adoc[View Usage Graphs]
 * xref:osv2-apis.adoc[REST API: Object Store v2]
-* xref:3.9@mule-runtime::object-store-connector.adoc[Mule 3 Object Store Connector]
+* xref:connectors::object-store/object-store-connector.adoc[Object Store Connector for Mule 4]
+* xref:3.9@mule-runtime::object-store-connector.adoc[Object Store Connector for Mule 3]
 * https://blogs.mulesoft.com/dev/anypoint-platform-dev/data-synchronizing-made-easy-with-mule-watermarks/[Object Store Watermarks]
