@@ -59,7 +59,7 @@ For example, if an app inserts, updates, or retrieves an item with a total paylo
 +
 For example, if an app runs the Retrieve All Keys operation to retrieve only the keys in the object store, the billable unit is based on the size of the key-value pairs, not just the keys.
 
-* For each Store operation, the size of the item being inserted or updated counts towards billable units.
+* For each Store operation, the size of the item being inserted or updated counts toward billable units.
 +
 For example, if an app inserts or updates one key in an object store with a total payload size of 300KB, the request counts as three units against the quota.
 
