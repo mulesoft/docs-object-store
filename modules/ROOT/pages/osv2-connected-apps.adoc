@@ -20,7 +20,7 @@ To create a Connected App with object store scopes:
 .. Click *Add Scopes*.
 .. Select the object store scopes to apply:
 +
-image::os-conn-apps-scopes.png[Scopes for Object Store connected apps]
+image::os-conn-apps-scopes.png["Scopes for Object Store connected apps"]
 .. Click *Next* and select the business groups and environments to apply the scopes to.
 .. Click *Review*.
 .. Click *Add scopes* or *Cancel* to cancel your changes.

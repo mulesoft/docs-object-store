@@ -61,8 +61,7 @@ Install Object Store Connector to add it to a Mule project:
 . In Studio, create a simple flow such as the following:
 +
 --
-.The screenshot shows (*1*) the *Listener* operation and (*2*) the *Store* operation in the *os-Simple-Flow* flow.
-image::os-studio7-flow.png[Listener and Store operations in Studio]
+image::os-studio7-flow.png["Listener and Store operations in Studio"]
 
 [%headers,cols="25a,75a"]
 |===
@@ -110,8 +109,7 @@ To view data in an object store:
 . Click *Object Store* in the left navigation pane.
 . Click the object store, the partition, and then the key:
 +
-.The screenshot shows (*1*) the object store, (*2*) the key, and (*3*) the value in the object store.
-image::os-rtm-key-in-os.png[Object Store option, key, and value in Runtime Manager]
+image::os-rtm-key-in-os.png["Object Store option, key, and value in Runtime Manager"]
 +
 The columns show the object store name, partition name, key, and key data.
 The partition groups the object store keys.
@@ -142,12 +140,10 @@ To configure a custom TTL period for keys stored in the object store:
 . Configure the object store in the app.
 . Select the *Store* operation in the flow and, in the properties window, click the green plus icon (+) to the right of the *Object store* field:
 +
-.The arrow shows the green plus icon in the properties window.
-image::os-use-ttl-props.png[Green plus icon in the properties window]
+image::os-use-ttl-props.png["Green plus icon in the properties window"]
 . Configure the TTL entries in the *Global Object Store Configuration* window:
 +
-.The arrow indicates the *Entry ttl* field in the *Global Object Store Configuration* window.
-image::os-use-ttl-global-props.png[Global Object Store Configuration window]
+image::os-use-ttl-global-props.png["Entry ttl field in the Global Object Store Configuration window"]
 +
 [NOTE]
 For Object Store v2, the *Max entries* field is not configurable.
@@ -187,13 +183,11 @@ To create partitions in Object Store v2:
 +
 .. In the properties window, click the green plus icon (+) to the right of the *Object store* field:
 +
-.The arrow shows the green plus icon in the properties window.
-image::os-use-ttl-props.png[Green plus icon in the properties window]
+image::os-use-ttl-props.png["Green plus icon in the properties window"]
 .. In the *Global Element Properties* window, click the green plus icon (+) to the right of *Configuration Reference* 
 to create a global object store configuration:
 +
-.The arrow shows the green plus icon for the *Configuration Reference* field in the *Global Element Properties* window.
-image::os-use-partition-studio7-os-global-props.png[Green plus icon for the Configuration Reference field in the Global Element Properties window]
+image::os-use-partition-studio7-os-global-props.png["Green plus icon for the Configuration Reference field in the Global Element Properties window"]
 .. Name the object store configuration and click *OK*.
 .. Ensure that the correct configuration reference is selected and click *OK*.
 .. Ensure that the correct object store is selected and click *OK*.
@@ -204,9 +198,7 @@ image::os-use-partition-studio7-os-global-props.png[Green plus icon for the Conf
 +
 The partitions associated with the object store appear in the *Object Store* page:
 +
-.The arrow shows the partitions in the *Object Store* page.
-image::os-use-partitions-rtm.png[Partitions in the Object Store page]
-
+image::os-use-partitions-rtm.png["Partitions in the Object Store page"]
 
 
 == Deploy App with Object Store v2 Using the Mule Maven Plugin
@@ -235,6 +227,6 @@ to deploy your app to CloudHub, do the following:
 * https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Object Store v2 API]
 * https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Object Store v2 Stats API]
 * xref:release-notes::object-store/anypoint-osv2-release-notes.adoc[Object Store v2 Release Notes]
-* xref:connectors::object-store/object-store-connector.adoc[Object Store Connector - Mule 4]
-* xref:3.9@mule-runtime::object-store-connector.adoc[Object Store Connector - Mule 3]
+* xref:connectors::object-store/object-store-connector.adoc[Object Store Connector for Mule 4]
+* xref:3.9@mule-runtime::object-store-connector.adoc[Object Store Connector for Mule 3]
 * xref:mule-runtime::deploy-to-cloudhub.adoc[Deploy Applications to CloudHub]
