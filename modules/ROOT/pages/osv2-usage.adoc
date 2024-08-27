@@ -53,7 +53,7 @@ For example, if an app retrieves one key from an object store with a total paylo
 
 * Each 100 KB of payload data above 100 KB counts as an additional unit.
 +
-For example, if an app inserts, updates or retrieves an item  with a total payload size of 101KB from an object store, the operation counts as two units against the quota.
+For example, if an app inserts, updates, or retrieves an item with a total payload size of 101KB from an object store, the operation counts as two units against the quota.
 
 * For the Retrieve All and Retrieve All Keys operations, the size of all key-value pairs in the object store partition counts toward billable units.
 +
