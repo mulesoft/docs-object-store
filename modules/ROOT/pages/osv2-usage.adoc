@@ -42,7 +42,7 @@ If the store reaches the TPS limit, you can either upgrade to a premium subscrip
 [[how-billing-is-calculated]]
 == How Billing is Calculated
 
-Effective API requests count towards your monthly billing usage and quota.
+Effective API requests count toward your monthly billing usage and quota.
 
 An effective API request counts as *one or more units* against the quota,
 depending on the size of the payload and the number of keys returned.
