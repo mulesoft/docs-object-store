@@ -47,44 +47,49 @@ Effective API requests count towards your monthly billing usage and quota.
 An effective API request counts as *one or more units* against the quota,
 depending on the size of the payload and the number of keys returned.
 
-* For each API request up to 100 KB of object-payload data (if applicable) counts as one unit against the quota.
+* Each API request up to 100 KB of object-payload data (if applicable) counts as one unit against the quota.
 +
 For example, if an app retrieves one key from an object store with a total payload size of 500KB, the request counts as five units against the quota.
-+
-Each 100 KB of payload data above 100 KB counts as an additional unit.
-+
-For example, if an app retrieves one key from an object store with a total payload size of 101KB, the operation counts as two units against the quota.
-* For both the Retrieve All and Retrieve All Keys operations, the size of all key-value pairs in the object store partition counts towards billable units.
-+
-If an app runs a Retrieve All Keys operation to retrieve only the keys in the object store, the billable unit is based on the size of the key-value pairs, not just the keys.
 
-* For each Store operation, such as storing new values or updating existing ones,
-the size of all key-value pairs in the object store partition counts towards billable units.
+* Each 100 KB of payload data above 100 KB counts as an additional unit.
 +
-For example, if an app inserts or updates one key in an object store with a total payload size of 500KB, the request counts as five units against the quota.
-+
-Each 100 KB of payload data above 100 KB counts as an additional unit.
-+
-For example, if an app inserts one key in an object store with a total payload size of 101KB, the operation counts as two units against the quota.
+For example, if an app inserts, updates or retrieves an item  with a total payload size of 101KB from an object store, the operation counts as two units against the quota.
 
-* Each DELETE API call counts as a single billable unit, including:
+* For the Retrieve All and Retrieve All Keys operations, the size of all key-value pairs in the object store partition counts towards billable units.
++
+For example, if an app runs the Retrieve All Keys operation to retrieve only the keys in the object store, the billable unit is based on the size of the key-value pairs, not just the keys.
+
+* For each Store operation, the size of the item being inserted or updated counts towards billable units.
++
+For example, if an app inserts or updates one key in an object store with a total payload size of 300KB, the request counts as three units against the quota.
+
+* Each DELETE API call counts as a single billable unit. Additional units apply to deleted partitions.
 +
 --
-** Delete partition
-** Delete all keys and values in the partition
-** Delete key
+[%headers,cols="30,30,30"]
+|===
+|API Call|Description| Billable Units
+|Delete store | Deletes the store, all partitions in the store, and all key-value pairs in each partition a| 
 
-In addition to one billable unit for the DELETE API call:
+* One billable unit for the DELETE API call
+* One billable unit for each deleted partition in the store
+|Delete partitions in store | Deletes all partitions in the store, including the key-value pairs in each partition a| 
 
-** Delete store: adds one billable unit for each deleted partition inside the store
-** Delete partitions in store: adds one billable unit for each deleted partition inside the store
+* One billable unit for the DELETE API call
+* One billable unit for each deleted partition in the store
+|Delete partition| Deletes all key-value pairs and then deletes the partition | One billable unit
+|Delete all keys and values in the partition| | One billable unit
+|Delete key | | One billable unit
+|===
 
-For example, a call to delete a store with two partitions counts as three billable units against the quota: one billable unit for each of the following:
+For example, a call to delete a store with two partitions counts as three billable units against the quota:
 
-* DELETE API call
-* two partitions
+* DELETE API call: one billable unit
+* Two partitions: two billable units
 --
 
+[[max-api-requests]]
+== Maximum Number of API Requests Per Month
 
 The following table lists the maximum number of API requests per month,
 based on your subscription type:
