@@ -104,7 +104,7 @@ based on your subscription type:
 //Shared Usage Overage 
 include::partial$osv2-faq.adoc[tag=faqUsageOverage]
 
-
+[[osv2-usage-charts]]
 == Access Object Store Effective API Request Usage Charts
 
 To view a chart that shows how many effective API requests your apps have consumed and the number of effective API requests that your subscription allows:
@@ -143,6 +143,7 @@ If this happens, use the Object Store v2 Stats API
 xref:osv2-apis.adoc#usage-by-org[Usage Metrics by Organization]
 to query the daily usage in the current month and then add the daily usage together.
 
+[[osv2-stats-api]]
 == Retrieve Usage Metrics with Object Store v2 Stats API
 
 To use the Object Store v2 Stats API to retrieve usage metrics, see:

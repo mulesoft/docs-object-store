@@ -28,7 +28,7 @@ You need an access token to authenticate with the Object Store v2 Stats API.
 To get the access token, you need the Anypoint Platform username and password of a user assigned the *Organization Administrators* role.
 
 
-== Prerequisites 
+== Before You Begin 
 
 * Create an app that uses Object Store v2 and deploy it to CloudHub.
 +
@@ -97,7 +97,7 @@ To get the client ID and the client secret for the app:
 . Click *Copy to Clipboard* for *Client ID* and save it as the value of CLIENT_ID.
 . Click *Copy to Clipboard* for *Client Secret* and save it as the value of CLIENT_SECRET.
 
-
+[[osv2-api]]
 == Object Store v2 API  
 
 The Object Store v2 API reads and writes `key,list` values, 
@@ -430,7 +430,7 @@ This command returns output similar to the following:
 ----
 
 
-
+[[osv2-stats-api]]
 == Object Store v2 Stats API 
 
 The Object Store v2 Stats API enables you to retrieve statistics on your Object Store usage.
