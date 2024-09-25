@@ -473,14 +473,14 @@ To get the usage data for the root organization and all sub-organizations, set `
 If you use `isMaster=true` to query a sub-organization, the endpoint returns no results.
 
 To view Object Store usage statistics for the root organization and all sub-organizations,
-between July 11, 2023 and September 11, 2023,
+between August 11, 2024 and September 11, 2024,
 submit a `curl` command similar to the following, 
 replacing ORG_ID with the organization ID for your root organization and BEARER_TOKEN with your bearer token:
 
 [source,console,linenums]
 ----
 curl -X GET \
-  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID?startDate=2023-07-11T17%3A51%3A54.000Z&endDate=2023-09-11T17%3A51%3A54.000Z&period=1month&isMaster=true' \
+  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID?startDate=2024-08-11T17%3A51%3A54.000Z&endDate=2024-09-11T17%3A51%3A54.000Z&period=1month&isMaster=true' \
   -H 'authorization: Bearer BEARER_TOKEN'
 ----
 
@@ -489,9 +489,8 @@ This request returns a response similar to the following:
 [source,json,linenums]
 ----
 [
- {"timeStamp":"2023-07-01T00:00:00Z","objectStoreRequestCount":0},
- {"timeStamp":"2023-08-01T00:00:00Z","objectStoreRequestCount":38},
- {"timeStamp":"2023-09-01T00:00:00Z","objectStoreRequestCount":28}
+ {"timeStamp":"2024-08-01T00:00:00Z","objectStoreRequestCount":38},
+ {"timeStamp":"2024-09-01T00:00:00Z","objectStoreRequestCount":28}
 ]
 ----
 
@@ -501,7 +500,7 @@ replacing ORG_ID with the organization ID for your root organization and BEARER_
 [source,console,linenums]
 ----
 curl -X GET \
-  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID?startDate=2023-11-11T17%3A51%3A54.000Z&endDate=2023-11-131T17%3A51%3A54.000Z&period=1day&isMaster=true' \
+  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID?startDate=2024-11-11T17%3A51%3A54.000Z&endDate=2024-11-131T17%3A51%3A54.000Z&period=1day&isMaster=true' \
   -H 'authorization: Bearer BEARER_TOKEN'
 ----
 
@@ -510,15 +509,15 @@ This request returns a response similar to the following:
 [source,json,linenums]
 ----
 [
- {"timeStamp":"2023-11-11T00:00:00Z","objectStoreRequestCount":36}
- {"timeStamp":"2023-11-12T00:00:00Z","objectStoreRequestCount":22}
- {"timeStamp":"2023-11-13T00:00:00Z","objectStoreRequestCount":43}
+ {"timeStamp":"2024-11-11T00:00:00Z","objectStoreRequestCount":36}
+ {"timeStamp":"2024-11-12T00:00:00Z","objectStoreRequestCount":22}
+ {"timeStamp":"2024-11-13T00:00:00Z","objectStoreRequestCount":43}
 
 ]
 ----
 
 To view Object Store usage statistics for a sub-organization,
-between February 10, 2023 and April 10, 2023,
+between February 10, 2024 and March 10, 2024,
 submit a `curl` command similar to the following, replacing
 ORG_ID with the organization ID for the sub-organization and
 BEARER_TOKEN with your bearer token:
@@ -526,7 +525,7 @@ BEARER_TOKEN with your bearer token:
 [source,console,linenums]
 ----
 curl -X GET \
-  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID?startDate=2023-02-10T17%3A51%3A54.000Z&endDate=2023-04-10T17%3A51%3A54.000Z&period=1month' \
+  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID?startDate=2024-02-10T17%3A51%3A54.000Z&endDate=2024-03-10T17%3A51%3A54.000Z&period=1month' \
   -H 'authorization: Bearer BEARER_TOKEN'
 ----
 
@@ -535,9 +534,8 @@ This request returns a response similar to the following:
 [source,json,linenums]
 ----
 [
- {"timeStamp":"2023-02-10T00:00:00Z","objectStoreRequestCount":1},
- {"timeStamp":"2023-03-10T00:00:00Z","objectStoreRequestCount":15},
- {"timeStamp":"2023-04-10T00:00:00Z","objectStoreRequestCount":2}
+ {"timeStamp":"2024-02-10T00:00:00Z","objectStoreRequestCount":1},
+ {"timeStamp":"2024-03-10T00:00:00Z","objectStoreRequestCount":15},
 ]
 ----
 
@@ -549,7 +547,7 @@ BEARER_TOKEN with your bearer token:
 [source,console,linenums]
 ----
 curl -X GET \
-  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID?startDate=2023-12-01T17%3A51%3A54.000Z&endDate=2023-12-03T17%3A51%3A54.000Z&period=1day' \
+  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID?startDate=2024-12-01T17%3A51%3A54.000Z&endDate=2024-12-03T17%3A51%3A54.000Z&period=1day' \
   -H 'authorization: Bearer BEARER_TOKEN'
 ----
 
@@ -558,9 +556,9 @@ This request returns a response similar to the following:
 [source,json,linenums]
 ----
 [
- {"timeStamp":"2023-12-01T00:00:00Z","objectStoreRequestCount":4}
- {"timeStamp":"2023-12-02T00:00:00Z","objectStoreRequestCount":2}
- {"timeStamp":"2023-12-03T00:00:00Z","objectStoreRequestCount":8}
+ {"timeStamp":"2024-12-01T00:00:00Z","objectStoreRequestCount":4}
+ {"timeStamp":"2024-12-02T00:00:00Z","objectStoreRequestCount":2}
+ {"timeStamp":"2024-12-03T00:00:00Z","objectStoreRequestCount":8}
 
 ]
 ----
@@ -568,7 +566,7 @@ This request returns a response similar to the following:
 [[usage-by-env]]
 ==== Example: Get Usage Metrics by Environment 
 
-To view Object Store usage statistics for an environment between June 13, 2021 and September 13, 2021,
+To view Object Store usage statistics for an environment between August 13, 2024 and September 13, 2024,
 submit a `curl` command similar to the following, replacing
 ORG_ID with your organization ID,
 ENV_ID with your environment ID,
@@ -578,7 +576,7 @@ and BEARER_TOKEN with your bearer token:
 [source,console,linenums]
 ----
 curl -X GET \
-  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID/environments/ENV_ID?startDate=2021-06-13T17%3A51%3A54.000Z&endDate=2021-09-13T17%3A51%3A54.000Z&period=1month' \
+  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID/environments/ENV_ID?startDate=2024-08-13T17%3A51%3A54.000Z&endDate=2024-09-13T17%3A51%3A54.000Z&period=1month' \
   -H 'authorization: Bearer BEARER_TOKEN'
 ----
 
@@ -587,10 +585,8 @@ This request returns a response similar to the following:
 [source,json,linenums]
 ----
 [
- {"timeStamp":"2021-06-01T00:00:00Z","objectStoreRequestCount":3},
- {"timeStamp":"2021-07-01T00:00:00Z","objectStoreRequestCount":30},
- {"timeStamp":"2021-08-01T00:00:00Z","objectStoreRequestCount":1},
- {"timeStamp":"2021-09-01T00:00:00Z","objectStoreRequestCount":25}
+ {"timeStamp":"2024-08-01T00:00:00Z","objectStoreRequestCount":1},
+ {"timeStamp":"2024-09-01T00:00:00Z","objectStoreRequestCount":25}
 ]
 ----
 
@@ -607,7 +603,7 @@ BEARER_TOKEN with your bearer token:
 [source,console,linenums]
 ----
  curl -X GET \
-  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID/environments/ENV_ID/regions/REGION_ID?startDate=2021-06-13T17%3A51%3A54.000Z&endDate=2021-09-13T17%3A51%3A54.000Z&period=1month' \
+  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID/environments/ENV_ID/regions/REGION_ID?startDate=2024-08-13T17%3A51%3A54.000Z&endDate=2024-09-13T17%3A51%3A54.000Z&period=1month' \
   -H 'authorization: Bearer BEARER_TOKEN'
 ----
 
@@ -618,10 +614,8 @@ This request returns a response similar to the following:
 [source,json,linenums]
 ----
 [
- {"timeStamp":"2021-06-01T00:00:00Z","objectStoreRequestCount":3},
- {"timeStamp":"2021-07-01T00:00:00Z","objectStoreRequestCount":30},
- {"timeStamp":"2021-08-01T00:00:00Z","objectStoreRequestCount":1},
- {"timeStamp":"2021-09-01T00:00:00Z","objectStoreRequestCount":25}
+ {"timeStamp":"2024-08-01T00:00:00Z","objectStoreRequestCount":1},
+ {"timeStamp":"2024-09-01T00:00:00Z","objectStoreRequestCount":25}
 ]
 ----
 
@@ -639,7 +633,7 @@ and BEARER_TOKEN with your bearer token:
 [source,console,linenums]
 ----
  curl -X GET \
-  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID/environments/ENV_ID/regions/REGION_ID/stores/STORE_ID?startDate=2021-06-13T17%3A51%3A54.000Z&endDate=2021-09-13T17%3A51%3A54.000Z&period=1month' \
+  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/ORG_ID/environments/ENV_ID/regions/REGION_ID/stores/STORE_ID?startDate=2024-08-13T17%3A51%3A54.000Z&endDate=2024-09-13T17%3A51%3A54.000Z&period=1month' \
   -H 'authorization: Bearer BEARER_TOKEN' 
 ----
 
@@ -650,10 +644,8 @@ This request returns a response similar to the following:
 [source,json,linenums]
 ----
 [
- {"timeStamp":"2021-06-01T00:00:00Z","objectStoreRequestCount":3},
- {"timeStamp":"2021-07-01T00:00:00Z","objectStoreRequestCount":30},
- {"timeStamp":"2021-08-01T00:00:00Z","objectStoreRequestCount":1},
- {"timeStamp":"2021-09-01T00:00:00Z","objectStoreRequestCount":25}
+ {"timeStamp":"2024-08-01T00:00:00Z","objectStoreRequestCount":1},
+ {"timeStamp":"2024-09-01T00:00:00Z","objectStoreRequestCount":25}
 ]
 ----
 
