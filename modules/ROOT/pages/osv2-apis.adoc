@@ -17,18 +17,22 @@ Object Store provides these APIs:
 [[authenticate-os-apis]]
 == Authenticate with the Object Store APIs 
 
-* <<Object Store v2 API>>
+* <<osv2-api>>
 +
 You need a bearer token to authenticate with the Object Store API.
 To get the bearer token, you need the client ID and client secret for the app.
-
-* <<Object Store v2 Stats API>>
++
+See <<get-bearer-token>>.
+* <<osv2-stats-api>>
 +
 You need an access token to authenticate with the Object Store v2 Stats API.
 To get the access token, you need the Anypoint Platform username and password of a user assigned the *Organization Administrators* role.
++
+See <<get-access-token>>.
 
 
-== Prerequisites 
+[[before-you-begin]]
+== Before You Begin 
 
 * Create an app that uses Object Store v2 and deploy it to CloudHub.
 +
@@ -36,15 +40,35 @@ See xref:runtime-manager::deploying-to-cloudhub.adoc[Deploy to CloudHub].
 * Store a key-value pair in the object store. 
 +
 See xref:osv2-guide.adoc#send-data-to-an-object-store[Send Data to an Object Store].
-* Get the access token (ACCESS_TOKEN) for the Anypoint Platform user. 
+* Prepare to authenticate with the Object Store APIs:
+
+** Object Store v2 API:
++
+--
+... Get the client ID (CLIENT_ID) and client secret (CLIENT_SECRET) for the app.
++
+You need the client ID and client secret to get the bearer token.
+... Get the bearer token (BEARER_TOKEN) for the app.
++
+You need the bearer token to authenticate with the Object Store v2 API.
+--
++
+See <<get-bearer-token>>.
+
+** Object Store v2 Stats API:
++
+--
+*** Get the access token (ACCESS_TOKEN) for the Anypoint Platform user. 
 +
 The user must be assigned the *Organization Administrators* role to access the Object Store v2 Stats API.
 +
 You need the access token to authenticate with the Object Store v2 Stats API.
+--
 +
 See
 https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/Authentication/[Authentication] in the 
-https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/home/[Access Management API]. 
+https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/home/[Access Management API] and <<get-access-token>>.
+
 * Get the organization ID (ORG_ID).
 +
 You need the organization ID for operations with the Object Store v2 API and Object Store v2 Stats API.
@@ -63,41 +87,17 @@ You need the region ID for operations with the Object Store v2 Stats API.
 +
 See the `/api/v1/organizations/ORG_ID/regions` endpoint in the
 https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/minor/1.0/pages/home/[Object Store v2 API] and 
-<<Example: Retrieve a List of Regions>>.
+<<example-retrieve-region>>.
 * Get the store ID (STORE_ID).
 +
 You need the store ID for operations with the Object Store v2 Stats API.
 +
 See the `/api/v1/organizations/ORG_ID/environments/ENV_ID/stores/STORE_ID` endpoint in the
 https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/minor/1.0/pages/home/[Object Store v2 API] and
-<<Example: Retrieve a List of Object Stores>>.
-* Get the client ID (CLIENT_ID) and client secret (CLIENT_SECRET) for the app.
-+
-You need the client ID and client secret to get the bearer token.
-+
-See <<Get the Client ID and Client Secret for the App>>.
-* Get the bearer token (BEARER_TOKEN) for the app.
-+
-You need the bearer token to authenticate with the Object Store v2 API.
-+
-See the `/accounts/oauth2/token` endpoint in the
-https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/home/[Access Management API]. 
-+
-To get the bearer token, you need the client ID and client secret for the app.
+<<example-retrieve-list>>.
 
 
-=== Get the Client ID and Client Secret for the App 
-
-To get the client ID and the client secret for the app:
-
-. Log in to *Anypoint Platform > Runtime Manager*.
-. Click an application and click *Manage Application*.
-. If the app is not associated with Object Store, click *Use Object Store v2* and apply changes.
-. Click *Object Store* in the left navigation area, and then click *Show Client Credentials*.
-. Click *Copy to Clipboard* for *Client ID* and save it as the value of CLIENT_ID.
-. Click *Copy to Clipboard* for *Client Secret* and save it as the value of CLIENT_SECRET.
-
-
+[[osv2-api]]
 == Object Store v2 API  
 
 The Object Store v2 API reads and writes `key,list` values, 
@@ -152,7 +152,8 @@ If the `entryTtl` value specified is greater than 30 days, the value defaults to
 
 You can retrieve a maximum of 25 keys with each GET operation.
 
-=== Limitations 
+[[limitations]]
+=== Limitations
 
 If an application writes to an object store using the REST interface and reads with 
 Object Store Connector for Mule 3 from the same key, the read can retrieve only the value at element 0. 
@@ -164,8 +165,11 @@ This limitation doesn't apply to Object Store Connector for Mule 4 or
 Anypoint Studio Object Store Connector.
 
 
+
+[[access-osv2-api]]
 === Access the Object Store v2 API
 
+. <<get-bearer-token>>.
 . Set up an application, such as Postman, to access the object store.
 . Configure the object store access URL, replacing ORG_ID with your organization ID and 
 ENV_ID with your environment ID:
@@ -202,15 +206,39 @@ MuleSoft Government Cloud| `object-store-us-gov-west-1.gov.anypoint.mulesoft.com
 the object store.
 . Send the operation to the Object Store v2 API.
 
+[[get-bearer-token]]
+=== Get a Bearer Token to Authenticate with Object Store v2 API
+
+*UPDATE THIS FOR connected apps*
+
+You need the client ID and client secret to get the bearer token.
+
+. Get the client ID and the client secret for the app:
+.. Log in to *Anypoint Platform > Runtime Manager*.
+.. Click an application and click *Manage Application*.
+.. If the app is not associated with Object Store, click *Use Object Store v2* and apply changes.
+.. Click *Object Store* in the left navigation area, and then click *Show Client Credentials*.
+.. Click *Copy to Clipboard* for *Client ID* and save it as the value of CLIENT_ID.
+.. Click *Copy to Clipboard* for *Client Secret* and save it as the value of CLIENT_SECRET.
+. Get the bearer token
++
+https://help.salesforce.com/s/articleView?id=001115323&type=1
+
+See also the `/accounts/oauth2/token` endpoint in the
+https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/home/[Access Management API].
+
+[[example-osv2-api]]
 === Examples: Object Store v2 API
 
-* <<Example: Retrieve a List of Object Stores>>
-* <<Example: Retrieve a List of Regions>>
-* <<Example: Retrieve a List of Keys in a Partition>>
-* <<Example: Retrieve the Value of a Key>>
-* <<Example: Store a Key-Value Pair>>
-* <<Example: Delete a Key and Value>>
+* <<example-retrieve-list>>
+* <<example-retrieve-region>>
+* <<example-retrieve-partitions>>
+* <<example-retrieve-keys>>
+* <<example-retrieve-key-value>>
+* <<example-store-key-value>>
+* <<example-delete-key-value>>
 
+[[example-retrieve-list]]
 ==== Example: Retrieve a List of Object Stores
 
 To view the list of object stores, submit a `curl` command similar to the following, replacing 
@@ -238,6 +266,7 @@ This command returns output similar to the following:
     "persistent":true,"defaultTtlSeconds":2592000,"defaultConfirmationTtlSeconds":600,"isFixedTtl":null}],"nextPageToken":null}
 ----
 
+[[example-retrieve-region]]
 ==== Example: Retrieve a List of Regions
 
 To view the list of regions, submit a `curl` command similar to the following, 
@@ -273,6 +302,7 @@ This command returns output similar to the following:
 
 ----
 
+[[example-retrieve-partitions]]
 ==== Example: Retrieve a List of Partitions
 
 To view the list of partitions, submit a `curl` command similar to the following, 
@@ -297,6 +327,7 @@ This command returns output similar to the following:
   {"values":["PARTITION_ID"],"nextPageToken":null}
 ----
 
+[[example-retrieve-keys]]
 ==== Example: Retrieve a List of Keys in a Partition 
 
 To view the keys in a partition, submit a `curl` command similar to the following, 
@@ -322,7 +353,7 @@ This command returns output similar to the following:
 {"values":[{"keyId":"KeyTwo"},{"keyId":"KeyOne"}],"nextPageToken":null}
 ----
 
-
+[[example-retrieve-key-value]]
 ==== Example: Retrieve the Value of a Key 
 
 To view the value of a key, submit a `curl` command similar to the following, 
@@ -348,7 +379,7 @@ This command returns output similar to the following:
 {"binaryValue":"++Kn0AIBAQBbwoABDiJLZXkgMiBWYWx1ZSL8rNmhAQEBAWphdmEuaW8uU2VyaWFsaXphYmzlgGFwcGxpY2F0aW9uL2pzb247IGNoYXJzZXQ9VVRGLbgAAAAAAAAADQ==","keyId":"KeyTwo","valueType":"BINARY"}
 ----
 
-
+[[example-store-key-value]]
 ==== Example: Store a Key-Value Pair 
 
 To store a key-value pair, submit a `curl` command similar to the following, 
@@ -390,7 +421,7 @@ This command returns output similar to the following:
 {"values":[{"keyId":"KeyTwo"},{"keyId":"KeyOne"},{"keyId":"myTestKey"}],"nextPageToken":null}
 ----
 
-
+[[example-delete-key-value]]
 ==== Example: Delete a Key and Value 
 
 To delete a key-value pair, submit a `curl` command similar to the following, 
@@ -430,7 +461,7 @@ This command returns output similar to the following:
 ----
 
 
-
+[[osv2-stats-api]]
 == Object Store v2 Stats API 
 
 The Object Store v2 Stats API enables you to retrieve statistics on your Object Store usage.
@@ -445,8 +476,10 @@ Use the Stats API to view your entire organization's usage of Object Store for b
 * Usage per region
 * Usage per store
 
+[[access-osv2-stats-api]]
 === Access the Object Store v2 Stats API
 
+. <<get-access-token>>.
 . Set up an application, such as Postman, to access the object store.
 . Configure the access URL, replacing ORG_ID with your organization ID and 
 ENV_ID with your environment ID:
@@ -457,6 +490,62 @@ the object store.
 . Send the operation to the Object Store v2 Stats API.
 
 
+[[get-access-token]]
+=== Get an Access Token to Authenticate with Object Store v2 Stats API
+
+* If MFA is enabled, use a connected app to get the access token:
++
+.. xref:osv2-connected-apps.adoc[Configure a connected app].
+.. Run the following command to get the bearer token from the connected app client ID and client secret:
++
+[source,console,linenums]
+----
++
+curl --location --request POST https://anypoint.mulesoft.com/accounts/api/v2/oauth2/token \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'client_id=<CLIENT ID>' \
+--data-urlencode 'client_secret=<CLIENT SECRET>' \
+--data-urlencode 'grant_type=client_credentials'
+----
++
+The output includes the access token:
++
+[source,console,linenums]
+----
+{
+  "access_token": "<TOKEN>",
+  "token_type": "bearer"
+}  
+----
+* If MFA isn't enabled:
++
+Run the following command:
++
+[source,console,linenums]
+----
+curl -H \
+  "Content-Type: application/json" \
+  -X POST -d '{"username":"<USERNAME>","password":"<PASSWORD>"}' \
+  "https://anypoint.mulesoft.com/accounts/login"
+----
++
+The output includes the access token:
++
+[source,console,linenums]
+----
+{
+  "access_token": "<TOKEN>",
+  "token_type": "bearer",
+  "redirectUrl": "/home/"
+}  
+----
+
+See also
+https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/Authentication/[Authentication] in the 
+https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/home/[Access Management API].
+
+
+[[example-osv2-stats-api]]
 === Examples: Object Store v2 Stats API
 
 * <<usage-by-org>>
@@ -607,7 +696,7 @@ BEARER_TOKEN with your bearer token:
   -H 'authorization: Bearer BEARER_TOKEN'
 ----
 
-To retrieve the REGION_ID, see <<Example: Retrieve a List of Regions>>.
+To retrieve the REGION_ID, see <<example-retrieve-region>>.
 
 This request returns a response similar to the following:
 
@@ -637,7 +726,7 @@ and BEARER_TOKEN with your bearer token:
   -H 'authorization: Bearer BEARER_TOKEN' 
 ----
 
-To retrieve the STORE_ID, see <<Example: Retrieve a List of Object Stores>>.
+To retrieve the STORE_ID, see <<example-retrieve-list>>.
 
 This request returns a response similar to the following:
 
@@ -648,7 +737,7 @@ This request returns a response similar to the following:
  {"timeStamp":"2024-09-01T00:00:00Z","objectStoreRequestCount":25}
 ]
 ----
-
+[[download-osv2-apis]]
 == Download Object Store APIs from Exchange 
 
 To download the Object Store APIs from Exchange, click *Download* and select the format to download: RAML, OAS, or as a connector file for Mule 3 or Mule 4:
