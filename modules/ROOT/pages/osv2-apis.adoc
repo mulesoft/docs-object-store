@@ -20,7 +20,7 @@ Object Store provides these APIs:
 * <<osv2-api>>
 +
 You need a bearer token to authenticate with the Object Store API.
-To get the bearer token, you need the client ID and client secret for the app.
+To get the bearer token, you need the client ID and client secret for the app or connected app.
 +
 See <<get-bearer-token>>.
 * <<osv2-stats-api>>
@@ -209,9 +209,56 @@ the object store.
 [[get-bearer-token]]
 === Get a Bearer Token to Authenticate with Object Store v2 API
 
-*UPDATE THIS FOR connected apps*
+////
+
+* If MFA is enabled, use a connected app to get the access token:
++
+.. xref:osv2-connected-apps.adoc[Configure a connected app].
+.. Run the following command to get the bearer token from the connected app client ID and client secret:
++
+[source,console,linenums]
+----
+curl --location --request POST https://anypoint.mulesoft.com/accounts/api/v2/oauth2/token \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'client_id=<CLIENT ID>' \
+--data-urlencode 'client_secret=<CLIENT SECRET>' \
+--data-urlencode 'grant_type=client_credentials'
+----
++
+The output includes the access token:
++
+[source,console,linenums]
+----
+{
+  "access_token": "<TOKEN>",
+  "token_type": "bearer"
+}  
+----
+* If MFA isn't enabled, run the following command:
++
+[source,console,linenums]
+----
+curl -H \
+  "Content-Type: application/json" \
+  -X POST -d '{"username":"<USERNAME>","password":"<PASSWORD>"}' \
+  "https://anypoint.mulesoft.com/accounts/login"
+----
++
+The output includes the access token:
++
+[source,console,linenums]
+----
+{
+  "access_token": "<TOKEN>",
+  "token_type": "bearer",
+  "redirectUrl": "/home/"
+}  
+----
+
 
 You need the client ID and client secret to get the bearer token.
+
+For non-SSO users, to get the token:
 
 . Get the client ID and the client secret for the app:
 .. Log in to *Anypoint Platform > Runtime Manager*.
@@ -222,10 +269,38 @@ You need the client ID and client secret to get the bearer token.
 .. Click *Copy to Clipboard* for *Client Secret* and save it as the value of CLIENT_SECRET.
 . Get the bearer token
 +
-https://help.salesforce.com/s/articleView?id=001115323&type=1
-
 See also the `/accounts/oauth2/token` endpoint in the
 https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/home/[Access Management API].
+
+For SSO users
+
+[[authorize-api-connected-apps]]
+=== Authorize API Access for Connected Apps
+
+To use a connected app with the Object Store v2 REST APIs:
+
+. xref:osv2-connected-apps.adoc[Create a connected app].
+. From the *Connected Apps* page, click *Copy Id* and *Copy Secret* for the app you just created.
++
+Use this client ID and client secret to get the access token required to authenticate with the Object Store v2 API.
+. Run this command:
++
+[source,console,linenums]
+----
+curl --location --request POST https://anypoint.mulesoft.com/accounts/api/v2/oauth2/token \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'client_id=<CLIENT-ID>' \
+--data-urlencode 'client_secret=<CLIENT-SECRET>' \
+--data-urlencode 'grant_type=client_credentials'
+----
++
+For information on getting the access token for Connected Apps, see
+xref:access-management::connected-apps-developers.adoc#oidc-endpoints-and-tokens[OIDC Endpoints and Tokens].
+
+** https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/Connected%20App%20Examples/[Connected App Examples] in the Access Management API to get the access token.
+
+////
+
 
 [[example-osv2-api]]
 === Examples: Object Store v2 API
@@ -500,7 +575,6 @@ the object store.
 +
 [source,console,linenums]
 ----
-+
 curl --location --request POST https://anypoint.mulesoft.com/accounts/api/v2/oauth2/token \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --data-urlencode 'client_id=<CLIENT ID>' \
@@ -517,9 +591,7 @@ The output includes the access token:
   "token_type": "bearer"
 }  
 ----
-* If MFA isn't enabled:
-+
-Run the following command:
+* If MFA isn't enabled, run the following command:
 +
 [source,console,linenums]
 ----
