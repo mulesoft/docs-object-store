@@ -47,21 +47,21 @@ Unless otherwise noted, these scopes apply to both object stores and Object Stor
 [%header,cols="20,20,60a"]
 |===
 |Scope in UI|Scope in API |Description
-|*Manage stores*
+|Manage stores
 |`manage:store`
 |Create, read, update, and delete stores.
-|*Manage stores data*
+|Manage stores data
 |`manage:store_data`
 |Perform all store operations including data, partition, and confirmation APIs. 
-|*View stores*
+|View stores
 |`read:store`
 |Read store details.
-|*Manage store clients* (object store only)
+|Manage store clients (object store only)
 |N/A
 |Manage all clients of a cloud store.
 
 This scope doesn't apply to Object Store v2.
-|*View store clients* (object store only)
+|View store clients (object store only)
 |N/A
 |View all clients of a cloud store.
 

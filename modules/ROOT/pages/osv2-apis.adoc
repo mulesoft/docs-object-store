@@ -14,22 +14,6 @@ Object Store provides these APIs:
 * https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Object Store v2 API]
 * https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Object Store v2 Stats API]
 
-[[authenticate-os-apis]]
-== Authenticate with the Object Store APIs 
-
-* <<osv2-api>>
-+
-You need a bearer token to authenticate with the Object Store API.
-To get the bearer token, you need the client ID and client secret for the app or connected app.
-+
-See <<get-bearer-token>>.
-* <<osv2-stats-api>>
-+
-You need an access token to authenticate with the Object Store v2 Stats API.
-To get the access token, you need the Anypoint Platform username and password of a user assigned the *Organization Administrators* role.
-+
-See <<get-access-token>>.
-
 
 [[before-you-begin]]
 == Before You Begin 
@@ -40,12 +24,12 @@ See xref:runtime-manager::deploying-to-cloudhub.adoc[Deploy to CloudHub].
 * Store a key-value pair in the object store. 
 +
 See xref:osv2-guide.adoc#send-data-to-an-object-store[Send Data to an Object Store].
-* Prepare to authenticate with the Object Store APIs:
+* Authenticate with the APIs:
 
-** Object Store v2 API:
+** <<osv2-api>>:
 +
 --
-... Get the client ID (CLIENT_ID) and client secret (CLIENT_SECRET) for the app.
+... Get the client ID (CLIENT_ID) and client secret (CLIENT_SECRET) for the app or connected app.
 +
 You need the client ID and client secret to get the bearer token.
 ... Get the bearer token (BEARER_TOKEN) for the app.
@@ -55,19 +39,16 @@ You need the bearer token to authenticate with the Object Store v2 API.
 +
 See <<get-bearer-token>>.
 
-** Object Store v2 Stats API:
+
+** <<osv2-stats-api>>:
 +
 --
 *** Get the access token (ACCESS_TOKEN) for the Anypoint Platform user. 
 +
-The user must be assigned the *Organization Administrators* role to access the Object Store v2 Stats API.
-+
 You need the access token to authenticate with the Object Store v2 Stats API.
 --
 +
-See
-https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/Authentication/[Authentication] in the 
-https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/home/[Access Management API] and <<get-access-token>>.
+See <<get-access-token>>.
 
 * Get the organization ID (ORG_ID).
 +
@@ -95,6 +76,10 @@ You need the store ID for operations with the Object Store v2 Stats API.
 See the `/api/v1/organizations/ORG_ID/environments/ENV_ID/stores/STORE_ID` endpoint in the
 https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/minor/1.0/pages/home/[Object Store v2 API] and
 <<example-retrieve-list>>.
+
+
+
+
 
 
 [[osv2-api]]
@@ -209,81 +194,16 @@ the object store.
 [[get-bearer-token]]
 === Get a Bearer Token to Authenticate with Object Store v2 API
 
-////
+If MFA is enabled, use a connected app to get the bearer token:
 
-* If MFA is enabled, use a connected app to get the access token:
+. xref:osv2-connected-apps.adoc[Configure a connected app].
 +
-.. xref:osv2-connected-apps.adoc[Configure a connected app].
-.. Run the following command to get the bearer token from the connected app client ID and client secret:
+Assign the connected app the Organization Administrator scope to access the organization and environment queries.
 +
-[source,console,linenums]
-----
-curl --location --request POST https://anypoint.mulesoft.com/accounts/api/v2/oauth2/token \
---header 'Content-Type: application/x-www-form-urlencoded' \
---data-urlencode 'client_id=<CLIENT ID>' \
---data-urlencode 'client_secret=<CLIENT SECRET>' \
---data-urlencode 'grant_type=client_credentials'
-----
-+
-The output includes the access token:
-+
-[source,console,linenums]
-----
-{
-  "access_token": "<TOKEN>",
-  "token_type": "bearer"
-}  
-----
-* If MFA isn't enabled, run the following command:
-+
-[source,console,linenums]
-----
-curl -H \
-  "Content-Type: application/json" \
-  -X POST -d '{"username":"<USERNAME>","password":"<PASSWORD>"}' \
-  "https://anypoint.mulesoft.com/accounts/login"
-----
-+
-The output includes the access token:
-+
-[source,console,linenums]
-----
-{
-  "access_token": "<TOKEN>",
-  "token_type": "bearer",
-  "redirectUrl": "/home/"
-}  
-----
-
-
-You need the client ID and client secret to get the bearer token.
-
-For non-SSO users, to get the token:
-
-. Get the client ID and the client secret for the app:
-.. Log in to *Anypoint Platform > Runtime Manager*.
-.. Click an application and click *Manage Application*.
-.. If the app is not associated with Object Store, click *Use Object Store v2* and apply changes.
-.. Click *Object Store* in the left navigation area, and then click *Show Client Credentials*.
-.. Click *Copy to Clipboard* for *Client ID* and save it as the value of CLIENT_ID.
-.. Click *Copy to Clipboard* for *Client Secret* and save it as the value of CLIENT_SECRET.
-. Get the bearer token
-+
-See also the `/accounts/oauth2/token` endpoint in the
-https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/home/[Access Management API].
-
-For SSO users
-
-[[authorize-api-connected-apps]]
-=== Authorize API Access for Connected Apps
-
-To use a connected app with the Object Store v2 REST APIs:
-
-. xref:osv2-connected-apps.adoc[Create a connected app].
 . From the *Connected Apps* page, click *Copy Id* and *Copy Secret* for the app you just created.
 +
-Use this client ID and client secret to get the access token required to authenticate with the Object Store v2 API.
-. Run this command:
+Use this client ID and client secret to get the bearer token required to authenticate with the Object Store v2 API.
+. Run the following command to get the bearer token from the connected app client ID and client secret:
 +
 [source,console,linenums]
 ----
@@ -294,13 +214,56 @@ curl --location --request POST https://anypoint.mulesoft.com/accounts/api/v2/oau
 --data-urlencode 'grant_type=client_credentials'
 ----
 +
-For information on getting the access token for Connected Apps, see
-xref:access-management::connected-apps-developers.adoc#oidc-endpoints-and-tokens[OIDC Endpoints and Tokens].
+The output includes the bearer token:
++
+[source,console,linenums]
+----
+{
+  "access_token": "<TOKEN>",
+  "token_type": "bearer"
+}  
+----
 
-** https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/Connected%20App%20Examples/[Connected App Examples] in the Access Management API to get the access token.
+For more information, see https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/Connected%20App%20Examples/[Connected App Examples] in the Access Management API.
+
+
+If MFA isn't enabled, run the following command:
+
+[source,console,linenums]
+----
+curl -H \
+  "Content-Type: application/json" \
+  -X POST -d '{"username":"<USERNAME>","password":"<PASSWORD>"}' \
+  "https://anypoint.mulesoft.com/accounts/login"
+----
+
+Make sure the user has the Organization Administrator permission to access the organization and environment queries.
+
+The output includes the token:
+
+[source,console,linenums]
+----
+{
+  "access_token": "<TOKEN>",
+  "token_type": "bearer",
+  "redirectUrl": "/home/"
+}  
+----
 
 ////
+. Get the client ID and the client secret for the app:
+.. Log in to *Anypoint Platform > Runtime Manager*.
+.. Click an application and click *Manage Application*.
+.. If the app is not associated with Object Store, click *Use Object Store v2* and apply changes.
+.. Click *Object Store* in the left navigation area, and then click *Show Client Credentials*.
+.. Click *Copy to Clipboard* for *Client ID* and save it as the value of CLIENT_ID.
+.. Click *Copy to Clipboard* for *Client Secret* and save it as the value of CLIENT_SECRET.
 
++
+See also the `/accounts/oauth2/token` endpoint in the
+https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/home/[Access Management API].
+
+////
 
 [[example-osv2-api]]
 === Examples: Object Store v2 API
@@ -564,14 +527,19 @@ ENV_ID with your environment ID:
 the object store.
 . Send the operation to the Object Store v2 Stats API.
 
+See also https://help.salesforce.com/s/articleView?id=002778591&type=1[How to use Object Store v2 Stats API].
+
 
 [[get-access-token]]
 === Get an Access Token to Authenticate with Object Store v2 Stats API
 
-* If MFA is enabled, use a connected app to get the access token:
+If MFA is enabled, use a connected app to get the access token:
+
+. xref:osv2-connected-apps.adoc[Configure a connected app].
 +
-.. xref:osv2-connected-apps.adoc[Configure a connected app].
-.. Run the following command to get the bearer token from the connected app client ID and client secret:
+Assign the connected app the Organization Administrator scope to access the organization and environment queries.
++
+. Run the following command to get the access token from the connected app client ID and client secret:
 +
 [source,console,linenums]
 ----
@@ -581,7 +549,7 @@ curl --location --request POST https://anypoint.mulesoft.com/accounts/api/v2/oau
 --data-urlencode 'client_secret=<CLIENT SECRET>' \
 --data-urlencode 'grant_type=client_credentials'
 ----
-+
+
 The output includes the access token:
 +
 [source,console,linenums]
@@ -591,8 +559,10 @@ The output includes the access token:
   "token_type": "bearer"
 }  
 ----
-* If MFA isn't enabled, run the following command:
-+
+
+
+If MFA isn't enabled, run the following command:
+
 [source,console,linenums]
 ----
 curl -H \
@@ -600,7 +570,9 @@ curl -H \
   -X POST -d '{"username":"<USERNAME>","password":"<PASSWORD>"}' \
   "https://anypoint.mulesoft.com/accounts/login"
 ----
-+
+
+Make sure the user has the Organization Administrator permission to access the organization and environment queries.
+
 The output includes the access token:
 +
 [source,console,linenums]
@@ -612,10 +584,11 @@ The output includes the access token:
 }  
 ----
 
+////
 See also
 https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/Authentication/[Authentication] in the 
 https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/home/[Access Management API].
-
+////
 
 [[example-osv2-stats-api]]
 === Examples: Object Store v2 Stats API
