@@ -28,9 +28,6 @@ image::os-conn-apps-scopes.png["Scopes for Object Store connected apps"]
 . From the *Connected Apps* page, click *Copy Id* and *Copy Secret* for the app you just created.
 +
 Use this client ID and client secret to get the access token required to authenticate with the Object Store v2 API.
-+
-For information on getting the access token for Connected Apps, see
-xref:access-management::connected-apps-developers.adoc#oidc-endpoints-and-tokens[OIDC Endpoints and Tokens].
 
 [[configure-mq-conn-app-api]]
 == Configure a Connected App Using the API
