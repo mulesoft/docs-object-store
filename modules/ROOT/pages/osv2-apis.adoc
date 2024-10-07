@@ -18,51 +18,22 @@ Object Store provides these APIs:
 [[before-you-begin]]
 == Before You Begin 
 
-* Create an app that uses Object Store v2 and deploy it to CloudHub.
+* Create an app that uses Object Store v2 and xref:runtime-manager::deploying-to-cloudhub.adoc[deploy it to CloudHub].
 +
-See xref:runtime-manager::deploying-to-cloudhub.adoc[Deploy to CloudHub].
-* Store a key-value pair in the object store. 
+* xref:osv2-guide.adoc#send-data-to-an-object-store[Store a key-value pair in the object store]. 
+* <<get-bearer-token,Get the bearer token>> for an Anypoint Platform user using the Access Management API:
 +
-See xref:osv2-guide.adoc#send-data-to-an-object-store[Send Data to an Object Store].
-* Get the bearer token to access the APIs:
+You need the bearer token to access all Object Store v2 APIs.
+* <<get-org-env-id,Get the ORG_ID and ENV_ID>>.
 +
---
-.. Get the client ID (CLIENT_ID) and client secret (CLIENT_SECRET) for the connected app or client app.
-+
-You need the client ID and client secret to get the bearer token.
-.. Get the bearer token (BEARER_TOKEN) for the app.
-+
-You need the bearer token to authenticate with the Object Store v2 API.
---
-+
-See <<get-bearer-token>>.
-
-* Get the organization ID (ORG_ID).
-+
-You need the organization ID for operations with the Object Store v2 API and Object Store v2 Stats API.
-+
-See the `/api/me` endpoint in the
-https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/home/[Access Management API].
-* Get the environment ID (ENV_ID).
-+
-You need the environment ID for operations with the Object Store v2 API and Object Store v2 Stats API.
-+
-See the `/api/organizations/ORG_ID/environments` endpoint in the
-https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/home/[Access Management API].
-* Get the region ID (REGION_ID).
+You need the organization ID and environment ID for operations with all Object Store v2 APIs.
+* <<get-region-id,Get the REGION_ID>>.
 +
 You need the region ID for operations with the Object Store v2 Stats API.
-+
-See the `/api/v1/organizations/ORG_ID/regions` endpoint in the
-https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/minor/1.0/pages/home/[Object Store v2 API] and 
-<<example-retrieve-region>>.
-* Get the store ID (STORE_ID).
+* <<get-store-id,Get the STORE_ID>>.
 +
 You need the store ID for operations with the Object Store v2 Stats API.
-+
-See the `/api/v1/organizations/ORG_ID/environments/ENV_ID/stores/STORE_ID` endpoint in the
-https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/minor/1.0/pages/home/[Object Store v2 API] and
-<<example-retrieve-list>>.
+
 
 [[get-bearer-token]]
 == Get a Bearer Token to Authenticate with the Object Store v2 API
@@ -80,11 +51,13 @@ Use this client ID and client secret to get the bearer token required to authent
 +
 [source,console,linenums]
 ----
-curl --location --request POST https://anypoint.mulesoft.com/accounts/api/v2/oauth2/token \
---header 'Content-Type: application/x-www-form-urlencoded' \
---data-urlencode 'client_id=<CLIENT-ID>' \
---data-urlencode 'client_secret=<CLIENT-SECRET>' \
---data-urlencode 'grant_type=client_credentials'
+curl --location 'https://anypoint.mulesoft.com/accounts/api/v2/oauth2/token' \
+   --header 'Content-Type: application/json' \
+    --data '{
+      "client_id": "<CLIENT_ID>",
+      "client_secret": "<CLIENT_SECRET>",
+      "grant_type": "client_credentials"
+      }'
 ----
 +
 The output includes the bearer token:
@@ -92,7 +65,7 @@ The output includes the bearer token:
 [source,console,linenums]
 ----
 {
-  "access_token": "<TOKEN>",
+  "access_token": "<BEARER_TOKEN>",
   "token_type": "bearer"
 }  
 ----
@@ -106,7 +79,7 @@ If MFA isn't enabled:
 
 . Run the following command:
 +
-[source,console,linenums]
+[source,bash,linenums]
 ----
 curl -H \
   "Content-Type: application/json" \
@@ -121,10 +94,10 @@ The output includes the token:
 [source,console,linenums]
 ----
 {
-  "access_token": "<TOKEN>",
-  "token_type": "bearer",
-  "redirectUrl": "/home/"
-}  
+  "access_token": "<BEARER_TOKEN>",
+  "expires_in": 3600,
+  "token_type": "bearer"
+}
 ----
 . Use this bearer token to access any Object Store v2 API that requires a bearer token.
 
@@ -134,16 +107,16 @@ The output includes the token:
 
 To get the ORG_ID, run this command:
 
-[source,console,linenums]
+[source,bash,linenums]
 ----
-curl "https://anypoint.mulesoft.com/accounts/api/organizations/{orgId}"
+curl "https://anypoint.mulesoft.com/accounts/api/organizations/<ORG_ID>"
 ----
 
 To get the ENV_ID, run this command:
 
-[source,console,linenums]
+[source,bash,linenums]
 ----
-curl "https://anypoint.mulesoft.com/accounts/api/environments/{environmentId}"
+curl "https://anypoint.mulesoft.com/accounts/api/environments/<ENV_ID>"
 ----
 
 [[get-region-id]]
@@ -151,26 +124,28 @@ curl "https://anypoint.mulesoft.com/accounts/api/environments/{environmentId}"
 
 To get the region ID (REGION_ID):
 
-[source,console,linenums]
+[source,bash,linenums]
 ----
 curl -X GET \
- 'https://BASE_URL/api/v1/organizations/ORG_ID/regions' \
- -H 'authorization: Bearer ACCESS_TOKEN'
+ 'https://BASE_URL/api/v1/organizations/<ORG_ID>/regions' \
+ -H 'authorization: Bearer <BEARER_TOKEN>'
 ----
 
+See <<example-retrieve-region>>.
 
-[[get-queue-id]]
-=== Get the Queue ID
+[[get-store-id]]
+=== Get the Store ID
 
-To get the queue ID (QUEUE_ID):
+To get the store ID (STORE_ID):
 
-[source,console,linenums]
+[source,bash,linenums]
 ----
 curl -X GET \
-  'https://anypoint.mulesoft.com/mq/admin/api/v1/organizations/ORG_ID/environments/ \
-   ENV_ID/regions/REGION_ID/destinations/queues/"
+ 'https://BASE_URL/api/v1/organizations/<ORG_ID>/environments/<ENV_ID>/stores' \
+ -H 'authorization: bearer <BEARER_TOKEN>'
 ----
 
+See <<example-retrieve-list>>.
 
 [[osv2-api]]
 == Object Store v2 API  
@@ -468,7 +443,7 @@ To verify that the key-pair is in the object store, get a list of the keys in th
 ----
 curl -X GET \
   https://BASE_URL/api/v1/organizations/ORG_ID/environments/ENV_ID/stores/STORE_ID/partitions/PARTITION_ID/keys \
-  -H "Authorization: Bearer ACCESS_TOKEN" 
+  -H "Authorization: Bearer BEARER_TOKEN" 
 ----
 
 This command returns output similar to the following:
