@@ -106,17 +106,11 @@ The output includes the bearer token:
 [[get-org-env-id]]
 === Get the Organization ID and Environment ID
 
-To get the ORG_ID, run this command, replacing AUTH_SERVER_HOST with the URL of the authorization server:
+To get the ORG_ID and ENV_ID, run these commands, replacing AUTH_SERVER_HOST with the URL of the authorization server:
 
 [source,bash,linenums]
 ----
 curl "https://<AUTH_SERVER_HOST>/accounts/api/organizations/<ORG_ID>"
-----
-
-To get the ENV_ID, run this command, replacing AUTH_SERVER_HOST with the URL of the authorization server:
-
-[source,bash,linenums]
-----
 curl "https://<AUTH_SERVER_HOST>/accounts/api/environments/<ENV_ID>"
 ----
 
