@@ -511,7 +511,7 @@ Use the Stats API to view your entire organization's usage of Object Store for b
 [[access-osv2-stats-api]]
 === Access the Object Store v2 Stats API
 
-. <<get-access-token>>.
+. <<get-bearer-token>>.
 . Set up an application, such as Postman, to access the object store.
 . Configure the access URL, replacing ORG_ID with your organization ID and 
 ENV_ID with your environment ID:
