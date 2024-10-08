@@ -36,9 +36,11 @@ You need the store ID for operations with the Object Store v2 Stats API.
 
 
 [[get-bearer-token]]
-== Get a Bearer Token to Authenticate with the Object Store v2 API
+== Get a Bearer Token to Use with the Object Store v2 APIs
 
-If MFA is enabled, use a connected app to get the bearer token:
+If MFA is enabled::
+
+Use a connected app to get the bearer token:
 
 . xref:osv2-connected-apps.adoc[Configure a connected app].
 +
@@ -47,11 +49,12 @@ Assign the connected app the Organization Administrator scope to access the orga
 . From the *Connected Apps* page, click *Copy Id* and *Copy Secret* for the app you just created.
 +
 Use this client ID and client secret to get the bearer token required to authenticate with the Object Store v2 API.
-. Run the following command to get the bearer token from the connected app client ID and client secret:
+. Run the following command to get the bearer token from the connected app client ID and client secret, 
+replacing AUTH_SERVER_HOST with the URL of the authorization server, for example `\https://anypoint.mulesoft.com/`: 
 +
 [source,bash,linenums]
 ----
-curl --location 'https://anypoint.mulesoft.com/accounts/api/v2/oauth2/token' \
+curl --location '<AUTH_SERVER_HOST>/accounts/api/v2/oauth2/token' \
    --header 'Content-Type: application/json' \
     --data '{
       "client_id": "<CLIENT_ID>",
@@ -62,36 +65,35 @@ curl --location 'https://anypoint.mulesoft.com/accounts/api/v2/oauth2/token' \
 +
 The output includes the bearer token:
 +
-[source,console,linenums]
+[source,json,linenums]
 ----
 {
   "access_token": "<BEARER_TOKEN>",
   "token_type": "bearer"
 }  
 ----
-+
+
 . Use this bearer token to access any Object Store v2 API that requires a bearer token.
 
-For more information, see https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/minor/1.0/pages/Connected%20App%20Examples/[Connected App Examples] in the Access Management API.
+If MFA isn't enabled::
 
+Authenticate with a user name and password of a user with the Organization Administrator permission:
 
-If MFA isn't enabled:
-
-. Run the following command:
+. Run the following command, replacing AUTH_SERVER_HOST with the URL of the authorization server, for example `\https://anypoint.mulesoft.com/`:
 +
 [source,bash,linenums]
 ----
 curl -H \
   "Content-Type: application/json" \
   -X POST -d '{"username":"<USERNAME>","password":"<PASSWORD>"}' \
-  "https://anypoint.mulesoft.com/accounts/login"
+  "<AUTH_SERVER_HOST>accounts/login"
 ----
 +
 Make sure the user has the Organization Administrator permission to access the organization and environment queries.
 +
-The output includes the token:
+The output includes the bearer token:
 +
-[source,console,linenums]
+[source,json,linenums]
 ----
 {
   "access_token": "<BEARER_TOKEN>",
@@ -101,33 +103,32 @@ The output includes the token:
 ----
 . Use this bearer token to access any Object Store v2 API that requires a bearer token.
 
-
 [[get-org-env-id]]
 === Get the Organization ID and Environment ID
 
-To get the ORG_ID, run this command:
+To get the ORG_ID, run this command, replacing AUTH_SERVER_HOST with the URL of the authorization server:
 
 [source,bash,linenums]
 ----
-curl "https://anypoint.mulesoft.com/accounts/api/organizations/<ORG_ID>"
+curl "https://<AUTH_SERVER_HOST>/accounts/api/organizations/<ORG_ID>"
 ----
 
-To get the ENV_ID, run this command:
+To get the ENV_ID, run this command, replacing AUTH_SERVER_HOST with the URL of the authorization server:
 
 [source,bash,linenums]
 ----
-curl "https://anypoint.mulesoft.com/accounts/api/environments/<ENV_ID>"
+curl "https://<AUTH_SERVER_HOST>/accounts/api/environments/<ENV_ID>"
 ----
 
 [[get-region-id]]
 === Get the Region ID
 
-To get the region ID (REGION_ID):
+To get the region ID (REGION_ID), run this command, replacing <<base-url,BASE_URL>>:
 
 [source,bash,linenums]
 ----
 curl -X GET \
- 'https://BASE_URL/api/v1/organizations/<ORG_ID>/regions' \
+ 'https://<BASE_URL>/api/v1/organizations/<ORG_ID>/regions' \
  -H 'authorization: Bearer <BEARER_TOKEN>'
 ----
 
@@ -136,12 +137,12 @@ See <<example-retrieve-region>>.
 [[get-store-id]]
 === Get the Store ID
 
-To get the store ID (STORE_ID):
+To get the store ID (STORE_ID), run this command, replacing <<base-url,BASE_URL>>:
 
 [source,bash,linenums]
 ----
 curl -X GET \
- 'https://BASE_URL/api/v1/organizations/<ORG_ID>/environments/<ENV_ID>/stores' \
+ 'https://<BASE_URL>/api/v1/organizations/<ORG_ID>/environments/<ENV_ID>/stores' \
  -H 'authorization: bearer <BEARER_TOKEN>'
 ----
 
@@ -224,11 +225,16 @@ Anypoint Studio Object Store Connector.
 . Configure the object store access URL, replacing ORG_ID with your organization ID and 
 ENV_ID with your environment ID:
 +
---
-`BASE_URL/api/v1/organizations/<ORG_ID>/environments/<ENV_ID>/stores/myTestStoreId/objects`
+[source,bash,linenums]
+----
+<BASE_URL>/api/v1/organizations/<ORG_ID>/environments/<ENV_ID>/stores/myTestStoreId/objects
+----
++
 
+[#base-url]
 Depending on the deployment region, use one of the following domains for the value of BASE_URL in the access URL:
-
+// update for HF
++
 [%header,cols="15,75a,10a"]
 |===
 |Control Plane|BASE_URL | Region 
@@ -249,9 +255,8 @@ Depending on the deployment region, use one of the following domains for the val
 MuleSoft Government Cloud| `object-store-us-gov-west-1.gov.anypoint.mulesoft.com` | US Gov West
 .2+|EU | `object-store-eu-central-1.eu1.anypoint.mulesoft.com` | Europe (Frankfurt)
 | `object-store-eu-west-1.eu1.anypoint.mulesoft.com` | Europe (Ireland)
-
 |===
---
+
 . Configure the application with HTTP headers and body for values to store to or read from
 the object store.
 . Send the operation to the Object Store v2 API.
@@ -282,7 +287,7 @@ BEARER_TOKEN with your bearer token:
 [source,bash,linenums]
 ----
 curl -X GET \
- 'https://BASE_URL/api/v1/organizations/<ORG_ID>/environments/<ENV_ID>/stores' \
+ 'https://<BASE_URL>/api/v1/organizations/<ORG_ID>/environments/<ENV_ID>/stores' \
  -H 'authorization: bearer <BEARER_TOKEN>'
 ----
 
@@ -310,7 +315,7 @@ BEARER_TOKEN with your bearer token:
 [source,bash,linenums]
 ----
 curl -X GET \
- 'https://BASE_URL/api/v1/organizations/<ORG_ID>/regions' \
+ 'https://<BASE_URL>/api/v1/organizations/<ORG_ID>/regions' \
  -H 'authorization: Bearer <BEARER_TOKEN>'
 
 ----
@@ -348,7 +353,7 @@ BEARER_TOKEN with your bearer token:
 [source,bash,linenums]
 ----
 curl -X GET \
-  https://BASE_URL/api/v1/organizations/<ORG_ID>/environments/<ENV_ID>/stores/<STORE_ID>/partitions \
+  https://<BASE_URL>/api/v1/organizations/<ORG_ID>/environments/<ENV_ID>/stores/<STORE_ID>/partitions \
   -H "Authorization: Bearer <BEARER_TOKEN>" 
 ----
 
@@ -374,7 +379,7 @@ BEARER_TOKEN with your bearer token:
 [source,bash,linenums]
 ----
 curl -X GET \
-  https://BASE_URL/api/v1/organizations/<ORG_ID>/environments/<ENV_ID>/stores/<STORE_ID>/partitions/<PARTITION_ID>/keys \
+  https://<BASE_URL>/api/v1/organizations/<ORG_ID>/environments/<ENV_ID>/stores/<STORE_ID>/partitions/<PARTITION_ID>/keys \
   -H "Authorization: Bearer <BEARER_TOKEN>" 
 ----
 
@@ -400,7 +405,7 @@ BEARER_TOKEN with your bearer token:
 [source,bash,linenums]
 ----
 curl -X GET \
-  https://BASE_URL/api/v1/organizations/<ORG_ID>/environments/<ENV_ID>/stores/<STORE_ID>/partitions/<PARTITION_ID>/keys/<KEY_ID> \
+  https://<BASE_URL>/api/v1/organizations/<ORG_ID>/environments/<ENV_ID>/stores/<STORE_ID>/partitions/<PARTITION_ID>/keys/<KEY_ID> \
   -H "Authorization: Bearer <BEARER_TOKEN>" 
 ----
 
@@ -428,7 +433,7 @@ specify a value (`myTestKey`) for KEY_ID:
 ----
 KEY_ID=myTestKey; \
 curl -X POST \
-  https://BASE_URL/api/v1/organizations/<ORG_ID>/environments/<ENV_ID>/stores/<STORE_ID>/partitions/<PARTITION_ID>/keys/myTestKey \
+  https://<BASE_URL>/api/v1/organizations/<ORG_ID>/environments/<ENV_ID>/stores/<STORE_ID>/partitions/<PARTITION_ID>/keys/myTestKey \
   -H "Authorization: Bearer <BEARER_TOKEN>" \
   -H "Content-Type: application/json" \
   --data '{"stringValue":"Hello World","keyId":"myTestKey","valueType":"STRING"}'
@@ -436,13 +441,12 @@ curl -X POST \
 
 In this command, the value is a JSON string. 
 
-
 To verify that the key-pair is in the object store, get a list of the keys in the partition:
 
 [source,bash,linenums]
 ----
 curl -X GET \
-  https://BASE_URL/api/v1/organizations/<ORG_ID>/environments/<ENV_ID>/stores/<STORE_ID>/partitions/<PARTITION_ID>/keys \
+  https://<BASE_URL>/api/v1/organizations/<ORG_ID>/environments/<ENV_ID>/stores/<STORE_ID>/partitions/<PARTITION_ID>/keys \
   -H "Authorization: Bearer <BEARER_TOKEN>" 
 ----
 
@@ -469,7 +473,7 @@ BEARER_TOKEN with your bearer token:
 [source,bash,linenums]
 ----
 curl -X DELETE \
-  https://BASE_URL/api/v1/organizations/<ORG_ID>/environments/<ENV_ID>/stores/<STORE_ID>/partitions/<PARTITION_ID>/keys/KEY_ID \
+  https://<BASE_URL>/api/v1/organizations/<ORG_ID>/environments/<ENV_ID>/stores/<STORE_ID>/partitions/<PARTITION_ID>/keys/KEY_ID \
   -H "Authorization: Bearer <BEARER_TOKEN>"
 ----
 
@@ -481,7 +485,7 @@ To verify that the key-pair is no longer in the object store, get a list of the 
 [source,bash,linenums]
 ----
 curl -X GET \
-  https://BASE_URL/api/v1/organizations/<ORG_ID>/environments/<ENV_ID>/stores/<STORE_ID>/partitions/<PARTITION_ID>/keys \
+  https://<BASE_URL>/api/v1/organizations/<ORG_ID>/environments/<ENV_ID>/stores/<STORE_ID>/partitions/<PARTITION_ID>/keys \
   -H "Authorization: Bearer <BEARER_TOKEN>" 
 ----
 
@@ -516,7 +520,13 @@ Use the Stats API to view your entire organization's usage of Object Store for b
 . Configure the access URL, replacing ORG_ID with your organization ID and 
 ENV_ID with your environment ID:
 +
-`+https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/<ORG_ID>/environments/ENV_ID?startDate=...&endDate=...&period=...+`
+[source,bash,linenums]
+----
+https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/<ORG_ID>/environments/ENV_ID?startDate=...&endDate=...&period=...
+----
++
+[NOTE]
+include::partial$osv2-faq.adoc[tag=urlEncoded]
 . Configure the application with HTTP headers and body for values to store to or read from
 the object store.
 . Send the operation to the Object Store v2 Stats API.
@@ -545,7 +555,10 @@ If you use `isMaster=true` to query a sub-organization, the endpoint returns no 
 To view Object Store usage statistics for the root organization and all sub-organizations,
 between August 11, 2024 and September 11, 2024,
 submit a `curl` command similar to the following, 
-replacing ORG_ID with the organization ID for your root organization and BEARER_TOKEN with your bearer token:
+replacing
+ORG_ID with the organization ID for your root organization and 
+BEARER_TOKEN with your bearer token:
+
 
 [source,bash,linenums]
 ----
@@ -553,6 +566,9 @@ curl -X GET \
   'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/<ORG_ID>?startDate=2024-08-11T17%3A51%3A54.000Z&endDate=2024-09-11T17%3A51%3A54.000Z&period=1month&isMaster=true' \
   -H 'authorization: Bearer <BEARER_TOKEN>'
 ----
+
+[NOTE]
+include::partial$osv2-faq.adoc[tag=urlEncoded]
 
 This request returns a response similar to the following:
 
@@ -565,7 +581,9 @@ This request returns a response similar to the following:
 ----
 
 To view Object Store usage statistics for the root organization and all sub-organizations for one day, submit a `curl` command similar to the following, 
-replacing ORG_ID with the organization ID for your root organization and BEARER_TOKEN with your bearer token:
+replacing
+ORG_ID with the organization ID for your root organization and 
+BEARER_TOKEN with your bearer token:
 
 [source,bash,linenums]
 ----
@@ -573,6 +591,8 @@ curl -X GET \
   'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/<ORG_ID>?startDate=2024-11-11T17%3A51%3A54.000Z&endDate=2024-11-131T17%3A51%3A54.000Z&period=1day&isMaster=true' \
   -H 'authorization: Bearer <BEARER_TOKEN>'
 ----
+[NOTE]
+include::partial$osv2-faq.adoc[tag=urlEncoded]
 
 This request returns a response similar to the following:
 
@@ -582,15 +602,16 @@ This request returns a response similar to the following:
  {"timeStamp":"2024-11-11T00:00:00Z","objectStoreRequestCount":36}
  {"timeStamp":"2024-11-12T00:00:00Z","objectStoreRequestCount":22}
  {"timeStamp":"2024-11-13T00:00:00Z","objectStoreRequestCount":43}
-
 ]
 ----
 
 To view Object Store usage statistics for a sub-organization,
 between February 10, 2024 and March 10, 2024,
-submit a `curl` command similar to the following, replacing
+submit a `curl` command similar to the following, 
+replacing
 ORG_ID with the organization ID for the sub-organization and
 BEARER_TOKEN with your bearer token:
+
 
 [source,bash,linenums]
 ----
@@ -598,6 +619,8 @@ curl -X GET \
   'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/<ORG_ID>?startDate=2024-02-10T17%3A51%3A54.000Z&endDate=2024-03-10T17%3A51%3A54.000Z&period=1month' \
   -H 'authorization: Bearer <BEARER_TOKEN>'
 ----
+[NOTE]
+include::partial$osv2-faq.adoc[tag=urlEncoded]
 
 This request returns a response similar to the following:
 
@@ -620,6 +643,8 @@ curl -X GET \
   'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/<ORG_ID>?startDate=2024-12-01T17%3A51%3A54.000Z&endDate=2024-12-03T17%3A51%3A54.000Z&period=1day' \
   -H 'authorization: Bearer <BEARER_TOKEN>'
 ----
+[NOTE]
+include::partial$osv2-faq.adoc[tag=urlEncoded]
 
 This request returns a response similar to the following:
 
@@ -646,9 +671,12 @@ and BEARER_TOKEN with your bearer token:
 [source,bash,linenums]
 ----
 curl -X GET \
-  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/<ORG_ID>/environments/ENV_ID?startDate=2024-08-13T17%3A51%3A54.000Z&endDate=2024-09-13T17%3A51%3A54.000Z&period=1month' \
+  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/<ORG_ID>/environments/<ENV_ID>?startDate=2024-08-13T17%3A51%3A54.000Z&endDate=2024-09-13T17%3A51%3A54.000Z&period=1month' \
   -H 'authorization: Bearer <BEARER_TOKEN>'
 ----
+
+[NOTE]
+include::partial$osv2-faq.adoc[tag=urlEncoded]
 
 This request returns a response similar to the following:
 
@@ -679,6 +707,9 @@ BEARER_TOKEN with your bearer token:
 
 To retrieve the REGION_ID, see <<example-retrieve-region>>.
 
+[NOTE]
+include::partial$osv2-faq.adoc[tag=urlEncoded]
+
 This request returns a response similar to the following:
 
 [source,json,linenums]
@@ -708,6 +739,9 @@ and BEARER_TOKEN with your bearer token:
 ----
 
 To retrieve the STORE_ID, see <<example-retrieve-list>>.
+
+[NOTE]
+include::partial$osv2-faq.adoc[tag=urlEncoded]
 
 This request returns a response similar to the following:
 

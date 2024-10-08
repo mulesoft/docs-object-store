@@ -19,3 +19,9 @@ Object Store v2 for CloudHub doesn't support using pipe (`|`) characters in keys
 //tag::faqKeySize[]
 The maximum size for a key is 1024 bytes (UTF-8 encoding).
 //end::faqKeySize[]
+
+//tag::urlEncoded[]
+The query parameters must be URL-encoded to preserve their values.
+For example, you must URL-encode a `startDate` of `2023-07-11T17:51:54.000Z` to
+`11T17%3A51%3A54.000Z` before sending it in the query.
+//end::urlEncoded[]
