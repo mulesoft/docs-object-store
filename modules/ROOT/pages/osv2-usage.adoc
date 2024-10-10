@@ -110,20 +110,18 @@ include::partial$osv2-faq.adoc[tag=faqUsageOverage]
 
 To view a chart that shows how many effective API requests your apps have consumed and the number of effective API requests that your subscription allows:
 
-. Log in to Anypoint Platform.
-. Click *Access Management* in the left navigation bar or the main Anypoint Platform page.
+. In Anypoint Platform, go to *Access Management*.
 . Click *Object Store* in the *Subscription* section:
 +
 image::os-access-mgmt-subscription.png["Object Store option on the Access Management page"]
 +
 The chart shows usage stats for the current and previous month:
 +
-image::os-access-mgmt-usage-chart.png["Object Store Usage page for API requests"]
+image::os-access-mgmt-usage-chart.png["Object Store Usage page for effective API requests"]
 +
 [calloutlist]
 +
 --
-.. Number of effective API requests per month
 .. Percentage and amount of your quota that you have used
 +
 If the usage is 0, the chart displays `<1%`.
