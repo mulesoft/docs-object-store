@@ -38,7 +38,7 @@ You need the store ID for operations with the Object Store v2 Stats API.
 [[get-bearer-token]]
 == Get a Bearer Token to Use with the Object Store v2 APIs
 
-If MFA (Multi-factor authentication) is enabled::
+If MFA (multi-factor authentication) is enabled::
 
 Use a connected app to get the bearer token:
 
