@@ -128,7 +128,7 @@ The circle graph changes to red as your effective API request usage approaches y
 +
 image::os-access-mgmt-requests-color.png["Object Store effective API request limits"]
 +
-Monthly billing usage information is delayed by 24 hours.
+NOTE: Monthly billing usage information might be delayed by 24 hours.
 .. Subscription type
 *** `Base 0.0` indicates the Base subscription.
 *** Base values greater than `0.0` indicate Premium add-on subscriptions.
