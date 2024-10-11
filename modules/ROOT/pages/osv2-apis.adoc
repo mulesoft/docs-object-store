@@ -38,7 +38,7 @@ You need the store ID for operations with the Object Store v2 Stats API.
 [[get-bearer-token]]
 == Get a Bearer Token to Use with the Object Store v2 APIs
 
-If MFA is enabled::
+If MFA (Multi-factor authentication) is enabled::
 
 Use a connected app to get the bearer token:
 
@@ -49,8 +49,7 @@ Assign the connected app the Organization Administrator scope to access the orga
 . From the *Connected Apps* page, click *Copy Id* and *Copy Secret* for the app you just created.
 +
 Use this client ID and client secret to get the bearer token required to authenticate with the Object Store v2 API.
-. Run the following command to get the bearer token from the connected app client ID and client secret, 
-replacing AUTH_SERVER_HOST with the URL of the authorization server, for example `\https://anypoint.mulesoft.com/`: 
+. Run the following command to get the bearer token from the connected app client ID and client secret:
 +
 [source,bash,linenums]
 ----
@@ -62,6 +61,8 @@ curl --location '<AUTH_SERVER_HOST>/accounts/api/v2/oauth2/token' \
       "grant_type": "client_credentials"
       }'
 ----
++
+Replace AUTH_SERVER_HOST with the URL of the authorization server, for example `\https://anypoint.mulesoft.com/`.
 +
 The output includes the bearer token:
 +
@@ -77,9 +78,9 @@ The output includes the bearer token:
 
 If MFA isn't enabled::
 
-Authenticate with a user name and password of a user with the Organization Administrator permission:
+Authenticate with the credentials of a user with the Organization Administrator permission:
 
-. Run the following command, replacing AUTH_SERVER_HOST with the URL of the authorization server, for example `\https://anypoint.mulesoft.com/`:
+. Run the following command to get the bearer token:
 +
 [source,bash,linenums]
 ----
@@ -88,6 +89,8 @@ curl -H \
   -X POST -d '{"username":"<USERNAME>","password":"<PASSWORD>"}' \
   "<AUTH_SERVER_HOST>accounts/login"
 ----
++
+Replace AUTH_SERVER_HOST with the URL of the authorization server, for example `\https://anypoint.mulesoft.com/`.
 +
 Make sure the user has the Organization Administrator permission to access the organization and environment queries.
 +
@@ -304,7 +307,7 @@ the object store.
 [[example-retrieve-list]]
 ==== Example: Retrieve a List of Object Stores
 
-To view the list of object stores, submit a `curl` command similar to the following, replacing 
+To view the list of object stores, run a `curl` command similar to the following, replacing 
 BASE_URL with the regional domain, 
 ORG_ID with your organization ID, 
 ENV_ID with your environment ID, and
@@ -761,7 +764,14 @@ This request returns a response similar to the following:
 [[download-osv2-apis]]
 == Download Object Store APIs from Exchange 
 
-To download the Object Store APIs from Exchange, click *Download* and select the format to download: RAML, OAS, or as a connector file for Mule 3 or Mule 4:
+To download the Object Store APIs from Exchange:
+
+. Go to Exchange and click *Download*.
+. Select the format to download:
++
+** RAML
+** OAS
+** Mule 4 or Mule 3 connector file
 
 image::os-exchange-download.png["Download button for the Object Store v2 API in Exchange"]
 
