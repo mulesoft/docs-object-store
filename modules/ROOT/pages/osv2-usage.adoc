@@ -5,21 +5,23 @@ Object Store v2 uses two metrics to determine billing and rate-limiting:
 API Requests::
 API requests are HTTP transactions, such as GET, PUT, and POST.
 +
-Object Store uses API requests to calculate transactions per second (TPS) for rate limiting.
+Object Store uses successful API requests (2xx) to calculate transactions per second (TPS) for rate limiting.
 +
 See <<rate-limiting>>.
 
 Effective API Requests::
 Effective API requests are the units that Object Store uses to calculate billing.
 +
-One API request could generate many effective API requests.
+One successful API request could generate many effective API requests.
 +
 See <<how-billing-is-calculated>>.
+
+
 
 [[rate-limiting]]
 == Rate Limiting
 
-Every API request (via the connector or API) to Object Store v2 counts toward the TPS limit, based on your subscription type:
+Every successful API request (via the connector or API) to Object Store v2 counts toward the TPS limit, based on your subscription type:
 
 [%header,cols="50,50"]
 |===
@@ -38,11 +40,13 @@ Object Store v2 returns a `429 HTTP Error` response, indicating that it reached 
 
 If the store reaches the TPS limit, you can either upgrade to a premium subscription or redesign the app to send API requests more slowly.
 
+NOTE: Requests that return a 429 response (due to rate limiting) don't count toward your monthly billing usage and quota.
+
 
 [[how-billing-is-calculated]]
 == How Billing is Calculated
 
-Effective API requests count toward your monthly billing usage and quota.
+All effective API requests that return a 2xx (success) response count toward your monthly billing usage and quota.
 
 An effective API request counts as *one or more units* against the quota,
 depending on the size of the payload and the number of keys returned.
