@@ -39,7 +39,7 @@ For information on configuring a Connected App with the API, see
 https://help.mulesoft.com/s/article/How-to-create-connected-apps-creation-using-API[How to create connected apps using the API].
 
 [[osv2-scopes]]
-=== Object Store Scopes
+== Object Store Scopes
 
 Object store scopes apply to all stores in the given organization and environment.
 Unless otherwise noted, these scopes apply to both object stores and Object Store v2 object stores.
@@ -47,26 +47,32 @@ Unless otherwise noted, these scopes apply to both object stores and Object Stor
 [%header,cols="20,20,60a"]
 |===
 |Scope in UI|Scope in API |Description
-|*Manage stores*
+|Manage stores
 |`manage:store`
-|Create, read, update, and delete stores.
-|*Manage stores data*
+|include::access-management::partial$include-permissions-osv2.adoc[tag=permsManageStores]
+
+
+|Manage stores data
 |`manage:store_data`
-|Perform all store operations including data, partition, and confirmation APIs. 
-|*View stores*
+|include::access-management::partial$include-permissions-osv2.adoc[tag=permsManageStoresData]
+
+|View stores
 |`read:store`
-|Read store details.
-|*Manage store clients* (object store only)
+|include::access-management::partial$include-permissions-osv2.adoc[tag=permsViewStores]
+
+|Manage store clients (object store only)
 |N/A
-|Manage all clients of a cloud store.
+|include::access-management::partial$include-permissions-osv2.adoc[tag=permsManageStoreClients]
 
 This scope doesn't apply to Object Store v2.
-|*View store clients* (object store only)
+
+|View store clients (object store only)
 |N/A
-|View all clients of a cloud store.
+|include::access-management::partial$include-permissions-osv2.adoc[tag=permsViewStoreClients]
 
 This scope doesn't apply to Object Store v2.
+
 |Store Metrics Viewer
 |`read:store_metrics`
-|Retrieve Object Store v2 metrics using the Object Store v2 Stats API.
+|include::access-management::partial$include-permissions-osv2.adoc[tag=permsStoreMetricsViewer]
 |===
