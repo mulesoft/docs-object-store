@@ -37,8 +37,6 @@ The Object Store v2 user interface is available in the Anypoint Platform > Runti
 
 == Object Store v2 Permissions
 
-The Object Store v2  permissions are:
-
 // These descriptions are the same as scopes in connected apps.
 [%header,cols="50a,20a,30a"]
 |===
