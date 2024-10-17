@@ -109,38 +109,33 @@ based on your subscription type:
 include::partial$osv2-faq.adoc[tag=faqUsageOverage]
 
 
+[[access-usage-charts]]
 == Access Object Store Effective API Request Usage Charts
 
 To view a chart that shows how many effective API requests your apps have consumed and the number of effective API requests that your subscription allows:
 
-. Log in to Anypoint Platform.
-. Click *Access Management* in the left navigation bar or the main Anypoint Platform page.
-. Click *Object Store* in the *SUBSCRIPTION* section:
+. In Anypoint Platform, go to *Access Management*.
+. Click *Object Store* in the *Subscription* section:
 +
 image::os-access-mgmt-subscription.png["Object Store option on the Access Management page"]
 +
-. Click a chart duration value of *6m* (six months, default), *1y* (one year), or *2y* (two years):
+The chart shows usage stats for the current and previous month:
 +
-image::os-access-mgmt-usage-chart.png["Object Store Usage page for API requests"]
+image::os-access-mgmt-usage-chart.png["Object Store Usage page for effective API requests"]
 +
-* (*1*) Duration value
-* (*2*) Number of effective API requests per month
-* (*3*) Percentage and amount of your quota that you have used
+[calloutlist]
+.. Percentage and amount of your quota that you have used
 +
-NOTE: If the usage is 0, the chart displays `<1%`.
-* (*4*) Subscription type
-+
---
-** `Base 0.0` indicates the Base subscription.
-** Base values greater than `0.0` indicate Premium add-on subscriptions.
---
-+
-Monthly billing usage information is delayed by 24 hours.
+If the usage is 0, the chart displays `<1%`.
 +
 The circle graph changes to red as your effective API request usage approaches your quota:
 +
 image::os-access-mgmt-requests-color.png["Object Store effective API request limits"]
-
++
+NOTE: Monthly billing usage information might be delayed by up to 24 hours.
+.. Subscription type
+*** `Base 0.0` indicates the Base subscription.
+*** Base values greater than `0.0` indicate Premium add-on subscriptions.
 
 In some cases, the stats for the current month might not load when the backend process updates the records.
 If this happens, use the Object Store v2 Stats API
