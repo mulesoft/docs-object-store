@@ -1,0 +1,4 @@
+// tag::osv2SupportOnHyperforce[]
+You can't access or configure some Object Store v2 features, such as Object Store v2 Stats API.
+For information, see xref:object-store::index.adoc#osv2-on-hyperforce[Object Store v2 on Hyperforce].
+// end::osv2SupportOnHyperforce[]

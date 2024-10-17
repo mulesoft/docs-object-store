@@ -165,6 +165,16 @@ To avoid these issues, use a distributed key-value store as a lock to synchroniz
 For information about distributed locking in Mule runtime engine, see xref:mule-runtime::distributed-locking.adoc[Distributed Locking].
 
 
+
+[[osv2-on-hyperforce]]
+== Object Store v2 on Hyperforce
+
+All features of Object Store v2 are supported on Hyperforce with the following exceptions:
+
+* xref:osv2-usage.adoc#osv2-usage-charts[Usage graphs] are not available.
+* The xref:osv2-apis.adoc#osv2-stats-api[Object Store v2 Stats API] is not supported.
+
+
 == See Also
 
 * xref:access-management::permissions-by-product.adoc[]
