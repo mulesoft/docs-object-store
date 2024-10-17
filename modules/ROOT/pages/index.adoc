@@ -69,6 +69,9 @@ The Object Store v2 user interface is available in the Anypoint Platform > Runti
 |
 |===
 
+To assign user permissions, follow the steps in xref:access-management::users.adoc#grant-user-permissions[Grant Permissions to Users].
+
+To use teams to assign permissions, follow the steps in xref:access-management::teams.adoc[].
 
 
 
@@ -164,12 +167,8 @@ For information about distributed locking in Mule runtime engine, see xref:mule-
 
 == See Also
 
-* xref:osv2-faq.adoc[Object Store v2 FAQ]
+* xref:access-management::permissions-by-product.adoc[]
 * xref:release-notes::object-store/anypoint-osv2-release-notes.adoc[Object Store v2 Release Notes]
-* xref:osv2-guide.adoc[Use Object Store v2]
-* xref:osv2-tutorial.adoc[Tutorial: Object Store v2]
-* xref:osv2-usage.adoc[View Usage Graphs]
-* xref:osv2-apis.adoc[REST API: Object Store v2]
 * xref:connectors::object-store/object-store-connector.adoc[Object Store Connector for Mule 4]
 * xref:3.9@mule-runtime::object-store-connector.adoc[Object Store Connector for Mule 3]
 * https://blogs.mulesoft.com/dev/anypoint-platform-dev/data-synchronizing-made-easy-with-mule-watermarks/[Object Store Watermarks]
