@@ -19,7 +19,6 @@ Object Store provides these APIs:
 == Before You Begin 
 
 * Create an app that uses Object Store v2 and xref:runtime-manager::deploying-to-cloudhub.adoc[deploy it to CloudHub].
-+
 * xref:osv2-guide.adoc#send-data-to-an-object-store[Store a key-value pair in the object store]. 
 * <<get-bearer-token,Get the bearer token>> for an Anypoint Platform user using the Access Management API:
 +
@@ -184,7 +183,7 @@ The Object Store v2 API reads and writes `key,list` values,
 which is different from Anypoint Connector for Object Store (Object Store Connector),
 which reads and writes in the `key,value` format.
 
-The following table compares the Object Store REST API operations to Object Store Connector operations:
+This table compares the Object Store REST API operations to Object Store Connector operations:
 
 [%header,cols="20a,50a,30a"]
 |===

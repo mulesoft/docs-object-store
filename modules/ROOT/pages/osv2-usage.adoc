@@ -142,6 +142,7 @@ If this happens, use the Object Store v2 Stats API
 xref:osv2-apis.adoc#usage-by-org[Usage Metrics by Organization]
 to query the daily usage in the current month and then add the daily usage together.
 
+[[osv2-stats-api]]
 == Retrieve Usage Metrics with Object Store v2 Stats API
 
 To use the Object Store v2 Stats API to retrieve usage metrics, see:
