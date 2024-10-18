@@ -1,5 +1,5 @@
 .xref:index.adoc[Object Store v2]
-* xref:index.adoc[]
+* xref:index.adoc[Overview]
 ** xref:osv2-faq.adoc[]
 * xref:osv2-release-notes.adoc[Release Notes]
 * xref:osv2-tutorial.adoc[Tutorial: Store and Retrieve Data]
