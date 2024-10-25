@@ -126,7 +126,7 @@ To test your app:
 . Copy the *App url* value:
 +
 image::os-tutorial-rtm-deploy-url.png["App url in Runtime Manager"]
-. From the command line, run the following `curl` command, replacing _APP-URL_ with the *App url* value that you copied from Runtime Manager: 
+. From the command line, run this `curl` command, replacing _APP-URL_ with the *App url* value that you copied from Runtime Manager: 
 +
 [source,console]
 ----
@@ -151,7 +151,7 @@ image::os-tutorial-rtm-key-in-os.png["Object Store option, key, and value in Run
 The `myKey` key that you sent from `curl` appears in the object store with the value of `[binary value] BINARY`.
 The value is binary because Mule 4 wraps values in a Mule object, which causes
 them to be visible only as binary in Anypoint Platform.
-. From the command line, run the following `curl` command to view the value for the key, replacing _APP-URL_ with the *App url* value that you copied from Runtime Manager:
+. From the command line, run this `curl` command to view the value for the key, replacing _APP-URL_ with the *App url* value that you copied from Runtime Manager:
 +
 [source,console]
 ----
@@ -169,9 +169,8 @@ You have successfully tested your app using a `curl` command to store and retrie
 
 === Example App XML for Studio 7.x
 
-You can use XML to create the `osv2-demo` app in Studio 7 by clicking *Configuration XML* tab in Studio,
-comparing your XML to the following, and making corrections as needed:
-
+Click *Configuration XML* in Studio and compare your XML to this example.
+Make corrections if necessary.
 
 [source,xml,linenums]
 ----
@@ -316,7 +315,7 @@ To test your app:
 . Copy the *App url* value:
 +
 image::os-tutorial-rtm-deploy-url-3.png["App url in Runtime Manager"]
-. From the command line, run the following `curl` command, replacing _APP-URL_ with the *App url* value that you copied from Runtime Manager:
+. From the command line, run this `curl` command, replacing _APP-URL_ with the *App url* value that you copied from Runtime Manager:
 +
 [source,console]
 ----

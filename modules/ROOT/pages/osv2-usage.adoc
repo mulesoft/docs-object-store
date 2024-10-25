@@ -33,7 +33,7 @@ Every successful API request (via the connector or API) to Object Store v2 count
 For example, if your app retrieves 1500 keys from an object store with a page size of 25:
 
 * With the base subscription, the response is throttled over 6 seconds.
-* With the premium subscription, the response is not throttled.
+* With the premium subscription, the response isn't throttled.
 
 If the store exceeds the number of TPS allotted based on the subscription type,
 Object Store v2 returns a `429 HTTP Error` response, indicating that it reached the rate limit.
@@ -95,7 +95,7 @@ For example, a call to delete a store with two partitions counts as three billab
 [[max-api-requests]]
 == Maximum Number of API Requests Per Month
 
-The following table lists the maximum number of API requests per month,
+This table lists the maximum number of API requests per month,
 based on your subscription type:
 
 [%headers,cols="50,50"]

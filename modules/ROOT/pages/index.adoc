@@ -169,7 +169,7 @@ For information about distributed locking in Mule runtime engine, see xref:mule-
 [[osv2-on-hyperforce]]
 == Object Store v2 on Hyperforce
 
-All features of Object Store v2 are supported on Hyperforce with the following exceptions:
+All features of Object Store v2 are supported on Hyperforce with these exceptions:
 
 * Deployments to CloudHub 1 aren't supported.
 +

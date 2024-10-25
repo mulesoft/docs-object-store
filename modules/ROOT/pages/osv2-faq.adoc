@@ -80,7 +80,7 @@ IMPORTANT: If after the first deploy, you move the app to a different region, Ob
 You can configure a Mule app to use the Object Store REST API to store and retrieve 
 values from an object store in another Mule app. 
 
-However, Object Store v2 is not designed for app-to-app communication.
+However, Object Store v2 isn't designed for app-to-app communication.
 To share data between two Mule 4 apps, use a queue in xref:mq::index.adoc[Anypoint MQ].
 
 For information about object store limitations, see xref:connectors::object-store/object-store-connector.adoc#object-store-limitations[Object Store Limitations].
@@ -92,7 +92,7 @@ https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4
 
 == What are the limits on an object store?
 
-The total size of an object store is not limited, but each value is limited to 10 MB.
+The total size of an object store isn't limited, but each value is limited to 10 MB.
 
 Every API call (via the connector or API) to Object Store v2 counts toward the API rate limiting (transactions per second (TPS)):
 
@@ -167,7 +167,7 @@ For more information, see xref:osv2-tutorial.adoc#create-a-studio-7-project[Tuto
 
 == Are there rate limits on Object Store v2?
 
-Customers who have not purchased a separate Object Store SKU are rate limited to 10 transactions per second per app.  If an app for an account that has not purchased the Object Store v2 SKU exceeds the rate limit, further requests are not processed for a time and a 429 HTTP error status code results. To go beyond the base 10 TPS rate limit, contact your MuleSoft account team.
+Customers who have not purchased a separate Object Store SKU are rate limited to 10 transactions per second per app.  If an app for an account that has not purchased the Object Store v2 SKU exceeds the rate limit, further requests aren't processed for a time and a 429 HTTP error status code results. To go beyond the base 10 TPS rate limit, contact your MuleSoft account team.
 
 == How is Object Store v2 data secured?
 
@@ -183,7 +183,7 @@ same data center as the Runtime Manager app.
 
 == What happens when you reenable the *Use Object Store v2* option after disabling it?
 
-By default, the *Use Object Store v2* option is enabled during CloudHub application deployment. If you disable and then reenable this option in Runtime Manager, the original key-value pairs persist as long as the key-value pair TTL is not expired. 
+By default, the *Use Object Store v2* option is enabled during CloudHub application deployment. If you disable and then reenable this option in Runtime Manager, the original key-value pairs persist as long as the key-value pair TTL isn't expired. 
 
 == See Also
 
