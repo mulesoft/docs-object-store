@@ -149,7 +149,7 @@ All versions of Mule's Object Store Connector work with both Object Store v1 and
 == Why are Object Store values in binary format?
 
 When you view an Object Store key in Runtime Manager, the value for the key displays as `[binary value] BINARY`.
-Mule 4 wraps values into a Mule object that causes them to be only visible in binary through Anypoint Platform. Behind the scenes, Mule 4 executes binary serialization with the Mule internal serializer. The user interface cannot deserialize the object, hence it can only tell you that the value is now binary in the user interface.
+Mule 4 wraps values into a Mule object that causes them to be only visible in binary through Anypoint Platform. Behind the scenes, Mule 4 executes binary serialization with the Mule internal serializer. The user interface can't deserialize the object, hence it can only tell you that the value is now binary in the user interface.
 
 To view the key value, you need an Object Store retrieve flow in your app's connector, such as:
 
