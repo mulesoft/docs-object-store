@@ -171,9 +171,11 @@ For information about distributed locking in Mule runtime engine, see xref:mule-
 
 All features of Object Store v2 are supported on Hyperforce with the following exceptions:
 
-* xref:osv2-usage.adoc#osv2-usage-charts[Usage graphs] are not available.
-* The xref:osv2-apis.adoc#osv2-stats-api[Object Store v2 Stats API] is not supported.
-
+* Deployments to CloudHub 1 aren't supported.
++
+You can deploy apps to CloudHub 2.0 shared spaces and Anypoint Runtime Fabric.
+* xref:osv2-usage.adoc#osv2-usage-charts[Usage graphs] aren't available.
+* The https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Object Store v2 Stats API] isn't supported.
 
 == See Also
 
