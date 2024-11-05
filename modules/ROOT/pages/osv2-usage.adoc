@@ -117,7 +117,7 @@ To view a chart that shows how many effective API requests your apps have consum
 . In Anypoint Platform, go to *Access Management*.
 . Click *Object Store* in the *Subscription* section:
 +
-image::os-access-mgmt-subscription.png["Object Store option on the Access Management page"]
+image::os-access-mgmt-subscription.png["Object Store option in the Subscriptions section of the Access Management navigation"]
 +
 The chart shows usage stats for the current and previous month:
 +
@@ -130,7 +130,7 @@ If the usage is 0, the chart displays `<1%`.
 +
 The circle graph changes to red as your effective API request usage approaches your quota:
 +
-image::os-access-mgmt-requests-color.png["Object Store effective API request limits"]
+image::os-access-mgmt-requests-color.png["Object Store effective API request graph showing the usage in red"]
 +
 NOTE: Monthly billing usage information might be delayed by up to 24 hours.
 .. Subscription type
