@@ -111,10 +111,12 @@ To view data in an object store:
 +
 image::os-rtm-key-in-os.png["Runtime Manager window showing the Object Store navigation menu, and the selected object store, partition, key, and key data"]
 +
+--
 [calloutlist]
-. Object Store navigation menu
-. Selected key
-. Key data (binary value and type)
+.. Object Store navigation menu
+.. Selected key
+.. Key data (binary value and type)
+--
 +
 The `TestKey01` key that you sent from `curl` appears in the object store with the value `[binary value] BINARY`.
 The value is binary because Mule 4 wraps values in a Mule object, which causes

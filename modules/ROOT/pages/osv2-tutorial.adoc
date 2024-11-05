@@ -79,10 +79,6 @@ image::os-tutorial-studio7-listener-props.png["Listener properties window showin
 +
 image::os-tutorial-studio7-store-props.png["Store properties windows showing the values in the Key and Value fields"]
 +
-[calloutlist]
-.. Key field
-.. Value field
-+
 The maximum number of characters in a key is 256.
 +
 // Shared keyChars 
@@ -156,11 +152,6 @@ image::os-tutorial-rtm-manage-app.png["Runtime Manager app details pane showing 
 . Click the object store, the partition, and then the key:
 +
 image::os-tutorial-rtm-key-in-os.png["Runtime Manager window showing the selected object store, partition, and key"]
-+
-[calloutlist]
-. Object store
-. Selected partition
-. Selected key
 +
 The `myKey` key that you sent from `curl` appears in the object store with the value of `[binary value] BINARY`.
 The value is binary because Mule 4 wraps values in a Mule object, which causes
@@ -354,9 +345,9 @@ image::os-tutorial-rtm-manage-app-3.png["Runtime Manager app details pane showin
 image::os-tutorial-rtm-key-in-os-3.png["Runtime Manager window showing the selected object store, partition, and key"]
 +
 [calloutlist]
-. Object store
-. Selected partition
-. Selected key
+.. Object store
+.. Selected partition
+.. Selected key
 . Hover over the *...* icon to display actions for each object:
 +
 image::os-tutorial-rtm-os-actions-3.png["Metadata and Delete Value actions in the object store"]
