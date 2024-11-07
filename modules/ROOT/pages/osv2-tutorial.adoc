@@ -65,7 +65,7 @@ image::os-tutorial-studio7-palette.png["Mule Palette view showing the HTTP Conne
 
 . Click *ObjectStore* and then drag the *Store* operation to *Listener* on the canvas:
 +
-image::os-tutorial-studio7-flow.png["Studio 6.x window showing the Store operation on the canvas"]
+image::os-tutorial-studio7-flow.png["Studio 7.x window showing the Store operation on the canvas"]
 . In the canvas, click *Listener*.
 . In the *Listener* properties window, set *General > Path* to `/store`.
 . Click the plus icon (+) for the *Connector configuration* field. 
