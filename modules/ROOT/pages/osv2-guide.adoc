@@ -61,7 +61,7 @@ Install Object Store Connector to add it to a Mule project:
 . In Studio, create a simple flow such as the following:
 +
 --
-image::os-studio7-flow.png["Listener and Store operations in Studio"]
+image::os-studio7-flow.png["Flow in Studio showing the Listener and Store operations"]
 
 [%headers,cols="25a,75a"]
 |===
@@ -106,13 +106,17 @@ Change `app-url` to the name you copied from *App url* in Runtime Manager.
 To view data in an object store:
 
 . In Runtime Manager, click the name of your application to view the dashboard.
-. Click *Object Store* in the left navigation pane.
+. Click *Object Store* in the navigation menu.
 . Click the object store, the partition, and then the key:
 +
-image::os-rtm-key-in-os.png["Object Store option, key, and value in Runtime Manager"]
+image::os-rtm-key-in-os.png["Runtime Manager window showing the Object Store navigation menu, and the selected object store, partition, key, and key data"]
 +
-The columns show the object store name, partition name, key, and key data.
-The partition groups the object store keys.
+--
+[calloutlist]
+.. Object Store navigation menu
+.. Selected key
+.. Key data (binary value and type)
+--
 +
 The `TestKey01` key that you sent from `curl` appears in the object store with the value `[binary value] BINARY`.
 The value is binary because Mule 4 wraps values in a Mule object, which causes
@@ -138,12 +142,12 @@ To configure a custom TTL period for keys stored in the object store:
 
 . Create an app that uses Mule runtime engine version 4.2.1 or later.
 . Configure the object store in the app.
-. Select the *Store* operation in the flow and, in the properties window, click the green plus icon (+) to the right of the *Object store* field:
+. Select the *Store* operation in the flow and, in the properties window, click the green plus icon (+) for the *Object store* field:
 +
-image::os-use-ttl-props.png["Green plus icon in the properties window"]
+image::os-use-ttl-props.png["Studio properties window for the Store operation showing the green plus icon"]
 . Configure the TTL entries in the *Global Object Store Configuration* window:
 +
-image::os-use-ttl-global-props.png["Entry ttl field in the Global Object Store Configuration window"]
+image::os-use-ttl-global-props.png["Global Object Store Configuration window showing the Entry ttl field"]
 +
 [NOTE]
 For Object Store v2, the *Max entries* field is not configurable.
@@ -181,13 +185,13 @@ To create partitions in Object Store v2:
 . Configure the Store operation.
 . Configure the partitions:
 +
-.. In the properties window, click the green plus icon (+) to the right of the *Object store* field:
+.. In the properties window, click the green plus icon (+) for the *Object store* field:
 +
-image::os-use-ttl-props.png["Green plus icon in the properties window"]
-.. In the *Global Element Properties* window, click the green plus icon (+) to the right of *Configuration Reference* 
+image::os-use-ttl-props.png["Studio properties window for the Store operation showing the green plus icon"]
+.. In the *Global Element Properties* window, click the green plus icon (+) for *Configuration Reference* 
 to create a global object store configuration:
 +
-image::os-use-partition-studio7-os-global-props.png["Green plus icon for the Configuration Reference field in the Global Element Properties window"]
+image::os-use-partition-studio7-os-global-props.png["Global Element Properties window showing the green plus icon for the Configuration Reference field"]
 .. Name the object store configuration and click *OK*.
 .. Ensure that the correct configuration reference is selected and click *OK*.
 .. Ensure that the correct object store is selected and click *OK*.
@@ -198,7 +202,7 @@ image::os-use-partition-studio7-os-global-props.png["Green plus icon for the Con
 +
 The partitions associated with the object store appear in the *Object Store* page:
 +
-image::os-use-partitions-rtm.png["Partitions in the Object Store page"]
+image::os-use-partitions-rtm.png["Runtime Manager window showing Partitions in the Object Store page"]
 
 
 == Deploy App with Object Store v2 Using the Mule Maven Plugin
