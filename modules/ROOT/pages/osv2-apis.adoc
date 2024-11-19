@@ -578,8 +578,6 @@ See also https://help.salesforce.com/s/articleView?id=002778591&type=1[How to us
 * <<usage-by-store>>
 
 
-
-
 [[usage-by-org]]
 ==== Example: Get Usage Metrics by Organization
 

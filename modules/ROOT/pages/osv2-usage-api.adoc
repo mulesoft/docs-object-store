@@ -14,13 +14,8 @@ Depending on your control plane, you use different APIs to retrieve Object Store
 [[retrieve-metrics-stats-api]]
 == Retrieve Usage Metrics with Object Store v2 Stats API
 
-[NOTE]
-// Not on HF
-include::partial$osv2-api-shared.adoc[tag=apiStatsAPInotHF]
-To retrieve these usage metrics on these instances, see 
-xref:osv2-usage-api.adoc#retrieve-metrics-metering-api[Retrieve Usage Metrics with Anypoint Metering Query API].
-
-To use the Object Store v2 Stats API to retrieve usage metrics, see:
+To retrieve Object Store v2 usage metrics on US Cloud or EU Cloud,
+use the Object Store v2 Stats API:
 
 * xref:osv2-apis.adoc#usage-by-org[Get Usage Metrics by Organization]
 * xref:osv2-apis.adoc#usage-by-env[Get Usage Metrics by Environment]
@@ -31,32 +26,173 @@ To use the Object Store v2 Stats API to retrieve usage metrics, see:
 [[retrieve-metrics-metering-api]]
 == Retrieve Usage Metrics with Anypoint Metering Query API
 
-To retrieve Object Store v2 usage metrics on Canada Cloud or Japan Cloud, use the Metering API.
+To retrieve Object Store v2 usage metrics on Canada Cloud or Japan Cloud, use the Metering Query API:
 
-For example, to retrieve effective API requests:
+* <<get-eff-api-req-root-org>>
+* <<get-eff-api-req-org-id>>
+* <<get-eff-api-req-org-env-id>>
+* <<get-eff-api-req-org-env-store-id>>
 
-. xref:osv2-apis.adoc#get-bearer-token[Get a bearer token] for an Anypoint Platform user account that has the Usage Viewer permission for your root organization.
-. Use a command like this:
+
+
+=== Before You Begin
+
+* xref:osv2-apis.adoc#get-bearer-token[Get a bearer token] for an Anypoint Platform user account that has the Usage Viewer permission for your root organization.
+* Familiarize yourself with how Object Store v2 uses xref:osv2-usage.adoc[effective API requests].
+* Use the information in this table to construct your queries:
 +
+[%header,cols="15,45a"]
+|===
+| Parameter | Description
+| TIMESERIES | How to group the output:
+
+* Monthly: `P1M`
+* Daily: `P1D`
+* Hourly: `PT1H`
+
+| BETWEEN  | Time frame to retrieve metrics for (timestamp specified in https://currentmillis.com/[milliseconds]).
+| INSTANCE | Anypoint Platform instance:
+
+* Canada Cloud: https://ca1.platform.mulesoft.com/metering/usage
+* Japan Cloud: https://jp1.platform.mulesoft.com/metering/usage
+|===
+
+
+
+[[get-eff-api-req-root-org]]
+=== Get Effective API Requests by Root Org
+
+Use a command like this:
+
 [source,bash,linenums]
 ----
-curl --location 'https://anypoint.mulesoft.com/metering/usage/api/v1/meters:search' \
+curl --location 'INSTANCE/metering/usage/api/v1/meters:search' \
 --header 'Authorization: bearer ***' \
 --header 'Content-type: application/json' \
 --data '{
-    "query": "SELECT effective_api_requests FROM object_store_effective_api_requests_count WHERE timestamp BETWEEN 1728874800000 AND 1731610357770 TIMESERIES P1M"
+    "query": "SELECT effective_api_requests FROM object_store_effective_api_requests_count WHERE timestamp BETWEEN 1731207600000 AND 1731963949248 TIMESERIES P1M"
 }'
 ----
-+
-The output includes:
-+
+
+This command returns output similar to:
+
 [source,json,linenums]
 ----
 {
-
-}  
+   "metadata":{
+      "responseAsOf":"2024-11-19T19:55:33.487512271Z"
+   },
+   "data":[
+      {
+         "effective_api_requests":200000.0,
+         "timestamp":1730419200000
+      }
+   ]
+}
 ----
 
+
+[[get-eff-api-req-org-id]]
+=== Get Effective API Requests for a Specific Org
+
+Use a command like this:
+
+[source,bash,linenums]
+----
+curl --location 'INSTANCE/metering/usage/api/v1/meters:search' \
+--header 'Authorization: bearer ***' \
+--header 'Content-type: application/json' \
+--data '{
+    "query": "SELECT org_id, effective_api_requests FROM object_store_effective_api_requests_count WHERE org_id = '\''66310c16-bce5-43c4-b978-5945ed2f99c5'\'' AND timestamp BETWEEN 1731207600000 AND 1731963949248 TIMESERIES P1M"
+}'
+----
+
+This command returns output similar to:
+
+[source,json,linenums]
+----
+{
+   "metadata":{
+      "responseAsOf":"2024-11-19T19:57:51.677748123Z"
+   },
+   "data":[
+      {
+         "effective_api_requests":150000.0,
+         "org_id":"66310c16-bce5-43c4-b978-5945ed2f99c5",
+         "timestamp":1730419200000
+      }
+   ]
+}
+----
+
+[[get-eff-api-req-org-env-id]]
+=== Get Effective API Requests for a Specific Org and Environment
+
+Use a command like this:
+
+[source,bash,linenums]
+----
+curl --location 'INSTANCE/metering/usage/api/v1/meters:search' \
+--header 'Authorization: bearer ***' \
+--header 'Content-type: application/json' \
+--data '{
+    "query": "SELECT org_id, env_id, effective_api_requests FROM object_store_effective_api_requests_count WHERE org_id = '\''66310c16-bce5-43c4-b978-5945ed2f99c5'\'' AND env_id = '\''40eeb638-348c-4d80-9db6-7baf88b2d28f'\'' AND timestamp BETWEEN 1731207600000 AND 1731963949248 TIMESERIES P1M"
+}'
+----
+
+This command returns output similar to:
+
+[source,json,linenums]
+----
+{
+   "metadata":{
+      "responseAsOf":"2024-11-19T20:01:21.021744950Z"
+   },
+   "data":[
+      {
+         "env_id":"40eeb638-348c-4d80-9db6-7baf88b2d28f",
+         "effective_api_requests":100000.0
+         "org_id":"66310c16-bce5-43c4-b978-5945ed2f99c5",
+         "timestamp":1730419200000
+      }
+   ]
+}
+----
+
+[[get-eff-api-req-org-env-store-id]]
+=== Get Effective API Requests for a Specific Org, Environment, and Store
+
+Use a command like this:
+
+[source,bash,linenums]
+----
+curl --location 'INSTANCE/metering/usage/api/v1/meters:search' \
+--header 'Authorization: bearer ***' \
+--header 'Content-type: application/json' \
+--data '{
+    "query": "SELECT store_id, org_id, env_id, effective_api_requests FROM object_store_effective_api_requests_count WHERE org_id = '\''66310c16-bce5-43c4-b978-5945ed2f99c5'\'' AND env_id = '\''40eeb638-348c-4d80-9db6-7baf88b2d28f'\'' AND store_id = '\''PostmanTestStore'\'' AND timestamp BETWEEN 1731207600000 AND 1731963949248 TIMESERIES P1M"
+}'
+----
+
+This command returns output similar to:
+
+[source,json,linenums]
+----
+{
+   "metadata":{
+      "responseAsOf":"2024-11-19T20:03:57.680851659Z"
+   },
+   "data":[
+      {
+         "store_id":"PostmanTestStore",
+         "env_id":"40eeb638-348c-4d80-9db6-7baf88b2d28f",
+         "effective_api_requests":500.0,
+         "org_id":"66310c16-bce5-43c4-b978-5945ed2f99c5",
+         "timestamp":1730419200000
+      }
+   ]
+}
+----
 
 == See Also
 
@@ -65,4 +201,3 @@ The output includes:
 * Placeholder link to the OSv2 Regions topic
 * Placeholder link to the OSv2 on HF topic
 * Placeholder for Anypoint Metering API
-
