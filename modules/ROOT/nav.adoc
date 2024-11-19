@@ -6,4 +6,5 @@
 * xref:osv2-guide.adoc[]
 * xref:osv2-connected-apps.adoc[]
 * xref:osv2-usage.adoc[]
+** xref:osv2-usage-api.adoc[]
 * xref:osv2-apis.adoc[]
