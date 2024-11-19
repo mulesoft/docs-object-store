@@ -162,7 +162,43 @@ For CloudHub applications using Mule 3, Object Store v2 overrides the `_defaultU
 To avoid these issues, use a distributed key-value store as a lock to synchronize access to Object Store v2.
 For information about distributed locking in Mule runtime engine, see xref:mule-runtime::distributed-locking.adoc[Distributed Locking].
 
+[[os-features-control-plane]]
+== Object Store Features by Control Plane
 
+[%header,cols="3a,1a,1a"]
+|===
+|Object Store Feature 
+|https://anypoint.mulesoft.com/[US Cloud] and https://eu1.anypoint.mulesoft.com/[EU Cloud]
+|https://ca1.platform.mulesoft.com/[Canada Cloud] and https://jp1.platform.mulesoft.com/[Japan Cloud] (Hyperforce)
+
+|{empty}
+
+* xref:osv2-connected-apps.adoc[Connected Apps]
+
+| Yes
+| Yes
+
+
+|{empty}
+
+* xref:osv2-usage.adoc#osv2-usage-charts[Usage Reports] (Access Management)
+* xref:cloudhub::deploying-to-cloudhub.adoc[CloudHub 1.0 Deployments]
+* xref:osv2-apis.adoc#osv2-stats-api[Object Store v2 Stats API]
+
+
+| Yes
+| No
+
+
+|{empty}
+
+* xref:os-usage-apis.adoc#retrieve-metrics-metering-api[Anypoint Metering Query API] (Usage Metrics)
+
+| No
+| Yes
+
+
+|===
 
 [[osv2-on-hyperforce]]
 == Object Store v2 on Hyperforce
@@ -188,7 +224,7 @@ Deployments to CloudHub 1 aren't supported.
 +
 You can deploy apps to CloudHub 2.0 shared spaces and Anypoint Runtime Fabric.
 Usage Graphs::
-xref:osv2-usage.adoc#osv2-usage-charts[Usage graphs] aren't available.
+xref:osv2-usage.adoc#osv2-usage-charts[Usage charts] aren't available.
 REST APIs::
 The https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Object Store v2 Stats API] isn't supported.
 
