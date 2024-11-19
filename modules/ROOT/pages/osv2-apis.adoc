@@ -529,6 +529,12 @@ This command returns output similar to the following:
 [[osv2-stats-api]]
 == Object Store v2 Stats API 
 
+[NOTE]
+// Not on HF
+include::partial$osv2-api-shared.adoc[tag=apiStatsAPInotHF]
+To retrieve these usage metrics on these instances, see 
+xref:osv2-usage.adoc#retrieve-metrics-metering-api[Retrieve Usage Metrics with Anypoint Metering Query API].
+
 The Object Store v2 Stats API enables you to retrieve statistics on your Object Store usage.
 
 The usage statistics are not real-time and might include latency.
@@ -570,6 +576,8 @@ See also https://help.salesforce.com/s/articleView?id=002778591&type=1[How to us
 * <<usage-by-env>>
 * <<usage-by-region>>
 * <<usage-by-store>>
+
+
 
 
 [[usage-by-org]]

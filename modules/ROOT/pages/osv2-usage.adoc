@@ -1,4 +1,5 @@
 = Rate Limiting and Billing
+include::partial$osv2-api-shared.adoc[tag=osv2FeaturesNoHF]
 
 Object Store v2 uses two metrics to determine billing and rate-limiting:
 
@@ -142,53 +143,7 @@ If this happens, use the Object Store v2 Stats API
 xref:osv2-apis.adoc#usage-by-org[Usage Metrics by Organization]
 to query the daily usage in the current month and then add the daily usage together.
 
-== Retrieve Usage Metrics with Object Store v2 Stats API
-
-[NOTE]
-These REST APIs aren't supported on Hyperforce (Canada Cloud or Japan Cloud).
-To retrieve these usage metrics on Hyperforce, see <<retrieve-metrics-metering-api>>.
-
-To use the Object Store v2 Stats API to retrieve usage metrics, see:
-
-* xref:osv2-apis.adoc#usage-by-org[Get Usage Metrics by Organization]
-* xref:osv2-apis.adoc#usage-by-env[Get Usage Metrics by Environment]
-* xref:osv2-apis.adoc#usage-by-region[Get Usage Metrics by Region]
-* xref:osv2-apis.adoc#usage-by-store[Get Usage Metrics by Store]
-
-
-[[retrieve-metrics-metering-api]]
-== Retrieve Usage Metrics with Anypoint Metering Query API
-
-[NOTE]
-These REST APIs are supported on Hyperforce only.
-
-To retrieve Object Store v2 usage metrics on Hyperforce (Canada Cloud or Japan Cloud), use the Metering API.
-
-For example, to retrieve effective API requests:
-
-. xref:mq-apis.adoc#get-bearer-token[Get a bearer token] for an Anypoint Platform user account that has the Usage Viewer permission for your root organization.
-. Use a command like this:
-+
-[source,bash,linenums]
-----
-curl --location 'https://anypoint.mulesoft.com/metering/usage/api/v1/meters:search' \
---header 'Authorization: bearer ***' \
---header 'Content-type: application/json' \
---data '{
-    "query": "SELECT effective_api_requests FROM object_store_effective_api_requests_count WHERE timestamp BETWEEN 1728874800000 AND 1731610357770 TIMESERIES P1M"
-}'
-----
-+
-The output includes:
-+
-[source,json,linenums]
-----
-{
-
-}  
-----
-
-
 == See Also
 
+* xref:osv2-usage-api.adoc[]
 * xref:osv2-faq.adoc[Object Store FAQ]

@@ -1,0 +1,8 @@
+// tag::apiStatsAPInotHF[]
+The https://ca1.platform.mulesoft.com/monitoring[Canada Cloud] and https://jp1.platform.mulesoft.com/monitoring[Japan Cloud] instances of Anypoint Platform don't support these REST APIs.
+// end::apiStatsAPInotHF[]
+
+// banner for unsupported features
+// tag::osv2FeaturesNoHF[]
+:page-notice-banner-message: The Japan Cloud and Canada Cloud instances of Anypoint Platform don't support this feature.
+// end::osv2FeaturesNoHF[]
