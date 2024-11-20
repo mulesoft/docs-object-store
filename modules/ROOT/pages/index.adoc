@@ -193,7 +193,7 @@ https://jp1.platform.mulesoft.com/[Japan Cloud] (Hyperforce)
 
 
 |{empty}
-
+// Change to Metering UI way
 * xref:os-usage-apis.adoc#retrieve-metrics-metering-api[Anypoint Metering Query API] (Usage Metrics)
 
 | No
@@ -229,6 +229,8 @@ Usage Charts::
 xref:osv2-usage.adoc#access-usage-charts[Usage Charts] aren't available.
 REST APIs::
 The https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Object Store v2 Stats API] isn't supported.
+// Add Metering UI way
+
 
 == See Also
 

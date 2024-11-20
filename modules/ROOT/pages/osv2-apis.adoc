@@ -284,8 +284,8 @@ MuleSoft Government Cloud| `object-store-us-gov-west-1.gov.anypoint.mulesoft.com
 .2+|EU | `object-store-eu-central-1.eu1.anypoint.mulesoft.com` | Europe (Frankfurt)
 | `object-store-eu-west-1.eu1.anypoint.mulesoft.com` | Europe (Ireland)
 
-| Canada Cloud| `object-store-ca-central-1.ca1.platform.anypoint.mulesoft.com` | Canada (Central)
-.2+|Japan Cloud | `object-store-ca-central-1.jp1.platform.anypoint.mulesoft.com` | Asia Pacific (Tokyo)
+| Canada Cloud| `object-store-ca-central-1.ca1.platform.mulesoft.com` | Canada (Central)
+.2+|Japan Cloud | `object-store-ap-northeast-1.jp1.platform.mulesoft.com` | Asia Pacific (Tokyo)
 |===
 
 . Configure the application with HTTP headers and body for values to store to or read from
