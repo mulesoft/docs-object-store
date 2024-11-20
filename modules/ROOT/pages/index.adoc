@@ -165,11 +165,13 @@ For information about distributed locking in Mule runtime engine, see xref:mule-
 [[os-features-control-plane]]
 == Object Store Features by Control Plane
 
-[%header,cols="3a,1a,1a"]
+[%header,cols="2a,1a,1a"]
 |===
 |Object Store Feature 
-|https://anypoint.mulesoft.com/[US Cloud] and https://eu1.anypoint.mulesoft.com/[EU Cloud]
-|https://ca1.platform.mulesoft.com/[Canada Cloud] and https://jp1.platform.mulesoft.com/[Japan Cloud] (Hyperforce)
+|https://anypoint.mulesoft.com/[US Cloud] &
+https://eu1.anypoint.mulesoft.com/[EU Cloud]
+| https://ca1.platform.mulesoft.com/[Canada Cloud] &
+https://jp1.platform.mulesoft.com/[Japan Cloud] (Hyperforce)
 
 |{empty}
 
@@ -181,7 +183,7 @@ For information about distributed locking in Mule runtime engine, see xref:mule-
 
 |{empty}
 
-* xref:osv2-usage.adoc#osv2-usage-charts[Usage Reports] (Access Management)
+* xref:osv2-usage.adoc#access-usage-charts[Usage Charts] (Access Management)
 * xref:cloudhub::deploying-to-cloudhub.adoc[CloudHub 1.0 Deployments]
 * xref:osv2-apis.adoc#osv2-stats-api[Object Store v2 Stats API]
 
@@ -223,8 +225,8 @@ CloudHub 1::
 Deployments to CloudHub 1 aren't supported.
 +
 You can deploy apps to CloudHub 2.0 shared spaces and Anypoint Runtime Fabric.
-Usage Graphs::
-xref:osv2-usage.adoc#osv2-usage-charts[Usage charts] aren't available.
+Usage Charts::
+xref:osv2-usage.adoc#access-usage-charts[Usage Charts] aren't available.
 REST APIs::
 The https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Object Store v2 Stats API] isn't supported.
 
