@@ -29,7 +29,7 @@ image::os-conn-apps-scopes.png["Scopes for Object Store connected apps"]
 +
 Use this client ID and client secret to get the access token required to authenticate with the Object Store v2 API.
 
-[[configure-mq-conn-app-api]]
+[[configure-conn-app-api]]
 == Configure a Connected App Using the API
 
 For information on configuring a Connected App with the API, see

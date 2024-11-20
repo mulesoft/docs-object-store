@@ -529,7 +529,11 @@ This command returns output similar to:
 
 
 [[osv2-stats-api]]
-== Object Store v2 Stats API 
+== Object Store v2 Stats API
+
+[NOTE]
+// Not on HF
+include::partial$osv2-on-hyperforce.adoc[tag=apiStatsAPInotHF]
 
 The Object Store v2 Stats API enables you to retrieve statistics on your Object Store usage.
 

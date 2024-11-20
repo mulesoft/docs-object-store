@@ -1,4 +1,6 @@
 = Rate Limiting and Billing
+include::partial$osv2-on-hyperforce.adoc[tag=osv2FeaturesNoHF]
+
 
 Object Store v2 uses two metrics to determine billing and rate-limiting:
 
@@ -15,7 +17,6 @@ Effective API requests are the units that Object Store uses to calculate billing
 One successful API request could generate many effective API requests.
 +
 See <<how-billing-is-calculated>>.
-
 
 
 [[rate-limiting]]
