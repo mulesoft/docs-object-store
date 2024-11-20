@@ -203,7 +203,7 @@ https://jp1.platform.mulesoft.com/[Japan Cloud] (Hyperforce)
 |===
 
 [[osv2-on-hyperforce]]
-== Object Store v2 on Hyperforce
+=== Object Store v2 on Hyperforce
 
 Object Store v2 supports these 
 Salesforce Hyperforce (Hyperforce) regions:
