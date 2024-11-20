@@ -3,13 +3,13 @@ ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 
+[[osv2-regions]]
 == Where is Object Store v2 available?
 
 [%header,cols="15a,15a,30a"]
 |===
-3+h| US Control Plane
 | Location | Region Name | Region
-3+h| US Control Plane
+3+h| https://anypoint.mulesoft.com/[US Cloud]
 .5+| North America | US East (N. Virginia)	|`us-east-1`
                    | US East (Ohio) 		|`us-east-2` 
                    | US West (N. California)|`us-west-1` 
@@ -22,14 +22,14 @@ endif::[]
 .3+| Europe        | Europe (Ireland)		|`eu-west-1`
                    | EU (Frankfurt) 		|`eu-central-1` 
                    | Europe (London)		|`eu-west-2`
-3+h|MuleSoft Government Cloud Region
+3+h|MuleSoft Government Cloud
 .1+|				| GovCloud (US West) | `us-gov-west-1`
-3+h| EU Control Plane
+3+h| https://eu1.anypoint.mulesoft.com/[EU Cloud]
 .2+| Europe			| EU (Ireland) | `eu-west-1` 
 					| EU (Frankfurt) | `eu-central-1`
-3+h| Canada Cloud
+3+h| https://ca1.platform.mulesoft.com[Canada Cloud]
 .1+| North America	| Canada (Central)       | `ca-central-1` <<os-hyperforce,^***^>>
-3+h| Japan Cloud
+3+h| https://jp1.platform.mulesoft.com[Japan Cloud]
 .1+| APAC |            Japan (Central)       | `ap-northeast-1` <<os-hyperforce,^***^>>
 
 |===

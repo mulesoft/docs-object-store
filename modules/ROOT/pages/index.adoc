@@ -168,10 +168,8 @@ For information about distributed locking in Mule runtime engine, see xref:mule-
 [%header,cols="2a,1a,1a"]
 |===
 |Object Store Feature 
-|https://anypoint.mulesoft.com/[US Cloud] &
-https://eu1.anypoint.mulesoft.com/[EU Cloud]
-| https://ca1.platform.mulesoft.com/[Canada Cloud] &
-https://jp1.platform.mulesoft.com/[Japan Cloud] (Hyperforce)
+|US Cloud and EU Cloud
+|Canada Cloud and Japan Cloud (Hyperforce)
 
 |{empty}
 
@@ -203,37 +201,35 @@ https://jp1.platform.mulesoft.com/[Japan Cloud] (Hyperforce)
 |===
 
 [[osv2-on-hyperforce]]
-=== Object Store v2 on Hyperforce
+== Object Store v2 on Hyperforce
 
-Object Store v2 supports these 
-Salesforce Hyperforce (Hyperforce) regions:
+Object Store v2 is available on these instances of Anypoint Platform:
 
-* Canada Central (ca-central-1)
-* Japan (ap-northeast-1)
+* https://ca1.platform.mulesoft.com[Canada Cloud]
+* https://jp1.platform.mulesoft.com[Japan Cloud]
 
-For information about Hyperforce, see
-xref:hyperforce::index.adoc[].
+For information about the regions where Object Store v2 is available, see
+xref:osv2-faq.adoc#regions[Object Store v2 Regions].
 
-=== Object Store v2 Features Not Supported on Hyperforce
-
-When you deploy to
-https://ca1.platform.mulesoft.com[Canada Cloud] or 
-https://jp1.platform.mulesoft.com[Japan Cloud],
+When you deploy to Canada Cloud or Japan Cloud,
 all features of Object Store v2 are supported on Hyperforce with these exceptions:
 
 CloudHub 1::
 Deployments to CloudHub 1 aren't supported.
 +
-You can deploy apps to CloudHub 2.0 shared spaces and Anypoint Runtime Fabric.
+You can deploy apps to 
+xref:cloudhub-2::ch2-shared-space-about.adoc[CloudHub 2.0 shared spaces]
+and
+xref:runtime-fabric::index.adoc[Anypoint Runtime Fabric].
 Usage Charts::
 xref:osv2-usage.adoc#access-usage-charts[Usage Charts] aren't available.
+// Add Metering UI way
 REST APIs::
 The https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Object Store v2 Stats API] isn't supported.
-// Add Metering UI way
-
 
 == See Also
 
+* xref:hyperforce::index.adoc[]
 * xref:access-management::permissions-by-product.adoc[]
 * xref:release-notes::object-store/anypoint-osv2-release-notes.adoc[Object Store v2 Release Notes]
 * xref:connectors::object-store/object-store-connector.adoc[Object Store Connector for Mule 4]
