@@ -209,7 +209,7 @@ Object Store v2 is available on these instances of Anypoint Platform:
 * https://jp1.platform.mulesoft.com[Japan Cloud]
 
 For information about the regions where Object Store v2 is available, see
-xref:osv2-faq.adoc#regions[Object Store v2 Regions].
+xref:osv2-faq.adoc#osv2-regions[Object Store v2 Regions].
 
 When you deploy to Canada Cloud or Japan Cloud,
 all features of Object Store v2 are supported on Hyperforce with these exceptions:
@@ -225,7 +225,7 @@ Usage Charts::
 xref:osv2-usage.adoc#access-usage-charts[Usage Charts] aren't available.
 // Add Metering UI way
 REST APIs::
-The https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Object Store v2 Stats API] isn't supported.
+The xref:osv2-apis.adoc#osv2-stats-api[Object Store v2 Stats API] isn't supported.
 
 == See Also
 
@@ -234,4 +234,5 @@ The https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-31
 * xref:release-notes::object-store/anypoint-osv2-release-notes.adoc[Object Store v2 Release Notes]
 * xref:connectors::object-store/object-store-connector.adoc[Object Store Connector for Mule 4]
 * xref:3.9@mule-runtime::object-store-connector.adoc[Object Store Connector for Mule 3]
+* https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Object Store V2 Stats API]
 * https://blogs.mulesoft.com/dev/anypoint-platform-dev/data-synchronizing-made-easy-with-mule-watermarks/[Object Store Watermarks]

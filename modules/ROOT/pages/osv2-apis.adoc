@@ -11,8 +11,8 @@ The Object Store v2 APIs enable you to use REST to:
 
 Object Store provides these APIs:
 
-* https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Object Store v2 API]
-* https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Object Store v2 Stats API]
+* <<osv2-api,Object Store v2 API>>
+* <<osv2-stats-api,Object Store v2 Stats API>>
 
 
 [[before-you-begin]]
