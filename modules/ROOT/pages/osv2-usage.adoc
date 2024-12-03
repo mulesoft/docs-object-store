@@ -166,8 +166,9 @@ image::os-usage-report.png["Object Store on the Usage Reports page"]
 . Select a month from the *Monthly Usage Report* tab or day from the *Daily Usage Report* tab.
 +
 The report shows:
-* Total effective API requests for the selected period
-* Effective API requests by store.
++
+** Total effective API requests for the selected period
+** Effective API requests by store
 . Click *Export as CSV* to download the usage date for the selected period.
 
 For more information, see 
