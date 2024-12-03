@@ -163,14 +163,11 @@ To view Object Store usage reports in Usage:
 . Select *Object Store* in the *Product* section:
 +
 image::os-usage-report.png["Object Store on the Usage Reports page"]
-+
-[calloutlist]
-.. Select the product. 
-.. Select the tab.
-.. Select the period.
 . Select a month from the *Monthly Usage Report* tab or day from the *Daily Usage Report* tab.
 +
-The report shows the total effective API requests for the selected period.
+The report shows:
+* Total effective API requests for the selected period
+* Effective API requests by store.
 . Click *Export as CSV* to download the usage date for the selected period.
 
 For more information, see 
