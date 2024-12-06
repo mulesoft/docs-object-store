@@ -162,11 +162,78 @@ For CloudHub applications using Mule 3, Object Store v2 overrides the `_defaultU
 To avoid these issues, use a distributed key-value store as a lock to synchronize access to Object Store v2.
 For information about distributed locking in Mule runtime engine, see xref:mule-runtime::distributed-locking.adoc[Distributed Locking].
 
+[[os-features-control-plane]]
+== Object Store Features by Control Plane
+
+[%header,cols="2a,1a,1a"]
+|===
+|Object Store Feature 
+|US Cloud and EU Cloud
+|Canada Cloud and Japan Cloud (Hyperforce)
+
+|{empty}
+
+* xref:osv2-connected-apps.adoc[Connected Apps]
+
+| Yes
+| Yes
+
+
+|{empty}
+
+* xref:osv2-usage.adoc#access-usage-charts[Usage Charts] (Access Management)
+* xref:cloudhub::deploying-to-cloudhub.adoc[CloudHub 1.0 Deployments]
+* xref:osv2-apis.adoc#osv2-stats-api[Object Store v2 Stats API]
+
+
+| Yes
+| No
+
+
+|{empty}
+
+* xref:osv2-usage.adoc#access-os-usage-reports[Usage Reports] (Usage)
+
+| No
+| Yes
+
+
+|===
+
+[[osv2-on-hyperforce]]
+== Object Store v2 on Hyperforce
+
+Object Store v2 is available on these instances of Anypoint Platform:
+
+* https://ca1.platform.mulesoft.com[Canada Cloud]
+* https://jp1.platform.mulesoft.com[Japan Cloud]
+
+For information about the regions where Object Store v2 is available, see
+xref:osv2-faq.adoc#osv2-regions[Object Store v2 Regions].
+
+When you deploy to Canada Cloud or Japan Cloud,
+all features of Object Store v2 are supported on Hyperforce with these exceptions:
+
+CloudHub 1::
+Deployments to CloudHub 1 aren't supported.
++
+You can deploy apps to 
+xref:cloudhub-2::ch2-shared-space-about.adoc[CloudHub 2.0 shared spaces]
+and
+xref:runtime-fabric::index.adoc[Anypoint Runtime Fabric].
+Usage Charts::
+xref:osv2-usage.adoc#access-usage-charts[Usage Charts] in Access Management aren't available.
+Use
+xref:osv2-usage.adoc#access-os-usage-reports[Usage Reports] in Usage instead.
+REST APIs::
+The xref:osv2-apis.adoc#osv2-stats-api[Object Store v2 Stats API] isn't supported.
 
 == See Also
 
+* xref:hyperforce::index.adoc[]
 * xref:access-management::permissions-by-product.adoc[]
 * xref:release-notes::object-store/anypoint-osv2-release-notes.adoc[Object Store v2 Release Notes]
 * xref:connectors::object-store/object-store-connector.adoc[Object Store Connector for Mule 4]
 * xref:3.9@mule-runtime::object-store-connector.adoc[Object Store Connector for Mule 3]
+* https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Object Store V2 Stats API]
 * https://blogs.mulesoft.com/dev/anypoint-platform-dev/data-synchronizing-made-easy-with-mule-watermarks/[Object Store Watermarks]

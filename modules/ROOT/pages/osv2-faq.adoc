@@ -3,9 +3,41 @@ ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 
+[[osv2-regions]]
 == Where is Object Store v2 available?
 
-Object Store v2 is available in every xref:runtime-manager::cloudhub-networking-guide.adoc#regional-services[region] where CloudHub apps can be deployed.
+[%header,cols="15a,15a,30a"]
+|===
+| Location | Region Name | Region
+3+h| https://anypoint.mulesoft.com/[US Cloud]
+.5+| North America | US East (N. Virginia)	|`us-east-1`
+                   | US East (Ohio) 		|`us-east-2` 
+                   | US West (N. California)|`us-west-1` 
+                   | US West (Oregon)		| `us-west-2` 
+                   | Canada (Central)		| `ca-central-1`
+.1+| South America | South America (Sao Paulo) | `sa-east-1` 
+.3+| APAC          | Asia Pacific (Singapore) |`ap-southeast-1`
+                   | Asia Pacific (Sydney)	|`ap-southeast-2`
+                   | Asia Pacific (Tokyo)	|`ap-northeast-1`
+.3+| Europe        | Europe (Ireland)		|`eu-west-1`
+                   | EU (Frankfurt) 		|`eu-central-1` 
+                   | Europe (London)		|`eu-west-2`
+3+h|MuleSoft Government Cloud
+.1+|				| GovCloud (US West) | `us-gov-west-1`
+3+h| https://eu1.anypoint.mulesoft.com/[EU Cloud]
+.2+| Europe			| EU (Ireland) | `eu-west-1` 
+					| EU (Frankfurt) | `eu-central-1`
+3+h| https://ca1.platform.mulesoft.com[Canada Cloud]
+.1+| North America	| Canada (Central)       | `ca-central-1` <<os-hyperforce,^***^>>
+3+h| https://jp1.platform.mulesoft.com[Japan Cloud]
+.1+| APAC |            Japan (Central)       | `ap-northeast-1` <<os-hyperforce,^***^>>
+
+|===
+
+[[os-hyperforce]]
+^***^ {empty}
+// OSv2 Support on Hyperforce
+include::object-store::partial$osv2-on-hyperforce.adoc[tag=osv2SupportOnHyperforce]
 
 == What Mule versions support Object Store v2?
 
@@ -51,7 +83,7 @@ IMPORTANT: If after the first deploy, you move the app to a different region, Ob
 You can configure a Mule app to use the Object Store REST API to store and retrieve 
 values from an object store in another Mule app. 
 
-However, Object Store v2 is not designed for app-to-app communication.
+However, Object Store v2 isn't designed for app-to-app communication.
 To share data between two Mule 4 apps, use a queue in xref:mq::index.adoc[Anypoint MQ].
 
 For information about object store limitations, see xref:connectors::object-store/object-store-connector.adoc#object-store-limitations[Object Store Limitations].
@@ -63,7 +95,7 @@ https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4
 
 == What are the limits on an object store?
 
-The total size of an object store is not limited, but each value is limited to 10 MB.
+The total size of an object store isn't limited, but each value is limited to 10 MB.
 
 Every API call (via the connector or API) to Object Store v2 counts toward the API rate limiting (transactions per second (TPS)):
 
@@ -117,7 +149,7 @@ All versions of Mule's Object Store Connector work with both Object Store v1 and
 == Why are Object Store values in binary format?
 
 When you view an Object Store key in Runtime Manager, the value for the key displays as `[binary value] BINARY`.
-Mule 4 wraps values into a Mule object that causes them to be only visible in binary through Anypoint Platform. Behind the scenes, Mule 4 executes binary serialization with the Mule internal serializer. The user interface cannot deserialize the object, hence it can only tell you that the value is now binary in the user interface.
+Mule 4 wraps values into a Mule object that causes them to be only visible in binary through Anypoint Platform. Behind the scenes, Mule 4 executes binary serialization with the Mule internal serializer. The user interface can't deserialize the object, hence it can only tell you that the value is now binary in the user interface.
 
 To view the key value, you need an Object Store retrieve flow in your app's connector, such as:
 
@@ -138,7 +170,7 @@ For more information, see xref:osv2-tutorial.adoc#create-a-studio-7-project[Tuto
 
 == Are there rate limits on Object Store v2?
 
-Customers who have not purchased a separate Object Store SKU are rate limited to 10 transactions per second per app.  If an app for an account that has not purchased the Object Store v2 SKU exceeds the rate limit, further requests are not processed for a time and a 429 HTTP error status code results. To go beyond the base 10 TPS rate limit, contact your MuleSoft account team.
+Customers who have not purchased a separate Object Store SKU are rate limited to 10 transactions per second per app.  If an app for an account that has not purchased the Object Store v2 SKU exceeds the rate limit, further requests aren't processed for a time and a 429 HTTP error status code results. To go beyond the base 10 TPS rate limit, contact your MuleSoft account team.
 
 == How is Object Store v2 data secured?
 
@@ -154,7 +186,7 @@ same data center as the Runtime Manager app.
 
 == What happens when you reenable the *Use Object Store v2* option after disabling it?
 
-By default, the *Use Object Store v2* option is enabled during CloudHub application deployment. If you disable and then reenable this option in Runtime Manager, the original key-value pairs persist as long as the key-value pair TTL is not expired. 
+By default, the *Use Object Store v2* option is enabled during CloudHub application deployment. If you disable and then reenable this option in Runtime Manager, the original key-value pairs persist as long as the key-value pair TTL isn't expired. 
 
 == See Also
 

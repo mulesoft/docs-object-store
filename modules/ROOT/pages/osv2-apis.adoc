@@ -2,7 +2,7 @@
 
 include::reuse::partial$non-inclusive-banner.adoc[]
 
-The Object Store v2 APIs enable you to use REST to perform the following:
+The Object Store v2 APIs enable you to use REST to:
 
 * Retrieve a list of object stores and keys associated with an application.
 * Store and retrieve key-value pairs in an object store.
@@ -11,15 +11,14 @@ The Object Store v2 APIs enable you to use REST to perform the following:
 
 Object Store provides these APIs:
 
-* https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Object Store v2 API]
-* https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Object Store v2 Stats API]
+* <<osv2-api,Object Store v2 API>>
+* <<osv2-stats-api,Object Store v2 Stats API>>
 
 
 [[before-you-begin]]
 == Before You Begin 
 
 * Create an app that uses Object Store v2 and xref:runtime-manager::deploying-to-cloudhub.adoc[deploy it to CloudHub].
-+
 * xref:osv2-guide.adoc#send-data-to-an-object-store[Store a key-value pair in the object store]. 
 * <<get-bearer-token,Get the bearer token>> for an Anypoint Platform user using the Access Management API:
 +
@@ -49,7 +48,7 @@ Assign the connected app the Organization Administrator scope to access the orga
 . From the *Connected Apps* page, click *Copy Id* and *Copy Secret* for the app you just created.
 +
 Use this client ID and client secret to get the bearer token required to authenticate with the Object Store v2 API.
-. Run the following command to get the bearer token from the connected app client ID and client secret:
+. Run this command to get the bearer token from the connected app client ID and client secret:
 +
 [source,bash,linenums]
 ----
@@ -80,7 +79,7 @@ If MFA isn't enabled::
 
 Authenticate with the credentials of a user with the Organization Administrator permission:
 
-. Run the following command to get the bearer token:
+. Run this command to get the bearer token:
 +
 [source,bash,linenums]
 ----
@@ -184,7 +183,7 @@ The Object Store v2 API reads and writes `key,list` values,
 which is different from Anypoint Connector for Object Store (Object Store Connector),
 which reads and writes in the `key,value` format.
 
-The following table compares the Object Store REST API operations to Object Store Connector operations:
+This table compares the Object Store REST API operations to Object Store Connector operations:
 
 [%header,cols="20a,50a,30a"]
 |===
@@ -261,7 +260,7 @@ ENV_ID with your environment ID:
 +
 
 [#base-url]
-Depending on the deployment region, use one of the following domains for the value of BASE_URL in the access URL:
+Depending on the deployment region, use one of these domains for the value of BASE_URL in the access URL:
 // update for HF
 +
 [%header,cols="15,75a,10a"]
@@ -284,6 +283,9 @@ Depending on the deployment region, use one of the following domains for the val
 MuleSoft Government Cloud| `object-store-us-gov-west-1.gov.anypoint.mulesoft.com` | US Gov West
 .2+|EU | `object-store-eu-central-1.eu1.anypoint.mulesoft.com` | Europe (Frankfurt)
 | `object-store-eu-west-1.eu1.anypoint.mulesoft.com` | Europe (Ireland)
+
+| Canada Cloud| `object-store-ca-central-1.ca1.platform.mulesoft.com` | Canada (Central)
+.2+|Japan Cloud | `object-store-ap-northeast-1.jp1.platform.mulesoft.com` | Asia Pacific (Tokyo)
 |===
 
 . Configure the application with HTTP headers and body for values to store to or read from
@@ -307,7 +309,7 @@ the object store.
 [[example-retrieve-list]]
 ==== Example: Retrieve a List of Object Stores
 
-To view the list of object stores, run a `curl` command similar to the following, replacing 
+To view the list of object stores, run a `curl` command, replacing 
 BASE_URL with the regional domain, 
 ORG_ID with your organization ID, 
 ENV_ID with your environment ID, and
@@ -320,7 +322,7 @@ curl -X GET \
  -H 'authorization: bearer <BEARER_TOKEN>'
 ----
 
-This command returns output similar to the following:
+This command returns output similar to:
 
 [source,json,linenums]
 ----
@@ -335,7 +337,7 @@ This command returns output similar to the following:
 [[example-retrieve-region]]
 ==== Example: Retrieve a List of Regions
 
-To view the list of regions, submit a `curl` command similar to the following, 
+To view the list of regions, submit a `curl` command, 
 replacing 
 BASE_URL with the regional domain,
 ORG_ID with your organization ID, and
@@ -349,7 +351,7 @@ curl -X GET \
 
 ----
 
-This command returns output similar to the following:
+This command returns output similar to:
 
 [source,json,linenums]
 ----
@@ -371,7 +373,7 @@ This command returns output similar to the following:
 [[example-retrieve-partitions]]
 ==== Example: Retrieve a List of Partitions
 
-To view the list of partitions, submit a `curl` command similar to the following, 
+To view the list of partitions, submit a `curl` command, 
 replacing 
 BASE_URL with the regional domain, 
 ORG_ID with your organization ID, 
@@ -386,7 +388,7 @@ curl -X GET \
   -H "Authorization: Bearer <BEARER_TOKEN>" 
 ----
 
-This command returns output similar to the following:
+This command returns output similar to:
 
 [source,json,linenums]
 ----
@@ -396,7 +398,7 @@ This command returns output similar to the following:
 [[example-retrieve-keys]]
 ==== Example: Retrieve a List of Keys in a Partition 
 
-To view the keys in a partition, submit a `curl` command similar to the following, 
+To view the keys in a partition, submit a `curl` command, 
 replacing 
 BASE_URL with the regional domain,
 ORG_ID with your organization ID, 
@@ -412,7 +414,7 @@ curl -X GET \
   -H "Authorization: Bearer <BEARER_TOKEN>" 
 ----
 
-This command returns output similar to the following:
+This command returns output similar to:
 
 [source,json,linenums]
 ----
@@ -422,7 +424,7 @@ This command returns output similar to the following:
 [[example-retrieve-key-value]]
 ==== Example: Retrieve the Value of a Key 
 
-To view the value of a key, submit a `curl` command similar to the following, 
+To view the value of a key, submit a `curl` command, 
 replacing BASE_URL with the regional domain,
 ORG_ID with your organization ID, 
 ENV_ID with your environment ID,
@@ -438,7 +440,7 @@ curl -X GET \
   -H "Authorization: Bearer <BEARER_TOKEN>" 
 ----
 
-This command returns output similar to the following:
+This command returns output similar to:
 
 [source,json,linenums]
 ----
@@ -448,7 +450,7 @@ This command returns output similar to the following:
 [[example-store-key-value]]
 ==== Example: Store a Key-Value Pair 
 
-To store a key-value pair, submit a `curl` command similar to the following, 
+To store a key-value pair, submit a `curl` command, 
 replacing
 BASE_URL with the regional domain,
 ORG_ID with your organization ID, 
@@ -479,7 +481,7 @@ curl -X GET \
   -H "Authorization: Bearer <BEARER_TOKEN>" 
 ----
 
-This command returns output similar to the following:
+This command returns output similar to:
 
 [source,json,linenums]
 ----
@@ -489,7 +491,7 @@ This command returns output similar to the following:
 [[example-delete-key-value]]
 ==== Example: Delete a Key and Value 
 
-To delete a key-value pair, submit a `curl` command similar to the following, 
+To delete a key-value pair, submit a `curl` command, 
 replacing
 BASE_URL with the regional domain,
 ORG_ID with your organization ID, 
@@ -518,7 +520,7 @@ curl -X GET \
   -H "Authorization: Bearer <BEARER_TOKEN>" 
 ----
 
-This command returns output similar to the following:
+This command returns output similar to:
 
 [source,json,linenums]
 ----
@@ -527,11 +529,15 @@ This command returns output similar to the following:
 
 
 [[osv2-stats-api]]
-== Object Store v2 Stats API 
+== Object Store v2 Stats API
+
+[NOTE]
+// Not on HF
+include::partial$osv2-on-hyperforce.adoc[tag=apiStatsAPInotHF]
 
 The Object Store v2 Stats API enables you to retrieve statistics on your Object Store usage.
 
-The usage statistics are not real-time and might include latency.
+The usage statistics aren't real-time and might include latency.
 
 Use the Stats API to view your entire organization's usage of Object Store for billing purposes:
 
@@ -581,7 +587,7 @@ If you use `isMaster=true` to query a sub-organization, the endpoint returns no 
 
 To view Object Store usage statistics for the root organization and all sub-organizations,
 between August 11, 2024 and September 11, 2024,
-submit a `curl` command similar to the following, 
+submit a `curl` command, 
 replacing
 ORG_ID with the organization ID for your root organization and 
 BEARER_TOKEN with your bearer token:
@@ -594,7 +600,7 @@ curl -X GET \
   -H 'authorization: Bearer <BEARER_TOKEN>'
 ----
 
-This request returns a response similar to the following:
+This request returns a response similar to:
 
 [source,json,linenums]
 ----
@@ -604,7 +610,7 @@ This request returns a response similar to the following:
 ]
 ----
 
-To view Object Store usage statistics for the root organization and all sub-organizations for one day, submit a `curl` command similar to the following, 
+To view Object Store usage statistics for the root organization and all sub-organizations for one day, submit a `curl` command, 
 replacing
 ORG_ID with the organization ID for your root organization and 
 BEARER_TOKEN with your bearer token:
@@ -616,7 +622,7 @@ curl -X GET \
   -H 'authorization: Bearer <BEARER_TOKEN>'
 ----
 
-This request returns a response similar to the following:
+This request returns a response similar to:
 
 [source,json,linenums]
 ----
@@ -629,7 +635,7 @@ This request returns a response similar to the following:
 
 To view Object Store usage statistics for a sub-organization,
 between February 10, 2024 and March 10, 2024,
-submit a `curl` command similar to the following, 
+submit a `curl` command, 
 replacing
 ORG_ID with the organization ID for the sub-organization and
 BEARER_TOKEN with your bearer token:
@@ -642,7 +648,7 @@ curl -X GET \
   -H 'authorization: Bearer <BEARER_TOKEN>'
 ----
 
-This request returns a response similar to the following:
+This request returns a response similar to:
 
 [source,json,linenums]
 ----
@@ -653,7 +659,7 @@ This request returns a response similar to the following:
 ----
 
 To view Object Store usage statistics for one day for a sub-organization,
-submit a `curl` command similar to the following, replacing
+submit a `curl` command, replacing
 ORG_ID with the organization ID for the sub-organization and
 BEARER_TOKEN with your bearer token:
 
@@ -664,7 +670,7 @@ curl -X GET \
   -H 'authorization: Bearer <BEARER_TOKEN>'
 ----
 
-This request returns a response similar to the following:
+This request returns a response similar to:
 
 [source,json,linenums]
 ----
@@ -680,7 +686,7 @@ This request returns a response similar to the following:
 ==== Example: Get Usage Metrics by Environment 
 
 To view Object Store usage statistics for an environment between August 13, 2024 and September 13, 2024,
-submit a `curl` command similar to the following, replacing
+submit a `curl` command, replacing
 ORG_ID with your organization ID,
 ENV_ID with your environment ID,
 and BEARER_TOKEN with your bearer token:
@@ -693,7 +699,7 @@ curl -X GET \
   -H 'authorization: Bearer <BEARER_TOKEN>'
 ----
 
-This request returns a response similar to the following:
+This request returns a response similar to:
 
 [source,json,linenums]
 ----
@@ -707,7 +713,7 @@ This request returns a response similar to the following:
 ==== Example: Get Usage Metrics by Region
 
 To view Object Store usage statistics for a region,
-submit a `curl` command similar to the following, replacing
+submit a `curl` command, replacing
 ORG_ID with your organization ID,
 ENV_ID with your environment ID,
 REGION_ID with the region from which to retrieve metrics, and
@@ -722,7 +728,7 @@ BEARER_TOKEN with your bearer token:
 
 To retrieve the REGION_ID, see <<example-retrieve-region>>.
 
-This request returns a response similar to the following:
+This request returns a response similar to:
 
 [source,json,linenums]
 ----
@@ -736,7 +742,7 @@ This request returns a response similar to the following:
 ==== Example: Get Usage Metrics by Store
 
 To view Object Store usage statistics for a store,
-submit a `curl` command similar to the following, replacing 
+submit a `curl` command, replacing 
 ORG_ID with your organization ID,
 ENV_ID with your environment ID,
 REGION_ID with the region to retrieve metrics from,
@@ -752,7 +758,7 @@ and BEARER_TOKEN with your bearer token:
 
 To retrieve the STORE_ID, see <<example-retrieve-list>>.
 
-This request returns a response similar to the following:
+This request returns a response similar to:
 
 [source,json,linenums]
 ----

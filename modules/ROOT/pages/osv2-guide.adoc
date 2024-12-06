@@ -58,7 +58,7 @@ Install Object Store Connector to add it to a Mule project:
 
 == Use Object Store Connector in an Application
 
-. In Studio, create a simple flow such as the following:
+. In Studio, create a simple flow such as:
 +
 --
 image::os-studio7-flow.png["Flow in Studio showing the Listener and Store operations"]
@@ -150,13 +150,13 @@ image::os-use-ttl-props.png["Studio properties window for the Store operation sh
 image::os-use-ttl-global-props.png["Global Object Store Configuration window showing the Entry ttl field"]
 +
 [NOTE]
-For Object Store v2, the *Max entries* field is not configurable.
+For Object Store v2, the *Max entries* field isn't configurable.
 +
 * *Entry ttl* 
 +
 For Mule 4.2.1 and later, enter a custom TTL value of 0 through 2592000 seconds (30 days).
 +
-If *Entry ttl* is not empty, the TTL is static.
+If *Entry ttl* isn't empty, the TTL is static.
 +
 If you leave this field empty, you enable rolling TTL; if you exceed 2592000 seconds, the TTL defaults to 2592000 seconds.
 +
@@ -208,7 +208,7 @@ image::os-use-partitions-rtm.png["Runtime Manager window showing Partitions in t
 == Deploy App with Object Store v2 Using the Mule Maven Plugin
 
 If you are using a Mule Maven plugin version between 3.3.3 and 3.4.0
-to deploy your app to CloudHub, do the following:
+to deploy your app to CloudHub:
 
 . Add the `<objectStoreV2>` element to your `pom.xml` project file:
 +

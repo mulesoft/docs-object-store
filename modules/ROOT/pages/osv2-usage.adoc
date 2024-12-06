@@ -1,7 +1,13 @@
 = Rate Limiting and Billing
 
-Object Store v2 uses two metrics to determine billing and rate-limiting:
+Object Store v2 uses two metrics to determine rate-limiting and billing: API requests and effective API requests.
+Depending on your Anypoint Platform instance, 
+you access usage data in Access Management or Usage.
 
+* <<access-usage-charts, US Cloud or EU Cloud>>
+* <<access-os-usage-reports, Canada Cloud or Japan Cloud>>
+
+[[api-requests]]
 API Requests::
 API requests are HTTP transactions, such as GET, PUT, and POST.
 +
@@ -9,13 +15,13 @@ Object Store uses successful API requests (2xx) to calculate transactions per se
 +
 See <<rate-limiting>>.
 
+[[effective-api-requests]]
 Effective API Requests::
 Effective API requests are the units that Object Store uses to calculate billing.
 +
 One successful API request could generate many effective API requests.
 +
 See <<how-billing-is-calculated>>.
-
 
 
 [[rate-limiting]]
@@ -33,7 +39,7 @@ Every successful API request (via the connector or API) to Object Store v2 count
 For example, if your app retrieves 1500 keys from an object store with a page size of 25:
 
 * With the base subscription, the response is throttled over 6 seconds.
-* With the premium subscription, the response is not throttled.
+* With the premium subscription, the response isn't throttled.
 
 If the store exceeds the number of TPS allotted based on the subscription type,
 Object Store v2 returns a `429 HTTP Error` response, indicating that it reached the rate limit.
@@ -95,7 +101,7 @@ For example, a call to delete a store with two partitions counts as three billab
 [[max-api-requests]]
 == Maximum Number of API Requests Per Month
 
-The following table lists the maximum number of API requests per month,
+This table lists the maximum number of API requests per month,
 based on your subscription type:
 
 [%headers,cols="50,50"]
@@ -110,7 +116,10 @@ include::partial$osv2-faq.adoc[tag=faqUsageOverage]
 
 
 [[access-usage-charts]]
-== Access Object Store Effective API Request Usage Charts
+== Access Effective API Request Usage Charts
+
+[NOTE]
+include::partial$osv2-on-hyperforce.adoc[tag=osv2FeaturesNoHFnote]
 
 To view a chart that shows how many effective API requests your apps have consumed and the number of effective API requests that your subscription allows:
 
@@ -142,7 +151,36 @@ If this happens, use the Object Store v2 Stats API
 xref:osv2-apis.adoc#usage-by-org[Usage Metrics by Organization]
 to query the daily usage in the current month and then add the daily usage together.
 
+[[access-os-usage-reports]]
+== Access Effective API Request Usage Reports
+
+[NOTE]
+include::partial$osv2-on-hyperforce.adoc[tag=osv2FeaturesOnlyHFnote]
+
+To view Object Store usage reports in Usage:
+
+. In Anypoint Platform, go to *Usage*.
+. Select *Object Store* in the *Product* section:
++
+image::os-usage-report.png["Object Store on the Usage Reports page"]
+. Select a month from the *Monthly Usage Report* tab or day from the *Daily Usage Report* tab.
++
+The report shows:
++
+** Total effective API requests for the selected period
+** Effective API requests by store
+. Click *Export as CSV* to download the usage date for the selected period.
+
+For more information, see 
+xref:general::usage-reports.adoc[].
+
+
+
+[[osv2-stats-api]]
 == Retrieve Usage Metrics with Object Store v2 Stats API
+
+[NOTE]
+include::partial$osv2-on-hyperforce.adoc[tag=osv2FeaturesNoHFnote]
 
 To use the Object Store v2 Stats API to retrieve usage metrics, see:
 
