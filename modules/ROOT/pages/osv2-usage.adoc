@@ -165,7 +165,7 @@ To view Object Store usage reports in xref:general::usage-reports.adoc[]:
 . Sign in to Anypoint Platform using an account that has the Usage Viewer permission for your root organization.
 +
 For information, see xref:index.adoc#osv2-permissions[Object Store v2 Permissions].
-. In Anypoint Platform, go to *Usage Reports*.
+. In Anypoint Platform, go to *Usage*.
 . Select *Object Store* in the *Product* section:
 +
 image::os-usage-report.png["Object Store on the Usage Reports page"]
