@@ -558,9 +558,9 @@ Use the Stats API to view your entire organization's usage of Object Store for b
 
 * `1hour`
 * `1day`
-* `1month``	
+* `1month`	
 
-|Data retention | Length of time that Anypoint MQ retains the data | 
+|Data retention | Length of time that Anypoint MQ retains the data, based on `period`| 
 
 * `period=1hour`: 3 months 
 * `period=1day`: 12 months
