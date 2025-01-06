@@ -570,7 +570,7 @@ Use the Stats API to view your entire organization's usage of Object Store for b
 
 * `period=1hour`: 1 day 
 * `period=1day`: 1 month
-* `period=1month`: 12 months
+* `period=1month`: 2 months
 |===
 
 
