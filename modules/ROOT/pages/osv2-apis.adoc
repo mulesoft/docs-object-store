@@ -573,7 +573,8 @@ Use the Stats API to view your entire organization's usage of Object Store for b
 * `period=1month`: 2 months
 
 NOTE: If the interval between `startDate` and `endDate` exceeds the limits, the API returns an HTTP 400 error.
-|====
+
+|===
 
 
 [[access-osv2-stats-api]]
