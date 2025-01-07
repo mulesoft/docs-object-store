@@ -547,6 +547,35 @@ Use the Stats API to view your entire organization's usage of Object Store for b
 * Usage per region
 * Usage per store
 
+
+[[osv2-usage-limits]]
+=== Usage Metrics Limits
+
+[%header,cols="10,15,15a"]
+|===
+| Parameter | Description | Values
+| Time series (`period`) | Interval that the query records |
+
+* `1hour`
+* `1day`
+* `1month`	
+
+|Data retention | Length of time that Object Store retains the data, based on `period`| 
+
+* `period=1hour`: 3 months 
+* `period=1day`: 12 months
+* `period=1month`: 24 months
+
+| Query timeframe | Maximum interval between `startDate` and `endDate` in the query, based on `period` |
+
+* `period=1hour`: 1 day 
+* `period=1day`: 1 month
+* `period=1month`: 2 months
+
+NOTE: If the interval between `startDate` and `endDate` exceeds the limits, the API returns an HTTP 400 error.
+|====
+
+
 [[access-osv2-stats-api]]
 === Access the Object Store v2 Stats API
 
