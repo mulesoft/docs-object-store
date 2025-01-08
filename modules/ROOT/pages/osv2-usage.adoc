@@ -178,7 +178,7 @@ The report shows:
 +
 [NOTE]
 include::partial$osv2-faq.adoc[tag=usageDelay]
-. Click *Export as CSV* to download the usage date for the selected period.
+. Click *Export as CSV* to download the usage data for the selected period.
 
 For more information, see xref:general::usage-reports.adoc[].
 
