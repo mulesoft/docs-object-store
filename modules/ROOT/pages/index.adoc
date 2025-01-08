@@ -180,6 +180,7 @@ For information about distributed locking in Mule runtime engine, see xref:mule-
 |{empty}
 
 * xref:osv2-connected-apps.adoc[Connected Apps]
+* xref:osv2-usage.adoc#access-os-usage-reports[Usage Reports] (Usage)
 
 | Yes
 | Yes
@@ -187,21 +188,12 @@ For information about distributed locking in Mule runtime engine, see xref:mule-
 
 |{empty}
 
-* xref:osv2-usage.adoc#access-usage-charts[Usage Charts] (Access Management)
 * xref:cloudhub::deploying-to-cloudhub.adoc[CloudHub 1.0 Deployments]
 * xref:osv2-apis.adoc#osv2-stats-api[Object Store v2 Stats API]
 
 
 | Yes
 | No
-
-
-|{empty}
-
-* xref:osv2-usage.adoc#access-os-usage-reports[Usage Reports] (Usage)
-
-| No
-| Yes
 
 
 |===
@@ -227,10 +219,6 @@ You can deploy apps to
 xref:cloudhub-2::ch2-shared-space-about.adoc[CloudHub 2.0 shared spaces]
 and
 xref:runtime-fabric::index.adoc[Anypoint Runtime Fabric].
-Usage Charts::
-xref:osv2-usage.adoc#access-usage-charts[Usage Charts] in Access Management aren't available.
-Use
-xref:osv2-usage.adoc#access-os-usage-reports[Usage Reports] in Usage instead.
 REST APIs::
 The xref:osv2-apis.adoc#osv2-stats-api[Object Store v2 Stats API] isn't supported.
 

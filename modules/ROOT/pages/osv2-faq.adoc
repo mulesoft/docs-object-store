@@ -60,7 +60,9 @@ For information about the Mule object store, see xref:mule-runtime::mule-object-
 
 == How can I see usage data?
 
-To view API request data, see xref:osv2-usage.adoc[View Usage Graphs].
+* To view effective API request data in xref:general::usage-reports.adoc[], see xref:osv2-usage.adoc#access-os-usage-reports[Access Effective API Request Usage Reports].
+* To query for effective API requests using the API, see
+xref:osv2-apis.adoc#osv2-stats-api[Object Store v2 Stats API].
  
 == What happens when the transaction limit for my subscription is reached?
 

@@ -38,3 +38,7 @@ The encoded string is:
 
 `startDate=Sun%2C+25+Sep+2022+23%3A35%3A01+GMT&endDate=Wed%2C+25+Sep+2024+23%3A35%3A01+GMT&period=1month`
 //end::urlEncodedExample[]
+
+//tag::usageDelay[]
+Usage information for all time series - hourly (API), daily, and monthly - can lag by up to three hours.
+//end::usageDelay[]

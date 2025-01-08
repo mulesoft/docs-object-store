@@ -175,6 +175,9 @@ The report shows:
 +
 ** Total effective API requests for the selected period
 ** Effective API requests by store
++
+[NOTE]
+include::partial$osv2-faq.adoc[tag=usageDelay]
 . Click *Export as CSV* to download the usage date for the selected period.
 
 For more information, see xref:general::usage-reports.adoc[].
