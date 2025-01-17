@@ -196,4 +196,4 @@ By default, the *Use Object Store v2* option is enabled during CloudHub applicat
 * xref:osv2-guide.adoc#create-object-store-partitions[Create Object Store Partitions]
 * xref:connectors::object-store/object-store-connector.adoc[Object Store Connector for Mule 4]
 * xref:3.9@mule-runtime::object-store-connector.adoc[Object Store Connector for Mule 3]
-* https://help.mulesoft.com/s/article/The-Different-Types-of-Object-Stores-Explained[The Different Types of Object Stores Explained]
+* https://help.salesforce.com/s/articleView?id=001123185&type=1[The Different Types of Object Stores Explained]

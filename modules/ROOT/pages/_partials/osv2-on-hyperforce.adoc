@@ -21,4 +21,4 @@ Only the US Cloud and EU Cloud instances of Anypoint Platform support this featu
 // Note for HF feature only
 // tag::osv2FeaturesOnlyHFnote[]
 Only the Canada Cloud and Japan Cloud instances of Anypoint Platform support this feature.
-// end:osv2FeaturesOnlyHFnote[]
+// end::osv2FeaturesOnlyHFnote[]
