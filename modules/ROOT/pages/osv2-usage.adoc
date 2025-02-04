@@ -7,6 +7,7 @@ you access usage data in Access Management or Usage.
 * <<access-usage-charts, US Cloud or EU Cloud>>
 * <<access-os-usage-reports, Canada Cloud or Japan Cloud>>
 
+
 [[api-requests]]
 API Requests::
 API requests are HTTP transactions, such as GET, PUT, and POST.
@@ -22,6 +23,8 @@ Effective API requests are the units that Object Store uses to calculate billing
 One successful API request could generate many effective API requests.
 +
 See <<how-billing-is-calculated>>.
+
+NOTE: The Object Store UI shows effective API requests for two months: the current and previous month.
 
 
 [[rate-limiting]]
