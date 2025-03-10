@@ -34,13 +34,14 @@ You can use the existing Object Store connector to write to the object store, re
 
 The Object Store v2 user interface is available in the Anypoint Platform > Runtime Manager.
 
-
+[[osv2-permissions]]
 == Object Store v2 Permissions
 
 // These descriptions are the same as scopes in connected apps.
 [%header,cols="50a,20a,30a"]
 |===
 |To...|Required Permission|Notes
+3+h| Object Store v2 Permissions
 
 |include::access-management::partial$include-permissions-osv2.adoc[tag=permsManageStores]
 |Manage stores
@@ -67,6 +68,11 @@ The Object Store v2 user interface is available in the Anypoint Platform > Runti
 
 |Store Metrics Viewer
 |
+
+3+h| Usage Reports Permissions
+|View usage reports.
+|Usage Viewer
+|include::access-management::partial$include-root-org-permissions-note.adoc[]
 |===
 
 To assign user permissions, follow the steps in xref:access-management::users.adoc#grant-user-permissions[Grant Permissions to Users].
@@ -174,6 +180,7 @@ For information about distributed locking in Mule runtime engine, see xref:mule-
 |{empty}
 
 * xref:osv2-connected-apps.adoc[Connected Apps]
+* xref:osv2-usage.adoc#access-os-usage-reports[Usage Reports] (Usage)
 
 | Yes
 | Yes
@@ -181,21 +188,12 @@ For information about distributed locking in Mule runtime engine, see xref:mule-
 
 |{empty}
 
-* xref:osv2-usage.adoc#access-usage-charts[Usage Charts] (Access Management)
 * xref:cloudhub::deploying-to-cloudhub.adoc[CloudHub 1.0 Deployments]
 * xref:osv2-apis.adoc#osv2-stats-api[Object Store v2 Stats API]
 
 
 | Yes
 | No
-
-
-|{empty}
-
-* xref:osv2-usage.adoc#access-os-usage-reports[Usage Reports] (Usage)
-
-| No
-| Yes
 
 
 |===
@@ -221,10 +219,6 @@ You can deploy apps to
 xref:cloudhub-2::ch2-shared-space-about.adoc[CloudHub 2.0 shared spaces]
 and
 xref:runtime-fabric::index.adoc[Anypoint Runtime Fabric].
-Usage Charts::
-xref:osv2-usage.adoc#access-usage-charts[Usage Charts] in Access Management aren't available.
-Use
-xref:osv2-usage.adoc#access-os-usage-reports[Usage Reports] in Usage instead.
 REST APIs::
 The xref:osv2-apis.adoc#osv2-stats-api[Object Store v2 Stats API] isn't supported.
 
@@ -232,6 +226,7 @@ The xref:osv2-apis.adoc#osv2-stats-api[Object Store v2 Stats API] isn't supporte
 
 * xref:hyperforce::index.adoc[]
 * xref:access-management::permissions-by-product.adoc[]
+* xref:general::usage-reports.adoc[]
 * xref:release-notes::object-store/anypoint-osv2-release-notes.adoc[Object Store v2 Release Notes]
 * xref:connectors::object-store/object-store-connector.adoc[Object Store Connector for Mule 4]
 * xref:3.9@mule-runtime::object-store-connector.adoc[Object Store Connector for Mule 3]

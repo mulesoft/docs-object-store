@@ -1,11 +1,13 @@
 = Rate Limiting and Billing
 
 Object Store v2 uses two metrics to determine rate-limiting and billing: API requests and effective API requests.
+////
 Depending on your Anypoint Platform instance, 
 you access usage data in Access Management or Usage.
 
 * <<access-usage-charts, US Cloud or EU Cloud>>
 * <<access-os-usage-reports, Canada Cloud or Japan Cloud>>
+////
 
 [[api-requests]]
 API Requests::
@@ -116,7 +118,7 @@ based on your subscription type:
 //Shared Usage Overage 
 include::partial$osv2-faq.adoc[tag=faqUsageOverage]
 
-
+////
 [[access-usage-charts]]
 == Access Effective API Request Usage Charts
 
@@ -152,15 +154,19 @@ In some cases, the stats for the current month might not load when the backend p
 If this happens, use the Object Store v2 Stats API
 xref:osv2-apis.adoc#usage-by-org[Usage Metrics by Organization]
 to query the daily usage in the current month and then add the daily usage together.
+////
 
 [[access-os-usage-reports]]
 == Access Effective API Request Usage Reports
 
-[NOTE]
-include::partial$osv2-on-hyperforce.adoc[tag=osv2FeaturesOnlyHFnote]
+// [NOTE]
+// include::partial$osv2-on-hyperforce.adoc[tag=osv2FeaturesOnlyHFnote]
 
-To view Object Store usage reports in Usage:
+To view Object Store usage reports in xref:general::usage-reports.adoc[]:
 
+. Sign in to Anypoint Platform using an account that has the Usage Viewer permission for your root organization.
++
+For more information, see xref:index.adoc#osv2-permissions[Object Store v2 Permissions].
 . In Anypoint Platform, go to *Usage*.
 . Select *Object Store* in the *Product* section:
 +
@@ -171,12 +177,12 @@ The report shows:
 +
 ** Total effective API requests for the selected period
 ** Effective API requests by store
-. Click *Export as CSV* to download the usage date for the selected period.
++
+[NOTE]
+include::partial$osv2-faq.adoc[tag=usageDelay]
+. Click *Export as CSV* to download the usage data for the selected period.
 
-For more information, see 
-xref:general::usage-reports.adoc[].
-
-
+For more information, see xref:general::usage-reports.adoc[].
 
 [[osv2-stats-api]]
 == Retrieve Usage Metrics with Object Store v2 Stats API
@@ -194,4 +200,5 @@ To use the Object Store v2 Stats API to retrieve usage metrics, see:
 
 == See Also
 
+* xref:general::usage-reports.adoc[]
 * xref:osv2-faq.adoc[Object Store FAQ]
