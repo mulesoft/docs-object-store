@@ -161,7 +161,7 @@ For CloudHub applications using Mule 3, Object Store v2 overrides the `_defaultU
 +
 This behavior occurs because the "Distributed Locking" feature isn't available in CloudHub and CloudHub 2.0 when working with Object Store v2. As a result, under certain conditions, when multiple Mule components attempt to update Object Store v2 tables simultaneously, such calls may fail.
 +
-To avoid these issues in CloudHub 2.0, use a distributed key-value store as a lock to synchronize access to Object Store v2. For information about distributed locking in Mule runtime engine, see xref:mule-runtime::distributed-locking.adoc[Distributed Locking].
+To avoid these issues, use a distributed key-value store as a lock to synchronize access to Object Store v2. For information about distributed locking in Mule runtime engine, see xref:mule-runtime::distributed-locking.adoc[Distributed Locking].
 
 [[os-features-control-plane]]
 == Object Store Features by Control Plane
