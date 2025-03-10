@@ -25,6 +25,8 @@ One successful API request could generate many effective API requests.
 +
 See <<how-billing-is-calculated>>.
 
+NOTE: The Object Store UI shows effective API request data for two months: the current and previous month.
+
 
 [[rate-limiting]]
 == Rate Limiting

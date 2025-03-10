@@ -32,8 +32,8 @@ Use this client ID and client secret to get the access token required to authent
 [[configure-conn-app-api]]
 == Configure a Connected App Using the API
 
-For information on configuring a Connected App with the API, see
-https://help.mulesoft.com/s/article/How-to-create-connected-apps-creation-using-API[How to create connected apps using the API].
+For information about configuring a connected app using the API, see
+https://help.salesforce.com/s/articleView?id=001115949&type=1[How to create connected apps using the API].
 
 [[osv2-scopes]]
 == Object Store Scopes
