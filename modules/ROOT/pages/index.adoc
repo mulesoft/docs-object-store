@@ -172,7 +172,7 @@ To avoid these issues, use a distributed key-value store as a lock to synchroniz
 |US Cloud and EU Cloud
 |Canada Cloud and Japan Cloud (Hyperforce)
 
-|
+|{empty}
 
 * xref:osv2-connected-apps.adoc[Connected Apps]
 
@@ -180,7 +180,7 @@ To avoid these issues, use a distributed key-value store as a lock to synchroniz
 | Yes
 
 
-|
+|{empty}
 
 * xref:osv2-usage.adoc#access-usage-charts[Usage Charts] (Access Management)
 * xref:cloudhub::deploying-to-cloudhub.adoc[CloudHub 1.0 Deployments]
