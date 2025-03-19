@@ -168,9 +168,7 @@ To avoid these issues, use a distributed key-value store as a lock to synchroniz
 
 [%header,cols="2a,1a,1a"]
 |===
-|Object Store Feature 
-|US Cloud and EU Cloud
-|Canada Cloud and Japan Cloud (Hyperforce)
+|Object Store Feature | US Cloud and EU Cloud | Canada Cloud and Japan Cloud (Hyperforce)
 
 |{empty}
 
