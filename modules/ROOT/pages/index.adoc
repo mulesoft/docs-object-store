@@ -172,20 +172,33 @@ To avoid these issues, use a distributed key-value store as a lock to synchroniz
 |US Cloud and EU Cloud
 |Canada Cloud and Japan Cloud (Hyperforce)
 
-| * xref:osv2-connected-apps.adoc[Connected Apps]
+|
+
+* xref:osv2-connected-apps.adoc[Connected Apps]
+
 | Yes
 | Yes
 
+
 |
+
 * xref:osv2-usage.adoc#access-usage-charts[Usage Charts] (Access Management)
 * xref:cloudhub::deploying-to-cloudhub.adoc[CloudHub 1.0 Deployments]
 * xref:osv2-apis.adoc#osv2-stats-api[Object Store v2 Stats API]
+
+
 | Yes
 | No
 
-| * xref:osv2-usage.adoc#access-os-usage-reports[Usage Reports] (Usage)
+
+|{empty}
+
+* xref:osv2-usage.adoc#access-os-usage-reports[Usage Reports] (Usage)
+
 | No
 | Yes
+
+
 |===
 
 [[osv2-on-hyperforce]]
