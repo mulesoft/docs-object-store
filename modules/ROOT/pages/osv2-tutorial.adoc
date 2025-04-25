@@ -23,10 +23,7 @@ Before you begin this tutorial, you must have:
 * An https://anypoint.mulesoft.com[Anypoint Platform account]
 +
 If you don't have an Anypoint Platform login, click *Sign up* on the Anypoint Platform sign-in page.
-* Anypoint Studio installed on your system:
-+
-** xref:studio::to-download-and-install-studio.adoc[Studio 7.x]
-** xref:6.x@studio::to-download-and-install-studio.adoc[Studio 6.x]
+* Anypoint Studio installed on your system. See xref:studio::to-download-and-install-studio.adoc[]
 * An https://curl.haxx.se[`curl` command line tool^] for testing 
 +
 This tutorial uses the HTTP Listener source to initiate Object Store Connector access and a `curl` command to send JSON data to your Mule app.
@@ -357,8 +354,7 @@ image::os-tutorial-rtm-os-actions-3.png["Metadata and Delete Value actions in th
 
 == See Also
 
-* xref:studio::index.adoc[Anypoint Studio 7.x]
-* xref:6.x@studio::index.adoc[Anypoint Studio 6.x]
+* xref:studio::index.adoc[]
 * xref:connectors::object-store/object-store-connector.adoc[Object Store Connector for Mule 4]
 * xref:3.9@mule-runtime::object-store-connector.adoc[Object Store Connector for Mule 3]
 * xref:runtime-manager::deploying-to-cloudhub.adoc[]
