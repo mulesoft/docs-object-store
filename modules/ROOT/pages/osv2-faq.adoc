@@ -41,7 +41,6 @@ include::object-store::partial$osv2-on-hyperforce.adoc[tag=osv2SupportOnHyperfor
 
 == What Mule versions support Object Store v2?
 
-* Mule runtime engine 3.8.5 and later
 * All Mule runtime engine 4.x versions
 +
 Mule 4 supports Object Store v2, but does not support Object Store v1.
@@ -140,7 +139,7 @@ The Object Store v2 APIs are available in the Anypoint Platform Developer's port
 
 == Where is the Object Store connector?
 
-https://anypoint.mulesoft.com/exchange/?search=objectstore[Anypoint Exchange] provides assets for the Mule 3 Object Store connector used by Anypoint Studio 6, and for the Mule 4 Object Store connector used by Studio 7.
+https://anypoint.mulesoft.com/exchange/?search=objectstore[Anypoint Exchange] provides assets for the Mule 4 Object Store connector used by Studio 7.
 
 == Do I need a different Object Store connector for Object Store v2 and Object Store v1?
 
@@ -195,5 +194,4 @@ By default, the *Use Object Store v2* option is enabled during CloudHub applicat
 * xref:osv2-guide.adoc#configure-a-custom-time-to-live-period[Configure a Custom Time-to-Live Period]
 * xref:osv2-guide.adoc#create-object-store-partitions[Create Object Store Partitions]
 * xref:connectors::object-store/object-store-connector.adoc[Object Store Connector for Mule 4]
-* xref:3.9@mule-runtime::object-store-connector.adoc[Object Store Connector for Mule 3]
 * https://help.salesforce.com/s/articleView?id=001123185&type=1[The Different Types of Object Stores Explained]

@@ -6,7 +6,6 @@ endif::[]
 Anypoint Object Store v2 (Object Store v2) enables you to share data and states across Mule runtime workers within a single application.
 
 Object Store v2 is enabled by default in Mule 4 and in Anypoint Platform EU Control Plane.
-In Mule 3, enable Object Store v2 from *Anypoint Platform > Runtime Manager* for applications that you want to access Object Store v2.
 
 == Components
 
@@ -130,7 +129,7 @@ Similarly, you can delete a partition or the store itself by hovering over and c
 Do not delete object stores that are associated with a running app.
 To prevent errors, stop the app before deleting an object store. 
 
-The tutorial provides more detailed information about creating object stores in Mule 3 and Mule 4 applications. 
+The tutorial provides more detailed information about creating object stores in Mule 4 applications. 
 
 == Configure a Custom Time to Live Period
 
@@ -232,5 +231,4 @@ to deploy your app to CloudHub:
 * https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Object Store v2 Stats API]
 * xref:release-notes::object-store/anypoint-osv2-release-notes.adoc[Object Store v2 Release Notes]
 * xref:connectors::object-store/object-store-connector.adoc[Object Store Connector for Mule 4]
-* xref:3.9@mule-runtime::object-store-connector.adoc[Object Store Connector for Mule 3]
 * xref:mule-runtime::deploy-to-cloudhub.adoc[Deploy Applications to CloudHub]

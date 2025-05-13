@@ -2,7 +2,7 @@
 
 Object Store v2 lets CloudHub applications store data and states across batch processes, Mule components and applications, from within an application or by using the Object Store REST API.
 
-You can select Object Store v2 as the implementation for Mule 3 and Mule 4 in CloudHub by checking the *Object Store V2* checkbox in Runtime Manager at deployment time.
+You can select Object Store v2 as the implementation for Mule 4 in CloudHub by checking the *Object Store V2* checkbox in Runtime Manager at deployment time.
 
 See the xref:osv2-faq.adoc[FAQ] for Object Store information.
 
@@ -155,8 +155,6 @@ IMPORTANT: Data does not carry over from Object Store v1 to v2.  Any data in a v
 The free Object Store v2 limits usage to 10 transactions per second (TPS) per application.
 To upgrade to premium and increase your TPS limit, contact the MuleSoft account team.
 * For CloudHub applications using Mule 4, if you choose Object Store v2, Object Store v2 overrides the `_defaultPersistentObjectStore` object store.
-+
-For CloudHub applications using Mule 3, Object Store v2 overrides the `_defaultUserObjectStore` object store. To use Object Store v2 in Mule 3 CloudHub applications, set the Object Store reference field to the `_defaultUserObjectStore` value.
 * Using Object Store v2 with multi-worker CloudHub applications might result in data discrepancies or key clashes.
 +
 This behavior occurs because the "Distributed Locking" feature isn't available in CloudHub and CloudHub 2.0 when working with Object Store v2. As a result, under certain conditions, when multiple Mule components attempt to update Object Store v2 tables simultaneously, such calls may fail.
@@ -228,6 +226,5 @@ The xref:osv2-apis.adoc#osv2-stats-api[Object Store v2 Stats API] isn't supporte
 * xref:access-management::permissions-by-product.adoc[]
 * xref:release-notes::object-store/anypoint-osv2-release-notes.adoc[Object Store v2 Release Notes]
 * xref:connectors::object-store/object-store-connector.adoc[Object Store Connector for Mule 4]
-* xref:3.9@mule-runtime::object-store-connector.adoc[Object Store Connector for Mule 3]
 * https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Object Store V2 Stats API]
 * https://blogs.mulesoft.com/dev/anypoint-platform-dev/data-synchronizing-made-easy-with-mule-watermarks/[Object Store Watermarks]
