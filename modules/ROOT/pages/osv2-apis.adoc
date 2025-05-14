@@ -231,19 +231,6 @@ If the `entryTtl` value specified is greater than 30 days, the value defaults to
 
 You can retrieve a maximum of 25 keys with each GET operation.
 
-[[limitations]]
-=== Limitations
-
-If an application writes to an object store using the REST interface and reads with 
-Object Store Connector for Mule 3 from the same key, the read can retrieve only the value at element 0. 
-Therefore, when using the REST API, use the API to write and read content
-from the object store.
-Alternatively, you can use the API to write only to index 0.
-
-This limitation doesn't apply to Object Store Connector for Mule 4 or
-Anypoint Studio Object Store Connector.
-
-
 
 [[access-osv2-api]]
 === Access the Object Store v2 API
@@ -806,7 +793,7 @@ To download the Object Store APIs from Exchange:
 +
 ** RAML
 ** OAS
-** Mule 4 or Mule 3 connector file
+** Mule 4 connector file
 
 image::os-exchange-download.png["Download button for the Object Store v2 API in Exchange"]
 
@@ -818,4 +805,3 @@ image::os-exchange-download.png["Download button for the Object Store v2 API in 
 * https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Object Store v2 Stats API in Anypoint Exchange]
 * https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/access-management-api/[Access Management API]
 * xref:connectors::object-store/object-store-connector.adoc[Object Store Connector for Mule 4]
-* xref:3.9@mule-runtime::object-store-connector.adoc[Object Store Connector for Mule 3]
