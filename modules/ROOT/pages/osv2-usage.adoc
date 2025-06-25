@@ -90,8 +90,8 @@ For example, if an app inserts or updates one key in an object store with a tota
 * One billable unit for the DELETE API call
 * One billable unit for each deleted partition in the store
 |Delete partition| Deletes all key-value pairs and then deletes the partition | One billable unit
-|Delete all keys and values in the partition| | One billable unit
-|Delete key | | One billable unit
+|Delete all keys and values in the partition| Deletes every key and its associated value from the specified partition | One billable unit
+|Delete key | Deletes a single key and its associated value | One billable unit
 |===
 
 For example, a call to delete a store with two partitions counts as three billable units against the quota:
