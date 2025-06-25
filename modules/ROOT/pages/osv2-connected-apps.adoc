@@ -58,13 +58,13 @@ Unless otherwise noted, these scopes apply to both object stores and Object Stor
 |include::access-management::partial$include-permissions-osv2.adoc[tag=permsViewStores]
 
 |Manage store clients (object store only)
-|N/A
+|Not Available
 |include::access-management::partial$include-permissions-osv2.adoc[tag=permsManageStoreClients]
 
 This scope doesn't apply to Object Store v2.
 
 |View store clients (object store only)
-|N/A
+|Not Available
 |include::access-management::partial$include-permissions-osv2.adoc[tag=permsViewStoreClients]
 
 This scope doesn't apply to Object Store v2.
