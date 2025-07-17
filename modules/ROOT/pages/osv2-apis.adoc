@@ -217,6 +217,7 @@ If the `entryTtl` value specified is greater than 30 days, the value defaults to
 * Put item as number
 * Put item as confirmable string
 * Put store
+* Create new or modify existing key-value pair
 
 |Store
 |DELETE |
