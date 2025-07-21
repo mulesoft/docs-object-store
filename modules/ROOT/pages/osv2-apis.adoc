@@ -291,6 +291,7 @@ the object store.
 * <<example-retrieve-keys>>
 * <<example-retrieve-key-value>>
 * <<example-store-key-value>>
+* <<example-update-key-value>>
 * <<example-delete-key-value>>
 
 [[example-retrieve-list]]
@@ -474,6 +475,39 @@ This command returns output similar to:
 ----
 {"values":[{"keyId":"KeyTwo"},{"keyId":"KeyOne"},{"keyId":"myTestKey"}],"nextPageToken":null}
 ----
+
+[[example-update-key-value]]
+==== Example: Update a Key-Value Pair
+
+To update the value of an existing key or create a new one, use a `PUT` request. Replace the placeholders with your specific values:
+
+[source,bash]
+----
+curl -X PUT \
+  'https://<BASE_URL>/api/v1/organizations/<ORG_ID>/environments/<ENV_ID>/stores/<STORE_ID>/partitions/<PARTITION_ID>/keys/<KEY_ID>' \
+  -H 'authorization: bearer <BEARER_TOKEN>' \
+  -H 'content-type: application/json' \
+  -d '{
+        "stringValue": "Updated value",
+        "valueType": "STRING",
+        "metadata": {
+          "source": "api"
+        }
+      }'
+----
+
+This command returns output similar to:
+
+[source,json]
+----
+{
+  "stringValue": "Updated value",
+  "valueType": "STRING",
+  "metadata": {
+    "source": "api"
+  }
+}
+---- 
 
 [[example-delete-key-value]]
 ==== Example: Delete a Key and Value 
