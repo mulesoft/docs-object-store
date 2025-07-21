@@ -477,7 +477,7 @@ This command returns output similar to:
 ----
 
 [[example-update-key-value]]
-=== Example: Update a Key-Value Pair
+==== Example: Update a Key-Value Pair
 
 To update the value of an existing key or create a new one, use a `PUT` request. Replace the placeholders with your specific values:
 
