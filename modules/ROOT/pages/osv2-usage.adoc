@@ -1,8 +1,9 @@
-= Rate Limiting and Billing
+= Object Store v2 Rate Limiting and Billing
+
+Monitor your Object Store v2 billing by understanding how API requests and effective API requests impact rate limiting and billing. Track usage metrics through Access Management or Usage to optimize application performance and avoid exceeding your subscription limits.
 
 Object Store v2 uses two metrics to determine rate-limiting and billing: API requests and effective API requests.
-Depending on your Anypoint Platform instance, 
-you access usage data in Access Management or Usage.
+Depending on your Anypoint Platform instance, you access usage data in Access Management or Usage.
 
 * <<access-usage-charts, US Cloud or EU Cloud>>
 * <<access-os-usage-reports, Canada Cloud or Japan Cloud>>
@@ -38,7 +39,11 @@ Every successful API request (via the connector or API) to Object Store v2 count
 |Premium add-on subscription|100 TPS per store
 |===
 
-For example, if your app retrieves 1500 keys from an object store with a page size of 25:
+Rate limiting is applied per application. Each application has a single Object Store allocation, so multiple uses of Object Store within the same application share the same TPS limit.
+
+For example, if your app includes both `case-obj-store` and `ticket-obj-store`, Object Store v2 calculates the 100 TPS limit across all stores used within the application combined.
+
+If an app retrieves 1500 keys from an object store with a page size of 25:
 
 * With the base subscription, the response is throttled over 6 seconds.
 * With the premium subscription, the response isn't throttled.
@@ -81,11 +86,11 @@ For example, if an app inserts or updates one key in an object store with a tota
 [%headers,cols="30,30,30"]
 |===
 |API Call|Description| Billable Units
-|Delete store | Deletes the store, all partitions in the store, and all key-value pairs in each partition a| 
+|Delete store | Deletes the store, all partitions in the store, and all key-value pairs in each partition a|
 
 * One billable unit for the DELETE API call
 * One billable unit for each deleted partition in the store
-|Delete partitions in store | Deletes all partitions in the store, including the key-value pairs in each partition a| 
+|Delete partitions in store | Deletes all partitions in the store, including the key-value pairs in each partition a|
 
 * One billable unit for the DELETE API call
 * One billable unit for each deleted partition in the store
@@ -113,7 +118,7 @@ based on your subscription type:
 |Premium add-on subscription|100 million per add-on subscription
 |===
 
-//Shared Usage Overage 
+//Shared Usage Overage
 include::partial$osv2-faq.adoc[tag=faqUsageOverage]
 
 
@@ -173,8 +178,7 @@ The report shows:
 ** Effective API requests by store
 . Click *Export as CSV* to download the usage date for the selected period.
 
-For more information, see 
-xref:general::usage-reports.adoc[].
+For more information, see xref:general::usage-reports.adoc[].
 
 
 
