@@ -41,7 +41,7 @@ Every successful API request (via the connector or API) to Object Store v2 count
 
 Rate limiting is applied per application. Each application has a single Object Store allocation, so multiple uses of Object Store within the same application share the same TPS limit.
 
-For example, if your app includes both `case-obj-store` and `ticket-obj-store`, Object Store v2 calculates the 100 TPS limit across all stores in the app combined, not per store.
+For example, if your app includes both `case-obj-store` and `ticket-obj-store`, Object Store v2 calculates the 100 TPS limit across all stores used within the application combined.
 
 If an app retrieves 1500 keys from an object store with a page size of 25:
 
