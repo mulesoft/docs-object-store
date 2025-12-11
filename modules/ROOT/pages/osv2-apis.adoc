@@ -1,4 +1,4 @@
-= Object Store v2 REST APIs 
+= Object Store v2 REST APIs
 
 include::reuse::partial$non-inclusive-banner.adoc[]
 
@@ -16,10 +16,10 @@ Object Store provides these APIs:
 
 
 [[before-you-begin]]
-== Before You Begin 
+== Before You Begin
 
 * Create an app that uses Object Store v2 and xref:runtime-manager::deploying-to-cloudhub.adoc[deploy it to CloudHub].
-* xref:osv2-guide.adoc#send-data-to-an-object-store[Store a key-value pair in the object store]. 
+* xref:osv2-guide.adoc#send-data-to-an-object-store[Store a key-value pair in the object store].
 * <<get-bearer-token,Get the bearer token>> for an Anypoint Platform user using the Access Management API:
 +
 You need the bearer token to access all Object Store v2 APIs.
@@ -70,7 +70,7 @@ The output includes the bearer token:
 {
   "access_token": "<BEARER_TOKEN>",
   "token_type": "bearer"
-}  
+}
 ----
 
 . Use this bearer token to access any Object Store v2 API that requires a bearer token.
@@ -177,9 +177,9 @@ curl -X GET \
 See <<example-retrieve-list>>.
 
 [[osv2-api]]
-== Object Store v2 API  
+== Object Store v2 API
 
-The Object Store v2 API reads and writes `key,list` values, 
+The Object Store v2 API reads and writes `key,list` values,
 which is different from Anypoint Connector for Object Store (Object Store Connector),
 which reads and writes in the `key,value` format.
 
@@ -237,7 +237,7 @@ You can retrieve a maximum of 25 keys with each GET operation.
 
 . <<get-bearer-token>>.
 . Set up an application, such as Postman, to access the object store.
-. Configure the object store access URL, replacing ORG_ID with your organization ID and 
+. Configure the object store access URL, replacing ORG_ID with your organization ID and
 ENV_ID with your environment ID:
 +
 [source,bash,linenums]
@@ -252,7 +252,7 @@ Depending on the deployment region, use one of these domains for the value of BA
 +
 [%header,cols="15,75a,10a"]
 |===
-|Control Plane|BASE_URL | Region 
+|Control Plane|BASE_URL | Region
 .12+|U.S.| `object-store-us-east-1.anypoint.mulesoft.com` | US East (N. Virginia)
 | `object-store-us-east-2.anypoint.mulesoft.com` | US East (Ohio)
 | `object-store-us-west-1.anypoint.mulesoft.com` | US West (N. California)
@@ -263,7 +263,7 @@ Depending on the deployment region, use one of these domains for the value of BA
 | `object-store-ca-central-1.anypoint.mulesoft.com` | Canada (Central)
 | `object-store-eu-central-1.anypoint.mulesoft.com` | Europe (Frankfurt)
 | `object-store-eu-west-1.anypoint.mulesoft.com` | Europe (Ireland)
-| `object-store-eu-west-2.anypoint.mulesoft.com` | Europe (London)
+| `object-store-eu-west-2.anypoint.mulesoft.com` | UK (London)
 | `object-store-sa-east-1.anypoint.mulesoft.com` | South America (São Paulo)
 | U.S.
 
@@ -297,9 +297,9 @@ the object store.
 [[example-retrieve-list]]
 ==== Example: Retrieve a List of Object Stores
 
-To view the list of object stores, run a `curl` command, replacing 
-BASE_URL with the regional domain, 
-ORG_ID with your organization ID, 
+To view the list of object stores, run a `curl` command, replacing
+BASE_URL with the regional domain,
+ORG_ID with your organization ID,
 ENV_ID with your environment ID, and
 BEARER_TOKEN with your bearer token:
 
@@ -325,8 +325,8 @@ This command returns output similar to:
 [[example-retrieve-region]]
 ==== Example: Retrieve a List of Regions
 
-To view the list of regions, submit a `curl` command, 
-replacing 
+To view the list of regions, submit a `curl` command,
+replacing
 BASE_URL with the regional domain,
 ORG_ID with your organization ID, and
 BEARER_TOKEN with your bearer token:
@@ -361,10 +361,10 @@ This command returns output similar to:
 [[example-retrieve-partitions]]
 ==== Example: Retrieve a List of Partitions
 
-To view the list of partitions, submit a `curl` command, 
-replacing 
-BASE_URL with the regional domain, 
-ORG_ID with your organization ID, 
+To view the list of partitions, submit a `curl` command,
+replacing
+BASE_URL with the regional domain,
+ORG_ID with your organization ID,
 ENV_ID with your environment ID, and
 STORE_ID with the `storeId` from the list of object stores, and
 BEARER_TOKEN with your bearer token:
@@ -373,7 +373,7 @@ BEARER_TOKEN with your bearer token:
 ----
 curl -X GET \
   https://<BASE_URL>/api/v1/organizations/<ORG_ID>/environments/<ENV_ID>/stores/<STORE_ID>/partitions \
-  -H "Authorization: Bearer <BEARER_TOKEN>" 
+  -H "Authorization: Bearer <BEARER_TOKEN>"
 ----
 
 This command returns output similar to:
@@ -384,12 +384,12 @@ This command returns output similar to:
 ----
 
 [[example-retrieve-keys]]
-==== Example: Retrieve a List of Keys in a Partition 
+==== Example: Retrieve a List of Keys in a Partition
 
-To view the keys in a partition, submit a `curl` command, 
-replacing 
+To view the keys in a partition, submit a `curl` command,
+replacing
 BASE_URL with the regional domain,
-ORG_ID with your organization ID, 
+ORG_ID with your organization ID,
 ENV_ID with your environment ID,
 STORE_ID with the name of the object store,
 PARTITION_ID with the name of the partition, and
@@ -399,7 +399,7 @@ BEARER_TOKEN with your bearer token:
 ----
 curl -X GET \
   https://<BASE_URL>/api/v1/organizations/<ORG_ID>/environments/<ENV_ID>/stores/<STORE_ID>/partitions/<PARTITION_ID>/keys \
-  -H "Authorization: Bearer <BEARER_TOKEN>" 
+  -H "Authorization: Bearer <BEARER_TOKEN>"
 ----
 
 This command returns output similar to:
@@ -410,11 +410,11 @@ This command returns output similar to:
 ----
 
 [[example-retrieve-key-value]]
-==== Example: Retrieve the Value of a Key 
+==== Example: Retrieve the Value of a Key
 
-To view the value of a key, submit a `curl` command, 
+To view the value of a key, submit a `curl` command,
 replacing BASE_URL with the regional domain,
-ORG_ID with your organization ID, 
+ORG_ID with your organization ID,
 ENV_ID with your environment ID,
 STORE_ID with the name of the object store,
 PARTITION_ID with the name of the partition,
@@ -425,7 +425,7 @@ BEARER_TOKEN with your bearer token:
 ----
 curl -X GET \
   https://<BASE_URL>/api/v1/organizations/<ORG_ID>/environments/<ENV_ID>/stores/<STORE_ID>/partitions/<PARTITION_ID>/keys/<KEY_ID> \
-  -H "Authorization: Bearer <BEARER_TOKEN>" 
+  -H "Authorization: Bearer <BEARER_TOKEN>"
 ----
 
 This command returns output similar to:
@@ -436,12 +436,12 @@ This command returns output similar to:
 ----
 
 [[example-store-key-value]]
-==== Example: Store a Key-Value Pair 
+==== Example: Store a Key-Value Pair
 
-To store a key-value pair, submit a `curl` command, 
+To store a key-value pair, submit a `curl` command,
 replacing
 BASE_URL with the regional domain,
-ORG_ID with your organization ID, 
+ORG_ID with your organization ID,
 ENV_ID with your environment ID,
 STORE_ID with the name of the object store,
 PARTITION_ID with the name of the partition,
@@ -458,7 +458,7 @@ curl -X POST \
   --data '{"stringValue":"Hello World","keyId":"myTestKey","valueType":"STRING"}'
 ----
 
-In this command, the value is a JSON string. 
+In this command, the value is a JSON string.
 
 To verify that the key-pair is in the object store, get a list of the keys in the partition:
 
@@ -466,7 +466,7 @@ To verify that the key-pair is in the object store, get a list of the keys in th
 ----
 curl -X GET \
   https://<BASE_URL>/api/v1/organizations/<ORG_ID>/environments/<ENV_ID>/stores/<STORE_ID>/partitions/<PARTITION_ID>/keys \
-  -H "Authorization: Bearer <BEARER_TOKEN>" 
+  -H "Authorization: Bearer <BEARER_TOKEN>"
 ----
 
 This command returns output similar to:
@@ -507,15 +507,15 @@ This command returns output similar to:
     "source": "api"
   }
 }
----- 
+----
 
 [[example-delete-key-value]]
-==== Example: Delete a Key and Value 
+==== Example: Delete a Key and Value
 
-To delete a key-value pair, submit a `curl` command, 
+To delete a key-value pair, submit a `curl` command,
 replacing
 BASE_URL with the regional domain,
-ORG_ID with your organization ID, 
+ORG_ID with your organization ID,
 ENV_ID with your environment ID,
 STORE_ID with the name of the object store,
 PARTITION_ID with the name of the partition,
@@ -529,7 +529,7 @@ curl -X DELETE \
   -H "Authorization: Bearer <BEARER_TOKEN>"
 ----
 
-In this command, the value is a JSON string. 
+In this command, the value is a JSON string.
 
 
 To verify that the key-pair is no longer in the object store, get a list of the keys in the partition:
@@ -538,7 +538,7 @@ To verify that the key-pair is no longer in the object store, get a list of the 
 ----
 curl -X GET \
   https://<BASE_URL>/api/v1/organizations/<ORG_ID>/environments/<ENV_ID>/stores/<STORE_ID>/partitions/<PARTITION_ID>/keys \
-  -H "Authorization: Bearer <BEARER_TOKEN>" 
+  -H "Authorization: Bearer <BEARER_TOKEN>"
 ----
 
 This command returns output similar to:
@@ -579,17 +579,17 @@ Use the Stats API to view your entire organization's usage of Object Store for b
 
 * `1hour`
 * `1day`
-* `1month`	
+* `1month`
 
-|Data retention | Length of time that Object Store retains the data, based on `period`| 
+|Data retention | Length of time that Object Store retains the data, based on `period`|
 
-* `period=1hour`: 3 months 
+* `period=1hour`: 3 months
 * `period=1day`: 12 months
 * `period=1month`: 24 months
 
 | Query timeframe | Maximum interval between `startDate` and `endDate` in the query, based on `period` |
 
-* `period=1hour`: 1 day 
+* `period=1hour`: 1 day
 * `period=1day`: 1 month
 * `period=1month`: 2 months
 
@@ -602,7 +602,7 @@ NOTE: If the interval between `startDate` and `endDate` exceeds the limits, the 
 
 . <<get-bearer-token>>.
 . Set up an application, such as Postman, to access the object store.
-. Configure the access URL, replacing ORG_ID with your organization ID and 
+. Configure the access URL, replacing ORG_ID with your organization ID and
 ENV_ID with your environment ID:
 +
 [source,bash,linenums]
@@ -632,14 +632,14 @@ See also https://help.salesforce.com/s/articleView?id=002778591&type=1[How to us
 ==== Example: Get Usage Metrics by Organization
 
 By default, the Object Store v2 Stats API endpoint retrieves statistics only for the specified ORG_ID.
-To get the usage data for the root organization and all sub-organizations, set `isMaster` to `true` when ORG_ID is the root organization. 
+To get the usage data for the root organization and all sub-organizations, set `isMaster` to `true` when ORG_ID is the root organization.
 If you use `isMaster=true` to query a sub-organization, the endpoint returns no results.
 
 To view Object Store usage statistics for the root organization and all sub-organizations,
 between August 11, 2024 and September 11, 2024,
-submit a `curl` command, 
+submit a `curl` command,
 replacing
-ORG_ID with the organization ID for your root organization and 
+ORG_ID with the organization ID for your root organization and
 BEARER_TOKEN with your bearer token:
 
 
@@ -660,9 +660,9 @@ This request returns a response similar to:
 ]
 ----
 
-To view Object Store usage statistics for the root organization and all sub-organizations for one day, submit a `curl` command, 
+To view Object Store usage statistics for the root organization and all sub-organizations for one day, submit a `curl` command,
 replacing
-ORG_ID with the organization ID for your root organization and 
+ORG_ID with the organization ID for your root organization and
 BEARER_TOKEN with your bearer token:
 
 [source,bash,linenums]
@@ -685,7 +685,7 @@ This request returns a response similar to:
 
 To view Object Store usage statistics for a sub-organization,
 between February 10, 2024 and March 10, 2024,
-submit a `curl` command, 
+submit a `curl` command,
 replacing
 ORG_ID with the organization ID for the sub-organization and
 BEARER_TOKEN with your bearer token:
@@ -733,7 +733,7 @@ This request returns a response similar to:
 ----
 
 [[usage-by-env]]
-==== Example: Get Usage Metrics by Environment 
+==== Example: Get Usage Metrics by Environment
 
 To view Object Store usage statistics for an environment between August 13, 2024 and September 13, 2024,
 submit a `curl` command, replacing
@@ -792,18 +792,18 @@ This request returns a response similar to:
 ==== Example: Get Usage Metrics by Store
 
 To view Object Store usage statistics for a store,
-submit a `curl` command, replacing 
+submit a `curl` command, replacing
 ORG_ID with your organization ID,
 ENV_ID with your environment ID,
 REGION_ID with the region to retrieve metrics from,
-STORE_ID with the store ID to retrieve metrics for, 
+STORE_ID with the store ID to retrieve metrics for,
 and BEARER_TOKEN with your bearer token:
 
 [source,bash,linenums]
 ----
  curl -X GET \
   'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/<ORG_ID>/environments/<ENV_ID>/regions/<REGION_ID>/stores/<STORE_ID>?startDate=2024-08-13T17%3A51%3A54.000Z&endDate=2024-09-13T17%3A51%3A54.000Z&period=1month' \
-  -H 'authorization: Bearer <BEARER_TOKEN>' 
+  -H 'authorization: Bearer <BEARER_TOKEN>'
 ----
 
 To retrieve the STORE_ID, see <<example-retrieve-list>>.
@@ -818,7 +818,7 @@ This request returns a response similar to:
 ]
 ----
 [[download-osv2-apis]]
-== Download Object Store APIs from Exchange 
+== Download Object Store APIs from Exchange
 
 To download the Object Store APIs from Exchange:
 
