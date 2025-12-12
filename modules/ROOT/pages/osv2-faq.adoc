@@ -11,21 +11,21 @@ endif::[]
 | Location | Region Name | Region
 3+h| https://anypoint.mulesoft.com/[US Cloud]
 .5+| North America | US East (N. Virginia)	|`us-east-1`
-                   | US East (Ohio) 		|`us-east-2` 
-                   | US West (N. California)|`us-west-1` 
-                   | US West (Oregon)		| `us-west-2` 
+                   | US East (Ohio) 		|`us-east-2`
+                   | US West (N. California)|`us-west-1`
+                   | US West (Oregon)		| `us-west-2`
                    | Canada (Central)		| `ca-central-1`
-.1+| South America | South America (Sao Paulo) | `sa-east-1` 
+.1+| South America | South America (Sao Paulo) | `sa-east-1`
 .3+| APAC          | Asia Pacific (Singapore) |`ap-southeast-1`
                    | Asia Pacific (Sydney)	|`ap-southeast-2`
                    | Asia Pacific (Tokyo)	|`ap-northeast-1`
 .3+| Europe        | Europe (Ireland)		|`eu-west-1`
-                   | EU (Frankfurt) 		|`eu-central-1` 
-                   | Europe (London)		|`eu-west-2`
+                   | EU (Frankfurt) 		|`eu-central-1`
+                   | UK (London)		|`eu-west-2`
 3+h|MuleSoft Government Cloud
 .1+|				| GovCloud (US West) | `us-gov-west-1`
 3+h| https://eu1.anypoint.mulesoft.com/[EU Cloud]
-.2+| Europe			| EU (Ireland) | `eu-west-1` 
+.2+| Europe			| EU (Ireland) | `eu-west-1`
 					| EU (Frankfurt) | `eu-central-1`
 3+h| https://ca1.platform.mulesoft.com[Canada Cloud]
 .1+| North America	| Canada (Central)       | `ca-central-1` <<os-hyperforce,^***^>>
@@ -48,7 +48,7 @@ Mule 4 supports Object Store v2, but does not support Object Store v1.
 
 == Can I use Object Store v2 for apps deployed to on-premises servers?
 
-// Shared onPrem 
+// Shared onPrem
 include::partial$osv2-faq.adoc[tag=faqOnPrem]
 
 
@@ -60,14 +60,14 @@ For information about the Mule object store, see xref:mule-runtime::mule-object-
 == How can I see usage data?
 
 To view API request data, see xref:osv2-usage.adoc[View Usage Graphs].
- 
+
 == What happens when the transaction limit for my subscription is reached?
 
 An Object Store v2 subscription pack allows up to 100 million transactions per month for an Anypoint Platform organization. This limit is applied across all Production and non-Production environments.
 You can use the https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2-stats/[Object Store v2 Stats API] to monitor usage.
 
 
-//Shared Usage Overage 
+//Shared Usage Overage
 include::partial$osv2-faq.adoc[tag=faqUsageOverage]
 
 
@@ -79,16 +79,16 @@ IMPORTANT: If after the first deploy, you move the app to a different region, Ob
 
 == Can an app deployed to CloudHub access the object store of another CloudHub app?
 
-You can configure a Mule app to use the Object Store REST API to store and retrieve 
-values from an object store in another Mule app. 
+You can configure a Mule app to use the Object Store REST API to store and retrieve
+values from an object store in another Mule app.
 
 However, Object Store v2 isn't designed for app-to-app communication.
 To share data between two Mule 4 apps, use a queue in xref:mq::index.adoc[Anypoint MQ].
 
 For information about object store limitations, see xref:connectors::object-store/object-store-connector.adoc#object-store-limitations[Object Store Limitations].
 
-For information about the Object Store REST API, see 
-https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Object Store v2 API] on Exchange. 
+For information about the Object Store REST API, see
+https://anypoint.mulesoft.com/exchange/portals/anypoint-platform/f1e97bc6-315a-4490-82a7-23abe036327a.anypoint-platform/object-store-v2/[Object Store v2 API] on Exchange.
 
 
 
@@ -107,10 +107,10 @@ In Object Store v2, there is no limit on the number of keys per app.
 
 == What is the maximum key size?
 
-// Shared keySize 
+// Shared keySize
 include::partial$osv2-faq.adoc[tag=faqKeySize]
 
-// Shared keyChars 
+// Shared keyChars
 include::partial$osv2-faq.adoc[tag=faqKeyChars]
 
 == What are the advantages of using partitions?
@@ -126,7 +126,7 @@ The maximum TTL (time to live) is 2592000 seconds (30 days).
 
 For information about rolling and static TTL, see xref:index.adoc#time-to-live[Time to Live (TTL)].
 
-To configure TTL, see 
+To configure TTL, see
 xref:osv2-guide.adoc#configure-a-custom-time-to-live-period[Configure a Custom Time to Live Period].
 
 == Where is the Object Store v2 REST API portal?
@@ -185,7 +185,7 @@ same data center as the Runtime Manager app.
 
 == What happens when you reenable the *Use Object Store v2* option after disabling it?
 
-By default, the *Use Object Store v2* option is enabled during CloudHub application deployment. If you disable and then reenable this option in Runtime Manager, the original key-value pairs persist as long as the key-value pair TTL isn't expired. 
+By default, the *Use Object Store v2* option is enabled during CloudHub application deployment. If you disable and then reenable this option in Runtime Manager, the original key-value pairs persist as long as the key-value pair TTL isn't expired.
 
 == See Also
 
