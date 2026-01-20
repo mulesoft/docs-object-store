@@ -11,7 +11,7 @@ Depending on your Anypoint Platform instance, you access usage data in Access Ma
 [NOTE]
 ====
 If you enable *Use Object Store v2*, any connector, module, or policy that relies on Object Store uses Object Store v2, even if your application doesn't explicitly interact with Object Store. This usage counts toward rate limiting and billing.
-+
+
 These are some examples of connectors, modules, and policies that use Object Store:
 
 * API Gateway policies, such as Rate Limiting, SLA-based Rate Limiting, Spike Control, and HTTP Caching
