@@ -151,7 +151,7 @@ The response includes output similar to:
 [[get-region-id]]
 === Get the Region ID
 
-To get the region ID (REGION_ID), run this command, replacing <<base-url,BASE_URL>>:
+To get the region ID (REGION_ID), run this command, replacing <<access-osv2-api,BASE_URL>>:
 
 [source,bash,linenums]
 ----
@@ -165,7 +165,7 @@ See <<example-retrieve-region>>.
 [[get-store-id]]
 === Get the Store ID
 
-To get the store ID (STORE_ID), run this command, replacing <<base-url,BASE_URL>>:
+To get the store ID (STORE_ID), run this command, replacing <<access-osv2-api,BASE_URL>>:
 
 [source,bash,linenums]
 ----
@@ -245,8 +245,6 @@ ENV_ID with your environment ID:
 <BASE_URL>/api/v1/organizations/<ORG_ID>/environments/<ENV_ID>/stores/myTestStoreId/objects
 ----
 +
-
-[#base-url]
 Depending on the deployment region, use one of these domains for the value of BASE_URL in the access URL:
 // update for HF
 +
