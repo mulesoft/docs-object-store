@@ -8,6 +8,28 @@ Depending on your Anypoint Platform instance, you access usage data in Access Ma
 * <<access-usage-charts, US Cloud or EU Cloud>>
 * <<access-os-usage-reports, Canada Cloud or Japan Cloud>>
 
+[NOTE]
+====
+If you enable *Use Object Store v2*, any connector, module, or policy that relies on Object Store uses Object Store v2, even if your application doesn't explicitly interact with Object Store. This usage counts toward rate limiting and billing.
+
+These are some examples of connectors, modules, and policies use Object Store internally:
+
+* API Gateway policies, such as Rate Limiting, SLA-based Rate Limiting, Spike Control, and HTTP Caching
+* B2B Solution Runtime Engine components, such as endpoint services, document processing, and API replication
+* Salesforce connectors
+* Google connectors (primarily for OAuth flows)
+* Microsoft connectors
+* SAP S/4HANA Cloud
+* SAP SuccessFactors
+* AS2
+* RosettaNet
+* Redis
+* Power BI
+* MCP
+* A2A
+* OAuth provider templates and OAuth introspection services
+====
+
 [[api-requests]]
 API Requests::
 API requests are HTTP transactions, such as GET, PUT, and POST.
