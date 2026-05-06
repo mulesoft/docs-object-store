@@ -199,18 +199,19 @@ To avoid these issues, use a distributed key-value store as a lock to synchroniz
 |===
 
 [[osv2-on-hyperforce]]
-== Object Store v2 on Hyperforce
+== Object Store v2 on Control Planes
 
 Object Store v2 is available on these instances of Anypoint Platform:
 
 * https://ca1.platform.mulesoft.com[Canada Cloud]
 * https://jp1.platform.mulesoft.com[Japan Cloud]
+* https://in1.platform.mulesoft.com[India Cloud]
 
 For information about the regions where Object Store v2 is available, see
 xref:osv2-faq.adoc#osv2-regions[Object Store v2 Regions].
 
-When you deploy to Canada Cloud or Japan Cloud,
-all features of Object Store v2 are supported on Hyperforce with these exceptions:
+When you deploy to Canada Cloud, Japan Cloud, or India Cloud,
+all features of Object Store v2 are supported with these exceptions:
 
 CloudHub 1::
 Deployments to CloudHub 1 aren't supported.

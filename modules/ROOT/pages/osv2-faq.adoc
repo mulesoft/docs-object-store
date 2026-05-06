@@ -31,6 +31,8 @@ endif::[]
 .1+| North America	| Canada (Central)       | `ca-central-1` <<os-hyperforce,^***^>>
 3+h| https://jp1.platform.mulesoft.com[Japan Cloud]
 .1+| APAC |            Japan (Central)       | `ap-northeast-1` <<os-hyperforce,^***^>>
+3+h| https://in1.platform.mulesoft.com[India Cloud]
+.1+| APAC |            India       | `ap-south-1` <<os-hyperforce,^***^>>
 
 |===
 
