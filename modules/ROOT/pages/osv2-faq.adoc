@@ -8,7 +8,7 @@ endif::[]
 
 [%header%autowidth.spread]
 |===
-| Control Plane | Location | Region Name | Region
+| Control Plane | Location | Region | Region Name
 
 .12+| https://anypoint.mulesoft.com/[US Cloud]
 .5+| North America | US East (N. Virginia) | `us-east-1`
