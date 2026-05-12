@@ -35,7 +35,7 @@ endif::[]
 | Asia Pacific | Japan (Tokyo) | `ap-northeast-1` <<os-hyperforce,^***^>>
 
 | https://in1.platform.mulesoft.com[India Cloud]
-| Asia Pacific | India | `ap-south-1` <<os-hyperforce,^***^>>
+| Asia Pacific | India (Mumbai) | `ap-south-1` <<os-hyperforce,^***^>>
 
 | MuleSoft Government Cloud
 | US Government | US GovCloud (West) | `us-gov-west-1`
