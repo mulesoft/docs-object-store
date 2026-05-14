@@ -6,6 +6,13 @@ For information about Connected Apps, see
 xref:access-management::connected-apps-overview.adoc[] and
 xref:access-management::connected-apps-developers.adoc[].
 
+[IMPORTANT]
+====
+If your organization has IP allowlisting enabled for connected apps, you must either allowlist the outbound IPs of the runtime where your Mule app is deployed, or exempt the connected app from IP enforcement. Without one of these steps, token generation fails and your MQ flows stop processing messages.
+
+If your app runs on CloudHub without static IPs or on CloudHub 2.0 Shared Space, you must exempt the connected app. These deployment models use dynamic or shared IPs that can't be reliably allowlisted. For guidance on all deployment models and exemption steps, see xref:access-management::managing-ip-allowlists.adoc#configure-ip-allowlisting-connected-apps[Configure IP Allowlisting for Connected Apps].
+====
+
 
 [[configure-os-conn-app]]
 == Configure a Connected App in Access Management
