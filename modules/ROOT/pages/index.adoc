@@ -38,36 +38,8 @@ The Object Store v2 user interface is available in the Anypoint Platform > Runti
 == Object Store v2 Permissions
 
 // These descriptions are the same as scopes in connected apps.
-[%header,cols="50a,20a,30a"]
-|===
-|To...|Required Permission|Notes
 
-|include::access-management::partial$include-permissions-osv2.adoc[tag=permsManageStores]
-|Manage stores
-|
-
-|include::access-management::partial$include-permissions-osv2.adoc[tag=permsManageStoresData]
-|Manage stores data
-|
-
-|include::access-management::partial$include-permissions-osv2.adoc[tag=permsViewStores]
-|View stores
-|
-
-// check to see if these are in the UI and delete if not
-|include::access-management::partial$include-permissions-osv2.adoc[tag=permsManageStoreClients]
-|Manage store clients
-|This permission doesn't apply to Object Store v2.
-
-|include::access-management::partial$include-permissions-osv2.adoc[tag=permsViewStoreClients]
-|View store clients (object store only)
-|This permission doesn't apply to Object Store v2.
-
-|include::access-management::partial$include-permissions-osv2.adoc[tag=permsStoreMetricsViewer]
-
-|Store Metrics Viewer
-|
-|===
+include::access-management::partial$include-permissions-osv2.adoc[tag=osv2PermissionsTable]
 
 To assign user permissions, follow the steps in xref:access-management::users.adoc#grant-user-permissions[Grant Permissions to Users].
 
