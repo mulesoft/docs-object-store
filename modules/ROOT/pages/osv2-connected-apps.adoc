@@ -46,30 +46,29 @@ Unless otherwise noted, these scopes apply to both object stores and Object Stor
 |Scope in UI|Scope in API |Description
 |Manage stores
 |`manage:store`
-|include::access-management::partial$include-permissions-osv2.adoc[tag=permsManageStores]
-
+|Create, read, update, and delete stores.
 
 |Manage stores data
 |`manage:store_data`
-|include::access-management::partial$include-permissions-osv2.adoc[tag=permsManageStoresData]
+|Perform all store operations including data, partition, and confirmation APIs.
 
 |View stores
 |`read:store`
-|include::access-management::partial$include-permissions-osv2.adoc[tag=permsViewStores]
+|Read store details.
 
 |Manage store clients (object store only)
 |Not Available
-|include::access-management::partial$include-permissions-osv2.adoc[tag=permsManageStoreClients]
+|Manage all clients of a cloud store.
 
 This scope doesn't apply to Object Store v2.
 
 |View store clients (object store only)
 |Not Available
-|include::access-management::partial$include-permissions-osv2.adoc[tag=permsViewStoreClients]
+|View all clients of a cloud store.
 
 This scope doesn't apply to Object Store v2.
 
 |Store Metrics Viewer
 |`read:store_metrics`
-|include::access-management::partial$include-permissions-osv2.adoc[tag=permsStoreMetricsViewer]
+|Retrieve Object Store v2 metrics using the Object Store v2 Stats API.
 |===
