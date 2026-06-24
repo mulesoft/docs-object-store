@@ -39,7 +39,7 @@ The Object Store v2 user interface is available in the Anypoint Platform > Runti
 
 // These descriptions are the same as scopes in connected apps.
 
-include::access-management::partial$include-permissions-osv2.adoc[tag=osv2PermissionsTable]
+include::partial$include-permissions-osv2.adoc[tag=osv2PermissionsTable]
 
 To assign user permissions, follow the steps in xref:access-management::users.adoc#grant-user-permissions[Grant Permissions to Users].
 
