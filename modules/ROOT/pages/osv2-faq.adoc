@@ -180,9 +180,7 @@ Customers who have not purchased a separate Object Store SKU are rate limited to
 
 == How is Object Store v2 data secured?
 
-Object Store v2 uses Transport Layer Security (TLS) 1.2 and 1.3 for secure transport and
-doesn't support the deprecated TLS versions 1.0 and 1.1.
-Data at rest is stored using FIPS 140-2 compliant encryption standards.
+Object Store v2 uses Transport Layer Security (TLS) 1.2 and 1.3 for secure transport and doesn't support the deprecated TLS versions 1.0 and 1.1. Data at rest is stored using FIPS 140-3 compliant encryption standards.
 If you require a higher level of security, we recommend that you encrypt sensitive data before writing it to the Object Store.
 
 == Does Object Store cache data or perform I/O for each read and write?
