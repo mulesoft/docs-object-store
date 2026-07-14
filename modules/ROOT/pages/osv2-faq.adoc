@@ -37,6 +37,9 @@ endif::[]
 | https://in1.platform.mulesoft.com[India Cloud]
 | Asia Pacific | India (Mumbai) | `ap-south-1` <<os-hyperforce,^***^>>
 
+| https://au1.platform.mulesoft.com[Australia Cloud]
+| Asia Pacific | Australia (Sydney) | `ap-southeast-2` <<os-hyperforce,^***^>>
+
 | MuleSoft Government Cloud
 | US Government | US GovCloud (West) | `us-gov-west-1`
 |===
