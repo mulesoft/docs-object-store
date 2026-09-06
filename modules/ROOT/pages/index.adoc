@@ -151,10 +151,7 @@ To avoid these issues, use a distributed key-value store as a lock to synchroniz
 
 |{empty}
 
-* xref:osv2-usage.adoc#access-usage-charts[Usage Charts] (Access Management)
 * xref:cloudhub::deploying-to-cloudhub.adoc[CloudHub 1.0 Deployments]
-* xref:osv2-apis.adoc#osv2-stats-api[Object Store v2 Stats API]
-
 
 | Yes
 | No
@@ -183,12 +180,6 @@ All Object Store v2 features are supported on https://ca1.platform.mulesoft.com[
 | *xref:cloudhub::deploying-to-cloudhub.adoc[CloudHub 1.0 Deployments]*
 | Not supported. Deploy apps to xref:cloudhub-2::ch2-shared-space-about.adoc[CloudHub 2.0 shared spaces] or xref:runtime-fabric::index.adoc[Anypoint Runtime Fabric].
 
-| *xref:osv2-usage.adoc#access-usage-charts[Usage Charts] (Access Management)*
-| Not available. Use xref:osv2-usage.adoc#access-os-usage-reports[Usage Reports] instead.
-
-| *xref:osv2-apis.adoc#osv2-stats-api[Object Store v2 Stats API]*
-| Not supported.
-
 |===
 
 For information about the regions where Object Store v2 is available, see xref:osv2-faq.adoc#osv2-regions[Object Store v2 Regions].
@@ -201,5 +192,4 @@ For information about Anypoint Platform on other control planes, see xref:hyperf
 * xref:access-management::permissions-by-product.adoc[]
 * xref:release-notes::object-store/anypoint-osv2-release-notes.adoc[Object Store v2 Release Notes]
 * xref:connectors::object-store/object-store-connector.adoc[Object Store Connector for Mule 4]
-* https://dev-portal.mulesoft.com/apis/object-store-v2-stats.html[Object Store V2 Stats API]
 * https://blogs.mulesoft.com/dev-guides/how-to-tutorials/data-synchronizing-made-easy-with-mule-watermarks/[Object Store Watermarks]

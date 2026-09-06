@@ -68,7 +68,4 @@ This scope doesn't apply to Object Store v2.
 
 This scope doesn't apply to Object Store v2.
 
-|Store Metrics Viewer
-|`read:store_metrics`
-|Retrieve Object Store v2 metrics using the Object Store v2 Stats API.
 |===
