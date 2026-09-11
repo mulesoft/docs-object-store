@@ -1,9 +1,9 @@
 = Object Store v2 Rate Limiting and Billing
 
-Monitor your Object Store v2 billing by understanding how API requests and effective API requests impact rate limiting and billing. Track usage metrics through Access Management or Usage to optimize application performance and avoid exceeding your subscription limits.
+Monitor your Object Store v2 billing by understanding how API requests and effective API requests impact rate limiting and billing. Track usage metrics through Anypoint Usage Reports or the Anypoint Usage API to optimize application performance and avoid exceeding your subscription limits.
 
 Object Store v2 uses two metrics to determine rate-limiting and billing: API requests and effective API requests.
-To access usage data, go to *Usage* in Anypoint Platform.
+To access usage data, use <<access-os-usage-reports,Anypoint Usage Reports>> or the <<anypoint-usage-api,Anypoint Usage API>>.
 
 [NOTE]
 ====
@@ -144,9 +144,6 @@ include::partial$osv2-faq.adoc[tag=faqUsageOverage]
 [[access-os-usage-reports]]
 == Access Effective API Request Usage Reports
 
-[NOTE]
-include::partial$osv2-on-hyperforce.adoc[tag=osv2FeaturesOnlyHFnote]
-
 To view Object Store usage reports in Usage:
 
 . In Anypoint Platform, go to *Usage*.
@@ -164,7 +161,78 @@ The report shows:
 For more information, see xref:general::usage-reports.adoc[].
 
 
+[[anypoint-usage-api]]
+== Retrieve Usage Metrics with the Anypoint Usage API
+
+To retrieve Object Store v2 usage metrics programmatically, use the Anypoint Usage API.
+
+The Anypoint Usage API uses AMQL (Anypoint Metric Query Language), a SQL-like query language, to query usage meters.
+
+=== Before You Begin
+
+* Get a bearer token for an Anypoint Platform user with the *Usage Viewer* permission at the root organization level.
++
+See xref:osv2-apis.adoc#get-bearer-token[Get a Bearer Token].
+
+=== Discover Available Meters
+
+To view all available Object Store meters and their column names:
+
+[source,bash,linenums]
+----
+curl -X GET 'https://anypoint.mulesoft.com/metering/usage/api/v1/meters:describe' \
+  -H 'Authorization: Bearer <BEARER_TOKEN>'
+----
+
+=== Query Object Store Usage
+
+To retrieve effective API request counts, submit a POST request using AMQL:
+
+[source,bash,linenums]
+----
+curl -X POST 'https://anypoint.mulesoft.com/metering/usage/api/v1/meters:search' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer <BEARER_TOKEN>' \
+  -d '{
+    "query": "SELECT effective_api_requests FROM object_store_effective_api_requests_count WHERE timestamp between <START_EPOCH_MS> and <END_EPOCH_MS> TIMESERIES P1D"
+  }'
+----
+
+Replace `START_EPOCH_MS` and `END_EPOCH_MS` with epoch milliseconds for your date range.
+
+[NOTE]
+====
+The Usage API uses epoch milliseconds, not ISO 8601 strings.
+For example, `2024-01-01T00:00:00.000Z` = `1704067200000`.
+====
+
+=== AMQL Query Reference
+
+[source,sql]
+----
+SELECT <columns>
+FROM <meter>
+WHERE timestamp between <start_epoch_ms> and <end_epoch_ms>
+  [AND org_id = '<ORG_ID>']
+  [AND env_id = '<ENV_ID>']
+TIMESERIES <P1M|P1D>
+----
+
+[%header,cols="20,40,40"]
+|===
+| Parameter | Description | Values
+| `TIMESERIES` | Granularity of results | `P1D` (daily) or `P1M` (monthly)
+| Daily range (`P1D`) | Maximum query interval | 30 days
+| Monthly range (`P1M`) | Maximum query interval | 60 days
+| Data recency | Delay for data consolidation | 3-day delay
+|===
+
+[IMPORTANT]
+`SELECT *` is not supported. Always specify column names explicitly.
+Use the `:describe` endpoint to get the current column names for each meter.
+
 
 == See Also
 
 * xref:osv2-faq.adoc[Object Store FAQ]
+* xref:general::usage-reports.adoc[]
