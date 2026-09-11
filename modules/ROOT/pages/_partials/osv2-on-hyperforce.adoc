@@ -1,5 +1,5 @@
 // tag::osv2SupportOnHyperforce[]
-You can't access or configure some Object Store v2 features, such as the Object Store v2 Stats API.
+You can't access or configure some Object Store v2 features.
 For information, see xref:object-store::index.adoc#osv2-on-hyperforce[Object Store v2 on Hyperforce].
 // end::osv2SupportOnHyperforce[]
 
@@ -8,10 +8,6 @@ For information, see xref:object-store::index.adoc#osv2-on-hyperforce[Object Sto
 :page-notice-banner-message: Only the US Cloud and EU Cloud instances of Anypoint Platform support this feature.
 // end::osv2FeaturesNoHF[]
 
-
-// tag::apiStatsAPInotHF[]
-Only the US Cloud and EU Cloud instances of Anypoint Platform support these REST APIs.
-// end::apiStatsAPInotHF[]
 
 // Note for features unsupported on HF
 // tag::osv2FeaturesNoHFnote[]

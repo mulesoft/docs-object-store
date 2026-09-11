@@ -69,12 +69,14 @@ For information about the Mule object store, see xref:mule-runtime::mule-object-
 
 == How can I see usage data?
 
-To view API request data, see xref:osv2-usage.adoc[View Usage Graphs].
+To view Object Store v2 usage data:
+
+* For a UI view, use xref:osv2-usage.adoc#access-os-usage-reports[Anypoint Usage Reports].
+* For programmatic access, use the xref:osv2-usage.adoc#anypoint-usage-api[Anypoint Usage API].
 
 == What happens when the transaction limit for my subscription is reached?
 
 An Object Store v2 subscription pack allows up to 100 million transactions per month for an Anypoint Platform organization. This limit is applied across all Production and non-Production environments.
-You can use the https://dev-portal.mulesoft.com/apis/object-store-v2-stats.html[Object Store v2 Stats API] to monitor usage.
 
 
 //Shared Usage Overage
@@ -141,10 +143,9 @@ xref:osv2-guide.adoc#configure-a-custom-time-to-live-period[Configure a Custom T
 
 == Where is the Object Store v2 REST API portal?
 
-The Object Store v2 APIs are available in the Anypoint Platform Developer's portal:
+The Object Store v2 API is available in the Anypoint Platform Developer's portal:
 
 * https://dev-portal.mulesoft.com/apis/object-store-v2.html[Object Store v2]
-* https://dev-portal.mulesoft.com/apis/object-store-v2-stats.html[Object Store v2 Stats]
 
 
 == Where is the Object Store connector?
@@ -198,7 +199,6 @@ By default, the *Use Object Store v2* option is enabled during CloudHub applicat
 == See Also
 
 * https://dev-portal.mulesoft.com/apis/object-store-v2.html[Object Store v2 API]
-* https://dev-portal.mulesoft.com/apis/object-store-v2-stats.html[Object Store v2 Stats API]
 * xref:osv2-guide.adoc#configure-a-custom-time-to-live-period[Configure a Custom Time-to-Live Period]
 * xref:osv2-guide.adoc#create-object-store-partitions[Create Object Store Partitions]
 * xref:connectors::object-store/object-store-connector.adoc[Object Store Connector for Mule 4]

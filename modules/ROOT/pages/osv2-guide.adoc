@@ -22,9 +22,6 @@ To use Object Store v2 with Mule 4 apps, ensure that you select the correct obje
 * REST API
 +
 The Object Store v2 API enables you to create and delete objects, set TTL (time to live) for objects, and set usage limits.
-+
-The Object Store v2 Stats API enables you to retrieve Object Store v2 usage statistics,
-such as how many API calls per month your organization makes to Object Store.
 
 * Anypoint Runtime Manager
 +
@@ -228,7 +225,6 @@ to deploy your app to CloudHub:
 * xref:index.adoc#rolling-ttl[Rolling TTL]
 * xref:osv2-faq.adoc#what-are-the-advantages-of-using-partitions[What are the advantages of using partitions?]
 * https://dev-portal.mulesoft.com/apis/object-store-v2.html[Object Store v2 API]
-* https://dev-portal.mulesoft.com/apis/object-store-v2-stats.html[Object Store v2 Stats API]
 * xref:release-notes::object-store/anypoint-osv2-release-notes.adoc[Object Store v2 Release Notes]
 * xref:connectors::object-store/object-store-connector.adoc[Object Store Connector for Mule 4]
 * xref:mule-runtime::deploy-to-cloudhub.adoc[Deploy Applications to CloudHub]

@@ -7,12 +7,10 @@ The Object Store v2 APIs enable you to use REST to:
 * Retrieve a list of object stores and keys associated with an application.
 * Store and retrieve key-value pairs in an object store.
 * Delete key-value pairs from an object store.
-* Retrieve Object Store usage statistics for your organization.
 
 Object Store provides these APIs:
 
 * <<osv2-api,Object Store v2 API>>
-* <<osv2-stats-api,Object Store v2 Stats API>>
 
 
 [[before-you-begin]]
@@ -28,10 +26,10 @@ You need the bearer token to access all Object Store v2 APIs.
 You need the organization ID and environment ID for operations with all Object Store v2 APIs.
 * <<get-region-id,Get the REGION_ID>>.
 +
-You need the region ID for operations with the Object Store v2 Stats API.
+You need the region ID for operations with the Object Store v2 API.
 * <<get-store-id,Get the STORE_ID>>.
 +
-You need the store ID for operations with the Object Store v2 Stats API.
+You need the store ID for operations with the Object Store v2 API.
 
 
 [[get-bearer-token]]
@@ -547,274 +545,6 @@ This command returns output similar to:
 ----
 
 
-[[osv2-stats-api]]
-== Object Store v2 Stats API
-
-[NOTE]
-// Not on HF
-include::partial$osv2-on-hyperforce.adoc[tag=apiStatsAPInotHF]
-
-The Object Store v2 Stats API enables you to retrieve statistics on your Object Store usage.
-
-The usage statistics aren't real-time and might include latency.
-
-Use the Stats API to view your entire organization's usage of Object Store for billing purposes:
-
-* Usage per root organization and all sub-organizations
-* Usage per organization
-* Usage per environment
-* Usage per region
-* Usage per store
-
-
-[[osv2-usage-limits]]
-=== Usage Metrics Limits
-
-[%header,cols="10,15,15a"]
-|===
-| Parameter | Description | Values
-| Time series (`period`) | Interval that the query records |
-
-* `1hour`
-* `1day`
-* `1month`
-
-|Data retention | Length of time that Object Store retains the data, based on `period`|
-
-* `period=1hour`: 3 months
-* `period=1day`: 12 months
-* `period=1month`: 24 months
-
-| Query timeframe | Maximum interval between `startDate` and `endDate` in the query, based on `period` |
-
-* `period=1hour`: 1 day
-* `period=1day`: 1 month
-* `period=1month`: 2 months
-
-NOTE: If the interval between `startDate` and `endDate` exceeds the limits, the API returns an HTTP 400 error.
-|===
-
-
-[[access-osv2-stats-api]]
-=== Access the Object Store v2 Stats API
-
-. <<get-bearer-token>>.
-. Set up an application, such as Postman, to access the object store.
-. Configure the access URL, replacing ORG_ID with your organization ID and
-ENV_ID with your environment ID:
-+
-[source,bash,linenums]
-----
-https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/<ORG_ID>/environments/ENV_ID?startDate=...&endDate=...&period=...
-----
-+
-[IMPORTANT]
-include::partial$osv2-faq.adoc[tag=urlEncoded]
-. Configure the application with HTTP headers and body for values to store to or read from
-the object store.
-. Send the operation to the Object Store v2 Stats API.
-
-See also https://help.salesforce.com/s/articleView?id=002778591&type=1[How to use Object Store v2 Stats API].
-
-
-[[example-osv2-stats-api]]
-=== Examples: Object Store v2 Stats API
-
-* <<usage-by-org>>
-* <<usage-by-env>>
-* <<usage-by-region>>
-* <<usage-by-store>>
-
-
-[[usage-by-org]]
-==== Example: Get Usage Metrics by Organization
-
-By default, the Object Store v2 Stats API endpoint retrieves statistics only for the specified ORG_ID.
-To get the usage data for the root organization and all sub-organizations, set `isMaster` to `true` when ORG_ID is the root organization.
-If you use `isMaster=true` to query a sub-organization, the endpoint returns no results.
-
-To view Object Store usage statistics for the root organization and all sub-organizations,
-between August 11, 2024 and September 11, 2024,
-submit a `curl` command,
-replacing
-ORG_ID with the organization ID for your root organization and
-BEARER_TOKEN with your bearer token:
-
-
-[source,bash,linenums]
-----
-curl -X GET \
-  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/<ORG_ID>?startDate=2024-08-11T17%3A51%3A54.000Z&endDate=2024-09-11T17%3A51%3A54.000Z&period=1month&isMaster=true' \
-  -H 'authorization: Bearer <BEARER_TOKEN>'
-----
-
-This request returns a response similar to:
-
-[source,json,linenums]
-----
-[
- {"timeStamp":"2024-08-01T00:00:00Z","objectStoreRequestCount":38},
- {"timeStamp":"2024-09-01T00:00:00Z","objectStoreRequestCount":28}
-]
-----
-
-To view Object Store usage statistics for the root organization and all sub-organizations for one day, submit a `curl` command,
-replacing
-ORG_ID with the organization ID for your root organization and
-BEARER_TOKEN with your bearer token:
-
-[source,bash,linenums]
-----
-curl -X GET \
-  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/<ORG_ID>?startDate=2024-11-11T17%3A51%3A54.000Z&endDate=2024-11-131T17%3A51%3A54.000Z&period=1day&isMaster=true' \
-  -H 'authorization: Bearer <BEARER_TOKEN>'
-----
-
-This request returns a response similar to:
-
-[source,json,linenums]
-----
-[
- {"timeStamp":"2024-11-11T00:00:00Z","objectStoreRequestCount":36}
- {"timeStamp":"2024-11-12T00:00:00Z","objectStoreRequestCount":22}
- {"timeStamp":"2024-11-13T00:00:00Z","objectStoreRequestCount":43}
-]
-----
-
-To view Object Store usage statistics for a sub-organization,
-between February 10, 2024 and March 10, 2024,
-submit a `curl` command,
-replacing
-ORG_ID with the organization ID for the sub-organization and
-BEARER_TOKEN with your bearer token:
-
-
-[source,bash,linenums]
-----
-curl -X GET \
-  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/<ORG_ID>?startDate=2024-02-10T17%3A51%3A54.000Z&endDate=2024-03-10T17%3A51%3A54.000Z&period=1month' \
-  -H 'authorization: Bearer <BEARER_TOKEN>'
-----
-
-This request returns a response similar to:
-
-[source,json,linenums]
-----
-[
- {"timeStamp":"2024-02-10T00:00:00Z","objectStoreRequestCount":1},
- {"timeStamp":"2024-03-10T00:00:00Z","objectStoreRequestCount":15},
-]
-----
-
-To view Object Store usage statistics for one day for a sub-organization,
-submit a `curl` command, replacing
-ORG_ID with the organization ID for the sub-organization and
-BEARER_TOKEN with your bearer token:
-
-[source,bash,linenums]
-----
-curl -X GET \
-  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/<ORG_ID>?startDate=2024-12-01T17%3A51%3A54.000Z&endDate=2024-12-03T17%3A51%3A54.000Z&period=1day' \
-  -H 'authorization: Bearer <BEARER_TOKEN>'
-----
-
-This request returns a response similar to:
-
-[source,json,linenums]
-----
-[
- {"timeStamp":"2024-12-01T00:00:00Z","objectStoreRequestCount":4}
- {"timeStamp":"2024-12-02T00:00:00Z","objectStoreRequestCount":2}
- {"timeStamp":"2024-12-03T00:00:00Z","objectStoreRequestCount":8}
-
-]
-----
-
-[[usage-by-env]]
-==== Example: Get Usage Metrics by Environment
-
-To view Object Store usage statistics for an environment between August 13, 2024 and September 13, 2024,
-submit a `curl` command, replacing
-ORG_ID with your organization ID,
-ENV_ID with your environment ID,
-and BEARER_TOKEN with your bearer token:
-
-
-[source,bash,linenums]
-----
-curl -X GET \
-  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/<ORG_ID>/environments/<ENV_ID>?startDate=2024-08-13T17%3A51%3A54.000Z&endDate=2024-09-13T17%3A51%3A54.000Z&period=1month' \
-  -H 'authorization: Bearer <BEARER_TOKEN>'
-----
-
-This request returns a response similar to:
-
-[source,json,linenums]
-----
-[
- {"timeStamp":"2024-08-01T00:00:00Z","objectStoreRequestCount":1},
- {"timeStamp":"2024-09-01T00:00:00Z","objectStoreRequestCount":25}
-]
-----
-
-[[usage-by-region]]
-==== Example: Get Usage Metrics by Region
-
-To view Object Store usage statistics for a region,
-submit a `curl` command, replacing
-ORG_ID with your organization ID,
-ENV_ID with your environment ID,
-REGION_ID with the region from which to retrieve metrics, and
-BEARER_TOKEN with your bearer token:
-
-[source,bash,linenums]
-----
- curl -X GET \
-  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/<ORG_ID>/environments/<ENV_ID>/regions/<REGION_ID>?startDate=2024-08-13T17%3A51%3A54.000Z&endDate=2024-09-13T17%3A51%3A54.000Z&period=1month' \
-  -H 'authorization: Bearer <BEARER_TOKEN>'
-----
-
-To retrieve the REGION_ID, see <<example-retrieve-region>>.
-
-This request returns a response similar to:
-
-[source,json,linenums]
-----
-[
- {"timeStamp":"2024-08-01T00:00:00Z","objectStoreRequestCount":1},
- {"timeStamp":"2024-09-01T00:00:00Z","objectStoreRequestCount":25}
-]
-----
-
-[[usage-by-store]]
-==== Example: Get Usage Metrics by Store
-
-To view Object Store usage statistics for a store,
-submit a `curl` command, replacing
-ORG_ID with your organization ID,
-ENV_ID with your environment ID,
-REGION_ID with the region to retrieve metrics from,
-STORE_ID with the store ID to retrieve metrics for,
-and BEARER_TOKEN with your bearer token:
-
-[source,bash,linenums]
-----
- curl -X GET \
-  'https://object-store-stats.anypoint.mulesoft.com/api/v1/organizations/<ORG_ID>/environments/<ENV_ID>/regions/<REGION_ID>/stores/<STORE_ID>?startDate=2024-08-13T17%3A51%3A54.000Z&endDate=2024-09-13T17%3A51%3A54.000Z&period=1month' \
-  -H 'authorization: Bearer <BEARER_TOKEN>'
-----
-
-To retrieve the STORE_ID, see <<example-retrieve-list>>.
-
-This request returns a response similar to:
-
-[source,json,linenums]
-----
-[
- {"timeStamp":"2024-08-01T00:00:00Z","objectStoreRequestCount":1},
- {"timeStamp":"2024-09-01T00:00:00Z","objectStoreRequestCount":25}
-]
-----
 [[download-osv2-apis]]
 == Download Object Store APIs from Exchange
 
@@ -834,6 +564,5 @@ image::os-exchange-download.png["Download button for the Object Store v2 API in 
 
 * xref:index.adoc#rolling-ttl[Rolling TTL]
 * https://dev-portal.mulesoft.com/apis/object-store-v2.html[Object Store v2 API]
-* https://dev-portal.mulesoft.com/apis/object-store-v2-stats.html[Object Store v2 Stats API]
 * https://dev-portal.mulesoft.com/apis/access-management.html[Access Management API]
 * xref:connectors::object-store/object-store-connector.adoc[Object Store Connector for Mule 4]
