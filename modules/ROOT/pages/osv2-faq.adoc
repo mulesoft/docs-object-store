@@ -40,6 +40,9 @@ endif::[]
 | https://au1.platform.mulesoft.com[Australia Cloud]
 | Asia Pacific | Australia (Sydney) | `ap-southeast-2` <<os-hyperforce,^***^>>
 
+| https://gb1.platform.mulesoft.com[United Kingdom Cloud]
+| Europe | United Kingdom (London) | `eu-west-2` <<os-hyperforce,^***^>>
+
 | MuleSoft Government Cloud
 | US Government | US GovCloud (West) | `us-gov-west-1`
 |===
