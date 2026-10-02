@@ -31,7 +31,7 @@ These are some examples of connectors, modules, and policies use Object Store in
 API Requests::
 API requests are HTTP transactions, such as GET, PUT, and POST.
 +
-Object Store uses successful API requests (2xx) to calculate transactions per second (TPS) for rate limiting.
+Every API request to Object Store v2 counts toward the transactions per second (TPS) limit, including requests that return `OS:KEY_NOT_FOUND`.
 +
 See <<rate-limiting>>.
 
@@ -49,7 +49,11 @@ NOTE: The Object Store UI shows effective API request data for two months: the c
 [[rate-limiting]]
 == Rate Limiting
 
-Every successful API request (via the connector or API) to Object Store v2 counts toward the TPS limit, based on your subscription type:
+Every API request (via the connector or API) to Object Store v2 counts toward the TPS limit, including requests that return `OS:KEY_NOT_FOUND`.
++
+TPS and billing are calculated separately. Only successful (2xx) effective API requests count toward monthly billing.
+
+The TPS limit is based on your subscription type:
 
 [%header,cols="50,50"]
 |===
