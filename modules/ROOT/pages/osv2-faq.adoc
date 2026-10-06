@@ -43,6 +43,9 @@ endif::[]
 | https://gb1.platform.mulesoft.com[United Kingdom Cloud]
 | Europe | United Kingdom (London) | `eu-west-2` <<os-hyperforce,^***^>>
 
+| https://gprod1.platform.mulesoft.com[MuleSoft Government Cloud Plus]
+| US Government | US GovCloud (East) | `<placeholder>` <<os-hyperforce,^***^>>
+
 | MuleSoft Government Cloud
 | US Government | US GovCloud (West) | `us-gov-west-1`
 |===
