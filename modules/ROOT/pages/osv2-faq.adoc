@@ -31,6 +31,9 @@ endif::[]
 | https://ca1.platform.mulesoft.com[Canada Cloud]
 | North America | Canada (Montreal) | `ca-central-1` <<os-hyperforce,^***^>>
 
+| https://br1.platform.mulesoft.com[Brazil Cloud]
+| South America | Brazil (São Paulo) | `sa-east-1` <<os-hyperforce,^***^>>
+
 | https://jp1.platform.mulesoft.com[Japan Cloud]
 | Asia Pacific | Japan (Tokyo) | `ap-northeast-1` <<os-hyperforce,^***^>>
 
